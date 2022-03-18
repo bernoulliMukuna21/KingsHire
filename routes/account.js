@@ -15,7 +15,7 @@ var { base64ToImageSrc, imageToDisplay } = require('../bin/imageBuffer');
 var { numberOfDaysSince, groupByKey } = require('../bin/general-helper-functions');
 
 //let domainName = 'http://localhost:3000';
-let domainName = 'https://www.unilance.co.uk';
+let domainName = process.env.DOMAIN_URL;
 
 // Set Storage Engine
 //destination: './public/images/uploads',

@@ -7,8 +7,9 @@ var { emailEncode, emailDecode } = require('../bin/encodeDecode');
 var { convertTimeTo24Hours } = require('../bin/general-helper-functions');
 
 //let domainName = 'http://localhost:3000';
-let domainName = 'https://www.unilance.co.uk';
-let unilanceLoginURL=`${domainName}/users/login`;
+let domainName = process.env.DOMAIN_URL;
+let admnistrationEmail = process.env.ADMINISTRATION_EMAIL;
+let loginURL=`${domainName}/users/login`;
 
 function server_io(io) {
     io.on('connection', socket=>{
@@ -25,7 +26,7 @@ function server_io(io) {
                         'your booking ('+bookingDetailUpdate.service+' - ' +bookingDetailUpdate.projectName+'). I am please to inform you that '+
                         bookingDetailUpdate.supplier.name+' has accepted your booking and is now waiting for the payment to begin' +
                         'the work. Please <a target="_blank" style="text-decoration: underline; color: #0645AD; cursor: pointer" ' +
-                        'href='+ unilanceLoginURL +'> login </a> to your account to make the payment</p>'+
+                        'href='+ loginURL +'> login </a> to your account to make the payment</p>'+
                         '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
 
                     let bookingAcceptanceMessageToFreelancerHTML = '<h1 style="color: #213e53; font-size: 1.1rem">Booking Accepted</h1>'+
@@ -34,7 +35,7 @@ function server_io(io) {
                         ' It is advised to wait for the payment to be made before starting the work as the client can still cancel.' +
                         ' Once the client has paid, you will be informed to begin the work. So, please check your inbox and' +
                         ' <a target="_blank" style="text-decoration: underline;' +
-                        ' color: #0645AD; cursor: pointer" href='+ unilanceLoginURL +'> login </a>' +
+                        ' color: #0645AD; cursor: pointer" href='+ loginURL +'> login </a>' +
                         ' regularly to your account for updates.</p>'+
                         '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
 
@@ -56,7 +57,7 @@ function server_io(io) {
                             throw err;
                         }
 
-                        mailer.smtpTransport.sendMail(mailer.mailerFunction('unilance.admnistration@gmail.com',
+                        mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
                             'Freelancer Booking Acceptance', bookingAcceptanceMessageToAdminHTML), function (err) {
                             if(err){console.log(err)}
                             else{
@@ -123,7 +124,7 @@ function server_io(io) {
                         'your booking ('+bookingDetailUpdate.service+' - ' +bookingDetailUpdate.projectName+'). I am pleased to announce that '+
                         ' you have accepted the modification terms made by ' + bookingDetailUpdate.supplier.name +
                         ' . Please <a target="_blank" style="text-decoration: underline; color: #0645AD; cursor: pointer" ' +
-                        'href='+unilanceLoginURL+'> login </a> to your account to make the payment</p>'+
+                        'href='+loginURL+'> login </a> to your account to make the payment</p>'+
                         '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
 
                     let bookingAcceptanceMessageToFreelancerHTML = '<h1 style="color: #213e53; font-size: 1.1rem">Booking Accepted</h1>'+
@@ -133,7 +134,7 @@ function server_io(io) {
                         ' It is advised to wait for the payment to be made before starting the work as the client can still cancel.' +
                         ' Once the client has paid, you will be informed to begin the work. So, please check your inbox and' +
                         ' <a target="_blank" style="text-decoration: underline;' +
-                        ' color: #0645AD; cursor: pointer" href='+unilanceLoginURL+'> login </a>' +
+                        ' color: #0645AD; cursor: pointer" href='+loginURL+'> login </a>' +
                         ' regularly to your account for updates.</p>'+
                         '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
 
@@ -155,18 +156,18 @@ function server_io(io) {
                             throw err;
                         }
 
-                        mailer.smtpTransport.sendMail(mailer.mailerFunction('unilance.admnistration@gmail.com',
+                        mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
                             'Client Booking Acceptance', bookingAcceptanceMessageToAdminHTML), function (err) {
                             if(err){console.log(err)}
                             else{
                                 console.log('Client booking acceptance Message has been sent to Admin')
                                 // emailDecode(bookingDetailUpdate.customer.uuid)
-                                mailer.smtpTransport.sendMail(mailer.mailerFunction('unilance.admnistration@gmail.com',
+                                mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
                                     'Booking Accepted', bookingAcceptanceMessageToFreelancerHTML), function (err) {
                                     if(err){console.log(err)}
                                     else{
                                         console.log('Client booking acceptance Message has been sent to Freelancer');
-                                        mailer.smtpTransport.sendMail(mailer.mailerFunction('unilance.admnistration@gmail.com',
+                                        mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
                                             "You've accepted a booking", bookingAcceptanceMessageToClientHTML), function (err) {
                                             if(err){console.log(err)}
                                             else{console.log('Client booking acceptance Message has been sent to Client')}
@@ -200,7 +201,7 @@ function server_io(io) {
                         bookingDetailUpdate.service+' - '+ bookingDetailUpdate.projectName+') is completed. We are now waiting for' +
                         ' a confirmation from '+ bookingDetailUpdate.customer.name +' before we proceed with the payment.' +
                         ' So, please check your inbox and <a target="_blank" style="text-decoration: underline; color: #0645AD; ' +
-                        'cursor: pointer" href='+ unilanceLoginURL +'> login </a> regularly to your account for updates.</p>'+
+                        'cursor: pointer" href='+ loginURL +'> login </a> regularly to your account for updates.</p>'+
                         '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
 
                     let completionRequestMessageToClientHTML = '<h1 style="color: #213e53; font-size: 1.1rem">Booking Completed</h1>'+
@@ -211,7 +212,7 @@ function server_io(io) {
                         ' in the next three days, we will assume that the project has been successfully delivered.'+
                         ' This will also mean that we get to pay '+ bookingDetailUpdate.supplier.name +' for the work.'+
                         ' Please <a target="_blank" style="text-decoration: underline;'+
-                        'color: #0645AD; cursor: pointer" '+ 'href='+ unilanceLoginURL +'>'+
+                        'color: #0645AD; cursor: pointer" '+ 'href='+ loginURL +'>'+
                         'login'+ '</a> to your account to update us on this information.</p>'+
                         '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
 
@@ -282,7 +283,7 @@ function server_io(io) {
 
                         // emailDecode(bookingDetailUpdate.customer.uuid)
                         //emailDecode(bookingDetailUpdate.supplier.uuid)
-                        mailer.smtpTransport.sendMail(mailer.mailerFunction('unilance.admnistration@gmail.com',
+                        mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
                             'Booking Completion Confirmation', confirmationMessagetoAdminHTML), function (err) {
                             if(err){console.log(err)}
                             else{
@@ -351,7 +352,7 @@ function server_io(io) {
 
                         // emailDecode(bookingDetailUpdate.customer.uuid)
                         //emailDecode(bookingDetailUpdate.supplier.uuid)
-                        mailer.smtpTransport.sendMail(mailer.mailerFunction('unilance.admnistration@gmail.com',
+                        mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
                             'Booking Completion Awaiting Resolution', conflictMessagetoAdminHTML), function (err) {
                             if(err){console.log(err)}
                             else{
@@ -411,7 +412,7 @@ function server_io(io) {
 
                     // emailDecode(bookingDetailUpdate.customer.uuid)
                     //emailDecode(bookingDetailUpdate.supplier.uuid)
-                    mailer.smtpTransport.sendMail(mailer.mailerFunction('unilance.admnistration@gmail.com',
+                    mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
                         'Freelancer Cancelled Project', deleteMessagetoAdminHTML), function (err) {
                         if(err){console.log(err)}
                         else{
@@ -484,7 +485,7 @@ function server_io(io) {
 
                         // emailDecode(bookingDetailUpdate.customer.uuid)
                         //emailDecode(bookingDetailUpdate.supplier.uuid)
-                        mailer.smtpTransport.sendMail(mailer.mailerFunction('unilance.admnistration@gmail.com',
+                        mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
                             'Freelancer Cancelled Project', cancelMessagetoAdminHTML), function (err) {
                             if(err){console.log(err)}
                             else{
@@ -552,7 +553,7 @@ function server_io(io) {
 
                         // emailDecode(bookingDetailUpdate.customer.uuid)
                         //emailDecode(bookingDetailUpdate.supplier.uuid)
-                        mailer.smtpTransport.sendMail(mailer.mailerFunction('unilance.admnistration@gmail.com',
+                        mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
                             'Client Cancelled Project', cancelMessagetoAdminHTML), function (err) {
                             if(err){console.log(err)}
                             else{
@@ -610,7 +611,7 @@ function server_io(io) {
 
                     // emailDecode(bookingDetailUpdate.customer.uuid)
                     //emailDecode(bookingDetailUpdate.supplier.uuid)
-                    mailer.smtpTransport.sendMail(mailer.mailerFunction('unilance.admnistration@gmail.com',
+                    mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
                         'Client Cancelled Project', deleteMessagetoAdminHTML), function (err) {
                         if(err){console.log(err)}
                         else{
@@ -713,7 +714,7 @@ function server_io(io) {
                         ' email that your booking enquiry (' + newServiceBooking.service + ' - ' + newServiceBooking.projectName
                         + ') has successfully been sent to ' + newServiceBooking.supplier.name + '. Please do keep a close' +
                         ' eye on your emails and <a target="_blank" style="text-decoration: underline; color: #0645AD;' +
-                        ' cursor: pointer" href='+unilanceLoginURL+'> login </a> regulary to check for updates' +
+                        ' cursor: pointer" href='+loginURL+'> login </a> regulary to check for updates' +
                         ' on your booking (booking ID: ' + newServiceBooking._id + ') </p>' + '<p>Thank you,<br>The KingsHire Team' +
                         '<br>07448804768</p>';
 
@@ -721,7 +722,7 @@ function server_io(io) {
                         '<p>Hello ' + newServiceBooking.supplier.name.split(' ')[0] + ',</p><p> I am pleased to inform you that' +
                         ' you have a new booking on your KingsHire account. The booking ID is: ' + newServiceBooking._id + ' .' +
                         ' Please <a target="_blank" style="text-decoration: underline;' +
-                        ' color: #0645AD; cursor: pointer" href='+unilanceLoginURL+'> login </a>' +
+                        ' color: #0645AD; cursor: pointer" href='+loginURL+'> login </a>' +
                         ' to your account to access the details of this booking and accept or reject it.</p>' +
                         '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
 
@@ -750,7 +751,7 @@ function server_io(io) {
                             }else if (bookingType === 'request_booking'){
                                 // send booking details to freelancer and redirect to profile page
 
-                                mailer.smtpTransport.sendMail(mailer.mailerFunction('unilance.admnistration@gmail.com',
+                                mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
                                     'New Booking Made', newBookingMessageToAdminHTML), function (err) {
                                     if (err) {throw err}
                                     else{
@@ -819,7 +820,7 @@ function server_io(io) {
                     '<p>Hello '+bookingDetailUpdate.customer.name.split(' ')[0]+',</p><p>There has been an update' +
                     ' on the following booking ('+ bookingDetailUpdate.service+' - ' +bookingDetailUpdate.projectName
                     +'). Please' + '<a target="_blank" style="text-decoration: underline; color: #0645AD;' +
-                    ' cursor: pointer" href='+unilanceLoginURL+'> login </a> to your account to accept or ' +
+                    ' cursor: pointer" href='+loginURL+'> login </a> to your account to accept or ' +
                     'reject this new proposal by '+bookingDetailUpdate.supplier.name+
                     '. Please note your booking ID (booking ID: '+ bookingDetailUpdate._id +'). </p>'+'<p>Thank you,<br>The KingsHire Team' +
                     '<br>07448804768</p>';
@@ -828,7 +829,7 @@ function server_io(io) {
                     '<p>Hello '+bookingDetailUpdate.supplier.name.split(' ')[0]+',</p><p> This is an update that your booking modification' +
                     ' has successfully been sent to the client. The booking ID is: '+ bookingDetailUpdate._id +' .' +
                     ' Once there has been a response, we will inform you or you can <a target="_blank" style="text-decoration: underline;' +
-                    ' color: #0645AD; cursor: pointer" href='+unilanceLoginURL+'> login </a>' +
+                    ' color: #0645AD; cursor: pointer" href='+loginURL+'> login </a>' +
                     ' into your account regularly to check for updates.</p>'+
                     '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
 
@@ -837,12 +838,12 @@ function server_io(io) {
                         throw err;
                     }
                     console.log('New Booking Conversation saved!');
-                    mailer.smtpTransport.sendMail(mailer.mailerFunction('unilance.admnistration@gmail.com',
+                    mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
                         'Booking Modification', bookingModificationToClientHTML), function (err) {
                         if(err){console.log(err)}
                         else{
                             console.log('Freelancer booking Modification has been sent to client');
-                            mailer.smtpTransport.sendMail(mailer.mailerFunction('unilance.admnistration@gmail.com',
+                            mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
                                 'Booking Modification', bookingModificationToFreelancerHTML), function (err) {
                                 if(err){console.log(err)}
                                 else{console.log('Freelancer booking Modification has been sent to Freelancer');}

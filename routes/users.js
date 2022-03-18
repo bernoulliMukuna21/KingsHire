@@ -29,8 +29,8 @@ router.get('/', function(req, res, next) {
 
 // The variable will be used to track if a user is signing up as client or freelancer
 let userType_Oauth = {};
-let domainName = 'https://www.unilance.co.uk';
-let administrationEmail = 'unilance.admnistration@gmail.com';
+let domainURL = process.env.DOMAIN_URL;
+let administrationEmail = process.env.ADMINISTRATION_EMAIL;
 
 function loginSystem(req, res, user, userType, flash_message){
     console.log('Inside login system')
@@ -141,7 +141,7 @@ router.post('/join/:userType', function (req, res, next) {
                         else{
                             let welcomeEmailToUser = '<h1 style="color: #213e53; font-size: 1.1rem">Welcome to KingsHire</h1>'+
                                 '<p>You have successfully signed up to '+' <a target="_blank" style="text-decoration: underline;' +
-                                ' color: #0645AD; cursor: pointer" href='+domainName+'> KingsHire.co.uk</a>'+
+                                ' color: #0645AD; cursor: pointer" href='+domainURL+'> KingsHire.co.uk</a>'+
                                 ' . Well done!</p><p> We are looking to working' +
                                 'with you.</p><p>Thank you<br>The KingsHire Team<br>07448804768</p>';
 

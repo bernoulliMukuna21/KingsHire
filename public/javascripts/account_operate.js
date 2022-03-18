@@ -721,7 +721,7 @@ function createBookingFinalMessages(bookingData) {
         `contact soon. Please do keep an eye on your inbox. Thank you!`;
 
     let contactInfos = document.createElement("p");
-    contactInfos.innerText = '(contact us on unilance-management@google.co.uk for enquiries)';
+    contactInfos.innerText = '(contact us on kingshire.team@gmail.com for enquiries)';
 
     projectCompletionConfirmed.appendChild(projectEarning);
     projectCompletionConfirmed.appendChild(failureInfos);
@@ -734,7 +734,7 @@ function createBookingFinalMessages(bookingData) {
     let messageInfos_failure = document.createElement("p");
     messageInfos_failure.innerHTML = `${bookingData.customer.name} has decided to `+"<span> cancel </span>"
         +" the project. The management has been informed and will take appropriate actions. Thank you"
-        +"<br/><span>(contact us on unilance-management@google.co.uk for enquiries)</span>";
+        +"<br/><span>(contact us on kingshire.team@gmail.com for enquiries)</span>";
 
     projectCompletionRejected.appendChild(messageInfos_failure);
 

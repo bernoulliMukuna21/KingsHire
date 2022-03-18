@@ -8,9 +8,9 @@ var { ensureAuthentication } = require('../bin/authentication');
 var { emailEncode, emailDecode } = require('../bin/encodeDecode');
 var { stripeFindCustomerByEmail, stripeCustomerSubscription } = require('../bin/stripe-config');
 
-let domainName = 'https://www.unilance.co.uk';
-let unilanceLoginURL = `${domainName}/users/login`;
-let administrationEmail = 'unilance.admnistration@gmail.com';
+let domainURL = process.env.DOMAIN_URL;
+let loginURL = `${domainURL}/users/login`;
+let administrationEmail = process.env.ADMINISTRATION_EMAIL;
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_ENDPOINT_LIVE;
 
@@ -43,7 +43,7 @@ function server_io(io) {
                 },
                 quantity: 1,
             };
-            successURL = `${domainName}/payment/success/booking-checkout?bookingID=${bookingID}`;
+            successURL = `${domainURL}/payment/success/booking-checkout?bookingID=${bookingID}`;
 
             const session = await stripe.checkout.sessions.create({
                 billing_address_collection: 'auto',
@@ -52,7 +52,7 @@ function server_io(io) {
                 customer_email: customer_client,
                 mode: mode,
                 success_url: successURL,
-                cancel_url: `${domainName}/payment/failure`,
+                cancel_url: `${domainURL}/payment/failure`,
                 metadata: {bookingID, paymentType: 'booking-checkout'}
             });
             res.redirect(303, session.url)
@@ -91,7 +91,7 @@ function server_io(io) {
                 quantity: 1,
             };
 
-            successURL = `${domainName}/payment/success/subscription`;
+            successURL = `${domainURL}/payment/success/subscription`;
 
             const session = await stripe.checkout.sessions.create({
                 billing_address_collection: 'auto',
@@ -101,7 +101,7 @@ function server_io(io) {
                 mode: mode,
                 subscription_data: subscription_data,
                 success_url: successURL,
-                cancel_url: `${domainName}/payment/failure`
+                cancel_url: `${domainURL}/payment/failure`
             });
             res.redirect(303, session.url);
 
@@ -146,7 +146,7 @@ function server_io(io) {
                             '<p>Hello '+bookingUpdated.supplier.name.split(' ')[0]+',</p><p> I am pleased to inform you that' +
                             ' the following booking ('+ bookingUpdated.service+' - ' +bookingUpdated.projectName +') has' +
                             ' now been paid. Please <a target="_blank" style="text-decoration: underline;' +
-                            ' color: #0645AD; cursor: pointer" href='+unilanceLoginURL+'> login </a>' +
+                            ' color: #0645AD; cursor: pointer" href='+loginURL+'> login </a>' +
                             ' to your account to access the details of this booking and, possibly beginning working on it.</p>'+
                             '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
 
@@ -255,7 +255,7 @@ function server_io(io) {
                         '<p>Hello '+freelancerUser.name+',</p><p>This is a confirmation' +
                         ' of <the></the> cancellation of your subscription with KingsHire. We are sad to see you go, but your account is'+
                         ' still active. If you change your mind, please  <a target="_blank" style="text-decoration: underline; color: #0645AD; cursor: pointer" ' +
-                        'href='+unilanceLoginURL+'> login </a> to your account to subscribe again.</p>'+
+                        'href='+loginURL+'> login </a> to your account to subscribe again.</p>'+
                         '<p>Thank you,<br>The KingsHire Team' +
                         '<br>07448804768</p>';
 
@@ -334,14 +334,14 @@ function server_io(io) {
         let userUUID = emailEncode(req.user.email);
 
         req.flash('success_message', flash_message );
-        res.redirect(`${domainName}/account/${user_stature}/${userUUID}`);
+        res.redirect(`${domainURL}/account/${user_stature}/${userUUID}`);
     })
 
     router.get('/failure', ensureAuthentication, function(req, res, next) {
         let user_stature = req.user.user_stature.current;
         let userUUID = emailEncode(req.user.email);
         req.flash('error_message', 'Payment Failure!');
-        res.redirect(`${domainName}/account/${user_stature}/${userUUID}`);
+        res.redirect(`${domainURL}/account/${user_stature}/${userUUID}`);
     });
 
 
@@ -358,7 +358,7 @@ function server_io(io) {
                 if(isStripeCustomerSub){
                     const session = await stripe.billingPortal.sessions.create({
                         customer: isStripeCustomerSub.data[0].customer,
-                        return_url: `${domainName}/payment/success/billing-portal`,
+                        return_url: `${domainURL}/payment/success/billing-portal`,
                     });
                     res.redirect(303, session.url)
                 }

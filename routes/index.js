@@ -9,7 +9,8 @@ var mailer = require('../bin/mailer');
 var {emailEncode, emailDecode} = require('../bin/encodeDecode');
 var { imageToDisplay } = require('../bin/imageBuffer');
 
-let domainEmail = 'unilance.admnistration@gmail.com';
+let administrationemail = process.env.ADMINISTRATION_EMAIL;
+
 /* GET home page. */
 router.get('/', async function (req, res, next) {
     try{
@@ -101,7 +102,7 @@ router.post('/feedback', function(req, res, next){
                 `<p><span style="font-weight: bold">Email:</span> ${mailerBody.mail}</p>`+
                 `<p><span style="font-weight: bold">Comment:</span> ${mailerBody.comment}</p>`;
 
-            mailer.smtpTransport.sendMail(mailer.mailerFunction(domainEmail,
+            mailer.smtpTransport.sendMail(mailer.mailerFunction(administrationemail,
                 "KingsHire - Feedback", feedbackHTML), function (err) {
                 if(err){console.log(err)}
                 else{

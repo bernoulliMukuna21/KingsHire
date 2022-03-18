@@ -4,7 +4,7 @@ var GoogleStrategy = require('passport-google-oauth2').Strategy;
 var ObjectId = require('mongodb').ObjectID;
 var UserModel = require('../models/UserModel');
 
-let domainName = 'https://www.unilance.co.uk'; // 'http://localhost:3000'
+let domainName = process.env.DOMAIN_URL; // 'http://localhost:3000'
 
 module.exports = function(passport) {
 
