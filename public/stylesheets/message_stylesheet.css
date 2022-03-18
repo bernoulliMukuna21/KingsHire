@@ -1,0 +1,196 @@
+.all-messages-container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    font-family: Inter,sans-serif;
+    font-size: 1.4rem;
+}
+.all-messages-container img{
+    width:4.5rem;
+    height:4.5rem;
+    object-fit: cover;
+    position: center;
+    border-radius: 50%;
+}
+
+.default-messages-container{
+    display: flex;
+    height: 56rem;
+    justify-content: center;
+    align-items: center;
+}
+.default-messages-container h4{
+    border: .1rem dashed #213e53;
+    font-size: 3rem;
+    color: #213e53;
+    padding: 1rem 2rem;
+}
+
+.message-single-room{
+    display: grid;
+    grid-template-columns: 10% 90%;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    border-bottom: .075rem solid lightgray;
+}
+.message-single-room:hover{
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+.message-single-room:first-child{
+    border-top: .075rem solid lightgray;
+}
+.message-sender-details{
+    margin-left: .75rem;
+}
+.message-sender-details section{
+    padding: .25rem 0;
+}
+.message-sender-details section p{
+    font-size: 1.35rem;
+}
+.message-sender-details section:first-child{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.user-messages-main-container-box{
+    background-color: #f1f1f1;
+    border: .05rem solid lightgray;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+
+.message-container-top{
+    border-bottom: .2rem solid lightgray;
+    padding: 1rem 2rem .75rem 2rem;
+    display: flex;
+    align-items: center;
+}
+.message-container-top img{
+    width: 6rem;
+    height:6rem;
+}
+.message-container-top h4{
+    margin-left: 2rem;
+    font-size: 1.7rem;
+}
+.message-container-main{
+    height: 42rem;
+    max-height: 44rem;
+    overflow: auto;
+    padding-top: 1rem;
+}
+
+.user-single-receive-message,
+.user-single-send-message{
+    margin-bottom: 1.5rem;
+}
+
+.user-single-send-message{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: .5rem;
+}
+
+.user-single-receive-message{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: .5rem;
+}
+
+.user-single-send-message div,
+.user-single-receive-message div{
+    min-width: 25%;
+    max-width: 75%;
+}
+
+.user-single-send-message div p:nth-child(1),
+.user-single-receive-message div p:nth-child(1){
+    text-align: left;
+    font-family: Inter,sans-serif;
+    font-size: 1.4rem;
+    padding: 1rem;
+    border-radius: .5rem;
+    border: .1rem solid #c2dbec;
+    letter-spacing: .025em;
+}
+
+.user-single-send-message div p:nth-child(2),
+.user-single-receive-message div p:nth-child(2){
+    text-align: right;
+    color: #828282;
+    margin-top: .1rem;
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+.user-single-send-message div p:nth-child(1){
+    background-color: #c2dbec;
+    border: .1rem solid #b3cadb;
+}
+
+.message-container-typeBox{
+    display: grid;
+    grid-template-columns: 90% 10%;
+    align-items: center;
+    background-color: #dddddd;
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+.message-container-typeBox input, .message-container-typeBox input:focus, .message-container-typeBox i, .message-container-typeBox i:focus{
+    border: .15rem solid #42779d;
+    border-radius: .5rem;
+    padding: 1.25rem .5rem;
+    font-size: 1.4rem;
+    outline: none;
+}
+.message-container-typeBox input{
+    margin-right: .5rem;
+    font-family: Inter,sans-serif;
+    background-color: #dddddd;
+}
+
+.message-container-typeBox i{
+    border-color: #42779d;
+    text-align: center;
+    margin-left: .5rem;
+    background-color: #42779d;
+    color: white;
+    cursor: pointer;
+}
+.message-container-typeBox i:hover{
+    background-color: #213e53;
+    border-color: #213e53;
+}
+
+.default-message-content{
+    height: 55rem;
+    max-height: 55rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.default-message-content h3, .default-message-content i{
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem .5rem;
+    color: #213e53;
+}
+.default-message-content i{
+    font-size: 4rem;
+}
+
+.roomClicked{
+    background-color: #f1f1f1;
+    border-left: .1rem solid #213e53;
+    border-right: .1rem solid #213e53;
+}
+.messageReceived{
+    font-weight: bold;
+    font-size: 1.5rem;
+    color:  #8d2874;
+}

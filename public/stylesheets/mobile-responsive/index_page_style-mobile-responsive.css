@@ -1,0 +1,51 @@
+/* This is for smaller screens like mobile and tablet*/
+
+@media (max-width:500px) {
+    .index-page-one{
+        display: block;
+        padding-bottom: 5rem;
+        padding-top: 5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .index-page-one-right{
+        display: none;
+    }
+    .index-page-one-left{
+        margin-right: 0rem;
+        display: block;
+        text-align: center;
+    }
+    .index-page-one-left h1{
+        font-size: 2.5rem;
+    }
+    .index-page-one-left button{
+        width: 20rem;
+        padding: 1rem;
+        font-size: 2rem;
+    }
+    .bottom-side button, .bottom-side a{
+        width: 10rem;
+        padding: .75rem 0;
+    }
+
+    /**********************************************************************************************************************/
+    /*****************************************    Index 3    **************************************************************/
+    .index-page-three{
+        margin: 2rem 2rem;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    /* Footer */
+    #contact .container .top-footer p{
+        margin: 0 2rem 2rem 2rem;
+    }
+    #contact .container .middle-footer .first-contact-section h6{
+        border-top: .2rem solid white;
+        margin: 0 5rem;
+        padding-top: 1rem;
+    }
+    .container .top-footer{
+        margin: 0;
+    }
+}

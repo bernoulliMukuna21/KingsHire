@@ -1,0 +1,89 @@
+extends layout
+
+block content
+   div.join-container
+       div.join-left-container
+           if userType === 'freelancer'
+               .freelancer-container
+                   .freelancer-top
+                       h1 Ready to Earn your Worth?
+                   .freelancer-middle
+                       h1 Complete form or Sign Up with GMAIL
+                       i.fas.fa-arrow-circle-right
+                   .freelancer-bottom
+                        .left
+                            p 1. Create Account
+                            p 3. Get Booked
+                        .right
+                            p 2. Complete Profile
+                            p 4. Earn Income
+                   .freelancer-join-bottom
+                        h1: a#joinAsClient(href='/users/join/client') JOIN AS CLIENT
+
+           else
+               .client-container
+                   div.client-top
+                       h1 Complete form or Sign Up with GMAIL
+                       i.fas.fa-arrow-circle-right
+                   h2.client-middle or
+                   div.client-bottom
+                       h1: a#switchToFreelancer(href='/users/join/freelancer') JOIN AS FREELANCER
+       div.join-right-container
+           div.join-form-main
+               h1 Create Account
+               include partials/form_message
+               div.join-form-container
+                   form(action='/users/join/'+userType, method='post', class='join-form-right')
+                       div(data-role='fieldcontain')
+                           label(for='name') Name: #[br]
+                               input(id='name', type='text', placeholder='Enter Name', name='name',
+                                   value=typeof (name) != 'undefined' ? name : '', required)
+
+                       div(data-role='fieldcontain')
+                            label(for='surname') Surname: #[br]
+                                input(id='surname', type='text', placeholder='Enter Surname', name='surname',
+                                    value=typeof(surname) != 'undefined' ? surname : '', required)
+
+                       div(data-role='fieldcontain')
+                           label(for='email') Email Address: #[br]
+                               input(id='email', type='email', placeholder='Enter Email', name='email',
+                                   value=typeof(email) != 'undefined' ? email : '', required)
+
+                       div#passworddiv(data-role='fieldcontain')
+                           label(for='password') Password: #[br]
+                               input(id='password', type='password', placeholder='Enter Password', name='password',
+                                   value='', required)
+
+                       div(id='hiddendiv', data-role='fieldcontain')
+                           label(for='hidden_password') Confirm Password: #[br]
+                               input(id='hidden_password', type='password', placeholder='Confirm Password',
+                                   name='password2', value='', required)
+
+                       div(data-role='fieldcontain')
+                           //
+                           button.web-submission(type='submit' data-transition='fade',
+                               data-theme='c', id='submit-button') Sign Up As #{userType[0].toUpperCase() + userType.slice(1).toLowerCase()}
+                           if userType === 'client'
+                               button.mobile-submission(type='submit', data-transition='fade',
+                                   data-theme='c', id='submit-button') Sign Up as Client
+                           else if userType === 'freelancer'
+                               button.mobile-submission(type='submit', data-transition='fade',
+                                   data-theme='c', id='submit-button') Sign Up as Freelancer
+                   p.mobile-signup-oroperator or
+                   .mobilefreelancerAndclientBottom
+                       if userType === 'client'
+                           .mobile-client-bottom
+                               a(href='/users/join/freelancer') Join as Freelancer
+                       else if userType === 'freelancer'
+                           .mobile-client-bottom
+                               a(href='/users/join/client') Join as Client
+
+                   div.join-form-left
+                       //
+                           a.fab.fa-facebook-f(href='/users/facebook-authentication', role='button')
+                           p or
+                       a.fab.fa-google-plus-g(href='/users/google-authentication', role='button')
+                       p Already have an account?
+                       a#joinFL-login(href='/users/login') Login
+           //
+            include partials/freelancer-registration

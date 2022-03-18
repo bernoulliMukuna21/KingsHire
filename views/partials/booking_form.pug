@@ -1,0 +1,75 @@
+div.booking
+    .booking-form-container
+    div.booking-content
+        div.booking-form
+            div
+                .closebook-form &times;
+
+            div
+                section
+                    //
+                        h1.booktitle(style='text-align: center') Book Service with Andre Mbombo
+
+                if isLogged
+                    // If the user is logged in, pull up the form to book freelancer
+                    // +emailEncode(freelancerUser.email)
+                    form(method='post', id='service-booking-form', autocomplete="off")
+
+                        #booking-form-error-mssg
+
+                        select(name='servicename', class='bookform-field')
+
+                        input#service-booking-projectName.bookform-field.form-control(type='text',
+                            placeholder='Project Name e.g. Animated marketting video', name='projectname', required='true')
+
+                        .project-enquiry-price
+                            section
+                                i.fas.fa-pound-sign
+                            input#service-enquiry-price(type='text', placeholder='proposed price must be at least £10.00 (e.g. 10.99)',
+                                name='projectenquiryprice', required='true')
+
+                        textarea#service-booking-projectDescription.bookform-field.form-control(type='text',
+                            placeholder='Project Description e.g. This is an important project, lets work together.'
+                            name='projectdescription', required='true' rows="8")
+
+                        .booking-dateandtime-picker
+                            h4 Due Date & Time
+                            div.booking-dateandtime-picker-container
+                                div
+                                    h5 Date
+                                    input#service-booking-dueDate(type='text', name='projectduedate',
+                                        placeholder="Due Date (dd/mm/yyyy)", onfocus="(this.type='date')"
+                                        onblur="(this.type='text')", required='true')
+
+                                .booking-time-picker
+                                    h5 Time
+                                    div
+                                        select(name='projectdueTimeHour' id='bookingHour')
+                                            option(value="") Hour
+                                            -for(var timeHour=0; timeHour<=11; timeHour++){
+                                            option=`${( timeHour < 10 ? '0' : '' )+timeHour}`
+                                            -}
+                                        p :
+                                        select(name='projectdueTimeMinute' id='bookingMinute')
+                                            option(value="") Minute
+                                            -for (var timeMinute = 0; timeMinute <= 45; timeMinute+=15) {
+                                            option=`${(timeMinute < 10 ? '0' : '') + timeMinute}`
+                                            -}
+
+                                        select(name='projectdueTimeMeridies' id='bookingMeridies')
+                                            each val in ['AM' , 'PM']
+                                                option=val
+
+                        input#service-booking-price(type='hidden' name='projectprice' val='')
+                        input#service-customer-name(type='hidden' name='projectcustomer' value = loggedInUser.name+' '+loggedInUser.surname)
+                        input#service-supplier-name(type='hidden' name='projectsupplier' val='')
+
+                        button#service-booking-submit-bttn.btn.btn-primary(type='submit') Instant Book
+                        button#service-enquiry-submit-bttn.btn.btn-primary(type='submit') Request
+
+                else
+                    // If user is not logged in, prompt them to login
+                    .guess-booking-options
+                        a(href='/users/login'): button Login
+                        p(style='font-weight: bolder') OR
+                        a(href='/users/join'): button Sign Up

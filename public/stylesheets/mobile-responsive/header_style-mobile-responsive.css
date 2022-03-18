@@ -1,0 +1,25 @@
+/* This is for smaller screens like mobile and tablet*/
+
+@media (max-width:500px) {
+    .top-container{
+        display: none;
+    }
+    .top-mobilenavcontainer{
+        display: block;
+    }
+    .mobileheaderLinks a:last-child{
+        border-bottom: .2rem solid #213e53;
+        padding-top: 2rem;
+    }
+    .mobileheaderLinks a:last-child button#be-freelancer,
+    .mobileheaderLinks a:last-child button#be-client {
+        border: none;
+        width: 100%;
+        padding: 1rem;
+        background: white;
+        background-color: #8d2874;
+        color: white;
+        font-weight: bolder;
+        border-radius: .5rem;
+    }
+}

@@ -1,0 +1,5 @@
+# This is the gitignore file for the ExcellenceFreelance Project
+# Below are all the files that are not visible for the public on GitHub
+.env
+node_modules/
+

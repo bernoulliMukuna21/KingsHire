@@ -1,0 +1,105 @@
+extends layout
+
+block content
+  - let minimumPriceOfService = 10.00;
+  include partials/form_message
+  .index-page-one
+    .index-page-one-left
+      h1 Hire Excellent Freelancers around the World
+      p
+        span KingsHire
+        |  facilitates the booking of freelancers all over the world. As well as booking freelancers, you can also become a freelancer.
+      .booking-buttons
+        if(!isLogged)
+          a(href='/users/join'): button JOIN US NOW
+        else
+          button#book-now-btn(class=pageType) BOOK NOW
+    .index-page-one-right
+      img(src='/images/excellenceFreelancerMaybeFinal.png')
+  //
+    .index-page-two
+      .book-services-steps
+        p Browse
+        p Find a Freelancer
+        p Book Freelance Service
+  if allFreelancers.length > 0
+    .index-page-three
+      each freelancer in allFreelancers
+        - let servicesPrices = freelancer.serviceAndPrice;
+        - let areSomePricesBiggerThanMinimum = servicesPrices.some(servicePrice => { return parseInt(servicePrice.price) >= minimumPriceOfService});
+        if areSomePricesBiggerThanMinimum
+          .single-user-index-details
+            .top-side
+              - let freelancerUniqueKey = emailEncode(freelancer.email);
+              - console.log(freelancerUniqueKey)
+              if !freelancer.profile_picture.data
+                img(src='/images/userDefaultImage.png')
+              else
+                - let imageSource;
+                if freelancer.profile_picture.name === 'oauth_picture'
+                  - imageSource = freelancer.profile_picture.data.toString();
+                else
+                  - imageSource = "data:image/"+freelancer.profile_picture.contentType+";base64,"+freelancer.profile_picture.data.toString('base64')
+                img(src=imageSource)
+              section
+                span
+                  a(href='/account/freelancer/'+emailEncode(freelancer.email)): p #{freelancer.name+' '+freelancer.surname}
+            .middle-side
+              div
+                each service_price in servicesPrices
+                  - let price = parseFloat(service_price.price)
+                  if price >= minimumPriceOfService
+                    .index-serviceAndPrice
+                      p #{service_price.service}
+                      p #{'£'+price.toFixed(2)}
+                      input(type='hidden', value =JSON.stringify({
+                        freelancerPackage: service_price.servicePackage
+                      }), name='indexPageServicePackage', readOnly=true)
+
+            .bottom-side
+              if (!isLogged)
+                button Instant Book
+                button Request
+              else
+                if(loggedInUser.user_stature.current === 'client')
+                  button Instant Book
+                  button Request
+                a(class='freelance-mssg-btn')
+                  p Message
+                  i.far.fa-envelope
+                  input(type='hidden' class='freelancerToMessage-unique-key' value=freelancerUniqueKey)
+            input(type='hidden', value=emailEncode(freelancer.email))
+
+      include ./partials/booking_form
+
+      div.freelance-service-package-modal
+        div.freelance-service-package-modal-container
+          div
+            section
+              h4
+                span Interior Design
+                | #{' '}by Limo Charly
+            .closebook-form &times;
+          div
+            h4 Package Include:
+            section
+              div
+                p Empty Package
+              ul(style='display: none')
+                li  - 5 Responsive Pages
+                li  - Unlimited Reviews
+                li  - One-to-One Interview Preparation
+                li  - Mobile Responsive Pages
+                li  - Passport Authentication
+                li  - 5 Responsive Pages
+                li  - Unlimited Reviews
+                li  - One-to-One Interview Preparation
+                li  - Mobile Responsive Pages
+                li  - Passport Authentication
+            section
+                p Total Price: £ 1400
+  else
+    div.index-page-emptyFreelancers
+      p Empty Freelancers
+
+  include ./partials/footer

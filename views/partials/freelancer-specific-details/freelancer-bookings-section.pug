@@ -1,0 +1,338 @@
+- let freelancerListOfStatus = ['booking ongoing', 'awaiting payment', 'accept / modify', 'awaiting response', 'please respond', 'awaiting confirmation', 'confirmed, well done!', 'awaiting resolution', 'paid', 'cancelled'];
+- let emptyBookings = Object.keys(allBookingToFreelancer).length === 0;
+
+.booking-section-container
+    div.freelancer-projects-current
+        h1 Next Due Project
+        .freelancer-current-project-container
+            .freelancer-projects-header
+                p Project Name
+                p Client Name
+                p Due Date
+                p Status
+                p Options
+            div.freelancer-projects-top-container
+                if emptyBookings
+                    p.emptyNextDueProject No Next Due Project
+                else
+                    - let nextDueProject = allBookingToFreelancer[`${0}`]; // booking ongoing
+                    if !nextDueProject
+                        p.emptyNextDueProject No Next Due Project
+                    else
+                        - nextDueProject = nextDueProject[0];
+                        .freelancer-projects-top
+                            p #{nextDueProject.service + ' - ' + nextDueProject.projectName}
+                            p #{nextDueProject.customer.name}
+                            p #{nextDueProject.dueDateTime.toLocaleString()}
+                            p.project-status(style='border: .1rem solid #A37A00; background-color: #A37A00') #{freelancerListOfStatus[nextDueProject.status.freelancer]}
+                            .freelancer-options
+                                i.far.fa-trash-alt#freelancer-booking-delete-button
+                        .freelancer-projects-top-details(style='display: none')
+                            div
+                                div
+                                    h4 Creation Date:#{' '}
+                                        span #{nextDueProject.creationDate.toLocaleString()}
+                                    div.bookingDetails-showOnMobileResponsive
+                                        h4 Client Name: #{' '}
+                                            span #{nextDueProject.customer.name}
+                                        h4 Due Date: #{' '}
+                                            span #{nextDueProject.dueDateTime.toLocaleString()}
+                                    div.freelancer-project-details-descritpion
+                                        h4 Description:
+                                        p #{nextDueProject.projectDescription}
+
+                                    if nextDueProject.bookingType === 'request_booking'
+                                        h4 Price: £#{nextDueProject.requestedPrice}
+                                    else if nextDueProject.bookingType === 'instant_booking'
+                                        h4 Price: £#{nextDueProject.price}
+                            div
+                                button.freelancer-booking-finish-button Finish
+                                button#freelancer-booking-delete-button Cancel
+                            .freelancer-project-final-messages(style='display: none')
+                                - let amount = (nextDueProject.price - ((5/ 100) * nextDueProject.price)).toFixed(2);
+                                - let clientname = nextDueProject.customer.name;
+                                .freelancer-project-completion-confirmed
+                                    h4 Earning: £#{amount}
+                                    p(style='font-style: normal') Unfortunately, #{clientname} has informed us that the
+                                        | #{' '}project has not been delivered.
+                                        | #{' '}The management team has been made aware and will be contact soon. Please do
+                                        | #{' '}check your email inbox regularly for updates. Thank you!
+                                    p (contact us on unilance.admnistration@gmail.com for enquiries)
+                                .freelancer-project-completion-rejection(style='display: none')
+                                    p #{clientname} has decided to#{' '}
+                                        span cancel
+                                        | #{' '}the project. The management
+                                        | has been informed and will take appropriate actions. Thank you!#[br]
+                                        span (contact us on unilance.admnistration@gmail.com for enquiries)
+
+                        input(type='hidden' name='bookingid' class='singleBookingID'
+                            value=nextDueProject.bookingID)
+
+    div.freelancer-all-projects
+        if !emptyBookings
+            each freelancerStatus, index in freelancerListOfStatus
+                - let currentStatusBookings = allBookingToFreelancer[`${index}`];
+                - let currentStatusBookingsToShow = [];
+                if currentStatusBookings
+                    if freelancerStatus === 'booking ongoing'
+                        - currentStatusBookings.shift();
+                        if currentStatusBookings.length > 0
+                            - currentStatusBookingsToShow = currentStatusBookings;
+                    else
+                        - currentStatusBookingsToShow = currentStatusBookings;
+
+                if currentStatusBookingsToShow.length > 0
+                    each bookingToFreelancer in currentStatusBookingsToShow
+                        .freelancer-one-project
+                            - let bookingInfosDisplay = '';
+                            - let bookingInfosBttnDisplay = '';
+                            - let bookingMssgDisplay = 'display: none';
+                            - let bookingCompletionConfirmedMssgDisplay = '';
+                            - let bookingCompletionConflictMssgDisplay = 'none';
+                            - let bookingCompletionCancelMssgDisplay = 'display: none';
+                            .freelancer-one-project-top
+                                p #{bookingToFreelancer.service + ' - ' + bookingToFreelancer.projectName}
+                                p #{bookingToFreelancer.customer.name}
+                                p #{bookingToFreelancer.dueDateTime.toLocaleString()}
+                                if(freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'booking ongoing')
+                                    - bookingInfosDisplay = '';
+                                    - bookingInfosBttnDisplay = '';
+                                    - bookingMssgDisplay = 'display: none';
+                                    p.project-status(style='border: .1rem solid #A37A00; background-color: #A37A00')
+                                        | booking ongoing
+                                if(freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting payment')
+                                    - bookingInfosDisplay = '';
+                                    - bookingInfosBttnDisplay = '';
+                                    - bookingMssgDisplay = 'display: none';
+                                    p.project-status(style='border: .1rem solid #8d2874; background-color: #8d2874')
+                                        | awaiting payment
+                                if(freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'accept / modify' || freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting response')
+                                    - bookingInfosDisplay = '';
+                                    - bookingInfosBttnDisplay = '';
+                                    - bookingMssgDisplay = 'display: none';
+                                    p.project-status(style='border: .1rem solid #213e53; background-color: #213e53')
+                                        | #{freelancerListOfStatus[bookingToFreelancer.status.freelancer]}
+                                if(freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting confirmation' || freelancerListOfStatus[bookingToFreelancer.status.freelancer] ===  'confirmed, well done!' || freelancerListOfStatus[bookingToFreelancer.status.freelancer] ===  'paid')
+                                    - bookingInfosDisplay = 'display: none';
+                                    - bookingInfosBttnDisplay = 'display: none';
+                                    - bookingMssgDisplay = '';
+                                    if freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting confirmation'
+                                        - bookingCompletionConfirmedMssgDisplay = ''
+                                        - bookingCompletionConflictMssgDisplay = 'none';
+                                        - bookingCompletionCancelMssgDisplay = 'display: none';
+                                        p.project-status(style='border: .1rem solid #308634; background-color: #308634')
+                                            | awaiting confirmation
+                                    else if freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'confirmed, well done!'
+                                        - bookingCompletionConfirmedMssgDisplay = ''
+                                        - bookingCompletionConflictMssgDisplay = 'none';
+                                        - bookingCompletionCancelMssgDisplay = 'display: none';
+                                        p.project-status(style='border: .1rem solid #308634; background-color: #308634')
+                                            | confirmed, well done!
+                                    else
+                                        p.project-status(style='border: .1rem solid #308634; background-color: #308634')
+                                            | #{freelancerListOfStatus[bookingToFreelancer.status.freelancer]}
+
+                                if(freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting resolution' || freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'cancelled')
+                                    - bookingInfosDisplay = 'display: none';
+                                    - bookingInfosBttnDisplay = 'display: none';
+                                    - bookingMssgDisplay = '';
+                                    if freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting resolution'
+                                        - bookingCompletionConfirmedMssgDisplay = ''
+                                        - bookingCompletionConflictMssgDisplay = 'block';
+                                        - bookingCompletionCancelMssgDisplay = 'display: none';
+                                        p.project-status(style='border: .1rem solid #FF0000; background-color: #FF0000')
+                                            | awaiting resolution
+                                    else
+                                        - bookingCompletionConfirmedMssgDisplay = 'display: none';
+                                        - bookingCompletionCancelMssgDisplay = '';
+                                        p.project-status(style='border: .1rem solid #FF0000; background-color: #FF0000')
+                                            | cancelled
+                                .freelancer-options
+                                    i.far.fa-trash-alt#freelancer-booking-delete-button
+                            .freelancer-one-project-details(style='display: none')
+                                div(style=bookingInfosDisplay)
+                                    if freelancerListOfStatus[bookingToFreelancer.status.freelancer] !== 'awaiting response' && freelancerListOfStatus[bookingToFreelancer.status.freelancer] !== 'please respond'
+                                        div
+                                            h4 Creation Date: #{' '}
+                                                span #{bookingToFreelancer.creationDate.toLocaleString()}
+                                            div.bookingDetails-showOnMobileResponsive
+                                                h4 Client Name: #{' '}
+                                                    span #{bookingToFreelancer.customer.name}
+                                                h4 Due Date: #{' '}
+                                                    span #{bookingToFreelancer.dueDateTime.toLocaleString()}
+                                            div.freelancer-project-details-descritpion
+                                                h4 Description:
+                                                p #{bookingToFreelancer.projectDescription}
+                                            if bookingToFreelancer.bookingType === 'request_booking'
+                                                h4 Price: £#{bookingToFreelancer.requestedPrice}
+                                            else if bookingToFreelancer.bookingType === 'instant_booking'
+                                                h4 Price: £#{bookingToFreelancer.price}
+                                    else
+                                        .freelancer-side-originalBooking
+                                            div
+                                                h4 Original
+                                            div
+                                                h4 Creation Date: #{' '}
+                                                    span(style='font-weight: normal') #{bookingToFreelancer.creationDate.toLocaleString()}
+                                                div.bookingDetails-showOnMobileResponsive
+                                                    h4 Client Name: #{' '}
+                                                        span #{bookingToFreelancer.customer.name}
+                                                    h4 Due Date: #{' '}
+                                                        span #{bookingToFreelancer.dueDateTime.toLocaleString()}
+                                                div.freelancer-project-details-descritpion
+                                                    h4 Description:
+                                                    p #{bookingToFreelancer.projectDescription}
+                                                h4 Price: #{' '}
+                                                    span(style='font-weight: normal') £#{bookingToFreelancer.requestedPrice}
+                                        .freelancer-side-BookingChangesProposed(style='color: #8d2874; font-style: italic')
+                                            - bookingConversationLastIndex = bookingToFreelancer.bookingModificationConversation.length - 1
+                                            div
+                                                h4 Your Proposal
+                                            div
+                                                h4#newProposedDueDate Proposed Due Date: #{' '}
+                                                    span(style='font-weight: normal') #{bookingToFreelancer.bookingModificationConversation[bookingConversationLastIndex].newProposedDueDate.toLocaleString()}
+                                                div.bookingDetails-showOnMobileResponsive
+                                                    h4 Client Name: #{' '}
+                                                        span #{bookingToFreelancer.customer.name}
+                                                div.freelancer-project-details-descritpion
+                                                    h4 Proposed Description:
+                                                    p #{bookingToFreelancer.bookingModificationConversation[bookingConversationLastIndex].newProposedDescription}
+                                                h4#newProposedDueDate Proposed Price:#{' '}
+                                                    span(style='font-weight: normal') £#{bookingToFreelancer.bookingModificationConversation[bookingConversationLastIndex].newProposedPrice}
+                                div(style=bookingInfosBttnDisplay)
+                                    - let deleteBttn = 'Reject'
+                                    if freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'booking ongoing'
+                                        - deleteBttn = 'Cancel'
+                                        button.freelancer-booking-finish-button Finish
+                                    if (freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'accept / modify' || freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting response' || freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting response')
+                                        button.freelancer-booking-accept-button Accept
+                                        button.freelancer-booking-modify-button Modify
+                                    button#freelancer-booking-delete-button #{deleteBttn}
+
+                                .freelancer-project-final-messages(style=bookingMssgDisplay)
+                                    - let amount = (bookingToFreelancer.price - ((5/ 100) * bookingToFreelancer.price)).toFixed(2);
+                                    - let clientname = bookingToFreelancer.customer.name;
+                                    .freelancer-project-completion-confirmed(style=bookingCompletionConfirmedMssgDisplay)
+                                        h4 Earning: £#{amount}
+                                        p(style=`font-style: normal; display: ${bookingCompletionConflictMssgDisplay}`)
+                                            | Unfortunately, #{clientname} has informed us that the
+                                            | #{' '}project has not been delivered.
+                                            | #{' '}The management team has been informed and will be contact in soon. Please do
+                                            | #{' '}keep an eye on your inbox. Thank you!
+                                        p (contact us on unilance.admnistration@gmail.com for enquiries)
+                                    .freelancer-project-completion-rejection(style=bookingCompletionCancelMssgDisplay)
+                                        p The booking has been#{' '}
+                                            span cancelled
+                                            | #{' '}. The management
+                                            | has been informed and will take appropriate actions. Thank you!#[br]
+                                            span (contact us on unilance.admnistration@gmail.com for enquiries)
+
+                            input(type='hidden' name='bookingid' class='singleBookingID'
+                                value=bookingToFreelancer.bookingID)
+
+
+.freelancer-booking-completion-rejection(style='display: none')
+    .booking-conclusion-container
+        .booking-conclusion-container-content
+            .freelancer-booking-completion
+                section
+                    h4 Project Finished
+                    p
+                        | This information will be sent to the client for confirmation.
+                        | Can you confirm that the project is#{' '}
+                        span completed
+                        |  and#{' '}
+                        span sent
+                        |  to the client?#[br]
+                        span (Note: You will be paid once we have the confirmation)
+
+                section
+                    button.project-finish-continue Yes, I confirm
+                    button.project-finish-cancel Cancel
+
+            .freelancer-booking-deletion
+                section
+                    h4 Project Cancel - Reason (
+                        i min. 100 characters
+                        | )
+                    form(action='/booking/project-completion/delete', method='post')
+                        textarea#freelancerProjectDeletion(type='text',
+                            placeholder='Please provide a reason for cancelling (Min 100 characters)...'
+                            name='projectcancelreason', required='true')
+
+                section
+                    button.project-cancellation-continue Yes, I cancel
+                    button.project-cancellation-cancel No, I do not Cancel
+
+            .freelancer-booking-modification
+                h4 Booking Modification
+                p(style='display: none') No Modification detected
+                form#booking-modification-form(method='post')
+                    section
+                        div.booking-dateandtime-modification
+                            div
+                                label Due Date
+                                input#dueDateModification(type='text', name='bookingModificationDate',
+                                    placeholder="dd/mm/yyyy", onfocus="(this.type='date')"
+                                    onblur="(this.type='text')" required='true')
+
+                            .booking-time-modification
+                                label Due Time
+                                div
+                                    select(name='bookingHourModify' id='bookingHourModify')
+                                        option(value="") Hour
+                                        -for (var timeHour = 0; timeHour <= 11; timeHour++) {
+                                        option=`${(timeHour < 10 ? '0' : '') + timeHour}`
+                                        -}
+                                    p :
+                                    select(name='bookingMinuteModify' id='bookingMinuteModify')
+                                        option(value="") Minute
+                                        -for (var timeMinute = 0; timeMinute <= 45; timeMinute += 15) {
+                                        option=`${(timeMinute < 10 ? '0' : '') + timeMinute}`
+                                        -}
+
+                                    select(name='bookingMeridiesModify' id='bookingMeridiesModify')
+                                        each val in ['AM' , 'PM']
+                                            - let chosenMeridie=false;
+                                            if val === 'PM'
+                                                - chosenMeridie = true;
+                                            option(selected=chosenMeridie)=val
+                    section
+                        label Description
+                        textarea#freelancerProjectModificationDescription(type='text',
+                            placeholder='Please provide a reason for cancelling (Min 100 characters)...'
+                            name='bookingModificationDescription' required='true') qfhewiuvne bn nh k ndhu dj d dnbnkbm
+                    section
+                        label Price
+                        div
+                            i.fas.fa-pound-sign
+                            input(type='text', placeholder='532.67',
+                                name='modificationprice', value='532.67' required='true')
+                    section
+                        input(type='hidden' name='modifyToData' id='modifyToDataGetterID')
+                        button#booking-modification-submit-bttn(type='submit') Send Modification
+
+            .freelancer-booking-modification-acceptance-form
+                h4 Booking Acceptance Details
+                span * Please note that the details below are what you are accepting
+                form#booking-modification-acceptance(method='post')
+                    section
+                        label Due Date:#[br]
+                        input#dueDateModificationAcceptance(type='text', name='bookingModificationDateAcceptance',
+                            value='12/02/2022, 11:30:00' readonly='readonly' required='true')
+                    section
+                        - let descriptionOfAcceptance = "In enim justo, rhoncus ut,\n imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend\n"
+
+                        label Description:#[br]
+                        p #{descriptionOfAcceptance}
+                        input#freelancerProjectModificationDescriptionAcceptance(type='hidden',
+                            name='bookingModificationDescriptionAcceptance' readonly='readonly' value=descriptionOfAcceptance required='true')
+                    section
+                        label Price:#[br]
+                        input#priceModificationAcceptance(type='text', name='bookingModificationPriceAcceptance',
+                            value='£438.90' readonly='readonly' required='true')
+                    section
+                        button#booking-modificationReject-submit-bttn Cancel
+                        button#booking-modificationAcceptance-submit-bttn(type='submit') Accept
+
+            input(type='hidden' name='bookingid' class='singleBookingID')

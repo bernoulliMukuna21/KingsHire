@@ -1,0 +1,9 @@
+/* This is for smaller screens like ipad*/
+@media (max-width:800px) {
+    .top-container{
+        display: none;
+    }
+    .top-mobilenavcontainer{
+        display: block;
+    }
+}

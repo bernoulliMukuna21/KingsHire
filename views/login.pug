@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    .login-error-messages
+        include partials/form_message
+    .login-page-container
+        .login-OAUTH
+            //
+                a.fab.fa-facebook-f(href='/users/facebook-authentication', role='button')
+                p OR
+            a.fab.fa-google-plus-g(href='/users/google-authentication', role='button')
+        .login-orSeparator
+            div
+            div.center-element OR
+            div
+        form.login(action='/users/login', method='POST')
+            input(name='email', type='email', placeholder='Email' required)
+            input(name='password', type='password', placeholder='Password' required)
+            button#unilance-login-bttn(type='submit') Login
+            section
+                a(href='/users/join') Don't Have an Account?
+                a(href='/users/forgot') Forgotten Password?
+
+
+
+

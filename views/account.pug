@@ -1,0 +1,330 @@
+extends layout
+
+block content
+    - let domainName = 'https://www.unilance.co.uk' //'http://localhost:3000'; //
+    - let currentYear = (new Date()).getFullYear();
+    - let startYear = currentYear - 50;
+    - let rangeOfYears = [];
+    - for(let i=currentYear+6; i>=startYear; i--){ rangeOfYears.push(i)}
+    - let minimumPriceOfService = 10.00
+
+    include partials/form_message
+
+    .freelancer-page-main-container
+        .freelancer-update-infos
+        if (isLogged && (freelancerUser.email === loggedInUser.email) && loggedInUser.serviceAndPrice.length < 1)
+            .freelancer-emptySericeAndPricesMessage
+                i.fas.fa-exclamation-circle
+                p Profile#{' '}
+                    span(style='text-decoration: underline; font-weight: bold') Not
+                    | #{' '}available for bookings. Please add service(s) and price(s) to become visible
+
+        if (isLogged && (freelancerUser.email === loggedInUser.email) && freelancerSubscriptionStatus === 'not-available')
+            .freelancer-subscription-notAvailable-message
+                p Unfortunately, account is#{' '}
+                    span  Not Available
+                    | #{' '}for bookings.#{' '}
+                    span ( Trial period used and Not Subscribed )
+
+        div.main-account-page
+            .freelancer_account_left_side
+                .account-profile-details
+                    .account-profile-image
+                        if !freelancerUser.profile_picture.data
+                            .default-profile-image
+                                img(src='/images/userDefaultImage.png')
+                                if (isLogged && (freelancerUser.email === loggedInUser.email))
+                                    p.addProfilePicture + Add Profile Picture
+                        else
+                            img(src=loggedInUser_imageSrc)
+                    p.account-profile-name #{freelancerUser.name + ' ' + freelancerUser.surname}
+                    if (isLogged && (freelancerUser.email === loggedInUser.email))
+                        .freelancer-payment-buttons
+                            if freelancerSubscriptionStatus !== 'active'
+                                form(action=`${domainName}/payment/create-checkout-session/subscription` method='POST')
+                                    input#trial_days(type='hidden' name='trial_days' value=trailDays)
+                                    button.suscription-bttn(class='checkout-button') Subscribe £1.20/Month
+                            else
+                                form(action=`${domainName}/payment/create-portal-session` method='POST')
+                                    input(type='hidden' id='freelancer-stripe-id' name='freelancerStripeID' value=loggedInUser.email)
+                                    button.payment-details-update Manage billing information
+                    if (isLogged && (freelancerUser.email !== loggedInUser.email))
+                        div.public-service-enquiry
+                            - let freelancerUser_Mssg = emailEncode(freelancerUser.email)
+                            if loggedInUser.user_stature.current === 'client'
+                                button(class='book-btn') Instant Book
+                            a(class='freelance-mssg-btn')
+                                p Message
+                                i.far.fa-envelope
+                                input(type='hidden' class='freelancerToMessage-unique-key' value=freelancerUser_Mssg)
+
+                    div.freelancer-services
+                        if freelancerUser.serviceAndPrice.length === 0
+                            .freelancer-serviceAndPrice-empty
+                                if (isLogged && (freelancerUser.email === loggedInUser.email))
+                                    p#addServiceAndPrice + Add Service and Price
+                                else
+                                    p(style='font-weight: bold') Service and Prices Empty
+                        else
+                            each servicePrice in freelancerUser.serviceAndPrice
+                                .freelancer-serviceAndPrice-profile
+                                    div
+                                        h4 #{servicePrice.service}
+                                        h4 £#{servicePrice.price}
+
+                                    if servicePrice.servicePackage.length > 0
+                                        div.freelance-package-offer(style='display: none')
+                                            h4 Package Offer:
+                                            section
+                                                ul
+                                                    each package in servicePrice.servicePackage
+                                                        li  - #{package}
+
+                    div.account-profile-information
+                        ul
+                            li.user-main-page(class='clicked') Main Page
+                            if (isLogged && (freelancerUser.email === loggedInUser.email))
+                                li.user-update-page Profile Update
+                                li.user-current-booking-page Bookings
+                                li.user-completed-booking-page(id=messageIdHTML)
+                                    p Messages
+                                    p.newMessageReceived(style='display:none;') new
+                            //
+                                li.freelancer-payment-page Payment
+            .freelancer_account_main_side
+                .freelancer-page-allowed
+                    .freelancer-main-page
+                        .account-first-side
+                            h1 About Me
+                            if !freelancerUser.description
+                                .default-description
+                                    if (isLogged && (freelancerUser.email === loggedInUser.email))
+                                        p#addDescription + Add a Description about yourself
+                                    else
+                                        p(style='font-weight: bold') Description Empty
+                            else
+                                p #{freelancerUser.description}
+                        .account-second-side
+                            div.user-account-skills
+                                h1 Skills
+                                if freelancerUser.skill.length === 0
+                                    section.default-skill
+                                        if (isLogged && (freelancerUser.email === loggedInUser.email))
+                                            p#addSkills + Add Your Skills
+                                        else
+                                            p(style='font-weight: bold') Skill Empty
+                                else
+                                    section
+                                        each freelancerSkill in freelancerUser.skill
+                                            p #{freelancerSkill}
+                        .account-third-side
+                            h1 Education
+                            if freelancerUser.education.length === 0
+                                section.each-education.default-education
+                                    if (isLogged && (freelancerUser.email === loggedInUser.email))
+                                        p#addEducation + Add Education
+                                    else
+                                        p(style='font-weight: bold') Education Empty
+                            else
+                                each freelancerEducation in freelancerUser.education
+                                    section.each-education
+                                        p #{freelancerEducation.degreeAndCourse}
+                                        p #{freelancerEducation.institute}
+                                        p Year:#{' '+ freelancerEducation.educationYear}
+
+                    if (isLogged && (freelancerUser.email === loggedInUser.email))
+                        .freelancer-update-page(style='display: none;')
+                            - let updateOption = 'pointer-events: auto';
+                            - // The line of code right below checks whether the current logged in user is using either Google or Facebook strategy.
+                            - // if that is the case, then they are not allowd to update the email and password on this platform.
+                            - if(freelancerUser.authentication.authName){updateOption = 'pointer-events: none; background-color: #213e53; color: white; border-color: #213e53; font-weight: bold';}
+
+                            h1 Update Personal Information
+                            p Setup your general profile details.
+
+                            form.update-general-information(method='post', autocomplete="off")
+                                h3 Name and other General Information
+                                .user-general-information-one
+                                    section
+                                        .general-information-section-one
+                                            section
+                                                label(for='name') Name: #[br]
+                                                input(id='name', type='text', placeholder='Enter Name', name='name',
+                                                    value=typeof (freelancerUser.name) != 'undefined' ? freelancerUser.name: '', required)
+
+                                            section
+                                                label(for='surname') Surname: #[br]
+                                                input(id='surname', type='text', placeholder='Enter Surname', name='surname',
+                                                    value=typeof (freelancerUser.surname) != 'undefined' ? freelancerUser.surname: '', required)
+                                        .general-information-section-two
+                                            section
+                                                label(for='email') Email Address: #[br]
+                                                input(id='email', type='email', placeholder='Enter Email', name='email',
+                                                    value=typeof (freelancerUser.email) != 'undefined' ? freelancerUser.email: '', style=updateOption,
+                                                    required)
+
+                                            section
+                                                label(for='phone-number') Phone Number: #[br]
+                                                input(id='phone-number', type='tel', placeholder='Enter Phone Number', name='phone_number',
+                                                    value=typeof (freelancerUser.phone_number) != 'undefined' ? freelancerUser.phone_number: '',
+                                                    required)
+                                                input(type='text', style='display: none;')
+                                    section
+                                        .general-information-section-three
+                                            label Profile Picture
+                                            .file-image-area
+                                                .file-image-upload
+                                                    img(id='imagePreview', src=loggedInUser_imageSrc)
+                                                .file-image-upload-btn
+                                                    span
+                                                        i.fas.fa-cloud-upload-alt
+                                                        p Upload Image
+                                                    input#freelancer-profile-picture(type='file',
+                                                        name='user_profile_picture')
+
+                                .user-general-information-two
+                                    h3 Change your Password
+                                    .git-password-update-section
+                                        .git-old-password
+                                            label(for='old-password') Old Password #[br]
+                                            input(id='old-password', type='password', placeholder='Old Password',
+                                                name='old_password', style=updateOption, readonly)
+                                        .git-new-password
+                                            label(for='new-password') New Password #[br]
+                                            input(id='new-password', type='password', placeholder='New Password',
+                                                name='new_password', style=updateOption,
+                                                onfocus = "this.removeAttribute('readonly')", readonly)
+                                        .git-new-repeat-password
+                                            label(for='new-repeat-password') Confirm New Password #[br]
+                                            input(id='new-repeat-password', type='password', placeholder='Repeat New Password',
+                                                name='confirm_password', style=updateOption,
+                                                onfocus = "this.removeAttribute('readonly')", readonly)
+
+                                .user-general-information-three
+                                    h3 Education
+                                    .eduction-container
+                                        .user-education
+                                            input#Schoolname.form-control(type='text', value='',
+                                                placeholder='University or College Name')
+                                            input#Major.form-control(type='text', value='',
+                                                placeholder='Degree Qualification (e.g. BSc, MSc, ...)')
+                                            input#Degree.form-control(type='text', value='',
+                                                placeholder='Degree Name (e.g. Business Management)')
+                                            .user-education-years
+                                                select#educationDateStart.form-control
+                                                    option(value='') Year
+                                                    each year in rangeOfYears
+                                                        option(value= year) #{year}
+                                                select#educationDateEnd.form-control
+                                                    option(value='') Year
+                                                    each year in rangeOfYears
+                                                        option(value= year) #{year}
+                                                button.education-input-btn: i.fas.fa-plus-square
+                                        .saved-education
+                                            each education in freelancerUser.education
+                                                .freelancer-single-education
+                                                    .show-section
+                                                        h4 #{education.degreeAndCourse}
+                                                        p #{education.institute}
+                                                        p Year #{' '+education.educationYear}
+                                                        button.education-delete-btn x
+                                                    .hide-section(style='display: none;')
+                                                        input(type='text', name='degree', value=education.degreeAndCourse,
+                                                            readonly=true)
+                                                        input(type='text', name='schoolName', value=education.institute,
+                                                            readonly=true)
+                                                        input(type='text', name='educationYear', value=education.educationYear)
+
+                                        .user-service_and_price
+                                            h3 Service and Price
+                                            .user-servicePrice-container
+                                                div
+                                                    label Service #[br]
+                                                    label(for='price') Price  ( £#{minimumPriceOfService.toFixed(2)} < ) #[br]
+                                                div
+                                                    section#userServiceField
+                                                        input(type='text', name='service', id='service', value='',
+                                                            placeholder='Enter Services (e.g. Developer, Translator, ...)')
+                                                    section#userServicesPriceField
+                                                        i.fas.fa-pound-sign
+                                                        input(type='text', name='price', id='price', value='',
+                                                            placeholder='Enter Price (e.g. 10.99)')
+                                                    button#servicePriceBttn: i.fas.fa-plus-square
+                                            .saved-serviceAndPrice
+                                                each serviceAndPrice in freelancerUser.serviceAndPrice
+                                                    .single-serviceAndPrice
+                                                        .show-serviceAndPrice
+                                                            div
+                                                                h4 #{serviceAndPrice.service}
+                                                                h4 £#{serviceAndPrice.price}
+                                                                button.delete-aServiceAndPrice-btn x
+
+                                                            each singlePackage in serviceAndPrice.servicePackage
+                                                                div.freelancer-service-package-update
+                                                                    ul
+                                                                        li
+                                                                            p - #{singlePackage}
+                                                                            p.freelance-delete-aPackage x
+                                                        .show-service-package
+                                                            input(type='text', name='servicePackage', id='servicePackage', value='',
+                                                                placeholder=`Enter full package for this service...`)
+                                                            button#addServicePackage: i.fas.fa-plus-square
+                                                        .hide-serviceAndPrice(style='display: none')
+                                                            input(type='text', name='service', value=serviceAndPrice.service, readonly=true)
+                                                            input(type='text', name='price', value=serviceAndPrice.price, readonly=true)
+                                                            input(type='text', name='serviceFullPackage',
+                                                                value= serviceAndPrice.servicePackage ? JSON.stringify({
+                                                                    freelancerPackage: serviceAndPrice.servicePackage
+                                                                }): JSON.stringify({
+                                                                    freelancerPackage: []
+                                                                }), readonly=true)
+
+                                        .user-bio-details
+                                            h3 Description and Other Necessary Information
+                                            .user-bio-details-container
+                                                .user-bio-one
+                                                    section
+                                                        label(for='freelancer_description') Description (Maximum 600 characters) #[br]
+                                                        textarea(id='freelancer_description', placeholder='Write your Description (max 600 characters)...',
+                                                            name='freelancer_description', maxlength="600", required)
+                                                            | #{typeof (freelancerUser.description) != 'undefined' ? freelancerUser.description : ''}
+
+                                                    section
+                                                        label Skills #[br]
+                                                            .user-bio-container#userBioSkills
+                                                                input(type='text', value='',
+                                                                    placeholder='Enter Skills (e.g. Microsoft Word, Java, ...)')
+                                                                button#add-skills-button: i.fas.fa-plus-square
+                                                            .saved-skill
+                                                                each uniqueSkill in freelancerUser.skill
+                                                                    .single-skill
+                                                                        .show-skill
+                                                                            h4 #{uniqueSkill}
+                                                                            button.delete-aSkill-btn x
+                                                                        .hidden-skill(style='display:none;')
+                                                                            input(type='text', name='skills', value=uniqueSkill, readonly=true)
+
+
+                                .update-page-submit
+                                    button#update-page-submission(type='submit') Save Profile
+
+                        .freelancer-booking-page(style='display: none;')
+                            include ./partials/freelancer-specific-details/freelancer-bookings-section
+
+                        .freelancer-message-page(style='display: none;')
+                            include ./partials/message
+
+    include ./partials/booking_form
+    include ./partials/freelancer-specific-details/payment-sub-infos
+        //
+            - let pageStatus = 'allowed';
+            if isLogged
+                if ((freelancerUser.email !== loggedInUser.email) && (freelancerSubscriptionStatus !== 'active' || (freelancerSubscriptionStatus === 'trialing' && numberOfDays<300)))
+                    - pageStatus = 'blocked';
+            else
+                if (freelancerSubscriptionStatus !== 'active' || (freelancerSubscriptionStatus === 'trialing' && numberOfDays<300))
+                    - pageStatus = 'blocked';
+            if pageStatus === 'blocked'
+                .freelancer-page-blocked
+                    h1 PROFILE BLOCKED
+            else if pageStatus === 'allowed'

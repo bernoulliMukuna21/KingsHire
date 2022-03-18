@@ -1,0 +1,158 @@
+/* This is for smaller screens like mobile and tablet*/
+
+@media (max-width:500px) {
+    .client-account{
+        margin: 1rem;
+    }
+    /* Main Side */
+    .client-account-main{
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Left Side */
+    .client-account-left{
+        margin-right: 0;
+
+        margin-bottom: 1rem;
+    }
+    .client-profile-information ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    #client-page-find-freelancer button{
+        border-radius: .5rem;
+        box-shadow: #8d2874 0px 2px 8px 0px;
+    }
+    .client-profile-information ul li{
+        border: none;
+        margin: .5rem 0;
+        margin-right: .5rem;
+        font-size: 1.2rem;
+        text-align: center;
+        width: 100%;
+        border-radius: .5rem;
+        box-shadow: rgb(160, 159, 159) 0px 2px 8px 0px;
+    }
+    .client-profile-information ul li:first-child{
+        border: none;
+    }
+    .client-profile-information ul li:last-child{
+        margin-right: 0;
+        justify-content: center;
+    }
+    .client-profile-information ul li:hover{
+        background-color: rgb(33, 62, 83, 1);
+    }
+
+    /* Left Side */
+    .client-account-middle{
+        margin: 0;
+    }
+
+    /*~~~~ Bookings ~~~~~*/
+    .client-bookings-header ul, .single-client-booking ul{
+        grid-template-columns: 60% 40%;
+        width: 100%;
+    }
+    .single-client-booking, .client-bookings-header{
+        padding: 0;
+    }
+    .client-bookings-header ul li:nth-child(4){
+        border: none;
+    }
+    .client-bookings-header ul li:nth-child(2),
+    .client-bookings-header ul li:nth-child(3),
+    .client-bookings-header ul li:nth-child(5){
+        display: none;
+    }
+
+    .booking-main-details ul li:nth-child(1){
+        text-align: left;
+        font-size: 1.2rem;
+    }
+    .booking-main-details ul li:nth-child(4){
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+    .booking-main-details ul li:nth-child(4) button{
+        font-size: 1.2rem;
+        width: 13rem;
+    }
+    .booking-main-details ul li:nth-child(2),
+    .booking-main-details ul li:nth-child(3),
+    .booking-main-details ul li:nth-child(5){
+        display: none;
+    }
+
+    .client-booking-modification-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .client-side-originalBooking,
+    .client-side-modificationBooking{
+        border: none;
+    }
+    .client-side-originalBooking{
+        border-bottom: .2rem dashed black;
+        padding-bottom: 1.5rem;
+    }
+    .client-side-modificationBooking{
+        margin-top: 2rem;
+    }
+    .client-side-originalBooking h4,
+    .client-side-modificationBooking h4{
+        text-align: left;
+    }
+
+    .project-details>div:nth-child(2){
+        font-size: 1.2rem;
+        padding: 0;
+        margin: 0;
+    }
+    .project-details>div:nth-child(2) button,
+    .project-details>div:nth-child(2) a{
+        margin: 0;
+        width: 12rem;
+        font-size: 1.2rem;
+        margin-right: 1.5rem;
+    }
+    .project-details>div:nth-child(2) button.delete-booking-bttn{
+        margin-right: 0;
+    }
+    .project-finish-update-options button{
+        font-size: 1.2rem;
+    }
+    .bookingDetails-showOnMobileResponsive{
+        display: block;
+    }
+
+    /* Profile Update*/
+    .client-profile-update label, .client-profile-update input{
+        font-size: 1.2rem;
+    }
+    .client-basic-infos{
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 2rem;
+    }
+    .client-basic-infos section:first-child{
+        width: 100%;
+    }
+    .client-password-infos{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+    }
+    .client-password-infos .pasword-infos:nth-child(1){
+        display: none;
+    }
+    .client-password-infos input, .client-password-infos label{
+        width: 100%;
+        padding: 1rem;
+        margin: 0;
+    }
+}

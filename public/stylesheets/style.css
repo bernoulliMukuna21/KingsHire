@@ -1,0 +1,522 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body {
+  font: 1rem "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+input:focus{
+  border-radius: .5rem;
+  border-color: #213e53;
+}
+
+/*
+******************** Header-Style
+*/
+header ul{
+  list-style-type: none;
+}
+
+.top-container{
+  padding: .5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: .5rem solid #213e53;
+}
+
+.web-title a{
+  font-size: 3rem;
+  color: #213e53;
+}
+
+.top-navbar{
+  display: flex;
+}
+
+.top-navbar button{
+  font-size: 1.3rem;
+  font-weight: bolder;
+  padding: .5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  border: none;
+  border-bottom: 0.1rem solid #213e53;
+  background-color: white;
+  color: #213e53;
+}
+#client-account-nameSurname, #freelancer-account-nameSurname{
+  border: none;
+  border-bottom: 0.1rem solid #213e53;
+}
+
+.top-navbar button:hover{
+  color: white;
+  background-color: #213e53;
+}
+#joinNow, #be-freelancer{
+  border: .1rem solid #8d2874;
+  color: #8d2874;
+}
+#joinNow:hover, #be-freelancer:hover{
+  background-color: #8d2874;
+  color: white;
+}
+/*
+***************** Join File Style
+*/
+.join-container{
+  border: .1rem solid #213e53;
+  margin: 2rem 7rem;
+  display: flex;
+  background-color: #213e53;
+}
+
+/*------ Left -----*/
+.join-left-container{
+  flex: 1;
+  color: white;
+}
+
+.freelancer-container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.freelancer-top, .freelancer-middle, .freelancer-bottom{
+  flex: 1;
+}
+.freelancer-top h1{
+  margin: 15%;
+}
+.freelancer-middle h1, .client-top h1{
+  font-size: 1.5rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-style: italic;
+  color: white;
+}
+.freelancer-middle h1{
+  margin-top: 5%;
+}
+.fas.fa-arrow-circle-right{
+  font-size: 5rem;
+  margin: 1rem 0;
+}
+.freelancer-bottom{
+  display: flex;
+  justify-content: space-evenly;
+  border-top: .2rem solid white;
+  margin: 0 15%;
+}
+.freelancer-bottom p{
+  text-align: justify;
+  font-size: 1.3rem;
+  padding: 1rem;
+}
+#joinAsClient{
+  margin-bottom: 2rem;
+}
+
+.client-container{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.client-middle{
+  display: grid;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  grid-template-columns: minmax(2rem, 1fr) auto minmax(2rem, 1fr);
+  grid-gap: 2rem;
+  font-size: 2.5rem;
+  margin: 20% 0;
+}
+
+h2:before,
+h2:after {
+  content: '';
+  border-top: .1rem solid;
+}
+h2:before{
+  margin-left: 1rem;
+}
+h2:after{
+ margin-right: 1rem;
+}
+
+.client-bottom a, #joinAsClient{
+  font-size: 2rem;
+  font-weight: bolder;
+  color: white;
+  background-color: #8d2874;
+  border: .1rem solid #8d2874;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+.client-bottom a:hover, #joinAsClient:hover{
+  box-shadow: .05rem .1rem #8d2874;
+}
+.freelancer-join-bottom{
+  margin-bottom: 5rem;
+  padding: 1rem 0;
+}
+
+/*----------Right------------*/
+.join-right-container{
+  flex: 1.75;
+  background-color: white;
+  padding: 2rem;
+}
+
+.join-form-container{
+  display: flex;
+  justify-content: space-between;
+}
+.join-form-main>h1{
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #213e53;
+  font-size: 2.5rem;
+}
+
+.join-form-right{
+  border-right: .1rem solid #213e53;
+  padding-right: 1rem;
+  flex: 1;
+}
+.join-form-left{
+  padding-left: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.join-form-container label{
+  font-size: 1.3rem;
+}
+
+.join-right-container input, button.web-submission, button.mobile-submission{
+  width: 100%;
+  margin-bottom: 1.5rem;
+  background-color: white;
+  border: .1rem solid #ccc;
+  border-radius: .4rem;
+  font-size: 1.3rem;
+  padding: 1rem;
+}
+.join-right-container input:focus{
+  border-color: #213e53;
+  outline: none;
+}
+#submit-button{
+  background-color: #4CAF50;
+  cursor: pointer;
+  border: none;
+  color: white;
+  font-weight: bolder;
+}
+
+#submit-button:hover{
+  background-color: #308634;
+}
+#submit-button:focus{
+  outline: none;
+}
+
+.join-form-left p, .join-form-left a{
+  text-align: center;
+  font-size: 1.3rem;
+}
+.join-form-left a{
+  color: cornflowerblue;
+  padding: 1rem 0;
+  margin: 1.5rem 0;
+}
+#joinFL-login{
+  margin: 0;
+  padding: 0;
+}
+#joinFL-login:hover{
+  text-decoration: underline;
+}
+.fab.fa-facebook-f, .fab.fa-google-plus-g, .fab.fa-linkedin-in, .fab.fa-twitter{
+  color: white;
+  font-size: 2rem;
+  border: none;
+  border-radius: 5rem;
+  cursor: pointer;
+}
+
+.fab.fa-facebook-f{
+  background-color: #3b5998;
+}
+.fab.fa-facebook-f:hover{
+  background-color: #2a457e;
+}
+
+.fab.fa-google-plus-g{
+  background-color: #db4a39;
+}
+.fab.fa-google-plus-g:hover{
+  background-color: #bf3524;
+}
+
+.fab.fa-linkedin-in{
+  background-color: #0e76a8;
+}
+.fab.fa-linkedin-in:hover{
+  background-color: #0c628c;
+}
+
+.fab.fa-twitter{
+  background-color: #00acee;
+}
+.fab.fa-twitter:hover{
+  background-color: #0398d0;
+}
+
+/*
+************************************************************************************************************************
+ ********************************************* Login Page **************************************************************
+*/
+.login-page-container{
+  overflow: hidden;
+  padding: 40px 30px 30px 30px;
+  border-radius: 10px;
+  position: absolute;
+  width: 100rem;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: -webkit-transform 300ms, box-shadow 300ms;
+  -moz-transition: -moz-transform 300ms, box-shadow 300ms;
+  transition: transform 300ms, box-shadow 300ms;
+  box-shadow: 5px 10px 10px rgba(2, 128, 144, 0.2),
+  5px 10px 10px rgba(2, 128, 144, 0.2);
+}
+
+.login-page-container{
+  display: flex;
+  justify-content: space-around;
+}
+.login, .login-OAUTH{
+  flex: 1;
+}
+.login-OAUTH{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2rem 0 1rem;
+}
+.login-OAUTH a{
+  margin: 1rem 0;
+  text-align: center;
+  padding: 1rem;
+}
+.login-orSeparator{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
+}
+.center-element{
+  margin: .5rem 0;
+}
+.login-orSeparator div:first-child, .login-orSeparator div:last-child{
+  border: .1rem solid white;
+  height: 50%;
+}
+.center-element, .login-OAUTH p{
+  font-size: 1.3rem;
+}
+.login-OAUTH p{
+  text-align: center;
+}
+.login {
+  margin-left: 2rem;
+}
+.login > input{
+  font-family: "Asap", sans-serif;
+  display: block;
+  border-radius: .5rem;
+  font-size: 1.5rem;
+  /*background: white;*/
+  width: 100%;
+  border: .1rem solid #213e53;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+.login > button{
+  cursor: pointer;
+  color: #213e53;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  width: 8rem;
+  border: 0.1rem solid #213e53;
+  padding: 1rem 0;
+  margin-top: 1rem;
+  /*margin-left: -.5rem;*/
+  border-radius: .5rem;
+  background-color: white;
+  -webkit-transition: background-color 300ms;
+  -moz-transition: background-color 300ms;
+  transition: background-color 300ms;
+}
+.login > button:hover{
+  background-color: #213e53;
+  color: white;
+  border-color: white;
+}
+.login button:active, .login button:focus, .login input:active, .login input:focus{
+  outline: none;
+}
+
+.login section{
+  float: right;
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  align-items: flex-end;
+}
+.login section a{
+  margin-bottom: .5rem;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.login section a:hover{
+  text-decoration: underline;
+  -webkit-text-decoration-color: white; /* Safari */
+  text-decoration-color: white;
+}
+
+.login::before, .login::after {
+  content: '';
+  position: absolute;
+  width: 60rem;
+  height: 60rem;
+  border-radius: 40% 45% 40% 35%;
+  z-index: -1;
+}
+
+.login::before {
+  left: 40%;
+  bottom: -130%;
+  background-color: rgba(33, 62, 83, 1);
+  -webkit-animation: wawes 6s infinite linear;
+  -moz-animation: wawes 6s infinite linear;
+  animation: wawes 6s infinite linear;
+}
+
+.login::after {
+  left: 35%;
+  bottom: -125%;
+  background-color: rgba(33, 62, 83, 0.15);
+  -webkit-animation: wawes 7s infinite;
+  -moz-animation: wawes 7s infinite;
+  animation: wawes 7s infinite;
+}
+
+@-webkit-keyframes wawes {
+  from {
+    -webkit-transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes wawes {
+  from {
+    -moz-transform: rotate(0);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@keyframes wawes {
+  from {
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/**  Password Reset ***/
+.password-forgot h1, .password-reset h1{
+  border-bottom: .005rem solid #213e53;
+  margin: 5rem 1rem;
+  padding-bottom: .5rem;
+  color: #213e53;
+}
+
+.password-forgot-first-section, .password-reset-first-section{
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+}
+
+.password-forgot-first-section input, .password-reset-first-section input{
+  font-family: "Asap", sans-serif;
+  width: 100%;
+  background-color: white;
+  border: .1rem solid #ccc;
+  border-radius: .5rem;
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+
+.password-reset-first-section input{
+  margin-bottom: 1rem;
+}
+
+.password-forgot-first-section input:focus, .password-reset-first-section input:focus{
+  border-color: #213e53;
+}
+
+.password-forgot-first-section button, .password-reset-first-section button{
+  padding: .5rem;
+  background-color: #213e53;
+  border: .1rem solid #213e53;
+  border-radius: .5rem;
+  color: white;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.password-forgot-first-section button:hover, .password-reset-first-section button:hover{
+  background-color: #2b516d;
+}
