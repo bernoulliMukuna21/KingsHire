@@ -24,7 +24,7 @@ input:focus{
 /*
 ******************** Header-Style
 */
-header ul{
+/*header ul{
   list-style-type: none;
 }
 
@@ -72,7 +72,7 @@ header ul{
 #joinNow:hover, #be-freelancer:hover{
   background-color: #8d2874;
   color: white;
-}
+}*/
 /*
 ***************** Join File Style
 */

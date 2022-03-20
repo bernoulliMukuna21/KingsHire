@@ -87,6 +87,7 @@ app.use('/account', accountRouter);
 app.use('/join', indexRouter);// using the same route
 app.use('/login', indexRouter); //
 app.use('/about-us', aboutRouter);
+app.use('/services', serviceRouter);
 app.use('/booking', bookingRouter);
 app.use('/messages', messageRouter);
 app.use('/payment', paymentRouter);

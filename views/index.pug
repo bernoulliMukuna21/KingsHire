@@ -3,103 +3,116 @@ extends layout
 block content
   - let minimumPriceOfService = 10.00;
   include partials/form_message
-  .index-page-one
-    .index-page-one-left
-      h1 Hire Excellent Freelancers around the World
-      p
-        span KingsHire
-        |  facilitates the booking of freelancers all over the world. As well as booking freelancers, you can also become a freelancer.
-      .booking-buttons
-        if(!isLogged)
-          a(href='/users/join'): button JOIN US NOW
-        else
-          button#book-now-btn(class=pageType) BOOK NOW
-    .index-page-one-right
-      img(src='/images/excellenceFreelancerMaybeFinal.png')
-  //
-    .index-page-two
-      .book-services-steps
-        p Browse
-        p Find a Freelancer
-        p Book Freelance Service
-  if allFreelancers.length > 0
-    .index-page-three
-      each freelancer in allFreelancers
-        - let servicesPrices = freelancer.serviceAndPrice;
-        - let areSomePricesBiggerThanMinimum = servicesPrices.some(servicePrice => { return parseInt(servicePrice.price) >= minimumPriceOfService});
-        if areSomePricesBiggerThanMinimum
-          .single-user-index-details
-            .top-side
-              - let freelancerUniqueKey = emailEncode(freelancer.email);
-              - console.log(freelancerUniqueKey)
-              if !freelancer.profile_picture.data
-                img(src='/images/userDefaultImage.png')
-              else
-                - let imageSource;
-                if freelancer.profile_picture.name === 'oauth_picture'
-                  - imageSource = freelancer.profile_picture.data.toString();
+  .kingsHire-search-information
+    section.index-search-information-top
+      div
+        - let indexPageMessageToDisplay_header = 'Are you looking to hire Freelancers?'
+        - let indexPageMessageToDisplay_paragraph = 'Hire Excellent Freelancers, Fast. KingsHire helps you hire elite freelancers around the world with ease.'
+
+        if isLogged && loggedInUser.user_stature === 'freelancer'
+          - indexPageMessageToDisplay_header = `Welcome to KingsHire, ${loggedInUser.name} ${loggedInUser.surname}`
+          - indexPageMessageToDisplay_paragraph = `We are happy to be working along with you to provide outstanding solutions to our clients. Thank you for being Kinglancer!`
+
+        .kingsHire-motto
+          h1 #{indexPageMessageToDisplay_header}
+          p #{indexPageMessageToDisplay_paragraph}
+
+        if !isLogged || loggedInUser.user_stature === 'client'
+          .search-freelancers-section
+            a#hire-a-kingLancer(href='/services') Hire a Freelancer
+      div
+        img#kingsHire-section-image(src='/images/excellenceFreelancerMaybeFinal.png')
+
+    section.booking-steps-information
+      h1 Find a Kinglancer in 3 simple steps
+      div
+        ul.booking-steps-section
+          li.index-page-create-account
+            i.fa-solid.fa-user-lock
+            h3 1. Create Account
+            p
+              | First, you have to create an account #{' '}
+              a(href='/users/login') here
+          li.index-page-search-a-service
+            i.fa-solid.fa-magnifying-glass
+            h3 2. Search for service
+            p
+              | Search the best freelance work #{' '}
+              a(href='/services') here
+          li.index-page-hire-a-kinglancer
+            i.fa-solid.fa-handshake-simple
+            h3 3. Hire a Kinglancer
+            p Finally, after finding your best kinglancer, book them.
+      .wave
+        svg(data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none')
+          path.shape-fill(d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z')
+
+    .pro-services-kinglancer-section
+      div
+        p Logos, websites, book covers & more
+        h3
+          | Checkout The Pro #{' '}
+          span#pro-services-redirect Services
+      .selected-freelancers-index-page
+        if allFreelancers
+          each freelancer in allFreelancers
+            - let servicesPrices = freelancer.serviceAndPrice
+            - let freelancerUniqueKey = emailEncode(freelancer.email);
+            .single-selected-freelancer-index
+              .top-side
+                if !freelancer.profile_picture.data
+                  img(src="/images/userDefaultImage.png")
                 else
-                  - imageSource = "data:image/"+freelancer.profile_picture.contentType+";base64,"+freelancer.profile_picture.data.toString('base64')
-                img(src=imageSource)
-              section
-                span
-                  a(href='/account/freelancer/'+emailEncode(freelancer.email)): p #{freelancer.name+' '+freelancer.surname}
-            .middle-side
-              div
+                  - let imageSource;
+                  if freelancer.profile_picture.name === 'oauth_picture'
+                    - imageSource = freelancer.profile_picture.data.toString();
+                  else
+                    - imageSource = 'data:image/'+freelancer.profile_picture.contentType+';base64'+freelancer.profile_picture.data.toString('base64');
+                  img(src=imageSource)
+
+                p: a(href='/account/freelancer'+emailEncode(freelancer.email)) #{freelancer.name + " "+ freelancer.surname}
+              .middle-side
                 each service_price in servicesPrices
                   - let price = parseFloat(service_price.price)
                   if price >= minimumPriceOfService
                     .index-serviceAndPrice
-                      p #{service_price.service}
-                      p #{'£'+price.toFixed(2)}
+                      p  #{service_price.service}
+                      p  #{`£${price.toFixed(2)}`}
                       input(type='hidden', value =JSON.stringify({
                         freelancerPackage: service_price.servicePackage
                       }), name='indexPageServicePackage', readOnly=true)
+              .bottom-side
+                if !isLogged
+                  button  Instant Book
+                  button  Request
+                else
+                  if(loggedInUser.user_stature.current === 'client')
+                    button  Instant Book
+                    button  Request
+                  a.freelance-mssg-btn
+                    p Message
+                    i.far.fa-envelope
+                    input(type='hiddeen' class='freelancerToMessage-unique-key' value=freelancerUniqueKey)
+              input(type='hidden' value=emailEncode(freelancer.email))
 
-            .bottom-side
-              if (!isLogged)
-                button Instant Book
-                button Request
-              else
-                if(loggedInUser.user_stature.current === 'client')
-                  button Instant Book
-                  button Request
-                a(class='freelance-mssg-btn')
-                  p Message
-                  i.far.fa-envelope
-                  input(type='hidden' class='freelancerToMessage-unique-key' value=freelancerUniqueKey)
-            input(type='hidden', value=emailEncode(freelancer.email))
+  include ./partials/booking_form
 
-      include ./partials/booking_form
-
-      div.freelance-service-package-modal
-        div.freelance-service-package-modal-container
+  div.freelance-service-package-modal
+    div.freelance-service-package-modal-container
+      div
+        section
+          h4
+            span Interior Design
+            | #{' '}by Limo Charly
+        .closebook-form &times;
+      div
+        h4 Package Include:
+        section
           div
-            section
-              h4
-                span Interior Design
-                | #{' '}by Limo Charly
-            .closebook-form &times;
-          div
-            h4 Package Include:
-            section
-              div
-                p Empty Package
-              ul(style='display: none')
-                li  - 5 Responsive Pages
-                li  - Unlimited Reviews
-                li  - One-to-One Interview Preparation
-                li  - Mobile Responsive Pages
-                li  - Passport Authentication
-                li  - 5 Responsive Pages
-                li  - Unlimited Reviews
-                li  - One-to-One Interview Preparation
-                li  - Mobile Responsive Pages
-                li  - Passport Authentication
-            section
-                p Total Price: £ 1400
-  else
-    div.index-page-emptyFreelancers
-      p Empty Freelancers
+            p Empty Package
+          ul(style='display: none')
+            li  - 5 Responsive Pages
+        section
+          p Total Price: £ 1400
 
   include ./partials/footer

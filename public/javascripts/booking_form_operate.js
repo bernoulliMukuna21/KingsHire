@@ -131,7 +131,7 @@ function buttonToShow(button) {
     }
 }
 
-$('.bottom-side button').click(event => {
+$(' .single-selected-freelancer-index .bottom-side button').click(event => {
     // Get Screen size
     var windowsize = $(window).width();
 
@@ -139,7 +139,7 @@ $('.bottom-side button').click(event => {
     let parentContainer = event.target.parentNode.parentNode;
 
     let currentFreelancerName =  parentContainer.childNodes[0].
-        childNodes[1].childNodes[0].innerText;
+        childNodes[1].innerText;
 
     // Create Booking Form Title
     let currentPopTitle = 'Book Service with '+ currentFreelancerName;
@@ -153,7 +153,7 @@ $('.bottom-side button').click(event => {
 
     }else{
         // Get the clicked freelancer services and their respective prices
-        allServicesPrices = parentContainer.childNodes[1].childNodes[0].childNodes;
+        allServicesPrices = Array.from(parentContainer.childNodes[1].childNodes[0].childNodes).slice(0,2);
 
         // Date & Time for mobile version
         mobileVersionFunctionality(windowsize);

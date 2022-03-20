@@ -1,6 +1,35 @@
 import * as accountsOperation from "./account_operate.js";
+let domainURL = 'http://localhost:3000/'
+$(window).ready(function() {
+    let currentPath = window.location.href.substring(domainURL.length);
+    if(currentPath.length > 0){
+        $('.top-navbar>div>a:first-child').removeClass('clicked-top-navbar');
 
-$(document).ready(function(){
+        let navOptioIdentifier;
+
+        if(currentPath.includes('login')){
+            navOptioIdentifier = 'login'
+        }
+        if(currentPath.includes('join')){
+            navOptioIdentifier = 'join'
+        }
+        if(currentPath.includes('account')){
+            navOptioIdentifier = 'account'
+        }
+        if(currentPath.includes('logout')){
+            navOptioIdentifier = 'logout'
+        }
+
+        let allNavigationOptions = $('.top-navbar>div')[0].childNodes;
+        let indexOfNavOptionToShow = Array.from(allNavigationOptions).findIndex( eachoption =>
+            (eachoption.innerText).toLowerCase().includes(navOptioIdentifier));
+
+        $(`.top-navbar>div>a:nth-child(${indexOfNavOptionToShow+1})`)[0].classList.add('clicked-top-navbar');
+    }
+
+    else
+        $('.top-navbar>div>a:first-child')[0].classList.add('clicked-top-navbar');
+
     if(!$('.bottom-side button').is(':visible')){
         $('.bottom-side .freelance-mssg-btn').css({
             'padding':'.75rem',
@@ -16,19 +45,6 @@ $(document).ready(function(){
         });
     }
 })
-function scrollToFreelancers(){
-    $('html, body').animate({
-        scrollTop: $('.index-page-three').offset().top
-    }, 1000);
-}
-/*
-$('#book-now-btn').click(function (event) {
-    scrollToFreelancers();
-})
-let previousName = $('#book-now-btn')[0];
-if(previousName.className === 'client'){
-    scrollToFreelancers();
-}*/
 
 $(window).click(function(event) {
     if(!event.target.closest('.feedback-modal-container') && event.target.className !== 'feedbackText'){
@@ -42,6 +58,32 @@ $(window).click(function(event) {
     }
 });
 
+$(document).on('click', '.top-navbar div a', function(event){
+    let allNavigationOptions = $('.top-navbar>div')[0].childNodes;
+    let targetedElement = event.target;
+
+    allNavigationOptions.forEach(eachOption => {
+
+        $(eachOption).removeClass('clicked-top-navbar');
+
+        if(targetedElement.innerText === eachOption.innerText)
+            targetedElement.classList.add('clicked-top-navbar');
+    })
+});
+
+$('#pro-services-redirect').click(function (event) {
+    $('html, body').animate({
+        scrollTop: $('.services-navigation-bar').offset().top
+    }, 1000);
+})
+
+$(document).on('click', '.single-selected-freelancer-index .bottom-side button', function(event) {
+    let bottomSideHTML = event.target.parentNode;
+    let freelancerEmail = bottomSideHTML.nextSibling.value;
+    let name = bottomSideHTML.previousSibling.previousSibling.lastChild.innerText;
+    $('#service-supplier-name').val(JSON.stringify({freelancerEmail: freelancerEmail, freelancerName: name}));
+})
+
 $(document).on('click', '.index-serviceAndPrice', function (event) {
     let indexPageServicesHTML = event.target;
 
@@ -50,13 +92,12 @@ $(document).on('click', '.index-serviceAndPrice', function (event) {
 
     let packagesForService = JSON.parse(indexPageServicesHTML.lastChild.value);
     packagesForService = packagesForService.freelancerPackage;
-    let servicePackageModal = indexPageServicesHTML.parentNode.parentNode.parentNode.parentNode.lastChild;
-    console.log(indexPageServicesHTML.firstChild.innerText)
-    console.log(servicePackageModal)
+    let servicePackageModal = indexPageServicesHTML.parentNode.parentNode.parentNode.parentNode.parentNode;
+    servicePackageModal = servicePackageModal.nextSibling.nextSibling;
 
     servicePackageModal.firstChild.firstChild.firstChild.firstChild.innerHTML =
         `<span>${indexPageServicesHTML.firstChild.innerText} </span>`+
-        `by ${indexPageServicesHTML.parentNode.parentNode.previousSibling.lastChild.firstChild.firstChild.firstChild.innerText}`;
+        `by ${indexPageServicesHTML.parentNode.previousSibling.lastChild.firstChild.innerText}`;
 
 
     // Set the price for the current cliked service to be shown on the modal
@@ -84,12 +125,22 @@ $(document).on('click', '.index-serviceAndPrice', function (event) {
     });
     $('.freelance-service-package-modal').show();
 });
-
-$(document).on('click', '.bottom-side button', function(event) {
-    let mainDIV = event.target.parentNode.parentNode;
-    let freelancerEmail = mainDIV.lastChild.value;
-    let name = mainDIV.firstChild.lastChild.firstChild.firstChild.firstChild.innerText;
-    $('#service-supplier-name').val(JSON.stringify({freelancerEmail: freelancerEmail, freelancerName: name}));
+/*
+$(document).ready(function(){
+    if(!$('.bottom-side button').is(':visible')){
+        $('.bottom-side .freelance-mssg-btn').css({
+            'padding':'.75rem',
+            'width': '12rem',
+        });
+    }
+    if(!$('.bottom-side .freelance-mssg-btn').is(':visible')){
+        $('.bottom-side').css({
+            'justifyContent': 'center'
+        });
+        $('.bottom-side button').css({
+            'margin': '0 .5rem'
+        });
+    }
 })
 
 $(document).on('click', '.feedbackText', function(event) {
@@ -142,3 +193,4 @@ $('#feeback-form').submit( event => {
         }
     })
 })
+*/

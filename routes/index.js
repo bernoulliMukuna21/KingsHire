@@ -59,7 +59,7 @@ router.get('/', async function (req, res, next) {
             );
             allFreelancers = await UserModel.find({
                 $and: findFreelancersQuery
-            });
+            }).limit(4);
         }else{
             allFreelancers = await UserModel.find({
                 $and: findFreelancersQuery
