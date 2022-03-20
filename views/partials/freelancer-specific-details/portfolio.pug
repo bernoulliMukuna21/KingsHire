@@ -1,0 +1,55 @@
+h1 Portfolio
+    div.image-portfolio(style='border: .1rem dashed black; display: flex; justify-content: center; ' +
+    'align-items: center; height: 15vh')
+        if (isLogged && (emailEncode(freelancerUser.email) === emailEncode(loggedInUser.email)))
+            p#addPortfolio + Add to your Portfolio(images, videos or PDFs)
+        else
+            p(style='font-weight: bold') Portfolio Empty
+
+    // Slideshow container
+    .slideshow-container.fade
+        // Full images with numbers and message Info
+        .Containers
+            .MessageInfo 1 / 4
+            img(src='/images/eF1.jpg')
+            .Info First caption
+        .Containers
+            .MessageInfo 2 / 4
+            img(src='/images/eF2.jpg')
+            .Info Second Caption
+        .Containers
+            .MessageInfo 3 / 4
+            video(src='/images/videoExcellence1.mp4', controls)
+            .Info Third Caption
+        .Containers
+            .MessageInfo 4 / 4
+            img(src='/images/eF3.jpg')
+            .Info Forth Caption
+        // Back and forward buttons
+        a.Back &#x276E;
+        a.forward &#x276F;
+    br
+    // The circles/dots
+    div(style='text-align:center')
+        span.dots
+        span.dots
+        span.dots
+
+    br
+    div.image-portfolio
+        div.image-portfolio-item
+            .portfolio-tag-overlay
+                p Some Photo I took
+            img(src='/images/eF1.jpg')
+        div.image-portfolio-item
+            .portfolio-tag-overlay
+                p My Trip to Ghana
+            img(src='/images/eF2.jpg')
+        div.image-portfolio-item
+            .portfolio-tag-overlay
+                p Do you see this picture
+            video(src='/images/videoExcellence1.mp4', controls)
+        div.image-portfolio-item
+            .portfolio-tag-overlay
+                p My time at the University of Sheffield
+            img(src='/images/eF3.jpg')

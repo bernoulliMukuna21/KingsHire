@@ -1,528 +1,557 @@
-.freelancer-page-main-container{
-    margin: 1rem 5rem 0 5rem;
+.freelancer-page-main-container {
+  margin: 1rem 5rem 0 5rem;
 }
 
-.user-general-information-one input:focus{
-    border-radius: .5rem;
-    border-color: #213e53;
+.user-general-information-one input:focus {
+  border-radius: 0.5rem;
+  border-color: #213e53;
 }
-.main-account-page{
-    display: flex;
-    color: black;
-    font: 1rem "Lucida Grande", Helvetica, Arial, sans-serif;
+.main-account-page {
+  display: flex;
+  color: black;
+  font: 1rem "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-.freelancer-emptySericeAndPricesMessage, .freelancer-subscription-notAvailable-message{
-    font-size: 1.3rem;
-    border: .1rem solid red;
-    text-align: center;
-    background-color: #FF0000;
-    color: white;
-    padding: .5rem 0;
+.freelancer-emptySericeAndPricesMessage,
+.freelancer-subscription-notAvailable-message {
+  font-size: 1.3rem;
+  border: 0.1rem solid red;
+  text-align: center;
+  background-color: #ff0000;
+  color: white;
+  padding: 0.5rem 0;
 }
-.freelancer-emptySericeAndPricesMessage{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.freelancer-emptySericeAndPricesMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.freelancer-emptySericeAndPricesMessage i.fas.fa-exclamation-circle{
-    margin: 0 .5rem;
-    font-size: 2rem;
+.freelancer-emptySericeAndPricesMessage i.fas.fa-exclamation-circle {
+  margin: 0 0.5rem;
+  font-size: 2rem;
 }
-.freelancer-subscription-notAvailable-message p span:first-child{
-    font-weight: bold;
-    text-decoration: underline;
+.freelancer-subscription-notAvailable-message p span:first-child {
+  font-weight: bold;
+  text-decoration: underline;
 }
-.freelancer-subscription-notAvailable-message p span:last-child{
-    font-style: italic;
-    font-weight: bold;
+.freelancer-subscription-notAvailable-message p span:last-child {
+  font-style: italic;
+  font-weight: bold;
 }
 /*margin: 1rem 1rem 1rem 5rem; Left side margin*/
 /*margin: 1rem 5rem 1rem 1rem; Right side margin*/
 /***********************************************************************************************************************
 ************************************************************************************************************************
 ****************************************      Freelancer Left Section   ***********************************/
-.freelancer_account_left_side{
-    flex: 1;
-    margin: 1rem 1rem 1rem 0;
+.freelancer_account_left_side {
+  flex: 1;
+  margin: 1rem 1rem 1rem 0;
 }
-.account-profile-image{
-    display: grid;
-    grid-template-rows: 30vh;
-    grid-template-columns: 30vh;
-    justify-content: center;
+.account-profile-image {
+  display: grid;
+  grid-template-rows: 30vh;
+  grid-template-columns: 30vh;
+  justify-content: center;
 }
-.account-profile-image img, .default-profile-image{
-    border: .1rem dashed black;
+.account-profile-image img,
+.default-profile-image {
+  border: 0.1rem dashed black;
 }
 
-.default-profile-image{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color:#213e53;
-    background-color: #f1f1f1;
+.default-profile-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #213e53;
+  background-color: #f1f1f1;
 }
 /*.default-profile-image .fas.fa-user-alt{
     font-size: 25vh;
     position: absolute;
 }*/
-.default-profile-image p{
-    font-size: 1rem;
-    font-weight: bolder;
-    border: .1rem dashed #0d3349;
-    color:  #0d3349;
-    position: absolute;
-    margin-bottom: 1rem;
-    bottom: 2vh;
-    align-self: end;
-    padding: .2rem;
-    display: none;
-    cursor: pointer;
+.default-profile-image p {
+  font-size: 1rem;
+  font-weight: bolder;
+  border: 0.1rem dashed #0d3349;
+  color: #0d3349;
+  position: absolute;
+  margin-bottom: 1rem;
+  bottom: 2vh;
+  align-self: end;
+  padding: 0.2rem;
+  display: none;
+  cursor: pointer;
 }
-.default-profile-image:hover p{
-    display: block;
+.default-profile-image:hover p {
+  display: block;
 }
-.default-profile-image p:hover{
-    text-decoration: underline;
+.default-profile-image p:hover {
+  text-decoration: underline;
 }
-.account-profile-image img{
-    object-fit: cover;
-    object-position: top;
-    height: 30vh;
-    width: 30vh;
+.account-profile-image img {
+  object-fit: cover;
+  object-position: top;
+  height: 30vh;
+  width: 30vh;
 }
-.account-profile-name{
-    text-align: center;
-    margin: 1rem;
-    font-size: 1.5rem;
-    font-weight: bolder;
+.account-profile-name {
+  text-align: center;
+  margin: 1rem;
+  font-size: 1.5rem;
+  font-weight: bolder;
 }
-.freelancer-payment-buttons{
-    margin: 1rem;
-    display: grid;
+.freelancer-payment-buttons {
+  margin: 1rem;
+  display: grid;
 }
-.freelancer-payment-buttons form{
-    margin: .5rem 1rem; /** This line is to be deleted - Only for development purposes**/
+.freelancer-payment-buttons form {
+  margin: 0.5rem 1rem; /** This line is to be deleted - Only for development purposes**/
 }
-.freelancer-payment-buttons button{
-    width: 100%;
-    padding: 1rem;
-    font-weight: bold;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: .5rem;
+.freelancer-payment-buttons button {
+  width: 100%;
+  padding: 1rem;
+  font-weight: bold;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
 }
-.freelancer-payment-buttons button:hover{
-    background-color: #308634;
+.freelancer-payment-buttons button:hover {
+  background-color: #308634;
 }
-.freelancer-payment-buttons .payment-details-update{
-    background-color: #8d2874;
+.freelancer-payment-buttons .payment-details-update {
+  background-color: #8d2874;
 }
-.freelancer-payment-buttons .payment-details-update:hover{
-    background-color: #71205d;
+.freelancer-payment-buttons .payment-details-update:hover {
+  background-color: #71205d;
 }
 
 .public-service-enquiry {
-    margin: 0 1rem;
-    display: flex;
-    justify-content: center;
+  margin: 0 1rem;
+  display: flex;
+  justify-content: center;
 }
-.public-service-enquiry button, .public-service-enquiry a{
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bolder;
-    margin: 1rem 0.25rem 2rem 0.25rem;
-    border-radius: .5rem;
-    padding: 1rem 0;
-    cursor: pointer;
-    min-width: 11rem;
+.public-service-enquiry button,
+.public-service-enquiry a {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  margin: 1rem 0.25rem 2rem 0.25rem;
+  border-radius: 0.5rem;
+  padding: 1rem 0;
+  cursor: pointer;
+  min-width: 11rem;
 }
-.book-btn{
-    background-color: #4CAF50;
-    border-color: #4CAF50;
-    width: 15vh;
+.book-btn {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  width: 15vh;
 }
-.freelance-mssg-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #213e53;
-    width: 17.5vh;
+.freelance-mssg-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #213e53;
+  width: 17.5vh;
 }
-.freelance-mssg-btn p{
-    margin-right: .5rem;
+.freelance-mssg-btn p {
+  margin-right: 0.5rem;
 }
-.freelance-mssg-btn i{
-    margin-left: .5rem;
+.freelance-mssg-btn i {
+  margin-left: 0.5rem;
 }
-.public-service-enquiry button:hover{
-    background-color: #308634;
-    border-color: #308634;
+.public-service-enquiry button:hover {
+  background-color: #308634;
+  border-color: #308634;
 }
-.freelance-mssg-btn:hover{
-    background-color: #0d3349;
-    border-color: #0d3349;
-}
-
-.freelancer-services{
-    margin: 0 1rem 2rem 1rem;
-    border-bottom: .2rem solid #213e53;
-    border-top: .2rem solid #213e53;
-    padding: 1rem .5rem;
-}
-.freelancer-serviceAndPrice-profile{
-    margin-bottom: 1rem;
-    border: .1rem solid #213e53;
-    padding: .5rem;
-    border-radius: .5rem;
-    cursor: pointer;
-}
-.freelancer-serviceAndPrice-profile:last-child{
-    margin-bottom: 0;
-}
-.freelancer-serviceAndPrice-profile ul{
-    list-style: none;
-}
-.freelancer-serviceAndPrice-profile>div:first-child{
-    display: grid;
-    grid-template-columns: 80% 20%;
-}
-.freelancer-serviceAndPrice-profile h4{
-    text-transform: uppercase;
-    font-family: "Times New Roman", Times, serif;
-    font-size: 1.3rem;
-}
-.freelancer-serviceAndPrice-profile>div:first-child h4:last-child{
-    border-left: .2rem solid black;
-    margin-left: .5rem;
-    padding-left: .5rem;
-}
-.freelancer-serviceAndPrice-profile>div:last-child.freelance-package-offer{
-    border-top: .2rem solid black;
-    margin-top: .5rem;
-    padding-top: .5rem;
-}
-.freelancer-serviceAndPrice-profile>div:last-child ul{
-    margin-left: 5%;
-}
-.freelancer-serviceAndPrice-profile>div:last-child ul li{
-    margin: .5rem 0;
-    font-size: 1.1rem;
+.freelance-mssg-btn:hover {
+  background-color: #0d3349;
+  border-color: #0d3349;
 }
 
-
-.default-service-container{
-    border: .1rem dashed black;
-    margin: 1rem;
-    width: 100%;
-    height: 10vh;
-    display: flex;
-    justify-content: center;align-items: center;
+.freelancer-services {
+  margin: 0 1rem 2rem 1rem;
+  border-bottom: 0.2rem solid #213e53;
+  border-top: 0.2rem solid #213e53;
+  padding: 1rem 0.5rem;
 }
-.default-service-container .default-service-p{
-    padding: .5rem;
-    font-size: 1.3rem;
+.freelancer-serviceAndPrice-profile {
+  margin-bottom: 1rem;
+  border: 0.1rem solid #213e53;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
-
-.user-account-skills section{
-    margin: 0 1rem 2rem 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    border-bottom: .2rem solid #213e53;
-    border-top: .2rem solid #213e53;
+.freelancer-serviceAndPrice-profile:last-child {
+  margin-bottom: 0;
 }
-.user-account-skills section p{
-    margin: 1rem 1rem 1rem .5rem;
-    border: .1rem solid #213e53;
-    text-transform: uppercase;
-    font-family: "Times New Roman", Times, serif;
-    font-size: 1.3rem;
-    padding: .5rem;
+.freelancer-serviceAndPrice-profile ul {
+  list-style: none;
 }
-
-.account-profile-information{
-    margin: 0 1rem;
+.freelancer-serviceAndPrice-profile > div:first-child {
+  display: grid;
+  grid-template-columns: 80% 20%;
 }
-
-.account-profile-information ul{
-    list-style-type: none;
+.freelancer-serviceAndPrice-profile h4 {
+  text-transform: uppercase;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.3rem;
 }
-
-.account-profile-information li{
-    font-size: 1.3rem;
-    border-bottom: .1rem solid #213e53;
-    padding: 1rem;
+.freelancer-serviceAndPrice-profile > div:first-child h4:last-child {
+  border-left: 0.2rem solid black;
+  margin-left: 0.5rem;
+  padding-left: 0.5rem;
 }
-
-.account-profile-information li:nth-child(1){
-    border-top: .1rem solid #213e53;
+.freelancer-serviceAndPrice-profile > div:last-child.freelance-package-offer {
+  border-top: 0.2rem solid black;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+}
+.freelancer-serviceAndPrice-profile > div:last-child ul {
+  margin-left: 5%;
+}
+.freelancer-serviceAndPrice-profile > div:last-child ul li {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
 }
 
-.account-profile-information li:hover{
-    cursor: pointer;
-    background-color: #213e53;
-    color: #ffffff;
+.default-service-container {
+  border: 0.1rem dashed black;
+  margin: 1rem;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.default-service-container .default-service-p {
+  padding: 0.5rem;
+  font-size: 1.3rem;
 }
 
-.client-profile-information ul li:last-child, .user-completed-booking-page{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.user-account-skills section {
+  margin: 0 1rem 2rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 0.2rem solid #213e53;
+  border-top: 0.2rem solid #213e53;
 }
-.newMessageReceived{
-    border: .1rem solid #4CAF50;
-    background-color: #4CAF50;
-    color: white;
-    padding: .1rem .3rem;
-    border-radius: .5rem;
+.user-account-skills section p {
+  margin: 1rem 1rem 1rem 0.5rem;
+  border: 0.1rem solid #213e53;
+  text-transform: uppercase;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.3rem;
+  padding: 0.5rem;
 }
-.clicked{
-    background-color: #213e53;
-    color: white;
+
+.account-profile-information {
+  margin: 0 1rem;
+}
+
+.account-profile-information ul {
+  list-style-type: none;
+}
+
+.account-profile-information li {
+  font-size: 1.3rem;
+  border-bottom: 0.1rem solid #213e53;
+  padding: 1rem;
+}
+
+.account-profile-information li:nth-child(1) {
+  border-top: 0.1rem solid #213e53;
+}
+
+.account-profile-information li:hover {
+  cursor: pointer;
+  background-color: #213e53;
+  color: #ffffff;
+}
+
+.client-profile-information ul li:last-child,
+.user-completed-booking-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.newMessageReceived {
+  border: 0.1rem solid #4caf50;
+  background-color: #4caf50;
+  color: white;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.5rem;
+}
+.clicked {
+  background-color: #213e53;
+  color: white;
 }
 
 /***********************************************************************************************************************
 ************************************************************************************************************************
 ****************************************      Freelancer Main Section   ***********************************************/
-.freelancer_account_main_side{
-    flex: 3;
-    margin: 1rem 0 1rem 1rem;
+.freelancer_account_main_side {
+  flex: 3;
+  margin: 1rem 0 1rem 1rem;
 }
-.freelancer-page-blocked{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.freelancer-page-blocked {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.freelancer-page-blocked h1{
-    border: .25rem dashed #213e53;
-    padding: 2rem;
-    color: #213e53;
+.freelancer-page-blocked h1 {
+  border: 0.25rem dashed #213e53;
+  padding: 2rem;
+  color: #213e53;
 }
 
 /*~~~~~~~~~~~~~ First Side ~~~~~~~~~~~~~~~*/
-.account-first-side{
-    border-bottom: .1rem solid #213e53;
-    display: flex;
-    flex-direction: column;
+.account-first-side {
+  border-bottom: 0.1rem solid #213e53;
+  display: flex;
+  flex-direction: column;
 }
-.account-first-side h1, .user-account-skills h1, .price-information h1, .account-third-side h1, .account-fourth-side h1,
-.account-fifth-side h1, .update-page h1, .freelancer-projects-current h1, .freelancer-portfolio-modal-container h1{
-    width: max-content;
-    padding-bottom: .25rem;
-    color: #213e53;
-    border-bottom: .25rem solid #213e53;
-    font-size: 1.5rem;
+.account-first-side h1,
+.user-account-skills h1,
+.price-information h1,
+.account-third-side h1,
+.account-fourth-side h1,
+.account-fifth-side h1,
+.update-page h1,
+.freelancer-projects-current h1,
+.freelancer-portfolio-modal-container h1 {
+  width: max-content;
+  padding-bottom: 0.25rem;
+  color: #213e53;
+  border-bottom: 0.25rem solid #213e53;
+  font-size: 1.5rem;
 }
-.account-first-side .default-description{
-    border: .1rem dashed black;
-    width: 100%;
-    margin: 2rem 0;
-    height: 10vh;
-    display: flex;
-    justify-content: center;align-items: center;
+.account-first-side .default-description {
+  border: 0.1rem dashed black;
+  width: 100%;
+  margin: 2rem 0;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.account-first-side .default-description p{
-    font-size: 1.3rem;
-    margin: 1rem;
+.account-first-side .default-description p {
+  font-size: 1.3rem;
+  margin: 1rem;
 }
-.account-first-side .default-description #addDescription:hover{
-    text-decoration: underline;
-    cursor: pointer;
+.account-first-side .default-description #addDescription:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
-.account-first-side p{
-    font-size: 1.3rem;
-    text-justify: inter-word;
-    -ms-text-justify: inter-word;
-    margin: 1rem;
+.account-first-side p {
+  font-size: 1.3rem;
+  text-justify: inter-word;
+  -ms-text-justify: inter-word;
+  margin: 1rem;
 }
 
 /*~~~~~~~~~~~~~ Second Side ~~~~~~~~~~~~~~~*/
-.user-account-skills{
-    background-color: #213e53;
-    border-radius: 1rem;
-    margin: 2rem 10%;
-    padding: 1rem;
+.user-account-skills {
+  background-color: #213e53;
+  border-radius: 1rem;
+  margin: 2rem 10%;
+  padding: 1rem;
 }
-.user-account-skills h1{
-    color: white;
-    border-bottom: .25rem solid white;
+.user-account-skills h1 {
+  color: white;
+  border-bottom: 0.25rem solid white;
 }
-.user-account-skills section{
-    margin: 0;
-    display: flex;
-    justify-content: center;
+.user-account-skills section {
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
-.user-account-skills section p{
-    border-color: white;
-    border-radius: .5rem;
-    color: white;
-    font-weight: bold;
+.user-account-skills section p {
+  border-color: white;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
 }
-.default-skill{
-    display: flex; justify-content: center; align-items: center;
+.default-skill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#addSkills{
-    border: .1rem dashed white; border-radius: 0;
+#addSkills {
+  border: 0.1rem dashed white;
+  border-radius: 0;
 }
-#addSkills:hover, #addPrice:hover, #addEducation:hover, #addPortfolio:hover,
-.default-service-p:hover, #addServiceAndPrice:hover{
-    text-decoration: underline;
-    cursor: pointer;
+#addSkills:hover,
+#addPrice:hover,
+#addEducation:hover,
+#addPortfolio:hover,
+.default-service-p:hover,
+#addServiceAndPrice:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /*~~~~~~~~~~~~~ Third Side ~~~~~~~~~~~~~~~*/
-.account-third-side{
-    margin-bottom: 1rem;
-    padding-top: 1rem;
-    border-top: .1rem solid #213e53;
+.account-third-side {
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 0.1rem solid #213e53;
 }
-.each-education{
-    margin-top: 1rem;
+.each-education {
+  margin-top: 1rem;
 }
-.each-education p{
-    font-size: 1.3rem;
+.each-education p {
+  font-size: 1.3rem;
 }
-.each-education p:first-child{
-    font-weight: bolder;
+.each-education p:first-child {
+  font-weight: bolder;
 }
-.default-education{
-    border: .1rem dashed black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 10vh;
+.default-education {
+  border: 0.1rem dashed black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
 }
-#addEducation{
-    font-weight: unset
+#addEducation {
+  font-weight: unset;
 }
 /*~~~~~~~~~~~~~ Fourth Side ~~~~~~~~~~~~~~~*/
-.account-fourth-side{
-    border-top: .1rem solid #213e53;
-    padding: 1rem 0;
+.account-fourth-side {
+  border-top: 0.1rem solid #213e53;
+  padding: 1rem 0;
 }
-.account-fourth-side h1{
-    margin-bottom: 1rem;
-}
-/*
-.image-portfolio{
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: .5%;
-    row-gap: .5%;
-    border: .1rem solid white;
-    grid-auto-flow: row;
-    margin-bottom: 1rem;
-}
-.image-portfolio p{
-    font-size: 1.5rem;
-}
-.image-portfolio div{
-    border: .25rem solid black;
-    position: relative;
-}
-.image-portfolio .portfolio-tag-overlay{
-    border: .1rem solid #213e53;
-    position: absolute;
-    width: 100%;
-    top: 40%;
-    background-color: #213e53;
-    display: none;
-}
-.image-portfolio>div:hover .portfolio-tag-overlay{
-    display: block;
-}
-.portfolio-tag-overlay p{
-    font-size: 1.1rem;
-    font-weight: bold;
-    padding: 1rem;
-    text-align: center;
-    color: white;
+.account-fourth-side h1 {
+  margin-bottom: 1rem;
 }
 
-.image-portfolio img, .image-portfolio video,
-.image-portfolio iframe, .image-portfolio embed{
-    border: .1rem solid green;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+.image-portfolio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 0.5%;
+  row-gap: 0.5%;
+  border: 0.1rem solid white;
+  grid-auto-flow: row;
+  margin-bottom: 1rem;
 }
-*/
-/*
-*************** Portfolio Update Popup ******************
-*/
-.freelancer-portfolio-big-modal{
-    position: fixed;
-    top:0;
-    left:0;
-    width:100%;height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.image-portfolio p {
+  font-size: 1.5rem;
 }
-
-.freelancer-portfolio-modal-container{
-    width: 60%;
-    background-color: white;
-    padding: 2rem;
-    position: relative;
-    border-radius: .5rem;
+.image-portfolio div {
+  border: 0.25rem solid black;
+  position: relative;
 }
-/*
-.portfolio-item-upload-header{
-    display: flex;
-    justify-content: center;
+.image-portfolio .portfolio-tag-overlay {
+  border: 0.1rem solid #213e53;
+  position: absolute;
+  width: 100%;
+  top: 40%;
+  background-color: #213e53;
+  display: none;
 }
-.portfolio-item-upload-header h1{
-    font-size: 2rem;
-    border: .25rem solid #213e53;
-    background-color: #213e53;
-    color: white;
-    padding: 1rem;
-    border-radius: .5rem;
+.image-portfolio > div:hover .portfolio-tag-overlay {
+  display: block;
 }
-.portfolio-item-upload-section{
-    margin: 3rem 0;
-}
-.portfolio-item-upload-option{
-    display: flex;
+.portfolio-tag-overlay p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 1rem;
+  text-align: center;
+  color: white;
 }
 
-.portfolio-item-upload-option a, .portfolio-item-upload-option input{
-    flex: 1;
-    cursor: context-menu;
+.image-portfolio img,
+.image-portfolio video,
+.image-portfolio iframe,
+.image-portfolio embed {
+  border: 0.1rem solid green;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-.portfolio-item-upload-option a button, .portfolio-item-upload-option input{
-    max-width: 15rem;width: 15rem;
-    padding: .5rem 0;
-    cursor: pointer;
-    color: white;
-    font-weight: bolder;
+
+***************
+  Portfolio
+  Update
+  Popup
+  ******************
+  */
+  .freelancer-portfolio-big-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.portfolio-item-upload-option a button{
-    background-color: #ca1212;
-    border-color: #ca1212;
+
+.freelancer-portfolio-modal-container {
+  width: 60%;
+  background-color: white;
+  padding: 2rem;
+  position: relative;
+  border-radius: 0.5rem;
 }
-.portfolio-item-upload-option input, .portfolio-item-upload-option input:focus,
-.portfolio-item-upload-option input:hover{
-    background-color: #4CAF50;
-    border-color: #4CAF50;
-    border-radius: 0;
+
+.portfolio-item-upload-header {
+  display: flex;
+  justify-content: center;
 }
-*/
+.portfolio-item-upload-header h1 {
+  font-size: 2rem;
+  border: 0.25rem solid #213e53;
+  background-color: #213e53;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.portfolio-item-upload-section {
+  margin: 3rem 0;
+}
+.portfolio-item-upload-option {
+  display: flex;
+}
+
+.portfolio-item-upload-option a,
+.portfolio-item-upload-option input {
+  flex: 1;
+  cursor: context-menu;
+}
+.portfolio-item-upload-option a button,
+.portfolio-item-upload-option input {
+  max-width: 15rem;
+  width: 15rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  color: white;
+  font-weight: bolder;
+}
+.portfolio-item-upload-option a button {
+  background-color: #ca1212;
+  border-color: #ca1212;
+}
+.portfolio-item-upload-option input,
+.portfolio-item-upload-option input:focus,
+.portfolio-item-upload-option input:hover {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  border-radius: 0;
+}
+
 /*~~~~~~~~~~~~~ Fifth Side ~~~~~~~~~~~~~~~*/
-.account-fifth-side{
-    /*margin-top: 10rem;*/
-    border-top: .5rem solid #213e53;
-    padding-top: 1rem;
-    margin: 10rem 25% 1rem 1rem;
+.account-fifth-side {
+  /*margin-top: 10rem;*/
+  border-top: 0.5rem solid #213e53;
+  padding-top: 1rem;
+  margin: 10rem 25% 1rem 1rem;
 }
 /*
 .default-written-review{
@@ -669,468 +698,502 @@ button.like{
 /************************************************************************************************************************
 ************************************************************************************************************************
 ****************************************       Profile Update Page      *************************************************/
-.freelancer-update-page>p{
-    opacity:50%;
-    margin-top: .5rem;
-    font-size: 1.5rem;
+.freelancer-update-page > p {
+  opacity: 50%;
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
 }
-.freelancer-update-page input:focus, .user-bio-one section textarea:focus, .user-education-years select:focus,
-.input-group-btn:focus, .user-education-years button:focus, #add-skills-button:focus, #servicePriceBttn:focus{
-    border-color: #213e53;
-    border-radius: .5rem;
-    outline: none;
+.freelancer-update-page input:focus,
+.user-bio-one section textarea:focus,
+.user-education-years select:focus,
+.input-group-btn:focus,
+.user-education-years button:focus,
+#add-skills-button:focus,
+#servicePriceBttn:focus {
+  border-color: #213e53;
+  border-radius: 0.5rem;
+  outline: none;
 }
 /* Watch out for the line below. The */
-.input-group-btn:focus{
-    background-color: #213e53;
-    color: white;
+.input-group-btn:focus {
+  background-color: #213e53;
+  color: white;
 }
-.freelancer-update-page label{
-    font-size: 1.3rem;
+.freelancer-update-page label {
+  font-size: 1.3rem;
 }
 
-.update-general-information{
-    margin: 1rem;
-    border-top: .1rem solid #213e53;
+.update-general-information {
+  margin: 1rem;
+  border-top: 0.1rem solid #213e53;
 }
-.update-general-information h3{
-    color: #213e53;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 1rem 0;
-    opacity: 50%;
+.update-general-information h3 {
+  color: #213e53;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  opacity: 50%;
 }
-.update-general-information input, .update-page-submit button{
-    width: 100%;
-    margin-top: .5rem;
-    margin-bottom: 1.5rem;
-    background-color: white;
-    border: .1rem solid #ccc;
-    border-radius: .5rem;
-    font-size: 1.3rem;
-    padding: 1rem;
+.update-general-information input,
+.update-page-submit button {
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  background-color: white;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  padding: 1rem;
 }
 
 /*~~~~~~~~~~~~~ General Information Section One ~~~~~~~~~~~~~~~*/
-.user-general-information-one{
-    display: grid;
-    grid-gap: 1%;
-    align-items: center;
-    grid-template-columns: 65% 33%;
-    padding: .5rem;
-    align-items: center;
-    column-gap: 1rem;
+.user-general-information-one {
+  display: grid;
+  grid-gap: 1%;
+  align-items: center;
+  grid-template-columns: 65% 33%;
+  padding: 0.5rem;
+  align-items: center;
+  column-gap: 1rem;
 }
 
-.general-information-section-one, .general-information-section-two{
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-gap: 1%;
+.general-information-section-one,
+.general-information-section-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 1%;
 }
-.general-information-section-three{
-    border: .1rem dashed #213e53;
-    text-align: center;
-    padding: 1rem;
-    border-radius: .5rem;
+.general-information-section-three {
+  border: 0.1rem dashed #213e53;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
-.file-image-area, .client-image-update-area{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.file-image-area,
+.client-image-update-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.file-image-upload img{
-    padding: 1rem;
-    width: 30vh;
-    height: 30vh;
-    object-fit: cover;
-    object-position: top;
+.file-image-upload img {
+  padding: 1rem;
+  width: 30vh;
+  height: 30vh;
+  object-fit: cover;
+  object-position: top;
 }
-.file-image-upload-btn, .client-image-upload-btn{
-    margin-top: 2rem;
-    border: .1rem dashed #213e53;
-    color: #213e53;
-    border-radius: .5rem;
-    position: relative;
-    padding: 1rem;
-    overflow: hidden;
-    cursor: pointer;
-    min-width: 19vh;
-    font-size: 1.2rem;
+.file-image-upload-btn,
+.client-image-upload-btn {
+  margin-top: 2rem;
+  border: 0.1rem dashed #213e53;
+  color: #213e53;
+  border-radius: 0.5rem;
+  position: relative;
+  padding: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  min-width: 19vh;
+  font-size: 1.2rem;
 }
-.file-image-upload-btn:hover, .client-image-upload-btn:hover{
-    color: white;
-    background-color: #213e53;
+.file-image-upload-btn:hover,
+.client-image-upload-btn:hover {
+  color: white;
+  background-color: #213e53;
 }
-.file-image-upload-btn span, .client-image-upload-btn span{
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
+.file-image-upload-btn span,
+.client-image-upload-btn span {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
 }
-.file-image-upload-btn span i, .client-image-upload-btn span i{
-    margin-right: .25rem;
+.file-image-upload-btn span i,
+.client-image-upload-btn span i {
+  margin-right: 0.25rem;
 }
-.file-image-upload-btn span p, .client-image-upload-btn span p{
-    margin-left: .25rem;
+.file-image-upload-btn span p,
+.client-image-upload-btn span p {
+  margin-left: 0.25rem;
 }
-.file-image-upload-btn input, .client-image-upload-btn input{
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 0;left: 0;
-    font-size: 2rem;
-    min-width: 19vh;
-    opacity: 0;
-    cursor: pointer;
+.file-image-upload-btn input,
+.client-image-upload-btn input {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 2rem;
+  min-width: 19vh;
+  opacity: 0;
+  cursor: pointer;
 }
 
-.user-education-years button:hover{
-    color: white;
-    background-color: #213e53;
-    border-color: #213e53;
+.user-education-years button:hover {
+  color: white;
+  background-color: #213e53;
+  border-color: #213e53;
 }
 
 /*~~~~~~~~~~~~~ General Information Section Two ~~~~~~~~~~~~~~~*/
-.user-general-information-two{
-    border-top: .1rem solid #213e53;
+.user-general-information-two {
+  border-top: 0.1rem solid #213e53;
 }
-.git-password-update-section{
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 1rem;
+.git-password-update-section {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 1rem;
 }
 
 /*~~~~~~~~~~~~~ General Information Section Three ~~~~~~~~~~~~~~~*/
-.user-general-information-three{
-    border-top: .1rem solid #213e53;
+.user-general-information-three {
+  border-top: 0.1rem solid #213e53;
 }
 
 /*Update education section*/
-.user-education{
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    column-gap: 1rem;
+.user-education {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 1rem;
 }
-.user-education input, .user-education-years select, .user-education-years button{
-    padding: 1rem;
-    font-size: 1.3rem;
-    margin: .5rem 0 1.5rem 0;
-    border-radius: .5rem;
+.user-education input,
+.user-education-years select,
+.user-education-years button {
+  padding: 1rem;
+  font-size: 1.3rem;
+  margin: 0.5rem 0 1.5rem 0;
+  border-radius: 0.5rem;
 }
-.user-education-years{
-    display: flex;
-    justify-content: space-between;
+.user-education-years {
+  display: flex;
+  justify-content: space-between;
 }
-.user-education-years button, .user-education-years select{
-    border: .1rem solid lightgrey;
-    background-color: white;
-    cursor: pointer;
+.user-education-years button,
+.user-education-years select {
+  border: 0.1rem solid lightgrey;
+  background-color: white;
+  cursor: pointer;
 }
 
-.user-education-years button{color: #213e53}
+.user-education-years button {
+  color: #213e53;
+}
 
-.freelancer-single-education:last-child{
-    margin-bottom: 1.5rem;
+.freelancer-single-education:last-child {
+  margin-bottom: 1.5rem;
 }
-.freelancer-single-education:nth-child(odd){
-    background-color: lightgrey;
+.freelancer-single-education:nth-child(odd) {
+  background-color: lightgrey;
 }
-.freelancer-single-education .show-section{
-    display: grid;
-    grid-template-columns: 40% 25% 15% 20%;
-    align-items: center;
-    font-size: 1.3rem;
-    padding: .5rem;
+.freelancer-single-education .show-section {
+  display: grid;
+  grid-template-columns: 40% 25% 15% 20%;
+  align-items: center;
+  font-size: 1.3rem;
+  padding: 0.5rem;
 }
-.freelancer-single-education .show-section p{
-    text-align: center;
+.freelancer-single-education .show-section p {
+  text-align: center;
 }
-.freelancer-single-education .show-section button{
-    padding: .25rem;
-    margin-left: 12rem;
-    background-color: #ca1212;
-    border-color: #ca1212;
-    color: white;
-    font-weight: bolder;
-    cursor: pointer;
+.freelancer-single-education .show-section button {
+  padding: 0.25rem;
+  margin-left: 12rem;
+  background-color: #ca1212;
+  border-color: #ca1212;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
 }
 /*Update: Services and Skills*/
-.user-service_and_price{
-    border-top: .1rem solid #213e53;
+.user-service_and_price {
+  border-top: 0.1rem solid #213e53;
 }
-.user-servicePrice-container>div{
-    display: grid;
-    grid-template-columns: 43% 43% 10%;
-    column-gap: 2%;
+.user-servicePrice-container > div {
+  display: grid;
+  grid-template-columns: 43% 43% 10%;
+  column-gap: 2%;
 }
-#userServicesPriceField{
-    display: flex;
-    align-items: center;
-    padding: 0;
-    margin-top: 0.5rem;
-    margin-bottom: 1.5rem;
-    border: .1rem solid #ccc;
-    border-radius: .5rem;
+#userServicesPriceField {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.5rem;
 }
-#userServicesPriceField i.fas.fa-pound-sign{
-    padding: .5rem 0;
-    padding-right: 1rem;
-    margin: 0 1rem;
-    font-size: 1.3rem;
-    border-right: .2rem solid #213e53;
-    color: #213e53;
+#userServicesPriceField i.fas.fa-pound-sign {
+  padding: 0.5rem 0;
+  padding-right: 1rem;
+  margin: 0 1rem;
+  font-size: 1.3rem;
+  border-right: 0.2rem solid #213e53;
+  color: #213e53;
 }
-#userServicesPriceField input{
-    padding: .5rem 0;
-    margin: 0;
-    border: none;
+#userServicesPriceField input {
+  padding: 0.5rem 0;
+  margin: 0;
+  border: none;
 }
-#servicePriceBttn{
-    margin-top: .5rem ;
-    margin-bottom: 1.5rem;
-}
-
-.single-serviceAndPrice{
-    margin-bottom: 1rem;
-    display: grid;
-    grid-template-columns: 55% 42%;
-    column-gap: 3%;
-    align-items: start;
-}
-.single-serviceAndPrice:last-child{
-    margin-bottom: 1.5rem;
-}
-.single-serviceAndPrice .show-serviceAndPrice{
-    background-color: #213e53;
-}
-.single-serviceAndPrice .show-serviceAndPrice>div:first-child{
-    display: grid;
-    grid-template-columns: 55% 30% 5%;
-    column-gap: 5%;
-    align-items: center;
-    padding: .5rem 1rem;
-}
-.show-service-package{
-    display: flex;
-}
-.show-service-package input#servicePackage{
-    padding: .5rem;
-    margin: 0;
-    margin-right: .5rem;
-}
-.show-service-package button#addServicePackage{
-    padding: 0.5rem;
-    margin: 0;
-    cursor: pointer;
-    color: #213e53;
-    background-color: white;
-    border: .1rem solid lightgrey;
-    border-radius: .5rem;
-}
-.show-service-package button#addServicePackage:hover{
-    color: white;
-    background-color: #213e53;
-    border: .1rem solid #213e53;
-}
-.freelancer-service-package-update{
-    border-top: .2rem solid white;
-    margin: 0 1rem;
-    padding: .5rem 0;
-}
-.freelancer-service-package-update ul li{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    font-size: 1.2rem;
-    margin: .5rem 0;
-}
-.freelance-delete-aPackage{
-    cursor: pointer;
-    margin-left: 4rem;
-    padding: 0 .15rem;
-    background-color: red;
-    font-weight: bold;
+#servicePriceBttn {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.user-servicePrice-container button, .user-bio-container button{
-    cursor: pointer;
-    background-color: white;
-    border: .1rem solid lightgrey;
-    color: #213e53;
-    border-radius: .5rem;
+.single-serviceAndPrice {
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 55% 42%;
+  column-gap: 3%;
+  align-items: start;
 }
-.user-servicePrice-container button:hover, .user-bio-container button:hover{
-    background-color: #213e53;
-    border-color: #213e53;
-    color: white;
+.single-serviceAndPrice:last-child {
+  margin-bottom: 1.5rem;
+}
+.single-serviceAndPrice .show-serviceAndPrice {
+  background-color: #213e53;
+}
+.single-serviceAndPrice .show-serviceAndPrice > div:first-child {
+  display: grid;
+  grid-template-columns: 55% 30% 5%;
+  column-gap: 5%;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+.show-service-package {
+  display: flex;
+}
+.show-service-package input#servicePackage {
+  padding: 0.5rem;
+  margin: 0;
+  margin-right: 0.5rem;
+}
+.show-service-package button#addServicePackage {
+  padding: 0.5rem;
+  margin: 0;
+  cursor: pointer;
+  color: #213e53;
+  background-color: white;
+  border: 0.1rem solid lightgrey;
+  border-radius: 0.5rem;
+}
+.show-service-package button#addServicePackage:hover {
+  color: white;
+  background-color: #213e53;
+  border: 0.1rem solid #213e53;
+}
+.freelancer-service-package-update {
+  border-top: 0.2rem solid white;
+  margin: 0 1rem;
+  padding: 0.5rem 0;
+}
+.freelancer-service-package-update ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+.freelance-delete-aPackage {
+  cursor: pointer;
+  margin-left: 4rem;
+  padding: 0 0.15rem;
+  background-color: red;
+  font-weight: bold;
 }
 
-.single-serviceAndPrice .show-serviceAndPrice h4, .shown-service h4, .single-skill .show-skill h4{
-    font-size: 1.3rem;
-    color: white;
+.user-servicePrice-container button,
+.user-bio-container button {
+  cursor: pointer;
+  background-color: white;
+  border: 0.1rem solid lightgrey;
+  color: #213e53;
+  border-radius: 0.5rem;
 }
-.single-serviceAndPrice .show-serviceAndPrice h4{
-    border-right: .2rem solid white;
+.user-servicePrice-container button:hover,
+.user-bio-container button:hover {
+  background-color: #213e53;
+  border-color: #213e53;
+  color: white;
 }
 
-.delete-aServiceAndPrice-btn, .delete-aService-btn, .delete-aSkill-btn{
-    background-color: #ca1212;
-    border-color: #ca1212;
-    color: white;
-    font-weight: bolder;
-    cursor: pointer;
+.single-serviceAndPrice .show-serviceAndPrice h4,
+.shown-service h4,
+.single-skill .show-skill h4 {
+  font-size: 1.3rem;
+  color: white;
 }
-.freelancer-serviceAndPrice-empty{
-    border: .1rem dashed black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.single-serviceAndPrice .show-serviceAndPrice h4 {
+  border-right: 0.2rem solid white;
 }
-.freelancer-serviceAndPrice-empty p{
-    padding: 1rem;
-    font-size: 1.3rem;
+
+.delete-aServiceAndPrice-btn,
+.delete-aService-btn,
+.delete-aSkill-btn {
+  background-color: #ca1212;
+  border-color: #ca1212;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.freelancer-serviceAndPrice-empty {
+  border: 0.1rem dashed black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.freelancer-serviceAndPrice-empty p {
+  padding: 1rem;
+  font-size: 1.3rem;
 }
 
 /*Bio: description and skills*/
-.user-bio-details{
-    border-top: .1rem solid #213e53;
+.user-bio-details {
+  border-top: 0.1rem solid #213e53;
 }
-.user-bio-details-container .user-bio-one, .user-bio-details-container .user-bio-two{
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 2rem;
+.user-bio-details-container .user-bio-one,
+.user-bio-details-container .user-bio-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 2rem;
 }
-.user-bio-details-container .user-bio-two{
-    margin-top: 3rem;
+.user-bio-details-container .user-bio-two {
+  margin-top: 3rem;
 }
-.user-bio-one section textarea{
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 10vh;
-    max-height: 20vh;
-    border: .1rem solid lightgrey;
-    padding: 1rem;
-    margin-top: .5rem;
-    font-family: "Times New Roman", Times, serif;
-    font-size: 1.3rem;
-    border-radius: .5rem;
+.user-bio-one section textarea {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 10vh;
+  max-height: 20vh;
+  border: 0.1rem solid lightgrey;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.3rem;
+  border-radius: 0.5rem;
 }
-.user-bio-container{
-    display: grid;
-    grid-template-columns: 80% 20%;
-    margin: 1rem 0;
+.user-bio-container {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  margin: 1rem 0;
 }
-.user-bio-container input{
-    padding: 1rem;
-    margin: 0;
-    font-size: 1.3rem;
-}
-
-.saved-skill{
-    background-color: #213e53;
-    width: 80%;
-}
-.single-skill{
-    border-top: .5rem solid white;
-}
-.single-skill:first-child{
-    border: none;
-}
-.single-skill .show-skill{
-    display: grid;
-    grid-template-columns: 90% 10%;
-    align-items: center;
-    padding: 1rem 0;
-    margin: 0 1rem;
+.user-bio-container input {
+  padding: 1rem;
+  margin: 0;
+  font-size: 1.3rem;
 }
 
-.update-page-submit{
-    border-top: .1rem solid #213e53;
-    padding-top: 1rem;
-    margin-top: 1.5rem;
+.saved-skill {
+  background-color: #213e53;
+  width: 80%;
 }
-.update-page-submit #update-page-submission{
-    color: white;
-    background-color: #213e53;
-    cursor: pointer;
-    border-color: #213e53;
+.single-skill {
+  border-top: 0.5rem solid white;
 }
-.update-page-submit #update-page-submission:hover{
-    color: white;
-    background-color: #0d3349;
-    border-color: #0d3349;
+.single-skill:first-child {
+  border: none;
+}
+.single-skill .show-skill {
+  display: grid;
+  grid-template-columns: 90% 10%;
+  align-items: center;
+  padding: 1rem 0;
+  margin: 0 1rem;
+}
+
+.update-page-submit {
+  border-top: 0.1rem solid #213e53;
+  padding-top: 1rem;
+  margin-top: 1.5rem;
+}
+.update-page-submit #update-page-submission {
+  color: white;
+  background-color: #213e53;
+  cursor: pointer;
+  border-color: #213e53;
+}
+.update-page-submit #update-page-submission:hover {
+  color: white;
+  background-color: #0d3349;
+  border-color: #0d3349;
 }
 /*##### Page Errors #####*/
 
-.single-error, .single-update-container{
-    display: grid;
-    grid-template-columns: 90% 10%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: .5rem;
-    font-size: 1.3rem;
-    color: white;
-    background-color: #FF0000;
-    font-weight: bolder;
+.single-error,
+.single-update-container {
+  display: grid;
+  grid-template-columns: 90% 10%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  color: white;
+  background-color: #ff0000;
+  font-weight: bolder;
 }
-.single-error:last-child, .single-update-container:last-child{
-    margin-bottom: 2rem;
-}
-
-#updateInformation, #save-profile-success{
-    background-color: #4CAF50;
-}
-.update-error-delete-btn, .update-delete-btn{
-    cursor: pointer;
-    padding: .75rem 0;
+.single-error:last-child,
+.single-update-container:last-child {
+  margin-bottom: 2rem;
 }
 
-.single-error h4, .single-update-container h4{
-    border-right: .1rem solid white;
-    padding: .75rem 0;
+#updateInformation,
+#save-profile-success {
+  background-color: #4caf50;
+}
+.update-error-delete-btn,
+.update-delete-btn {
+  cursor: pointer;
+  padding: 0.75rem 0;
+}
+
+.single-error h4,
+.single-update-container h4 {
+  border-right: 0.1rem solid white;
+  padding: 0.75rem 0;
 }
 
 /************************************************************************************************************************
 ************************************************************************************************************************
 ****************************************       Freelancer Booking      *************************************************/
-.freelancer-projects-current{
-    background-color: #f1f1f1;
-    padding: 3rem;
+.freelancer-projects-current {
+  background-color: #f1f1f1;
+  padding: 3rem;
 }
-.freelancer-current-project-container{
-    margin-top: 1rem;
-    box-shadow: 0 .2rem .2rem .2rem lightgrey;
-    border-radius: .5rem;
-    color: #213e53;
-
+.freelancer-current-project-container {
+  margin-top: 1rem;
+  box-shadow: 0 0.2rem 0.2rem 0.2rem lightgrey;
+  border-radius: 0.5rem;
+  color: #213e53;
 }
-.freelancer-projects-header, .freelancer-projects-top, .freelancer-one-project-top{
-    display: grid;
-    grid-template-columns: 30% 20% 22% 22% 6%;
-    align-items: center;
+.freelancer-projects-header,
+.freelancer-projects-top,
+.freelancer-one-project-top {
+  display: grid;
+  grid-template-columns: 30% 20% 22% 22% 6%;
+  align-items: center;
 }
-.freelancer-projects-top-container, .freelancer-current-project-container{
-    background-color: white;
+.freelancer-projects-top-container,
+.freelancer-current-project-container {
+  background-color: white;
 }
-.freelancer-projects-header{
-    padding: 1rem 1rem 0.5rem 1rem;
-    border-top-left-radius: .5rem;
-    border-top-right-radius: .5rem;
+.freelancer-projects-header {
+  padding: 1rem 1rem 0.5rem 1rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
-.freelancer-projects-header p{
-    font-size: 1.1rem;
-    opacity: 50%;
+.freelancer-projects-header p {
+  font-size: 1.1rem;
+  opacity: 50%;
 }
-.booking-section-container p{
-    text-align: center;
+.booking-section-container p {
+  text-align: center;
 }
 .freelancer-projects-header p:first-child,
 .freelancer-projects-top p:first-child,
 .freelancer-one-project-top p:first-child,
 .freelancer-projects-top-details p,
-.freelancer-one-project-details p{
-    text-align: left;
+.freelancer-one-project-details p {
+  text-align: left;
 }
 
 /*
@@ -1138,299 +1201,337 @@ button.like{
 {
     text-align: center;
 }*/
-.freelancer-projects-top, .freelancer-one-project-top{
-    align-items: center;
-    font-size: 1.3rem;
-    font-weight: bold;
-    padding: 1rem;
+.freelancer-projects-top,
+.freelancer-one-project-top {
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 1rem;
 }
-.freelancer-one-project{
-    border-bottom-left-radius: .5rem;
-    border-bottom-right-radius: .5rem;
+.freelancer-one-project {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
-.freelancer-one-project-top{
-    padding-left: 0;
-    padding-right: 0;
+.freelancer-one-project-top {
+  padding-left: 0;
+  padding-right: 0;
 }
-.freelancer-projects-top-details{
-    margin: 0 1rem;
-    padding: 1rem 0;
-    border-top: .2rem solid black;
+.freelancer-projects-top-details {
+  margin: 0 1rem;
+  padding: 1rem 0;
+  border-top: 0.2rem solid black;
 }
-.freelancer-one-project-details{
-    padding-top: 1rem;
-    border-top: .2rem solid black;
+.freelancer-one-project-details {
+  padding-top: 1rem;
+  border-top: 0.2rem solid black;
 }
-.freelancer-projects-top-details>div:first-child,
-.freelancer-one-project-details>div:first-child{
-    margin-bottom: 3rem;
-    display: flex;
+.freelancer-projects-top-details > div:first-child,
+.freelancer-one-project-details > div:first-child {
+  margin-bottom: 3rem;
+  display: flex;
 }
-.freelancer-project-details-descritpion{
-    margin: 1.5em 0;
+.freelancer-project-details-descritpion {
+  margin: 1.5em 0;
 }
-.freelancer-side-originalBooking, .freelancer-side-BookingChangesProposed{
-    flex: 1;
-    border-right: .1rem solid #213e53;
+.freelancer-side-originalBooking,
+.freelancer-side-BookingChangesProposed {
+  flex: 1;
+  border-right: 0.1rem solid #213e53;
 }
-.freelancer-side-BookingChangesProposed{
-    border: none;
-    border-left: .1rem solid #213e53;
+.freelancer-side-BookingChangesProposed {
+  border: none;
+  border-left: 0.1rem solid #213e53;
 }
-.freelancer-side-originalBooking>div:nth-child(1),
-.freelancer-side-BookingChangesProposed>div:nth-child(1){
-    border-bottom: .2rem solid #213e53;
-    text-align: center;
-    padding: .5rem;
+.freelancer-side-originalBooking > div:nth-child(1),
+.freelancer-side-BookingChangesProposed > div:nth-child(1) {
+  border-bottom: 0.2rem solid #213e53;
+  text-align: center;
+  padding: 0.5rem;
 }
-.freelancer-side-originalBooking>div:nth-child(2),
-.freelancer-side-BookingChangesProposed>div:nth-child(2){
-    padding: .5rem;
+.freelancer-side-originalBooking > div:nth-child(2),
+.freelancer-side-BookingChangesProposed > div:nth-child(2) {
+  padding: 0.5rem;
 }
-.freelancer-projects-top-details h4, .freelancer-projects-top-details p,
-.freelancer-one-project-details h4, .freelancer-one-project-details p{
-    font-size: 1.3rem;
+.freelancer-projects-top-details h4,
+.freelancer-projects-top-details p,
+.freelancer-one-project-details h4,
+.freelancer-one-project-details p {
+  font-size: 1.3rem;
 }
-.freelancer-options, .freelancer-messages, .project-status{
-    text-align: center;
+.freelancer-options,
+.freelancer-messages,
+.project-status {
+  text-align: center;
 }
-.freelancer-messages{
-    position: relative;
+.freelancer-messages {
+  position: relative;
 }
-.freelancer-messages p{
-    position: absolute;
-    bottom: 1rem;
-    right: 2.5rem;
-    color: white;
-    background-color: green;
-    border-radius: 50%;
-    padding: .1rem .2rem;
+.freelancer-messages p {
+  position: absolute;
+  bottom: 1rem;
+  right: 2.5rem;
+  color: white;
+  background-color: green;
+  border-radius: 50%;
+  padding: 0.1rem 0.2rem;
 }
-.freelancer-options i{
-    margin: 0 1rem;
-    font-size: 1.3rem;
-    cursor: pointer;
+.freelancer-options i {
+  margin: 0 1rem;
+  font-size: 1.3rem;
+  cursor: pointer;
 }
-.freelancer-options i:hover{
-    color: #ca1212;
+.freelancer-options i:hover {
+  color: #ca1212;
 }
-.freelancer-projects-top-details>div:nth-child(2),
-.freelancer-one-project-details>div:nth-child(2){
-    display: flex;
-    justify-content: center;
+.freelancer-projects-top-details > div:nth-child(2),
+.freelancer-one-project-details > div:nth-child(2) {
+  display: flex;
+  justify-content: center;
 }
 
-.freelancer-one-project{
-    padding: 1rem 3rem;
-    border-bottom: .2rem solid #213e53;
+.freelancer-one-project {
+  padding: 1rem 3rem;
+  border-bottom: 0.2rem solid #213e53;
 }
-.freelancer-one-project:hover{
-     background-color: #f1f1f1;
+.freelancer-one-project:hover {
+  background-color: #f1f1f1;
 }
-.freelancer-one-project:first-child:hover{
-    border-top: .2rem solid #213e53;
+.freelancer-one-project:first-child:hover {
+  border-top: 0.2rem solid #213e53;
 }
 .freelancer-one-project .project-status,
-.freelancer-projects-top .project-status{
-    margin: 0 1rem;
-    padding: .25rem 0;
-    color: white;
-    border-radius: .5rem;
-    font-weight: normal;
-    cursor: pointer;
+.freelancer-projects-top .project-status {
+  margin: 0 1rem;
+  padding: 0.25rem 0;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: normal;
+  cursor: pointer;
 }
 
-.freelancer-projects-top-details>div:nth-child(2) button,
-.freelancer-one-project-details>div:nth-child(2) button{
-    border: none;
-    padding: 1rem 0;
-    margin: 0 1rem;
-    width: 15rem;
-    background-color: #FF0000;
-    color: white;
-    border-radius: .5rem;
-    cursor: pointer;
+.freelancer-projects-top-details > div:nth-child(2) button,
+.freelancer-one-project-details > div:nth-child(2) button {
+  border: none;
+  padding: 1rem 0;
+  margin: 0 1rem;
+  width: 15rem;
+  background-color: #ff0000;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
-.freelancer-projects-top-details>div:nth-child(2) button:hover,
-.freelancer-one-project-details>div:nth-child(2) button:hover{
-    background-color: #bf3524;
-}
-
-.freelancer-projects-top-details>div:nth-child(2) button.freelancer-booking-finish-button,
-.freelancer-one-project-details>div:nth-child(2) button.freelancer-booking-finish-button,
-.freelancer-one-project-details>div:nth-child(2) button.freelancer-booking-modify-button{
-    background-color: #213e53;
-}
-.freelancer-projects-top-details>div:nth-child(2) button.freelancer-booking-finish-button:hover,
-.freelancer-one-project-details>div:nth-child(2) button.freelancer-booking-finish-button:hover,
-.freelancer-one-project-details>div:nth-child(2) button.freelancer-booking-modify-button:hover{
-    background-color: #1a3040;
-}
-.freelancer-one-project-details>div:nth-child(2) button.freelancer-booking-accept-button{
-    background-color: #308634;
-}
-.freelancer-one-project-details>div:nth-child(2) button.freelancer-booking-accept-button:hover{
-    background-color: #29722d;
+.freelancer-projects-top-details > div:nth-child(2) button:hover,
+.freelancer-one-project-details > div:nth-child(2) button:hover {
+  background-color: #bf3524;
 }
 
-.freelancer-project-final-messages h4, .freelancer-project-final-messages p{
-    text-align: center;
+.freelancer-projects-top-details
+  > div:nth-child(2)
+  button.freelancer-booking-finish-button,
+.freelancer-one-project-details
+  > div:nth-child(2)
+  button.freelancer-booking-finish-button,
+.freelancer-one-project-details
+  > div:nth-child(2)
+  button.freelancer-booking-modify-button {
+  background-color: #213e53;
 }
-.freelancer-project-final-messages h4{
-    font-size: 1.5rem;
+.freelancer-projects-top-details
+  > div:nth-child(2)
+  button.freelancer-booking-finish-button:hover,
+.freelancer-one-project-details
+  > div:nth-child(2)
+  button.freelancer-booking-finish-button:hover,
+.freelancer-one-project-details
+  > div:nth-child(2)
+  button.freelancer-booking-modify-button:hover {
+  background-color: #1a3040;
 }
-.freelancer-project-completion-confirmed p, .freelancer-project-completion-rejection span{
-    font-style: italic;
+.freelancer-one-project-details
+  > div:nth-child(2)
+  button.freelancer-booking-accept-button {
+  background-color: #308634;
 }
-.freelancer-project-completion-rejection span:first-child{
-    color: red;
-    font-style: normal;
-}
-.freelancer-project-completion-confirmed, .freelancer-project-completion-rejection{
-    padding: 2rem;
-}
-.emptyNextDueProject{
-    padding: 2rem;
-    font-size: 1.5rem;
-    color: black;
-}
-.bookingDetails-showOnMobileResponsive{
-    display: none;
-}
-.bookingDetails-showOnMobileResponsive h4{
-    margin-top: .5rem;
-}
-
-.freelancer-projects-top-details>div:first-child>div:first-child span,
-.freelancer-one-project-details>div:first-child>div:first-child span{
-    font-weight: normal;
-}
-.freelancer-booking-modification form, #booking-modification-acceptance{
-    margin-top: 2rem;
-}
-.freelancer-booking-modification>p{
-    margin-top: 2rem;
-    text-align: center;
-    font-size: 1.3rem;
-    color: red;
-}
-.freelancer-booking-modification form label,  .freelancer-booking-modification-acceptance-form form label{
-    font-size: 1.3rem;
-}
-.booking-dateandtime-modification{
-    display: grid;
-    grid-template-columns: 60% 38%;
-    grid-gap: 2%;
-    align-items: center;
-    margin-bottom: 2rem;
+.freelancer-one-project-details
+  > div:nth-child(2)
+  button.freelancer-booking-accept-button:hover {
+  background-color: #29722d;
 }
 
-.booking-dateandtime-modification input, .booking-dateandtime-modification select{
-    cursor: pointer;
+.freelancer-project-final-messages h4,
+.freelancer-project-final-messages p {
+  text-align: center;
 }
-.freelancer-booking-modification textarea{
-    resize: none;
-    height: 15rem;
+.freelancer-project-final-messages h4 {
+  font-size: 1.5rem;
 }
-.freelancer-booking-modification input, .freelancer-booking-modification textarea{
-    border: none;
+.freelancer-project-completion-confirmed p,
+.freelancer-project-completion-rejection span {
+  font-style: italic;
 }
-.freelancer-booking-modification input:focus, .freelancer-booking-modification textarea:focus{
-    outline: none;
-    border: none;
+.freelancer-project-completion-rejection span:first-child {
+  color: red;
+  font-style: normal;
 }
-.booking-time-modification div{
-    display: flex;
-    align-items: center;
+.freelancer-project-completion-confirmed,
+.freelancer-project-completion-rejection {
+  padding: 2rem;
 }
-.booking-time-modification div p{
-    font-size: 1.3rem;
-    font-weight: bolder;
-    margin: 0 .25rem;
+.emptyNextDueProject {
+  padding: 2rem;
+  font-size: 1.5rem;
+  color: black;
 }
-.freelancer-booking-modification form section:nth-child(2){
-    margin-bottom: 1.5rem;
+.bookingDetails-showOnMobileResponsive {
+  display: none;
 }
-.freelancer-booking-modification form section:nth-child(3)>div{
-    display: grid;
-    grid-template-columns: 10% 90%;
-    align-items: center;
-    background-color: white;
-    padding: .5rem 0;
-    border-radius: .5rem;
-    margin-top: .5rem;
-}
-.freelancer-booking-modification form section:nth-child(3)>div:focus{
-    border: .1rem solid #213e53;
-}
-.freelancer-booking-modification form section:nth-child(3)>div input{
-    border-left: .2rem solid #213e53;
-    padding: 0;
-    border-radius: 0;
-    padding: .5rem 1rem;
-}
-.freelancer-booking-modification form section:nth-child(3)>div input:focus{
-    outline: none;
-    border: none;
-    border-left: .2rem solid #213e53;
-}
-.freelancer-booking-modification form i.fas.fa-pound-sign{
-    font-size: 1.5rem;
-    text-align: center;
-    color: #213e53;
-}
-#booking-modification-submit-bttn{
-    border: 0;
-    margin: 0;
-    width: 100%;
-    background-color: #213e53;
-}
-#booking-modification-submit-bttn:hover{
-    background-color: #0d3349;
-}
-.freelancer-booking-modification form section:nth-child(4){
-    margin-top: 3rem;
+.bookingDetails-showOnMobileResponsive h4 {
+  margin-top: 0.5rem;
 }
 
-.freelancer-booking-modification-acceptance-form{
-    font-size: 1.3rem;
+.freelancer-projects-top-details > div:first-child > div:first-child span,
+.freelancer-one-project-details > div:first-child > div:first-child span {
+  font-weight: normal;
 }
-.freelancer-booking-modification-acceptance-form h4{
-    margin-bottom: 1rem;
+.freelancer-booking-modification form,
+#booking-modification-acceptance {
+  margin-top: 2rem;
 }
-.freelancer-booking-modification-acceptance-form span{
-    font-weight: bold;
-    font-style: italic;
-    color: red;
+.freelancer-booking-modification > p {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1.3rem;
+  color: red;
 }
-.freelancer-booking-modification-acceptance-form label{
-    font-weight: bold;
+.freelancer-booking-modification form label,
+.freelancer-booking-modification-acceptance-form form label {
+  font-size: 1.3rem;
+}
+.booking-dateandtime-modification {
+  display: grid;
+  grid-template-columns: 60% 38%;
+  grid-gap: 2%;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.booking-dateandtime-modification input,
+.booking-dateandtime-modification select {
+  cursor: pointer;
+}
+.freelancer-booking-modification textarea {
+  resize: none;
+  height: 15rem;
+}
+.freelancer-booking-modification input,
+.freelancer-booking-modification textarea {
+  border: none;
+}
+.freelancer-booking-modification input:focus,
+.freelancer-booking-modification textarea:focus {
+  outline: none;
+  border: none;
+}
+.booking-time-modification div {
+  display: flex;
+  align-items: center;
+}
+.booking-time-modification div p {
+  font-size: 1.3rem;
+  font-weight: bolder;
+  margin: 0 0.25rem;
+}
+.freelancer-booking-modification form section:nth-child(2) {
+  margin-bottom: 1.5rem;
+}
+.freelancer-booking-modification form section:nth-child(3) > div {
+  display: grid;
+  grid-template-columns: 10% 90%;
+  align-items: center;
+  background-color: white;
+  padding: 0.5rem 0;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+}
+.freelancer-booking-modification form section:nth-child(3) > div:focus {
+  border: 0.1rem solid #213e53;
+}
+.freelancer-booking-modification form section:nth-child(3) > div input {
+  border-left: 0.2rem solid #213e53;
+  padding: 0;
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+}
+.freelancer-booking-modification form section:nth-child(3) > div input:focus {
+  outline: none;
+  border: none;
+  border-left: 0.2rem solid #213e53;
+}
+.freelancer-booking-modification form i.fas.fa-pound-sign {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #213e53;
+}
+#booking-modification-submit-bttn {
+  border: 0;
+  margin: 0;
+  width: 100%;
+  background-color: #213e53;
+}
+#booking-modification-submit-bttn:hover {
+  background-color: #0d3349;
+}
+.freelancer-booking-modification form section:nth-child(4) {
+  margin-top: 3rem;
+}
+
+.freelancer-booking-modification-acceptance-form {
+  font-size: 1.3rem;
+}
+.freelancer-booking-modification-acceptance-form h4 {
+  margin-bottom: 1rem;
+}
+.freelancer-booking-modification-acceptance-form span {
+  font-weight: bold;
+  font-style: italic;
+  color: red;
+}
+.freelancer-booking-modification-acceptance-form label {
+  font-weight: bold;
 }
 .freelancer-booking-modification-acceptance-form input,
-.freelancer-booking-modification-acceptance-form p{
-    background: #eee;
-    border: none;
-    width: 100%;
-    margin-bottom: 1.5rem;
+.freelancer-booking-modification-acceptance-form p {
+  background: #eee;
+  border: none;
+  width: 100%;
+  margin-bottom: 1.5rem;
 }
-.freelancer-booking-modification-acceptance-form input:focus{
-    border: none;
-    outline: none;
-    cursor: default;
+.freelancer-booking-modification-acceptance-form input:focus {
+  border: none;
+  outline: none;
+  cursor: default;
 }
-.freelancer-booking-modification-acceptance-form section:last-child{
-    margin-top: 3rem;
-    text-align: center;
+.freelancer-booking-modification-acceptance-form section:last-child {
+  margin-top: 3rem;
+  text-align: center;
 }
-.freelancer-booking-modification-acceptance-form section:last-child button:last-child{
-    background-color: #308634;
+.freelancer-booking-modification-acceptance-form
+  section:last-child
+  button:last-child {
+  background-color: #308634;
 }
-.freelancer-booking-modification-acceptance-form section:last-child button:last-child:hover{
-    background-color: #29722d;
+.freelancer-booking-modification-acceptance-form
+  section:last-child
+  button:last-child:hover {
+  background-color: #29722d;
 }
-.freelancer-booking-modification-acceptance-form section:last-child button:first-child{
-    background-color: #FF0000;
+.freelancer-booking-modification-acceptance-form
+  section:last-child
+  button:first-child {
+  background-color: #ff0000;
 }
-.freelancer-booking-modification-acceptance-form section:last-child button:first-child:hover{
-    background-color: #bf3524;
+.freelancer-booking-modification-acceptance-form
+  section:last-child
+  button:first-child:hover {
+  background-color: #bf3524;
 }
