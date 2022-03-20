@@ -253,7 +253,8 @@ header{
 }
 .single-selected-freelancer-index .bottom-side{
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
+    justify-content: center;
     padding: 1rem .5rem;
 }
 .single-selected-freelancer-index .bottom-side button,
@@ -265,6 +266,7 @@ header{
     color: #FFFFFF;
     border-radius: .5rem;
     cursor: pointer;
+    margin: 0 .5rem;
 }
 .single-selected-freelancer-index .bottom-side button,
 .single-selected-freelancer-index .bottom-side a p{

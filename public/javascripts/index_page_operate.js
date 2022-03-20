@@ -36,14 +36,6 @@ $(window).ready(function() {
             'width': '12rem',
         });
     }
-    if(!$('.bottom-side .freelance-mssg-btn').is(':visible')){
-        $('.bottom-side').css({
-            'justifyContent': 'center'
-        });
-        $('.bottom-side button').css({
-            'margin': '0 .5rem'
-        });
-    }
 })
 
 $(window).click(function(event) {
