@@ -194,22 +194,32 @@
 }
 
 .freelancer-serviceAndPrice-profile{
-    margin-bottom: 1rem;
     border: .1rem solid black;
-    padding: .5rem 1rem;
     border-radius: .5rem;
     cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.freelancer-serviceAndPrice-profile div{
+    padding: .5rem 1rem;
 }
 .freelancer-serviceAndPrice-profile:last-child{
     margin-bottom: 0;
 }
+
 .freelancer-serviceAndPrice-profile ul{
     list-style: none;
 }
 .freelancer-serviceAndPrice-profile>div:first-child{
-    display: grid;
-    grid-template-columns: 80% 20%;
+    display: flex;
 }
+.freelancer-serviceAndPrice-profile>div:first-child>h4:nth-child(1){
+    flex: 2;
+}
+.freelancer-serviceAndPrice-profile>div:first-child>h4:nth-child(2){
+    flex: 1;
+}
+
 .freelancer-serviceAndPrice-profile h4{
     font-size: 1.2rem;
 }

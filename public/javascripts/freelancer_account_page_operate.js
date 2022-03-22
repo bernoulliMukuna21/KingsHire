@@ -651,7 +651,7 @@ $('.update-general-information').submit(function (event) {
             }
 
             accountsOperation.enableButton('#update-page-submission', 'Save Profile');
-            $('.user-main-page').trigger('click');
+            //$('.user-main-page').trigger('click');
 
             let successMessages = [[{label: 'successMessage',
                 message: 'Profile successfully saved!'}]];
