@@ -34,6 +34,7 @@
     "http-errors": "^2.0.0",
     "jquery": "^3.6.0",
     "jsdom": "^19.0.0",
+    "loadtest": "^5.2.0",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.7",
     "morgan": "^1.10.0",

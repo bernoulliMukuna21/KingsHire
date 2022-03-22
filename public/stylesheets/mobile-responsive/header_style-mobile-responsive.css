@@ -4,22 +4,60 @@
     .top-container{
         display: none;
     }
+
     .top-mobilenavcontainer{
         display: block;
+        background-color: white;
+        overflow: hidden;
+        position: relative;
     }
-    .mobileheaderLinks a:last-child{
-        border-bottom: .2rem solid #213e53;
-        padding-top: 2rem;
-    }
-    .mobileheaderLinks a:last-child button#be-freelancer,
-    .mobileheaderLinks a:last-child button#be-client {
-        border: none;
+    .top-mobilenavcontainer .mobileheaderLinks {
+        display: none;
         width: 100%;
-        padding: 1rem;
-        background: white;
-        background-color: #8d2874;
+    }
+    .top-mobilenavcontainer a {
+        /* color: #213e53; */
+        color: #1E88E5;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        display: block;
+    }
+    .top-mobilenavcontainer a.headerburger-icon {
+
+        color: #1E88E5;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .top-mobilenavcontainer .mobileheaderLinks a:hover {
+        background-color: #1E88E5;
         color: white;
-        font-weight: bolder;
-        border-radius: .5rem;
+    }
+    .mobiletop-texts{
+        text-align: center;
+        width: 85%;
+        /*background-color: black;*/
+        float: right;
+        margin-right: 2rem;
+    }
+    .mobiletop-texts p{
+        display: inline-block;
+        font-family:tempus sans itc;
+    }
+    .mobiletop-texts a{
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .mobiletop-texts :last-child{
+        float: right;
+    }
+    .services-navigation-bar{
+        display: none;
+    }
+    .services-navigation-bar-mobile{
+        display: block;
     }
 }

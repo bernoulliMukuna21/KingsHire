@@ -151,7 +151,7 @@ router.post('/join/:userType', function (req, res, next) {
                                 `<p>Thank you,<br>KingsHire Development Team</p>`
                             mailer.smtpTransport.sendMail(mailer.mailerFunction(email,
                                 "Welcome to KingsHire", welcomeEmailToUser), function (err) {
-                                if(err){ throw err }
+                                if(err){ console.log(err); throw err }
                                 else{
                                     console.log('user successfully signed up!');
 

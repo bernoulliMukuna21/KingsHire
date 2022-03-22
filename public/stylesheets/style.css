@@ -20,216 +20,87 @@ input:focus{
   border-radius: .5rem;
   border-color: #213e53;
 }
-
-/*
-******************** Header-Style
-*/
-header ul{
-  list-style-type: none;
-}
-
-.top-container{
-  padding: .5rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-bottom: .5rem solid #213e53;
-}
-
-.web-title a{
-  font-size: 3rem;
-  color: #213e53;
-}
-
-.top-navbar{
-  display: flex;
-}
-
-.top-navbar button{
-  font-size: 1.3rem;
-  font-weight: bolder;
-  padding: .5rem;
-  margin-left: 1rem;
-  cursor: pointer;
-  border: none;
-  border-bottom: 0.1rem solid #213e53;
-  background-color: white;
-  color: #213e53;
-}
-#client-account-nameSurname, #freelancer-account-nameSurname{
-  border: none;
-  border-bottom: 0.1rem solid #213e53;
-}
-
-.top-navbar button:hover{
-  color: white;
-  background-color: #213e53;
-}
-#joinNow, #be-freelancer{
-  border: .1rem solid #8d2874;
-  color: #8d2874;
-}
-#joinNow:hover, #be-freelancer:hover{
-  background-color: #8d2874;
-  color: white;
-}
 /*
 ***************** Join File Style
 */
 .join-container{
-  border: .1rem solid #213e53;
   margin: 2rem 7rem;
   display: flex;
-  background-color: #213e53;
-}
-
-/*------ Left -----*/
-.join-left-container{
-  flex: 1;
-  color: white;
-}
-
-.freelancer-container{
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-.freelancer-top, .freelancer-middle, .freelancer-bottom{
-  flex: 1;
-}
-.freelancer-top h1{
-  margin: 15%;
-}
-.freelancer-middle h1, .client-top h1{
-  font-size: 1.5rem;
-  font-weight: bolder;
-  text-transform: uppercase;
-  font-style: italic;
-  color: white;
-}
-.freelancer-middle h1{
-  margin-top: 5%;
-}
-.fas.fa-arrow-circle-right{
-  font-size: 5rem;
-  margin: 1rem 0;
-}
-.freelancer-bottom{
-  display: flex;
-  justify-content: space-evenly;
-  border-top: .2rem solid white;
-  margin: 0 15%;
-}
-.freelancer-bottom p{
-  text-align: justify;
-  font-size: 1.3rem;
-  padding: 1rem;
-}
-#joinAsClient{
-  margin-bottom: 2rem;
-}
-
-.client-container{
-  display: flex;
-  flex-direction: column;
-  text-align: center;
   justify-content: center;
-  height: 100%;
-}
-
-.client-middle{
-  display: grid;
-  width: 100%;
   align-items: center;
-  text-align: center;
-  grid-template-columns: minmax(2rem, 1fr) auto minmax(2rem, 1fr);
-  grid-gap: 2rem;
-  font-size: 2.5rem;
-  margin: 20% 0;
 }
 
-h2:before,
-h2:after {
-  content: '';
-  border-top: .1rem solid;
-}
-h2:before{
-  margin-left: 1rem;
-}
-h2:after{
- margin-right: 1rem;
-}
-
-.client-bottom a, #joinAsClient{
-  font-size: 2rem;
-  font-weight: bolder;
-  color: white;
-  background-color: #8d2874;
-  border: .1rem solid #8d2874;
-  padding: 1rem;
-  cursor: pointer;
-  border-radius: 1rem;
-}
-.client-bottom a:hover, #joinAsClient:hover{
-  box-shadow: .05rem .1rem #8d2874;
-}
-.freelancer-join-bottom{
-  margin-bottom: 5rem;
-  padding: 1rem 0;
-}
-
-/*----------Right------------*/
-.join-right-container{
-  flex: 1.75;
-  background-color: white;
-  padding: 2rem;
-}
-
-.join-form-container{
-  display: flex;
-  justify-content: space-between;
-}
 .join-form-main>h1{
-  padding: 1rem;
-  margin-bottom: 1rem;
   text-align: center;
-  color: #213e53;
   font-size: 2.5rem;
-}
-
-.join-form-right{
-  border-right: .1rem solid #213e53;
-  padding-right: 1rem;
-  flex: 1;
-}
-.join-form-left{
-  padding-left: 1rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .join-form-container label{
   font-size: 1.3rem;
 }
 
+/*----------Right------------*/
+.join-right-container{
+  background-color: white;
+  padding: 2rem;
+  color: black;
+  border: .1rem solid lightgrey;
+  width: 50%;
+  border-radius: 1rem;
+  font-size: 1.3rem;
+  box-shadow: .2rem .2rem lightgrey;
+}
+.join-form-container{
+  justify-content: space-between;
+  margin: 4rem  0;
+}
+
+.join-form-left a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: .1rem solid lightgrey;
+  width: 100%;
+  border-radius: 1rem;
+  padding: .75rem;
+}
+
+.signUp-Separator{
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.fa-brands.fa-google{
+  background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  margin: 0 1rem;
+  font-size: 2rem;
+}
+
 .join-right-container input, button.web-submission, button.mobile-submission{
   width: 100%;
+  margin-top: .5rem;
   margin-bottom: 1.5rem;
   background-color: white;
-  border: .1rem solid #ccc;
-  border-radius: .4rem;
-  font-size: 1.3rem;
+  border: .1rem solid lightgrey;
+  border-radius: 2rem;
+  font-size: 1.2rem;
   padding: 1rem;
 }
+button.web-submission, button.mobile-submission{
+  border-radius: 1rem;
+}
 .join-right-container input:focus{
-  border-color: #213e53;
+  border: black;
   outline: none;
 }
+
 #submit-button{
-  background-color: #4CAF50;
+  background-color: #DB2C44;
   cursor: pointer;
   border: none;
   color: white;
@@ -237,21 +108,12 @@ h2:after{
 }
 
 #submit-button:hover{
-  background-color: #308634;
+  background-color: #DB2C44;
 }
 #submit-button:focus{
   outline: none;
 }
 
-.join-form-left p, .join-form-left a{
-  text-align: center;
-  font-size: 1.3rem;
-}
-.join-form-left a{
-  color: cornflowerblue;
-  padding: 1rem 0;
-  margin: 1.5rem 0;
-}
 #joinFL-login{
   margin: 0;
   padding: 0;
@@ -259,40 +121,29 @@ h2:after{
 #joinFL-login:hover{
   text-decoration: underline;
 }
-.fab.fa-facebook-f, .fab.fa-google-plus-g, .fab.fa-linkedin-in, .fab.fa-twitter{
-  color: white;
-  font-size: 2rem;
-  border: none;
-  border-radius: 5rem;
-  cursor: pointer;
+
+.signup-page-login-option{
+  text-align: center;
+}
+.signup-page-login-option a{
+  color: #1E88E5;
+  text-decoration: underline;
 }
 
-.fab.fa-facebook-f{
-  background-color: #3b5998;
+.join-page-bottom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.fab.fa-facebook-f:hover{
-  background-color: #2a457e;
-}
-
-.fab.fa-google-plus-g{
-  background-color: #db4a39;
-}
-.fab.fa-google-plus-g:hover{
-  background-color: #bf3524;
-}
-
-.fab.fa-linkedin-in{
-  background-color: #0e76a8;
-}
-.fab.fa-linkedin-in:hover{
-  background-color: #0c628c;
-}
-
-.fab.fa-twitter{
-  background-color: #00acee;
-}
-.fab.fa-twitter:hover{
-  background-color: #0398d0;
+.join-page-bottom a{
+  border: .1rem solid #DB2C44;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  width: 100%;
+  text-align: center;
+  background-color: #DB2C44;
+  color: #FFFFFF;
+  font-weight: bold;
 }
 
 /*
@@ -300,8 +151,9 @@ h2:after{
  ********************************************* Login Page **************************************************************
 */
 .login-page-container{
+  background-color: #FCFCDB;
   overflow: hidden;
-  padding: 40px 30px 30px 30px;
+  padding: 3rem;
   border-radius: 10px;
   position: absolute;
   width: 100rem;
@@ -315,8 +167,8 @@ h2:after{
   -webkit-transition: -webkit-transform 300ms, box-shadow 300ms;
   -moz-transition: -moz-transform 300ms, box-shadow 300ms;
   transition: transform 300ms, box-shadow 300ms;
-  box-shadow: 5px 10px 10px rgba(2, 128, 144, 0.2),
-  5px 10px 10px rgba(2, 128, 144, 0.2);
+  box-shadow: 5px 10px 10px rgba(254, 178, 188, 0.2),
+  5px 10px 10px rgba(254, 178, 188, 0.2);
 }
 
 .login-page-container{
@@ -363,9 +215,7 @@ h2:after{
 .login > input{
   font-family: "Asap", sans-serif;
   display: block;
-  border-radius: .5rem;
-  font-size: 1.5rem;
-  /*background: white;*/
+  border-radius: 2rem;
   width: 100%;
   border: .1rem solid #213e53;
   padding: 1rem;
@@ -373,24 +223,26 @@ h2:after{
 }
 .login > button{
   cursor: pointer;
-  color: #213e53;
-  font-size: 1.5rem;
+  color: white;
   text-transform: uppercase;
-  width: 8rem;
-  border: 0.1rem solid #213e53;
-  padding: 1rem 0;
+  width: 10rem;
+  border: none;
+  padding: .75rem 0;
   margin-top: 1rem;
-  /*margin-left: -.5rem;*/
   border-radius: .5rem;
   background-color: white;
   -webkit-transition: background-color 300ms;
   -moz-transition: background-color 300ms;
   transition: background-color 300ms;
 }
+.login > button#unilance-login-bttn{
+  border-color: #DB2C44;
+  background-color: #DB2C44;
+}
+
 .login > button:hover{
-  background-color: #213e53;
-  color: white;
-  border-color: white;
+  border: .1rem solid white;
+  box-shadow: .05rem .05rem #FCFCDB;
 }
 .login button:active, .login button:focus, .login input:active, .login input:focus{
   outline: none;
@@ -407,7 +259,8 @@ h2:after{
 .login section a{
   margin-bottom: .5rem;
   color: white;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .login section a:hover{
@@ -428,7 +281,7 @@ h2:after{
 .login::before {
   left: 40%;
   bottom: -130%;
-  background-color: rgba(33, 62, 83, 1);
+  background-color: rgba(30, 136, 229, 1);
   -webkit-animation: wawes 6s infinite linear;
   -moz-animation: wawes 6s infinite linear;
   animation: wawes 6s infinite linear;
@@ -437,7 +290,7 @@ h2:after{
 .login::after {
   left: 35%;
   bottom: -125%;
-  background-color: rgba(33, 62, 83, 0.15);
+  background-color: rgba(254, 178, 188, 1);
   -webkit-animation: wawes 7s infinite;
   -moz-animation: wawes 7s infinite;
   animation: wawes 7s infinite;

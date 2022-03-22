@@ -88,6 +88,7 @@ function booking_form_show(title, allServicesPrices) {
     // Get and display all the services of the clicked freelancer
     $('#service-booking-form>select').append(new Option('Select Service', '')).attr('selected', true);
     allServicesPrices.forEach(service_price =>{
+        console.log(service_price.innerText)
         let service = service_price.childNodes[0].innerHTML;
         $('#service-booking-form>select').append(new Option(service, service));
     })
@@ -106,11 +107,11 @@ function priceToShow(targetService, allServicesPrices) {
         let currentServiceAndPrice = allServicesPrices[i];
         if(currentServiceAndPrice.childNodes[0].innerHTML===targetService){
             targetPrice = currentServiceAndPrice.childNodes[1].innerHTML;
-            //break;
+            break;
         }
     }
 
-    return targetPrice.slice(1)
+    return (targetPrice ? targetPrice.slice(1) : targetPrice);
 }
 
 function buttonToShow(button) {
@@ -131,7 +132,7 @@ function buttonToShow(button) {
     }
 }
 
-$('.bottom-side button').click(event => {
+$('.single-selected-freelancer-index .bottom-side button').click(event => {
     // Get Screen size
     var windowsize = $(window).width();
 
@@ -139,7 +140,7 @@ $('.bottom-side button').click(event => {
     let parentContainer = event.target.parentNode.parentNode;
 
     let currentFreelancerName =  parentContainer.childNodes[0].
-        childNodes[1].childNodes[0].innerText;
+        childNodes[1].innerText;
 
     // Create Booking Form Title
     let currentPopTitle = 'Book Service with '+ currentFreelancerName;
@@ -153,7 +154,7 @@ $('.bottom-side button').click(event => {
 
     }else{
         // Get the clicked freelancer services and their respective prices
-        allServicesPrices = parentContainer.childNodes[1].childNodes[0].childNodes;
+        allServicesPrices = parentContainer.childNodes[1].childNodes;
 
         // Date & Time for mobile version
         mobileVersionFunctionality(windowsize);
@@ -187,8 +188,9 @@ $('#service-booking-form>select').change(event => {
     if($('#service-booking-submit-bttn').is(':visible') ||
         $('#service-enquiry-submit-bttn').is(':visible')){
 
-        $('#service-booking-form>select').css('border', '.1rem solid #213e53');
+        $('#service-booking-form>select').css('border', '.1rem solid #1E88E5');
         let price = priceToShow(event.target.value, allServicesPrices);
+        console.log('price now: ', price)
         let bookBttnText;
 
         if(price){
@@ -215,7 +217,7 @@ $('.closebook-form').click(event => {
 $(window).click(function(event) {
     if(event.target.className === "booking") {
         event.target.style.display = "none";
-        $('#service-booking-form>select').css('border-color', '#213e53');
+        $('#service-booking-form>select').css('border-color', '#1E88E5');
         // #213e53
     }
 });

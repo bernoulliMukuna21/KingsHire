@@ -19,6 +19,7 @@ var usersRouter = require('./routes/users');
 var serviceRouter = require('./routes/services');// This path should not exist. It will go
 var aboutRouter = require('./routes/aboutUs');
 var accountRouter = require('./routes/account');
+var policyRouter = require('./routes/policy');
 var bookingRouter = require('./routes/booking').router;
 var messageRouter = require('./routes/sever-side-messages').router;
 var paymentRouter = require('./routes/payment').router;
@@ -88,6 +89,8 @@ app.use('/account', accountRouter);
 app.use('/join', indexRouter);// using the same route
 app.use('/login', indexRouter); //
 app.use('/about-us', aboutRouter);
+app.use('/services', serviceRouter);
+app.use('/policy', policyRouter);
 app.use('/booking', bookingRouter);
 app.use('/messages', messageRouter);
 app.use('/payment', paymentRouter);
@@ -102,7 +105,6 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in devendorvelopment
-  console.log(err);
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

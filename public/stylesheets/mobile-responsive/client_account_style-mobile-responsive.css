@@ -3,17 +3,18 @@
 @media (max-width:500px) {
     .client-account{
         margin: 1rem;
+        padding: 1rem 1rem;
     }
     /* Main Side */
     .client-account-main{
         display: flex;
         flex-direction: column;
+        margin: 0;
     }
 
     /* Left Side */
     .client-account-left{
         margin-right: 0;
-
         margin-bottom: 1rem;
     }
     .client-profile-information ul{
@@ -44,7 +45,8 @@
         justify-content: center;
     }
     .client-profile-information ul li:hover{
-        background-color: rgb(33, 62, 83, 1);
+        background-color: #1E88E5;
+        /*background-color: #FEB2BC;*/
     }
 
     /* Left Side */

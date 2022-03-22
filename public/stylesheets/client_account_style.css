@@ -3,43 +3,49 @@ input:focus{
     border-color: #213e53;
 }
 .client-account{
-    margin: 1rem 5rem;
+    /*margin: 1rem 5rem;*/
+    border: .1rem solid #FCFCDB;
+    background-color: #FCFCDB;
 }
 
 /*******************************************************
 ************ Client Main Side*********************/
 .client-account-main{
     display: flex;
+    margin: 1rem 5rem;
+    min-height: 81vh;
+}
+.client-account-left, .client-account-middle{
+    padding: 2rem;
+    background-color: #FFFFFF;
+    border-radius: 1rem;
 }
 
 /*### Left Side####*/
 .client-account-left{
     flex: 1;
     margin-right: 1rem;
+    box-shadow: .2rem .2rem .2rem .2rem #FEB2BC;
 }
 .client-profile-details{
     text-align: center;
     font-size: 1.3rem;
     font-weight: bolder;
 }
-.client-profile-details img{
-    object-fit: cover;
-    object-position: top;
-    height: 30vh;
-    width: 30vh;
-    border: .1rem dashed black;
-}
+
 .client-profile-details p{
     margin: 1rem;
 }
 .client-profile-details button{
-    margin-bottom: 1rem;
-    padding: .75rem;
+    margin: 1rem 0 2rem 0;
+    padding: 1rem;
     width: 100%;
-    color: white;
-    background-color: #8d2874;
-    border-color: #8d2874;
-    font-size: 1.3rem;
+    color: black;
+    background-color: #F9546A;
+    box-shadow: .2rem .2rem lightgrey;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
     cursor: pointer;
 }
@@ -49,25 +55,25 @@ input:focus{
 }
 
 .client-account-left li{
-    font-size: 1.3rem;
-    border-bottom: .1rem solid #213e53;
+    font-size: 1.2rem;
+    border-bottom: .1rem solid lightgrey;
     padding: 1rem;
-}
-
-.client-account-left li:nth-child(1){
-    border-top: .1rem solid #213e53;
+    /*margin-bottom: .5rem;*/
 }
 
 .client-account-left li:hover{
     cursor: pointer;
-    background-color: #213e53;
-    color: #ffffff;
+    /*background-color: #FEB2BC;*/
+    background-color: #1E88E5;
+    box-shadow: .1rem .1rem lightgrey;
+    color: white;
 }
 
 /*### Middle Side####*/
 .client-account-middle{
     flex: 3;
     margin: 0 1rem;
+    box-shadow: .2rem .2rem .2rem .2rem #FEB2BC;
 }
 /*
 * Bookings
@@ -408,13 +414,13 @@ input:focus{
 .client-profile-update h3, .client-current-bookings h3{
     width: max-content;
     padding-bottom: .25rem;
-    color: #213e53;
-    border-bottom: .25rem solid #213e53;
+    color: black;
+    border-bottom: .25rem solid black;
     font-size: 2rem;
     margin-bottom: 1rem;
 }
 .client-profile-update label{
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 .client-profile-update  input, .client-profile-update-options button{
     width: 100%;
@@ -422,12 +428,14 @@ input:focus{
     background-color: white;
     border: .1rem solid #ccc;
     border-radius: .5rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     padding: 1rem;
     margin-bottom: 1rem;
 }
+.client-profile-update-options button{
+    font-size: 1.3rem;
+}
 .client-profile-update input:focus{
-    border-color: #213e53;
     outline: none;
 }
 
@@ -435,7 +443,7 @@ input:focus{
     display: grid;
     grid-gap: 1%;
     align-items: center;
-    border-bottom: .2rem solid #213e53;
+    border-bottom: .2rem solid black;
     padding-bottom: 1rem;
 }
 .client-basic-infos{
@@ -460,7 +468,7 @@ input:focus{
     object-position: top;
 }
 .basic-infos-three{
-    border: .1rem dashed #213e53;
+    border: .1rem dashed black;
     text-align: center;
     border-radius: .5rem;
     padding: 1rem;
@@ -473,16 +481,18 @@ input:focus{
     margin-top: 1rem;
 }
 .client-profile-update-options button{
-    background-color: #213e53;
-    color: white;
-    border-color: #213e53;
+    background-color: #F9546A;
+    color: black;
+    font-weight: bold;
+    border-color: #F9546A;
     cursor: pointer;
+    box-shadow: .2rem .2rem lightgrey;
+    border-radius: 1rem;
 }
 .client-profile-update-options button:hover{
-    background-color: #2a4f69;
+    background-color: #F9546A;
 }
 .client-profile-update-options button:focus{
-    border-color: #213e53;
-    border-radius: .5rem;
+    border-color: #F9546A;
     outline: none;
 }

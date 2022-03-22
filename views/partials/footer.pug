@@ -1,52 +1,51 @@
-- let managementEmail = 'kingshire.team@gmail.com'
-div#unilance-feeback-form
-    div#feeback-text
-        p.feedbackText Feedback
+footer
+    - let kingsChatProfile = "https://kingschat.online/user/kings-hire"
+    .contact-us-and-accessibility
+        .footer-section-1
+            a(href='/'): img.kingsHireImage(src='/images/kingsHireImage-removebg-preview.png')
+            ul
+                li Powerful Freelance Marketplace
+                li System with ability to change the Users (Freelancers & Cliens)
+            .contact-us-socials
+                a(href=kingsChatProfile target="_blank")
+                    img#kingsChat-logo(src='/images/kingsChat.png')
+        .footer-section-2
+            h4  For Clients
+            ul
+                li
+                    a(href='/services')  Find Freelancers
+                li
+                    a(href='/policy/refund')  Refund Policy
+                li
+                    a(href='/policy/privacy')  Privacy Policy
+        .footer-section-3
+            h4  For Freelancers
+            ul
 
-div.feedback-modal-container(style='display: none;')
-    .feedback-container-contents
-        .feedback-form-mailer-message(style='display: none;')
-        form#feeback-form(action='/feedback' method='post' enctype='text/plain')
-            h4 Feedback Form
-            div
-                section
-                    label Name:(
-                        span(style='color: red') *
-                        | ):
-                    input(type='text' name='name' placeholder='Type your name ...' required)
-                section
-                    | E-mail:
-                    input(type='email' name='mail' placeholder='Type your email address ...')
-                section
-                    label Feeback Comment(
-                        span(style='color: red') *
-                        |):#[br]
-                    textarea(type='text' name='comment' placeholder='Type your feeback...' required)
-                section
-                    input(type='reset' value='Reset')
-                    input(type='submit' value='Send')
+                if ! isLogged
+                    li
+                        a(href="/users/join/freelancer")  Create Account
+                else
+                    li
+                        a Create Account
+                    if loggedInUser.user_stature.current === 'freelancer'
+                        li
+                            a(href='/account/freelancer/' + emailEncode(loggedInUser.email))  Find Work
+                    else
+                        li
+                            a Find Work
 
-footer#contact.contact-area
-    .container
-        .top-footer
-            p This is a platform to find and book the services of excellent freelancers around the world. Although we have just launched this platform, we aim to become the biggest and goto place for finding freelancers.
-            //
-                .middle-footer
-                    .first-contact-section
-                        h6 Contact Us with the phone numbers below or send an email
-                    .second-contact-section
-                        h6
-                            | +01 2345 6789 12
-                            span |
-                            | +01 2345 6789 12
-                    .third-contact-section
-                        .contact-social
-                            ul
-                                li
-                                    a.hover-target(href='')
-                                        i.fab.fa-facebook-square
-                                li
-                                    a.hover-target(href='')
-                                        i.fab.fa-linkedin
-        .bottom-footer
-            p Copyright © 2022 All Rights Reserved.
+        .footer-section-4
+            h4  Contact Us
+            ul
+                li
+                    i.fa-solid.fa-location-dot
+                    p United Kingdom
+                li
+                    i.fa-solid.fa-phone
+                    p +447448804768
+                li
+                    i.far.fa-envelope
+                    p kingshire.team@gmail.com
+    .copyright
+        p  copyright © 2022. All Rights Reserved

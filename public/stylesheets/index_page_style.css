@@ -1,9 +1,359 @@
+ul{
+    list-style: none;
+}
+li{
+    color: black;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+
+header .top-container, .index-search-information-top{
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+header{
+    background-color: #FCFCDB;
+}
+.top-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.kingsHireImage{
+    height: 10vh;
+    width: 10vh;
+    object-fit: cover;
+    cursor: pointer;
+}
+.top-navbar{
+    background-color: white;
+    font-size: 1.3rem;
+    padding: .5rem 0;
+    border-radius: .5rem;
+}
+.top-navbar>div{
+    display: flex;
+}
+.top-navbar div a{
+    text-align: center;
+    min-width: 10rem;
+    padding: .5rem;
+    border-radius: .5rem;
+    margin: 0 1rem;
+    font-weight: bold;
+}
+.top-navbar div a:hover{
+    border: .1rem solid #1E88E5;
+}
+
+.clicked-top-navbar{
+    background-color: #1E88E5;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.services-navigation-bar,
+.services-navigation-bar-mobile{
+    background-color: #1E88E5;
+    font-size: 1.3rem;
+}
+.services-navigation-bar ul,
+.services-navigation-bar-mobile ul{
+    display: flex;
+    justify-content: space-evenly;
+}
+.services-navigation-bar ul li,
+.services-navigation-bar-mobile ul li{
+    padding: .75rem;
+    width: fit-content;
+}
+.services-navigation-bar ul li a,
+.services-navigation-bar-mobile ul li a{
+    color: #FFFFFF;
+    padding: .75rem;
+}
+.services-navigation-bar ul li a:hover,
+.services-navigation-bar-mobile ul li a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+    color: #FCFCDB;
+}
+.services-navigation-bar ul li a.services-navigation-bar-clicked{
+    text-decoration: underline;
+    font-weight: bold;
+    color: #FCFCDB;
+}
+
+.kingsHire-search-information{
+    background-color: #FCFCDB;;
+}
+.kingsHire-search-information h1{
+    font-size: 5rem;
+}
+.kingsHire-search-information h3{
+    font-size: 1.5rem;
+}
+.kingsHire-search-information p{
+    font-size: 1.3rem;
+}
+.index-search-information-top{
+    display: flex;
+    margin-bottom: 3rem;
+    align-items: center;
+}
+.index-search-information-top>div:first-child{
+    flex: 2;
+    padding: 2rem 5rem;
+    text-align: center;
+}
+.index-search-information-top>div:first-child h1,
+.index-search-information-top>div:first-child p{
+    padding: 1rem;
+}
+.search-freelancers-section{
+    margin-top: 3rem;
+}
+
+#hire-a-kingLancer{
+    background-color: #1E88E5;
+    color: #FFFFFF;
+    border-radius: .5rem;
+    padding: 1rem 4rem;
+    font-size: 2rem;
+    font-weight: bolder;
+    cursor: pointer;
+    /*text-transform: uppercase;*/
+}
+#hire-a-kingLancer:hover{
+    box-shadow: .25rem .25rem lightgrey;
+}
+
+.index-search-information-top>div:last-child{
+    flex: 1;
+    justify-self: center;
+    text-align: center;
+}
+#kingsHire-section-image{
+    height: 60vh;
+}
+.booking-steps-information {
+    background: #FEB2BC;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10rem;
+}
+.booking-steps-information h1{
+    font-size: 3.5rem;
+}
+.booking-steps-section{
+    display: flex;
+    margin: 5rem 0;
+    justify-content: center;
+}
+.booking-steps-section li{
+    width: 20rem;
+    text-align: center;
+    margin: 0 5rem;
+}
+.booking-steps-section li>i{
+    font-size: 3.5rem;
+}
+.booking-steps-section li>h3{
+    margin: .5rem 0;
+}
+.booking-steps-section a:hover{
+    text-decoration: underline;
+    color: #1E88E5;
+}
+
+.wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+.wave svg {
+    position: relative;
+    display: block;
+    width: calc(109% + 1.3px);
+}
+.wave .shape-fill {
+    fill: #FCFCDB;
+}
+.pro-services-kinglancer-section{
+    background-color: #FFFFFF;
+}
+
+.pro-services-kinglancer-section>div:first-child{
+    padding: 4rem 10rem;
+}
+.pro-services-kinglancer-section>div:first-child p{
+    opacity: 50%;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+.pro-services-kinglancer-section>div:first-child h3{
+    font-size: 2rem;
+}
+#pro-services-redirect{
+    color: #1E88E5;
+    cursor: pointer;
+}
+#pro-services-redirect:hover{
+    text-decoration: underline;
+}
+.selected-freelancers-index-page{
+    display: flex;
+    padding: 0 4rem;
+    justify-content: center;
+}
+.single-selected-freelancer-index{
+    border: .1rem solid lightgrey;
+    width: 45vh;
+    margin-right: 2rem;
+    border-radius: .5rem;
+}
+.single-selected-freelancer-index:last-child{
+    margin-right: 0;
+}
+.single-selected-freelancer-index .top-side{
+    border-bottom: .1rem solid lightgrey;
+}
+.single-selected-freelancer-index img{
+    height: 35vh;
+    width: 44.8vh;
+    object-fit: cover;
+    object-position: top;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+.single-selected-freelancer-index .top-side p{
+    font-weight: bold;
+    text-align: center;
+    padding: .5rem;
+}
+.single-selected-freelancer-index .top-side a:hover{
+    text-decoration: underline;
+}
+.middle-side .index-serviceAndPrice{
+    display: flex;
+    border: .1rem solid black;
+    border-radius: .5rem;
+    cursor: pointer;
+    width: fit-content;
+    margin-bottom: 1rem;
+}
+.middle-side .index-serviceAndPrice:last-child{
+    margin-bottom: 0;
+}
+.single-selected-freelancer-index .middle-side{
+    padding: 1rem;
+    border-bottom: .1rem solid lightgrey;
+    height: 10rem;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.index-serviceAndPrice p{
+    margin: .5rem 0;
+    padding: 0 .5rem;
+    font-size: 1.2rem;
+}
+.index-serviceAndPrice p:first-child{
+    border-right: .2rem solid black;
+}
+.single-selected-freelancer-index .bottom-side{
+    display: flex;
+    /*justify-content: space-between;*/
+    justify-content: center;
+    padding: 1rem .5rem;
+}
+.single-selected-freelancer-index .bottom-side button,
+.single-selected-freelancer-index .bottom-side a{
+    padding: .5rem 0;
+    width: 8rem;
+    border: .1rem solid #DB2C44;
+    background-color: #DB2C44;
+    color: #FFFFFF;
+    border-radius: .5rem;
+    cursor: pointer;
+    margin: 0 .5rem;
+}
+.single-selected-freelancer-index .bottom-side button,
+.single-selected-freelancer-index .bottom-side a p{
+    font-size: 1.2rem;
+}
+.single-selected-freelancer-index .bottom-side button:first-child{
+    background-color: #4CAF50;
+    border: .1rem solid #4CAF50;
+}
+
+.single-selected-freelancer-index .bottom-side>.freelance-mssg-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1E88E5;
+    border: .1rem solid #1E88E5;
+}
+
+footer{
+    border-top: .1rem solid lightgrey;
+    margin-top: 8rem;
+}
+footer h4{
+    font-size: 1.5rem;
+}
+footer li, footer p, footer a{
+    font-size: 1.2rem;
+}
+#kingsChat-logo{
+    height: 5vh;
+    width: 5vh;
+    object-fit: contain;
+    cursor: pointer;
+}
+.contact-us-and-accessibility{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 5rem;
+    padding: 2rem 0;
+}
+.contact-us-and-accessibility li{
+    margin: 1rem 0;
+}
+.footer-section-4 ul li a:hover,
+.footer-section-2 ul li a:hover,
+.footer-section-3 ul li a:hover{
+    color: #1E88E5;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.footer-section-4 ul li{
+    display: flex;
+}
+.footer-section-4 ul li i{
+    margin-right: 1rem;
+}
+.copyright{
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #FCFCDB;
+}
+/*
 input:focus{
     border-radius: .5rem;
     border-color: #213e53;
 }
 .index-page-one{
-    /*height: 35rem;*/
+    !*height: 35rem;*!
     display: grid;
     grid-template-columns: 65% 35%;
     background: url("../images/backgroung1.jpg") center;
@@ -26,7 +376,7 @@ input:focus{
     text-align: center;
     font-size: 1.5rem;
     font-style: italic;
-    /*font-family:  Avenir Next Pro;*/
+    !*font-family:  Avenir Next Pro;*!
     font-family:  Matrice;
 }
 .booking-buttons button{
@@ -48,9 +398,9 @@ input:focus{
     margin: 0 2rem;
 
 }
-/*
+!*
 * Page Right
-*/
+*!
 .index-page-one-right{
     display: flex;
     justify-content: center;
@@ -62,11 +412,11 @@ input:focus{
     width: 55vh;
     object-fit: cover;
     object-position: top;
-    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    !*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*!
 }
-/**********************************************************************************************************************/
-/*****************************************    Index 2    **************************************************************/
-/*.index-page-two{
+!**********************************************************************************************************************!
+!*****************************************    Index 2    **************************************************************!
+!*.index-page-two{
     height: 15.5rem;
     display: grid;
     grid-template-columns: 65%;
@@ -86,9 +436,9 @@ input:focus{
     font-weight: bolder;
     color: #213e53;
 }
-*/
-/**********************************************************************************************************************/
-/*****************************************    Index 3    **************************************************************/
+*!
+!**********************************************************************************************************************!
+!*****************************************    Index 3    **************************************************************!
 .index-page-three{
     margin: 2rem 7rem;
     display: grid;
@@ -131,12 +481,12 @@ input:focus{
     border-top: .1rem solid lightgrey;
     border-bottom: .1rem solid lightgrey;
     overflow-y: scroll;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    /*overflow: hidden;*/
-    /*overflow: auto;*/
+    scrollbar-width: none; !* Firefox *!
+    -ms-overflow-style: none;  !* Internet Explorer 10+ *!
+    !*overflow: hidden;*!
+    !*overflow: auto;*!
 }
-.middle-side::-webkit-scrollbar { /* WebKit */
+.middle-side::-webkit-scrollbar { !* WebKit *!
     width: 0;
     height: 0;
 }
@@ -205,8 +555,8 @@ input:focus{
     border-color: #8d2874;
 }
 
-/*********************************************************************************************************************/
-/********************************************** Footer  **********************************************/
+!*********************************************************************************************************************!
+!********************************************** Footer  **********************************************!
 #unilance-feeback-form{
     position: sticky;
     width: 0;
@@ -358,7 +708,7 @@ form#feeback-form div section:nth-child(4) input:last-child{
 .container .bottom-footer{
     margin: 0 5%;
 }
-/*
+!*
 #contact .container .middle-footer .first-contact-section h6, .container .second-contact-section h6{
     font-size: 1.3rem;
 }
@@ -386,15 +736,15 @@ form#feeback-form div section:nth-child(4) input:last-child{
     margin: 0 1rem;
     color: white;
 }
-*/
+*!
 .bottom-footer{
     border-top: .1rem solid white;
     margin: 1rem 3rem 0 3rem;
     padding-top: 1rem;
     font-size: 1.1rem;
-}
-/*********************************************************************************************************************/
-/********************************************** Freelance Service Package  **********************************************/
+}*/
+/*********************************************************************************************************************
+********************************************** Freelance Service Package  **********************************************/
 
 .freelance-service-package-modal{
     display: flex;

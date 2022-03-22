@@ -17,4 +17,3 @@ headerBurgericon.onclick = function(){
     });
 }
 
-

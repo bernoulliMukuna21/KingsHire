@@ -12,7 +12,12 @@ var windowsize = $(window).width();
 /********************* First: find Receiver and right room of conversation ***********************/
 // Conversation initializer by clicking 'Message' button
 $('.freelance-mssg-btn').click(function (event) {
-    let freelancerToMessage_uniqueKey = event.target.childNodes[2].value;
+    let messageBoxClickedElement = event.target;
+
+    if(messageBoxClickedElement.className !== 'freelance-mssg-btn')
+        messageBoxClickedElement = messageBoxClickedElement.parentNode;
+
+    let freelancerToMessage_uniqueKey = messageBoxClickedElement.childNodes[2].value;
 
     window.location.href = '/account/'+loggedInUser.type+'/'+
         loggedInUser.uniqueKey+'?receiverKey='+freelancerToMessage_uniqueKey;
@@ -342,6 +347,8 @@ function initializeMessageRoom(receiverUniqueKey) {
 
             let receiverData = data.userData;
             let sourceImage = data.userImageSrc;
+            sourceImage = sourceImage ? sourceImage : '/images/userDefaultImage.png';
+            console.log('Get Image Profile 19: ', sourceImage)
             let roomIndex = 0;
 
             if(numberOfRooms === 0){

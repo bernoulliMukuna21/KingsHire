@@ -10,34 +10,25 @@
     display: none;
     width: 100%;
 }
-
-.top-mobilenavcontainer a {
-    color: #213e53;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    display: block;
-}
-.top-mobilenavcontainer a.headerburger-icon {
-    /*background: #ddd;*/
-    background: #213e53;
-    color: white;
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-.mobileweb-title{
-    width: 25%;
-}
 .mobiletop-navbar{
     border-top-style: solid;
     /*border-bottom-style: solid;*/
-    border-top-color: #213e53;
+    /*border-top-color: #213e53;*/
 }
 .top-mobilenavcontainer .mobileheaderLinks a:hover {
     background-color: #213e53;
     color: white;
 }
 
+.webFreelancerSlideshow{
+    display: block;
+}
+.mobileFreelancerSlideshow{
+    display: none;
+}
+.services-navigation-bar{
+    display: block;
+}
+.services-navigation-bar-mobile{
+    display: none;
+}

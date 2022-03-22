@@ -1,59 +1,87 @@
 header
     - let clientToFreelancerMessage;
-    div.top-container
-        h1.web-title: a(href='/') KingsHire
-        div.top-navbar(style='color:#213e53;')
-            if (!isLogged)
-                a(href='/users/join'): button(class='nav-btn', id='joinNow') Join For Free
-                a(href='/users/login'): button(class='nav-btn') Login
-            else
-                if(loggedInUser.user_stature.current === 'client')
-
-                    if(loggedInUser.user_stature.initial === 'client')
-                        - clientToFreelancerMessage = 'Become a Freelancer'
-                    if(loggedInUser.user_stature.initial === 'freelancer')
-                        - clientToFreelancerMessage = 'Switch to Freelancer'
-
-                    a(href='/account/switch/freelancer/' + emailEncode(loggedInUser.email))
-                        button(class='nav-btn', id='be-freelancer') #{clientToFreelancerMessage}
-
-                    a(href='/account/client/'+emailEncode(loggedInUser.email)): button(class='nav-btn') My Account, #{loggedInUser.name} #{loggedInUser.surname}
-
-                else if(loggedInUser.user_stature.current === 'freelancer')
-                    a(href='/account/switch/client/' + emailEncode(loggedInUser.email))
-                        button(class='nav-btn', id='be-client') Switch To Client
-                    a(href='/account/freelancer/' + emailEncode(loggedInUser.email)): button(class='nav-btn') My Account, #{loggedInUser.name} #{loggedInUser.surname}
-
-                a(href='/'): button(class='nav-btn') Home
-                a(href='/users/logout'): button(class='nav-btn') Logout
-
-                - let loggedinUser_Mssg = {type: loggedInUser.user_stature.current, uniqueKey: emailEncode(loggedInUser.email)}
-                input(style='display: none;' id='sender-unique-key' value=JSON.stringify(loggedinUser_Mssg))
-
-    div.top-mobilenavcontainer
-        .mobileweb-title
-            a(href='/') KingsHire
-        div.mobiletop-navbar
-            if (!isLogged)
-                .mobileheaderLinks
-                    a(href='/users/join') Join For Free
+    .top-container
+        a.web-tittle(href='/')
+            img.kingsHireImage(src='/images/kingsHireImage-removebg-preview.png')
+        .top-navbar
+            div
+                a(href='/') Home
+                if !isLogged
                     a(href='/users/login') Login
-            else
-                if(loggedInUser.user_stature.current === 'client')
-                    .mobileheaderLinks
+                    a(href='/users/join') Join For Free
+                else
+                    if loggedInUser.user_stature.current === 'client'
+
+                        if loggedInUser.user_stature.initial === 'client'
+                            - clientToFreelancerMessage = 'Become a Freelancer'
+                        if loggedInUser.user_stature.initial === 'freelancer'
+                            - clientToFreelancerMessage = 'Switch to Freelancer'
+
+                        a(href='/account/switch/freelancer/' + emailEncode(loggedInUser.email)) #{clientToFreelancerMessage}
                         a(href='/account/client/' + emailEncode(loggedInUser.email)) My Account, #{loggedInUser.name} #{loggedInUser.surname}
-                        a(href='/') Home
-                        a(href='/users/logout') Logout
-                        a(href='/account/switch/freelancer/' + emailEncode(loggedInUser.email))
 
-                            button(class='nav-btn', id='be-freelancer') #{clientToFreelancerMessage}
-
-                else if(loggedInUser.user_stature.current === 'freelancer')
-                    .mobileheaderLinks
+                    else if loggedInUser.user_stature.current === 'freelancer'
+                        a(href='/account/switch/client/' + emailEncode(loggedInUser.email)) Switch to Client
                         a(href='/account/freelancer/' + emailEncode(loggedInUser.email)) My Account, #{loggedInUser.name} #{loggedInUser.surname}
-                        a(href='/') Home
+
+                    a(href='/users/logout') Logout
+
+                    - let loggedinUser_Mssg = {type: loggedInUser.user_stature.current, uniqueKey: emailEncode(loggedInUser.email)}
+                    input(style='display: none;' id='sender-unique-key' value=JSON.stringify(loggedinUser_Mssg))
+
+    .top-mobilenavcontainer
+        .mobiletop-texts
+            p
+                a(href='/') KingsHire
+            p
+                a(href='/users/login') Join
+
+
+        div.mobiletop-navbar
+            div
+                .mobileheaderLinks
+                    a(href='/') Home
+                if !isLogged
+                    .mobileheaderLinks
+                        a(href='/users/login') Login
+                        a(href='/users/join') Join For Free
+                else
+                    if loggedInUser.user_stature.current === 'client'
+
+                        if loggedInUser.user_stature.initial === 'client'
+                            - clientToFreelancerMessage = 'Become a Freelancer'
+                        if loggedInUser.user_stature.initial === 'freelancer'
+                            - clientToFreelancerMessage = 'Switch to Freelancer'
+                        .mobileheaderLinks
+                            a(href='/account/switch/freelancer' + emailEncode(loggedInUser.email)) #{clientToFreelancerMessage}
+                            a(href='/account/client/' + emailEncode(loggedInUser.email)) My Account, #{loggedInUser.name} #{loggedInUser.surname}
+
+                    else if loggedInUser.user_stature.current === 'freelancer'
+                        .mobileheaderLinks
+                            a(href='/account/switch/client' + emailEncode(loggedInUser.email)) Switch to Client
+                            a(href='/account/freelancer/' + emailEncode(loggedInUser.email)) My Account, #{loggedInUser.name} #{loggedInUser.surname}
+                    .mobileheaderLinks
                         a(href='/users/logout') Logout
-                        a(href='/account/switch/client/' + emailEncode(loggedInUser.email))
-                            button(class='nav-btn', id='be-client') Switch To Client
+
+                    - let loggedinUser_Mssg = {type: loggedInUser.user_stature.current, uniqueKey: emailEncode(loggedInUser.email)}
+                    input(style='display: none;' id='sender-unique-key' value=JSON.stringify(loggedinUser_Mssg))
             a.headerburger-icon(href='javascript:void(0)')
                 i.fa.fa-bars
+
+    .services-navigation-bar
+        ul
+            li: a(href='/services?search_query=graphics_design') Graphic & Design
+            li: a(href='/services?search_query=animation') Animation
+            li: a(href='/services?search_query=photography') Photography
+            li: a(href='/services?search_query=video_editing') Video Editing
+            li: a(href='/services?search_query=software_development') Software Development
+            li: a(href='/services?search_query=shopify_development') Shopify Development
+            li: a(href='/services?search_query=marketing') Marketing
+            li: a(href='/services?search_query=business_analysis') Business Analysis
+    .services-navigation-bar-mobile
+        ul
+            li: a(href='/services?search_query=graphics_design') Website
+            li: a(href='/services?search_query=animation') Animation
+            li: a(href='/services?search_query=photography') Photography
+            li: a(href='/services?search_query=video_editing') Marketing
+
