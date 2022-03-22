@@ -1,7 +1,9 @@
 import * as accountsOperation from "./account_operate.js";
-let domainURL = 'http://localhost:3000/'
+let domainURL = 'https://kingshire.herokuapp.com/'
 $(window).ready(function() {
     let currentPath = window.location.href.substring(domainURL.length);
+    console.log('Domain URL: ', domainURL);
+
     if(currentPath.length > 0){
         $('.top-navbar>div>a:first-child').removeClass('clicked-top-navbar');
 
@@ -37,7 +39,6 @@ $(window).ready(function() {
     }else{
         $('.top-navbar>div>a:first-child')[0].classList.add('clicked-top-navbar');
     }
-
 
     if(!$('.bottom-side button').is(':visible')){
         $('.bottom-side .freelance-mssg-btn').css({
