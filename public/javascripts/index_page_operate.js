@@ -7,28 +7,37 @@ $(window).ready(function() {
 
         let navOptioIdentifier;
 
-        if(currentPath.includes('login')){
-            navOptioIdentifier = 'login'
-        }
-        if(currentPath.includes('join')){
-            navOptioIdentifier = 'join'
-        }
-        if(currentPath.includes('account')){
-            navOptioIdentifier = 'account'
-        }
-        if(currentPath.includes('logout')){
-            navOptioIdentifier = 'logout'
-        }
+        if(currentPath.includes('services')){
+            let clickedServicePosition = currentPath.split('&').pop();
+            clickedServicePosition = clickedServicePosition.split('=').pop();
+            clickedServicePosition = parseInt(clickedServicePosition);
 
-        let allNavigationOptions = $('.top-navbar>div')[0].childNodes;
-        let indexOfNavOptionToShow = Array.from(allNavigationOptions).findIndex( eachoption =>
-            (eachoption.innerText).toLowerCase().includes(navOptioIdentifier));
+            $(`.services-navigation-bar ul li:nth-child(${clickedServicePosition}) a`)[0].classList.add('services-navigation-bar-clicked');
 
-        $(`.top-navbar>div>a:nth-child(${indexOfNavOptionToShow+1})`)[0].classList.add('clicked-top-navbar');
+        }else{
+            if(currentPath.includes('login')){
+                navOptioIdentifier = 'login'
+            }
+            if(currentPath.includes('join')){
+                navOptioIdentifier = 'join'
+            }
+            if(currentPath.includes('account')){
+                navOptioIdentifier = 'account'
+            }
+            if(currentPath.includes('logout')){
+                navOptioIdentifier = 'logout'
+            }
+
+            let allNavigationOptions = $('.top-navbar>div')[0].childNodes;
+            let indexOfNavOptionToShow = Array.from(allNavigationOptions).findIndex( eachoption =>
+                (eachoption.innerText).toLowerCase().includes(navOptioIdentifier));
+
+            $(`.top-navbar>div>a:nth-child(${indexOfNavOptionToShow+1})`)[0].classList.add('clicked-top-navbar');
+        }
+    }else{
+        $('.top-navbar>div>a:first-child')[0].classList.add('clicked-top-navbar');
     }
 
-    else
-        $('.top-navbar>div>a:first-child')[0].classList.add('clicked-top-navbar');
 
     if(!$('.bottom-side button').is(':visible')){
         $('.bottom-side .freelance-mssg-btn').css({
@@ -36,6 +45,8 @@ $(window).ready(function() {
             'width': '12rem',
         });
     }
+
+
 })
 
 $(window).click(function(event) {
@@ -84,7 +95,12 @@ $(document).on('click', '.index-serviceAndPrice', function (event) {
 
     let packagesForService = JSON.parse(indexPageServicesHTML.lastChild.value);
     packagesForService = packagesForService.freelancerPackage;
-    let servicePackageModal = indexPageServicesHTML.parentNode.parentNode.parentNode.parentNode.parentNode;
+    let servicePackageModal = indexPageServicesHTML.parentNode.parentNode.parentNode.parentNode;
+
+    if(servicePackageModal.className !== 'kingslance-services'){
+        servicePackageModal = servicePackageModal.parentNode;
+    }
+
     servicePackageModal = servicePackageModal.nextSibling.nextSibling;
 
     servicePackageModal.firstChild.firstChild.firstChild.firstChild.innerHTML =

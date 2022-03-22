@@ -22,6 +22,7 @@
 .booking-form, .booking-conclusion-container, .freelance-service-package-modal-container{
     padding: 1rem 2.5rem  2.5rem 2.5rem;
     background: #eee;
+    border-radius: .5rem;
 }
 
 .booking-form div:first-child{
@@ -51,8 +52,8 @@ form select.bookform-field, .booking-time-picker select,
 #service-booking-form>select[name='servicename'], .booking-time-picker select:last-child,
 .booking-time-modification select:last-child{
     background-image:
-            linear-gradient(45deg, transparent 50%, #213e53 50%),
-            linear-gradient(135deg, #213e53 50%, transparent 50%),
+            linear-gradient(45deg, transparent 50%, #1E88E5 50%),
+            linear-gradient(135deg, #1E88E5 50%, transparent 50%),
             linear-gradient(to right, white, white);
     background-position:
             calc(100% - 20px) calc(1em + 2px),
@@ -69,6 +70,7 @@ form select.bookform-field, .booking-time-picker select,
 #service-booking-dueDate{
     cursor: pointer;
 }
+
 #service-booking-projectDescription{
     resize: none;
 }
@@ -87,7 +89,7 @@ form select.bookform-field, .booking-time-picker select,
     margin: 1rem 0;
 }
 .project-enquiry-price section i{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #213e53;
 }
 #service-enquiry-price{
@@ -103,7 +105,7 @@ form select.bookform-field, .booking-time-picker select,
     margin-bottom: 2rem;
 }
 .booking-dateandtime-picker h4{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 .booking-dateandtime-picker h5{
     opacity: 50%;
@@ -118,7 +120,7 @@ form select.bookform-field, .booking-time-picker select,
     border: none;
     outline: none;
     font-family: 'Heebo', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 .booking-time-picker div{
     display: flex;
@@ -132,8 +134,9 @@ form select.bookform-field, .booking-time-picker select,
 
 .booking-time-picker select, .booking-time-modification select{
     text-align: center;
-    background-color: #213e53;
+    background-color: #1E88E5;
     color: white;
+    font-size: 1.2rem;
 }
 .booking-time-picker select:last-child, .booking-time-modification div select:last-child{
     margin-left: .5rem;
@@ -141,18 +144,18 @@ form select.bookform-field, .booking-time-picker select,
     background-image:
             linear-gradient(45deg, transparent 50%, white 50%),
             linear-gradient(135deg, white 50%, transparent 50%),
-            linear-gradient(to right, #213e53, #213e53);
+            linear-gradient(to right, #1E88E5, #1E88E5);
 }
 .bookform-field {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.3rem;
     border: none;
     outline: none;
     font-family: 'Heebo', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 .booking-form button {
     border: none;
-    font-size: 16px;
+    font-size: 1.3rem;
     font-weight: 400;
     color: #fff;
 }
@@ -160,12 +163,12 @@ form select.bookform-field, .booking-time-picker select,
 #service-booking-submit-bttn{background: #4CAF50;}
 #service-booking-submit-bttn:hover{background-color: #308634;}
 
-#service-enquiry-submit-bttn{background: #8d2874;}
-#service-enquiry-submit-bttn:hover{background-color: #71205d;}
+#service-enquiry-submit-bttn{background: #DB2C44;}
+#service-enquiry-submit-bttn:hover{background-color: #c9273d;}
 
 .booktitle{
-    font-size: 30px;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    margin-bottom: 2rem;
 }
 
 .closebook-form {
@@ -202,15 +205,15 @@ form select.bookform-field, .booking-time-picker select,
 }
 
 .guess-booking-options a button{
-    background-color: #213e53;
+    background-color: #1E88E5;
     padding: 1rem;
     width: 30rem;
     font-weight: bolder;
     border-radius: .5rem;
 }
 .guess-booking-options a button:hover{
-    background-color: #182e3e;
     cursor: pointer;
+    box-shadow: .25rem .25rem lightgrey;
 }
 
 /** Freelancer - Project Booking Conclusion Options **/

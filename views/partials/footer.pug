@@ -1,29 +1,40 @@
 footer
+    - let kingsChatProfile = "https://kingschat.online/user/kings-hire"
     .contact-us-and-accessibility
         .footer-section-1
-            img.kingsHireImage(src='/images/kingsHireImage-removebg-preview.png')
+            a(href='/'): img.kingsHireImage(src='/images/kingsHireImage-removebg-preview.png')
             ul
                 li Powerful Freelance Marketplace
                 li System with ability to change the Users (Freelancers & Cliens)
             .contact-us-socials
-                a
+                a(href=kingsChatProfile target="_blank")
                     img#kingsChat-logo(src='/images/kingsChat.png')
         .footer-section-2
             h4  For Clients
             ul
                 li
-                    a  Find Freelancers
+                    a(href='/services')  Find Freelancers
                 li
-                    a  Refund Policy
+                    a(href='/policy/refund')  Refund Policy
                 li
-                    a  Privacy Policy
+                    a(href='/policy/privacy')  Privacy Policy
         .footer-section-3
             h4  For Freelancers
             ul
-                li
-                    a  Find Work
-                li
-                    a  Create Account
+
+                if ! isLogged
+                    li
+                        a(href="/users/join/freelancer")  Create Account
+                else
+                    li
+                        a Create Account
+                    if loggedInUser.user_stature.current === 'freelancer'
+                        li
+                            a(href='/account/freelancer/' + emailEncode(loggedInUser.email))  Find Work
+                    else
+                        li
+                            a Find Work
+
         .footer-section-4
             h4  Contact Us
             ul

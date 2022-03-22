@@ -13,3 +13,17 @@
     grid-auto-flow: row;
     grid-gap: 2rem;
 }
+
+.no-freelance-match-found{
+    min-height: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.no-freelance-match-found>div{
+    border: .1rem dashed black;
+    padding: 1rem;
+}
+.no-freelance-match-found p{
+    font-size: 1.3rem;
+}

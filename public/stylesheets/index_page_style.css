@@ -42,6 +42,10 @@ header{
     padding: .5rem;
     border-radius: .5rem;
     margin: 0 1rem;
+    font-weight: bold;
+}
+.top-navbar div a:hover{
+    border: .1rem solid #1E88E5;
 }
 
 .clicked-top-navbar{
@@ -60,14 +64,24 @@ header{
 }
 .services-navigation-bar ul li{
     padding: .75rem;
+    width: fit-content;
 }
 .services-navigation-bar ul li a{
     color: #FFFFFF;
+    padding: .75rem;
 }
 .services-navigation-bar ul li a:hover{
     text-decoration: underline;
     cursor: pointer;
+    font-weight: bold;
+    color: #FCFCDB;
 }
+.services-navigation-bar ul li a.services-navigation-bar-clicked{
+    text-decoration: underline;
+    font-weight: bold;
+    color: #FCFCDB;
+}
+
 .kingsHire-search-information{
     background-color: #FCFCDB;;
 }

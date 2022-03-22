@@ -9,15 +9,15 @@ block content
         - let indexPageMessageToDisplay_header = 'Are you looking to hire Freelancers?'
         - let indexPageMessageToDisplay_paragraph = 'Hire Excellent Freelancers, Fast. KingsHire helps you hire elite freelancers around the world with ease.'
 
-        if isLogged && loggedInUser.user_stature === 'freelancer'
+        if isLogged && loggedInUser.user_stature.current === 'freelancer'
           - indexPageMessageToDisplay_header = `Welcome to KingsHire, ${loggedInUser.name} ${loggedInUser.surname}`
-          - indexPageMessageToDisplay_paragraph = `We are happy to be working along with you to provide outstanding solutions to our clients. Thank you for being Kinglancer!`
+          - indexPageMessageToDisplay_paragraph = `We are happy to be working along with you to provide outstanding solutions to our clients. Thank you for being a Kinglancer!`
 
         .kingsHire-motto
           h1 #{indexPageMessageToDisplay_header}
           p #{indexPageMessageToDisplay_paragraph}
 
-        if !isLogged || loggedInUser.user_stature === 'client'
+        if !isLogged || loggedInUser.user_stature.current === 'client'
           .search-freelancers-section
             a#hire-a-kingLancer(href='/services') Hire a Freelancer
       div
@@ -76,19 +76,19 @@ block content
                   - let price = parseFloat(service_price.price)
                   if price >= minimumPriceOfService
                     .index-serviceAndPrice
-                      p  #{service_price.service}
-                      p  #{`£${price.toFixed(2)}`}
+                      p #{service_price.service}
+                      p #{`£${price.toFixed(2)}`}
                       input(type='hidden', value =JSON.stringify({
                         freelancerPackage: service_price.servicePackage
                       }), name='indexPageServicePackage', readOnly=true)
               .bottom-side
                 if !isLogged
-                  button  Instant Book
-                  button  Request
+                  button Instant Book
+                  button Request
                 else
                   if(loggedInUser.user_stature.current === 'client')
-                    button  Instant Book
-                    button  Request
+                    button Instant Book
+                    button Request
                   a.freelance-mssg-btn
                     p Message
                     i.far.fa-envelope

@@ -17,11 +17,11 @@ header
                         if loggedInUser.user_stature.initial === 'freelancer'
                             - clientToFreelancerMessage = 'Switch to Freelancer'
 
-                        a(href='/account/switch/freelancer' + emailEncode(loggedInUser.email)) #{clientToFreelancerMessage}
+                        a(href='/account/switch/freelancer/' + emailEncode(loggedInUser.email)) #{clientToFreelancerMessage}
                         a(href='/account/client/' + emailEncode(loggedInUser.email)) My Account, #{loggedInUser.name} #{loggedInUser.surname}
 
                     else if loggedInUser.user_stature.current === 'freelancer'
-                        a(href='/account/switch/client' + emailEncode(loggedInUser.email)) Switch to Client
+                        a(href='/account/switch/client/' + emailEncode(loggedInUser.email)) Switch to Client
                         a(href='/account/freelancer/' + emailEncode(loggedInUser.email)) My Account, #{loggedInUser.name} #{loggedInUser.surname}
 
                     a(href='/users/logout') Logout
@@ -31,11 +31,11 @@ header
 
     .services-navigation-bar
         ul
-            li: a(href='/services?search_query=graphics_design') Graphic & Design
-            li: a(href='/services?search_query=animation') Animation
-            li: a(href='/services?search_query=photography') Photography
-            li: a(href='/services?search_query=video_editing') Video Editing
-            li: a(href='/services?search_query=software_development') Software Development
-            li: a(href='/services?search_query=shopify_development') Shopify Development
-            li: a(href='/services?search_query=marketing') Marketing
-            li: a(href='/services?search_query=business_analysis') Business Analysis
+            li: a(href='/services?search_query=graphics_design&position=1') Graphic & Design
+            li: a(href='/services?search_query=social_media_specialist&position=2') Social Media Specialist
+            li: a(href='/services?search_query=photography&position=3') Photography
+            li: a(href='/services?search_query=teacher&position=4') Teacher
+            li: a(href='/services?search_query=software_development&position=5') Software Development
+            li: a(href='/services?search_query=ux_ui_design&position=6') UX/UI Design
+            li: a(href='/services?search_query=marketing&position=7') Marketing
+            li: a(href='/services?search_query=business_analysis&position=8') Business Analysis
