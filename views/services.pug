@@ -21,7 +21,7 @@ block content
                                 if freelancer.profile_picture.name === 'oauth_picture'
                                     - imageSource = freelancer.profile_picture.data.toString();
                                 else
-                                    - imageSource = 'data:image/'+freelancer.profile_picture.contentType+';base64'+freelancer.profile_picture.data.toString('base64');
+                                    - imageSource = "data:image/"+freelancer.profile_picture.contentType+";base64,"+freelancer.profile_picture.data.toString('base64')
                                 img(src=imageSource)
 
                             p: a(href='/account/freelancer' + emailEncode(freelancer.email)) #{freelancer.name + " " + freelancer.surname}
