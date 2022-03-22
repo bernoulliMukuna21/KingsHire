@@ -26,13 +26,13 @@ gcUserFiles = gc.bucket(bucketName);
 // Upload Function
 async function uploadFile(user_id, filePath) {
   await gc.bucket(bucketName).upload(filePath, {
-    destination: user_id + destFileName,
+    destination: user_id,
   });
 
   console.log(`${filePath} uploaded to ${bucketName}`);
 }
 
-uploadFile().catch(console.error);
+//uploadFile().catch(console.error);
 
 /* GET home page. */
 router.get("/", async function (req, res, next) {
