@@ -1,51 +1,64 @@
 /* This is for smaller screens like mobile and tablet*/
 
 @media (max-width:500px) {
-    .index-page-one{
-        display: block;
-        padding-bottom: 5rem;
-        padding-top: 5rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-    .index-page-one-right{
+    .webMainImage{
         display: none;
     }
-    .index-page-one-left{
-        margin-right: 0rem;
+    .index-search-information-top{
         display: block;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .services-navigation-bar ul{
+        width: 100%;
+        padding: 0.7rem;
+        overflow: auto;
+        white-space: nowrap;
+    }
+    .kingsHire-motto{
+        justify-content: center;
+        margin-left: 0;
+        /*margin-left: -6rem;*/
+    }
+    .kingsHire-search-information h1{
+        font-size: 3.2rem;
+        width: 27.5rem;
+    }
+    .kingsHire-search-information h3{
+        font-size: 1.2rem;
+    }
+    .kingsHire-search-information p{
+        font-size: 1.2rem;
+    }
+    .booking-steps-section li{
+        width: 8rem;
+        margin: 0 2rem;
+    }
+    .pro-services-kinglancer-section>div:first-child{
+        padding: 4rem 5rem;
+    }
+    .selected-freelancers-index-page{
+        display: block;
+    }
+    .single-selected-freelancer-index {
+        width: 100%;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        margin: 2rem 0.1rem;
+    }
+    .single-selected-freelancer-index img{
+        width: 100%;
         text-align: center;
     }
-    .index-page-one-left h1{
-        font-size: 2.5rem;
+    .contact-us-and-accessibility{
+        display: block;
     }
-    .index-page-one-left button{
-        width: 20rem;
-        padding: 1rem;
-        font-size: 2rem;
-    }
-    .bottom-side button, .bottom-side a{
-        width: 10rem;
-        padding: .75rem 0;
-    }
-
-    /**********************************************************************************************************************/
-    /*****************************************    Index 3    **************************************************************/
-    .index-page-three{
-        margin: 2rem 2rem;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-
-    /* Footer */
-    #contact .container .top-footer p{
-        margin: 0 2rem 2rem 2rem;
-    }
-    #contact .container .middle-footer .first-contact-section h6{
-        border-top: .2rem solid white;
-        margin: 0 5rem;
-        padding-top: 1rem;
-    }
-    .container .top-footer{
-        margin: 0;
+    /*.contact-us-and-accessibility{*/
+    /*    display: flex;*/
+    /*    justify-content: space-around;*/
+    /*    margin: 0 5rem;*/
+    /*    padding: 2rem 0;*/
+    /*}*/
+    .footer-section-1, .footer-section-2, .footer-section-3, .footer-section-4{
+        margin-bottom: 3rem;
     }
 }
