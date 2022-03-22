@@ -108,7 +108,7 @@ router.get('/', async function (req, res, next) {
             emailEncode
         });
     } catch (e) {
-        console.log(e)
+        next(e);
     }
 
 });

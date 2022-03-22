@@ -28,7 +28,7 @@ header{
     cursor: pointer;
 }
 .footer-section-1 img.kingsHireImage{
-    width: 45%
+    width: 40%;
 }
 .top-navbar{
     background-color: white;
@@ -314,8 +314,8 @@ footer li, footer p, footer a{
     font-size: 1.2rem;
 }
 #kingsChat-logo{
-    height: 5vh;
-    width: 5vh;
+    height: 6vh;
+    width: 6vh;
     object-fit: contain;
     cursor: pointer;
 }
@@ -324,6 +324,13 @@ footer li, footer p, footer a{
     justify-content: space-around;
     margin: 0 5rem;
     padding: 2rem 0;
+}
+.contact-us-socials{
+    display: flex;
+    align-items: center;
+}
+.contact-us-socials p{
+    margin-right: 1rem;
 }
 .contact-us-and-accessibility li{
     margin: 1rem 0;
