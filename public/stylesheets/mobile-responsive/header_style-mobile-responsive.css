@@ -4,20 +4,28 @@
     .top-container{
         display: none;
     }
-    .mobile-title{
-        text-align: center;
-    }
-    .mobile-join{
-        text-align: right;
-    }
+
     .top-mobilenavcontainer{
         display: block;
         background-color: white;
-    }
-    .top-mobilenavcontainer {
         overflow: hidden;
         position: relative;
     }
+    .mobiletop-texts{
+        text-align: center;
+        
+    }
+    .mobiletop-texts p{
+        display: inline-block;
+        margin-left:-3rem;
+        font-family:tempus sans itc;
+    }
+
+    .mobiletop-texts :last-child{
+        float: right;
+        /* margin-left: 8rem; */
+    }
+
     .top-mobilenavcontainer .mobileheaderLinks {
         display: none;
         width: 100%;
@@ -45,5 +53,6 @@
         background-color: #1E88E5;
         color: white;
     }
+    
 
 }
