@@ -346,7 +346,7 @@
     cursor: pointer;
 }
 .account-first-side p{
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-justify: inter-word;
     -ms-text-justify: inter-word;
     margin: 1rem;
@@ -679,7 +679,21 @@ button.like{
 /************************************************************************************************************************
 ************************************************************************************************************************
 ****************************************       Profile Update Page      *************************************************/
-.freelancer-update-page>p{
+.freelancer-update-page .freelance-profile-update-header{
+    display: flex;
+    padding: .75rem;
+}
+.freelancer-update-page .freelance-profile-update-header section:first-child{
+    flex: 1;
+    border-right: .2rem solid black;
+    margin-right: .5rem;
+    padding-right: .5rem;
+}
+.freelancer-update-page .freelance-profile-update-header section:last-child{
+    flex: 1;
+}
+
+.freelancer-update-page .freelance-profile-update-header p{
     opacity:50%;
     margin-top: .5rem;
     font-size: 1.2rem;
@@ -872,7 +886,8 @@ button.like{
 }
 /*Update: Services and Skills*/
 .user-service_and_price{
-    border-top: .1rem solid #1E88E5;
+    border-top: .1rem solid black;
+    color: black;
 }
 .user-servicePrice-container>div{
     display: grid;
@@ -917,7 +932,8 @@ button.like{
     margin-bottom: 1.5rem;
 }
 .single-serviceAndPrice .show-serviceAndPrice{
-    background-color: #1E88E5;
+    background-color: lightgrey;
+    border-radius: .5rem;
 }
 .single-serviceAndPrice .show-serviceAndPrice>div:first-child{
     display: grid;
@@ -949,7 +965,7 @@ button.like{
     border: .1rem solid #1E88E5;
 }
 .freelancer-service-package-update{
-    border-top: .2rem solid white;
+    border-top: .2rem solid black;
     margin: 0 1rem;
     padding: .5rem 0;
 }
@@ -957,7 +973,7 @@ button.like{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: black;
     font-size: 1.2rem;
     margin: .5rem 0;
 }
@@ -984,10 +1000,10 @@ button.like{
 
 .single-serviceAndPrice .show-serviceAndPrice h4, .shown-service h4, .single-skill .show-skill h4{
     font-size: 1.3rem;
-    color: white;
+    color: black;
 }
 .single-serviceAndPrice .show-serviceAndPrice h4{
-    border-right: .2rem solid white;
+    border-right: .2rem solid black;
 }
 
 .delete-aServiceAndPrice-btn, .delete-aService-btn, .delete-aSkill-btn{
@@ -1000,7 +1016,7 @@ button.like{
 
 /*Bio: description and skills*/
 .user-bio-details{
-    border-top: .1rem solid #213e53;
+    border-top: .1rem solid black;
 }
 .user-bio-details-container .user-bio-one, .user-bio-details-container .user-bio-two{
     display: grid;
@@ -1034,7 +1050,8 @@ button.like{
 }
 
 .saved-skill{
-    background-color: #1E88E5;
+    background-color: lightgrey;
+    border-radius: .5rem;
     width: 80%;
 }
 .single-skill{
