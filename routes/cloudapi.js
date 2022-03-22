@@ -39,7 +39,7 @@ async function uploadFile(email, filePath) {
 // Delete Function
 
 
-router.post('/', multerUserPortfolio, (req, res, next) => {
+router.post('/cloudapi-upload', multerUserPortfolio, (req, res, next) => {
   let filePath = req.body;
   let email = req.user().email;
   console.log(email, filePath)
