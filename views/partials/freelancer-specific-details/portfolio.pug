@@ -2,7 +2,10 @@ h1 Portfolio
     div.image-portfolio(style='border: .1rem dashed black; display: flex; justify-content: center; ' +
     'align-items: center; height: 15vh')
         if (isLogged && (emailEncode(freelancerUser.email) === emailEncode(loggedInUser.email)))
-            p#addPortfolio + Add to your Portfolio(images, videos or PDFs)
+            form(action='/cloudapi-upload', method='POST')
+                input(type='file',
+                name='portfolio upload')
+                button#upload-button(type='submit') Upload
         else
             p(style='font-weight: bold') Portfolio Empty
 
