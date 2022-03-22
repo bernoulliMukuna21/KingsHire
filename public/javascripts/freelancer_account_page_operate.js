@@ -378,6 +378,13 @@ function serviceAndSkill(inputIdName, singleClassName, deleteButton,
                 +`<input type="text" name="servicePackage" id="servicePackage" value="" placeholder="Enter full package for this service..."`+
                 `><button id="addServicePackage"><i class="fas fa-plus-square"></i></button></div>`;
             $(containerDiv).append(servicePackageHTM);
+
+            let packageHideInputHTML = document.createElement('input');
+            packageHideInputHTML.type = 'text';
+            packageHideInputHTML.name = 'serviceFullPackage';
+            packageHideInputHTML.value = JSON.stringify({freelancerPackage: []});
+            packageHideInputHTML.readOnly = true;
+            $(hideDiv).append(packageHideInputHTML);
         }
 
         containerDiv.appendChild(hideDiv);
@@ -409,6 +416,8 @@ $('#servicePackage').keypress((e)=>{
 })
 
 $(document).on('click', '.show-service-package', function(e) {
+    e.preventDefault();
+
     if(e.target.className === 'fas fa-plus-square' ||
         e.target.id === 'addServicePackage'){
 
@@ -419,12 +428,14 @@ $(document).on('click', '.show-service-package', function(e) {
         else
             newPackageHTML = e.target.previousSibling;
 
+        console.log(newPackageHTML)
         packageText = newPackageHTML.value;
 
         if(packageText.trim().length>0){
             let addServicePackageHTML = newPackageHTML.parentNode
             let serviceDetails = addServicePackageHTML.previousSibling;
             let hideServicePackage = addServicePackageHTML.nextSibling;
+            console.log(hideServicePackage);
 
             let servicePackageContainer;
             if(serviceDetails.childNodes.length === 2){
@@ -439,7 +450,10 @@ $(document).on('click', '.show-service-package', function(e) {
                 servicePackageContainer = servicePackageContainer.childNodes[0];
             }
 
+            console.log(hideServicePackage.childNodes);
             let hideServicePackageValue = JSON.parse(hideServicePackage.lastChild.value);
+            console.log(hideServicePackageValue)
+            console.log(hideServicePackageValue.freelancerPackage)
             hideServicePackageValue.freelancerPackage.push(newPackageHTML.value);
             hideServicePackage.lastChild.value = JSON.stringify(hideServicePackageValue)
 

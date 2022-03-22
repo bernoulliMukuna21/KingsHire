@@ -13,6 +13,6 @@ module.exports = {
             return next();
         }
 
-        return res.redirect(`/account/${req.user.user_stature.current()}/${emailEncode(req.user.email)}`);
+        return res.redirect(`/account/${req.user.user_stature.current}/${emailEncode(req.user.email)}`);
     }
 }

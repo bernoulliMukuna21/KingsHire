@@ -845,7 +845,7 @@ button.like{
     display: grid;
     grid-template-columns: 40% 25% 15% 20%;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     padding: .5rem;
 }
 .freelancer-single-education .show-section p{
@@ -862,7 +862,7 @@ button.like{
 }
 /*Update: Services and Skills*/
 .user-service_and_price{
-    border-top: .1rem solid #213e53;
+    border-top: .1rem solid #1E88E5;
 }
 .user-servicePrice-container>div{
     display: grid;
@@ -1024,7 +1024,7 @@ button.like{
 }
 
 .saved-skill{
-    background-color: #213e53;
+    background-color: #1E88E5;
     width: 80%;
 }
 .single-skill{

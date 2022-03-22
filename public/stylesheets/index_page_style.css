@@ -20,12 +20,15 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 1rem 0;
 }
 .kingsHireImage{
-    height: 10vh;
-    width: 10vh;
-    object-fit: cover;
+    height: 5vh;
+    width: 100%;
     cursor: pointer;
+}
+.footer-section-1 img.kingsHireImage{
+    width: 45%
 }
 .top-navbar{
     background-color: white;
@@ -69,6 +72,7 @@ header{
 .services-navigation-bar ul li a{
     color: #FFFFFF;
     padding: .75rem;
+    text-shadow: .05rem .05rem lightgrey;
 }
 .services-navigation-bar ul li a:hover{
     text-decoration: underline;
