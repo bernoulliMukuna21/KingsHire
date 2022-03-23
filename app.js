@@ -23,7 +23,7 @@ var policyRouter = require('./routes/policy');
 var bookingRouter = require('./routes/booking').router;
 var messageRouter = require('./routes/sever-side-messages').router;
 var paymentRouter = require('./routes/payment').router;
-var cloudapi = require('./routes/cloudapi');
+//var cloudapi = require('./routes/cloudapi');
 
 var app = express();
 
@@ -94,7 +94,7 @@ app.use('/policy', policyRouter);
 app.use('/booking', bookingRouter);
 app.use('/messages', messageRouter);
 app.use('/payment', paymentRouter);
-app.use('/cloudapi-upload', cloudapi);
+//app.use('/cloudapi-upload', cloudapi);
 
 
 // catch 404 and forward to error handler

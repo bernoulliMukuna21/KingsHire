@@ -477,22 +477,32 @@
 }
 
 .freelancer-serviceAndPrice-profile{
-    margin-bottom: 1rem;
     border: .1rem solid black;
-    padding: .5rem 1rem;
     border-radius: .5rem;
     cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.freelancer-serviceAndPrice-profile div{
+    padding: .5rem 1rem;
 }
 .freelancer-serviceAndPrice-profile:last-child{
     margin-bottom: 0;
 }
+
 .freelancer-serviceAndPrice-profile ul{
     list-style: none;
 }
 .freelancer-serviceAndPrice-profile>div:first-child{
-    display: grid;
-    grid-template-columns: 80% 20%;
+    display: flex;
 }
+.freelancer-serviceAndPrice-profile>div:first-child>h4:nth-child(1){
+    flex: 2;
+}
+.freelancer-serviceAndPrice-profile>div:first-child>h4:nth-child(2){
+    flex: 1;
+}
+
 .freelancer-serviceAndPrice-profile h4{
     font-size: 1.2rem;
 }
@@ -665,11 +675,12 @@
   text-decoration: underline;
   cursor: pointer;
 }
-.account-first-side p {
-  font-size: 1.3rem;
-  text-justify: inter-word;
-  -ms-text-justify: inter-word;
-  margin: 1rem;
+
+.account-first-side p{
+    font-size: 1.2rem;
+    text-justify: inter-word;
+    -ms-text-justify: inter-word;
+    margin: 1rem;
 }
 
 /*~~~~~~~~~~~~~ Second Side ~~~~~~~~~~~~~~~*/
@@ -842,13 +853,13 @@
   display: block;
 }
 
-***************
+/***************
   Portfolio
   Update
   Popup
-  ******************
+  ******************/
 
-  .freelancer-portfolio-big-modal {
+.freelancer-portfolio-big-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -1073,54 +1084,21 @@ button.like{
 ************************************************************************************************************************
 ****************************************       Profile Update Page      *************************************************/
 
-.freelancer-update-page > p {
-  opacity: 50%;
-  margin-top: 0.5rem;
-  font-size: 1.5rem;
+.freelancer-update-page .freelance-profile-update-header{
+    display: flex;
+    padding: .75rem;
 }
-.freelancer-update-page input:focus,
-.user-bio-one section textarea:focus,
-.user-education-years select:focus,
-.input-group-btn:focus,
-.user-education-years button:focus,
-#add-skills-button:focus,
-#servicePriceBttn:focus {
-  border-color: #213e53;
-  border-radius: 0.5rem;
-  outline: none;
+.freelancer-update-page .freelance-profile-update-header section:first-child{
+    flex: 1;
+    border-right: .2rem solid black;
+    margin-right: .5rem;
+    padding-right: .5rem;
 }
-/* Watch out for the line below. The */
-.input-group-btn:focus {
-  background-color: #213e53;
-  color: white;
-}
-.freelancer-update-page label {
-  font-size: 1.3rem;
+.freelancer-update-page .freelance-profile-update-header section:last-child{
+    flex: 1;
 }
 
-.update-general-information {
-  margin: 1rem;
-  border-top: 0.1rem solid #213e53;
-}
-.update-general-information h3 {
-  color: #213e53;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 1rem 0;
-  opacity: 50%;
-}
-.update-general-information input,
-.update-page-submit button {
-    width: 100%;
-    margin-top: 0.5rem;
-    margin-bottom: 1.5rem;
-    background-color: white;
-    border: 0.1rem solid #ccc;
-    border-radius: 0.5rem;
-    font-size: 1.3rem;
-    padding: 1rem;
-}
-.freelancer-update-page>p{
+.freelancer-update-page .freelance-profile-update-header p{
     opacity:50%;
     margin-top: .5rem;
     font-size: 1.2rem;
@@ -1399,7 +1377,7 @@ button.like{
     display: grid;
     grid-template-columns: 40% 25% 15% 20%;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     padding: .5rem;
 }
 .freelancer-single-education .show-section p{
@@ -1545,7 +1523,8 @@ button.like{
     color: white;
 }
 .user-service_and_price{
-    border-top: .1rem solid #213e53;
+    border-top: .1rem solid black;
+    color: black;
 }
 .user-servicePrice-container>div{
     display: grid;
@@ -1590,7 +1569,8 @@ button.like{
     margin-bottom: 1.5rem;
 }
 .single-serviceAndPrice .show-serviceAndPrice{
-    background-color: #1E88E5;
+    background-color: lightgrey;
+    border-radius: .5rem;
 }
 .single-serviceAndPrice .show-serviceAndPrice>div:first-child{
     display: grid;
@@ -1622,7 +1602,7 @@ button.like{
     border: .1rem solid #1E88E5;
 }
 .freelancer-service-package-update{
-    border-top: .2rem solid white;
+    border-top: .2rem solid black;
     margin: 0 1rem;
     padding: .5rem 0;
 }
@@ -1630,7 +1610,7 @@ button.like{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: black;
     font-size: 1.2rem;
     margin: .5rem 0;
 }
@@ -1731,7 +1711,7 @@ button.like{
 
 /*Bio: description and skills*/
 .user-bio-details{
-    border-top: .1rem solid #213e53;
+    border-top: .1rem solid black;
 }
 .user-bio-details-container .user-bio-one, .user-bio-details-container .user-bio-two{
     display: grid;
@@ -1764,9 +1744,10 @@ button.like{
     font-size: 1.2rem;
 }
 
-.saved-skill {
-  background-color: #213e53;
-  width: 80%;
+.saved-skill{
+    background-color: lightgrey;
+    border-radius: .5rem;
+    width: 80%;
 }
 .single-skill {
   border-top: 0.5rem solid white;

@@ -55,7 +55,7 @@ input:focus{
   margin: 4rem  0;
 }
 
-.join-form-left a{
+.join-form-left a, .login-OAUTH a{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,11 +91,14 @@ input:focus{
   font-size: 1.2rem;
   padding: 1rem;
 }
+.join-right-container input:focus, button.web-submission:focus, button.mobile-submission:focus{
+  border: .1rem solid black;
+}
 button.web-submission, button.mobile-submission{
   border-radius: 1rem;
 }
 .join-right-container input:focus{
-  border: black;
+  border-color: black;
   outline: none;
 }
 
@@ -185,9 +188,11 @@ button.web-submission, button.mobile-submission{
   padding: 0 2rem 0 1rem;
 }
 .login-OAUTH a{
-  margin: 1rem 0;
+  /*margin: 1rem 0;
   text-align: center;
-  padding: 1rem;
+  padding: 1rem;*/
+  background-color: #F9546A;
+  border-color: #F9546A;
 }
 .login-orSeparator{
   text-align: center;
@@ -330,11 +335,14 @@ button.web-submission, button.mobile-submission{
 }
 
 /**  Password Reset ***/
+.password-forgot{
+  margin: 0 25%;
+}
 .password-forgot h1, .password-reset h1{
-  border-bottom: .005rem solid #213e53;
+  border-bottom: .005rem solid black;
   margin: 5rem 1rem;
   padding-bottom: .5rem;
-  color: #213e53;
+  color: black;
 }
 
 .password-forgot-first-section, .password-reset-first-section{
@@ -358,18 +366,19 @@ button.web-submission, button.mobile-submission{
 }
 
 .password-forgot-first-section input:focus, .password-reset-first-section input:focus{
-  border-color: #213e53;
+  border-color: black;
+  outline: none;
 }
 
 .password-forgot-first-section button, .password-reset-first-section button{
   padding: .5rem;
-  background-color: #213e53;
-  border: .1rem solid #213e53;
+  background-color: #F9546A;
+  border: .1rem solid #F9546A;
   border-radius: .5rem;
   color: white;
   cursor: pointer;
   margin-top: 1rem;
 }
-.password-forgot-first-section button:hover, .password-reset-first-section button:hover{
-  background-color: #2b516d;
+.password-forgot-first-section button{
+  margin-top: 1rem;
 }

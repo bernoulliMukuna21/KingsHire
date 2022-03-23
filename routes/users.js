@@ -149,14 +149,17 @@ router.post('/join/:userType', function (req, res, next) {
                                 '<p> I am happy to announce to you that there has been a new joiner.</p>'+
                                 `<ul><li>Name:${name}</li><li>Surname: ${surname}</li></ul>`+
                                 `<p>Thank you,<br>KingsHire Development Team</p>`
-                            mailer.smtpTransport.sendMail(mailer.mailerFunction(email,
-                                "Welcome to KingsHire", welcomeEmailToUser), function (err) {
+
+                            mailer.smtpTransport.sendMail(mailer.mailerFunction('mukunabernoulli@yahoo.com',
+                                "Welcome to KingsHire", 'Welcome to User', 'Welcome to User Body',
+                                'Welcome to User Footer'), function (err) {
                                 if(err){ console.log(err); throw err }
                                 else{
                                     console.log('user successfully signed up!');
 
-                                    mailer.smtpTransport.sendMail(mailer.mailerFunction(administrationEmail,
-                                        "New Joiner Alert", signUpNotificationToAdmin), function (err) {
+                                    mailer.smtpTransport.sendMail(mailer.mailerFunction('mukunabernoulli@yahoo.com',
+                                        "New Joiner Alert", 'Sign Up Notification',
+                                        'Sign Up Notification Body', 'Sign Up Notification Footer'), function (err) {
                                         if(err){ throw err }
                                         else{console.log('sign up notification sent to Administration!')}
                                     });
@@ -193,30 +196,30 @@ router.post('/login', (req, res, next)=>{
     UserModel.findOne({ email:req.body.email })
         .then( user =>{
             passport.authenticate('local', (err, user, info)=>{
-                if(typeof info === 'undefined'){
-                    let flash_message = 'Hello, '+user.name + ' ' + user.surname + '. You are logged in!'
-                    loginSystem(req, res, user, user.user_stature.current, flash_message);
-                }
-                else{
-                    let errorMessage = '';
-                    if(info.message === 'Not-registered'){
-                        errorMessage = 'Email not Recognised. Please Try again!';
+                    if(typeof info === 'undefined'){
+                        let flash_message = 'Hello, '+user.name + ' ' + user.surname + '. You are logged in!'
+                        loginSystem(req, res, user, user.user_stature.current, flash_message);
                     }
-                    else if(info.message === 'facebook-google'){
-                        errorMessage = 'Email is already being used. Please Try again!';
-                    }
-                    else if(info.message === 'incorrect-password'){
-                        errorMessage = 'Password is not correct. Please Try again!';
-                    }
+                    else{
+                        let errorMessage = '';
+                        if(info.message === 'Not-registered'){
+                            errorMessage = 'Email not Recognised. Please Try again!';
+                        }
+                        else if(info.message === 'facebook-google'){
+                            errorMessage = 'Email is already being used. Please Try again!';
+                        }
+                        else if(info.message === 'incorrect-password'){
+                            errorMessage = 'Password is not correct. Please Try again!';
+                        }
 
-                    req.flash('error_message', errorMessage);
-                    res.redirect('back');
+                        req.flash('error_message', errorMessage);
+                        res.redirect('back');
+                    }
                 }
-            }
             )(req, res, next);
         }).catch( error => {
-            return next(error)
-        })
+        return next(error)
+    })
 });
 
 // ~~~~~~~~~~~~~~~~ Logout gets and posts ~~~~~~~~~~~~~~~~~~
@@ -347,8 +350,8 @@ router.post('/forgot', function (req, res, next) {
 * */
 router.get('/reset/:token', function (req, res) {
     UserModel.findOne({
-        resetPasswordToken: req.params.token,
-        resetPasswordExpires: {$gt: Date.now()}},
+            resetPasswordToken: req.params.token,
+            resetPasswordExpires: {$gt: Date.now()}},
         function (err, user) {
             if(err){
                 next(err);
@@ -363,7 +366,7 @@ router.get('/reset/:token', function (req, res) {
             res.render('reset', {token: req.params});
 
         }
-     );
+    );
 });
 
 /*
@@ -426,10 +429,10 @@ router.post('/reset/:token', function (req, res, next) {
             loginSystem(req, res, user, user.user_stature.current, flash_message);
         }
     ],  function (err) {
-            if(err){
-                next(err);
-                return;
-            }
+        if(err){
+            next(err);
+            return;
+        }
     });
 });
 
@@ -555,7 +558,6 @@ router.get('/facebook-authentication', function(req, res, next){
         {scope: [ 'email' ]}
     )(req,res,next)}
 );
-
 router.get('/facebook-authentication/callback', (req, res, next)=>{
     let current_user = 'client';
     if(userType_Oauth.this_user){
@@ -565,7 +567,6 @@ router.get('/facebook-authentication/callback', (req, res, next)=>{
         passportUser(req, res, user, info, current_user, next)
     })(req, res, next);
 })
-
 router.get('/facebook-authentication/rerequest',
     passport.authenticate('facebook', {
             scope: ['email'],

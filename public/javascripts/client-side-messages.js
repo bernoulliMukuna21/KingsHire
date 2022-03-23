@@ -348,7 +348,6 @@ function initializeMessageRoom(receiverUniqueKey) {
             let receiverData = data.userData;
             let sourceImage = data.userImageSrc;
             sourceImage = sourceImage ? sourceImage : '/images/userDefaultImage.png';
-            console.log('Get Image Profile 19: ', sourceImage)
             let roomIndex = 0;
 
             if(numberOfRooms === 0){
@@ -386,8 +385,6 @@ function initializeMessageRoom(receiverUniqueKey) {
                 loggedInUserRooms[roomIndex],
                 '.all-different-conversations-container',
                 loggedInUser.uniqueKey, receiverData.uniqueKey);
-
-            $(loggedInUserRooms[roomIndex]).trigger('click');
         },
         error: function (error) {
             console.log('Error occurred in Initialising Message');
