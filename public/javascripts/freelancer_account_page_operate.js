@@ -7,8 +7,8 @@ import * as socketConnection from './socketio-connection-client-side.js'
 * will be the default once the page has loaded.
 * */
 
-let domainName = 'http://localhost:3000';
-//let domainName = 'https://kingshire.herokuapp.com';
+//let domainName = 'http://localhost:3000';
+let domainName = 'https://kingshire.herokuapp.com';
 
 let freelancerProfileSections = $('.freelancer_account_main_side')[0].childNodes;
 let freelancerAllowedPages = $('.freelancer-page-allowed')[0].childNodes;

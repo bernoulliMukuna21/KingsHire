@@ -147,11 +147,11 @@ block content
                                 section
                                     ul
                                         if(freelancerUser.authentication.authName)
-                                            li Google account signup cannot update email or password.
-                                        li Please click #{' '}
-                                            i.fas.fa-plus-square
+                                            li * Google account signup cannot update email or password.
+                                        li * Please click #{' '}
+                                            i.fas.fa-plus-square(style="color: #1E88E5")
                                             |#{' '} to add information.
-                                        li Click Save at the bottom after completing the form
+                                        li * Click Save at the bottom after completing the form
 
                             form.update-general-information(method='post' autocomplete="off")
                                 h3 Name and other General Information
