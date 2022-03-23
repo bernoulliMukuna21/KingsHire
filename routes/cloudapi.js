@@ -4,8 +4,6 @@ const { Storage } = require("@google-cloud/storage");
 var { emailEncode, emailDecode } = require("../bin/encodeDecode");
 var path = require("path");
 var multer = require("multer");
-var UserModel = require("../models/UserModel");
-const { encode } = require("punycode");
 
 let storage = multer.diskStorage({
   destination: function (req, file, callback) {
@@ -78,11 +76,11 @@ function deleteFromDB(req) {
     return value.pictureURL == url;
   })[0];
 
-  req.user.update(
-    { _id: portfolio_image._id },
-    { $pull: { portfolio: { pictureURL: url } } }
-  );
-
+  // req.user.update(
+  //   { _id: portfolio_image._id },
+  //   { $pull: { portfolio: { pictureURL: url } } }
+  // );
+  req.user.portfolio.pull({ _id: portfolio_image._id });
   console.log(req.user.portfolio);
   req.user.save((err) => {
     if (err) {
