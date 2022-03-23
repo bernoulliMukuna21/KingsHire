@@ -294,6 +294,10 @@ header{
     color: #FFFFFF;
     cursor: pointer;
 }
+.single-selected-freelancer-index .bottom-side button:nth-child(1){
+    background-color: #4CAF50;
+}
+
 .single-selected-freelancer-index .bottom-side>.freelance-mssg-btn{
     background-color: #1E88E5;
     border: .1rem solid #1E88E5;

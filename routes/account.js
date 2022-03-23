@@ -318,13 +318,12 @@ router.get(
           }
 
           let previousURL = req.get("referer");
+          console.log('previous: ', previousURL)
 
           req.flash("success_message", "Switch to client was successful");
 
-          if (!previousURL.includes("receiverKey")) {
-            if (previousURL === `${domainName}/`) res.redirect(`back`);
-            else res.redirect(`/account/client/${userUUID}`);
-          } else res.redirect(`/account/client/${userUUID}`);
+          if (previousURL.includes("account")) res.redirect(`/account/client/${userUUID}`);
+          else res.redirect(`/`);
         });
       })
       .catch((error) => {

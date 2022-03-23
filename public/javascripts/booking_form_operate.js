@@ -215,11 +215,11 @@ $('.closebook-form').click(event => {
 })
 
 $(window).click(function(event) {
-    if(event.target.className === "booking") {
+    /*if(event.target.className === "booking") {
         event.target.style.display = "none";
         $('#service-booking-form>select').css('border-color', '#1E88E5');
         // #213e53
-    }
+    }*/
 });
 /* ~~~~~~~~~~~~~~~~ Booking Form ~~~~~~~~~~~~~~~~~~~~~~~~*/
 
