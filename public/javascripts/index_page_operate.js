@@ -41,6 +41,10 @@ $(window).ready(function() {
     }
 
     if(!$('.bottom-side button').is(':visible')){
+        $('.single-selected-freelancer-index .bottom-side').css({
+            'display':'flex',
+            'justifyContent': 'center',
+        });
         $('.bottom-side .freelance-mssg-btn').css({
             'padding':'.75rem',
             'width': '12rem',

@@ -299,11 +299,6 @@ header{
     border: .1rem solid #1E88E5;
 }
 
-.single-selected-freelancer-index .bottom-side button:first-child{
-    background-color: #4CAF50;
-    border: .1rem solid #4CAF50;
-}
-
 footer{
     border-top: .1rem solid lightgrey;
     margin-top: 8rem;
