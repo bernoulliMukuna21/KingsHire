@@ -788,7 +788,7 @@ function server_io(io) {
             }
 
             catch (e) {
-                res.status(404).json({error: `An error during booking. Please try again!!`})
+                next(e)
             }
         }
 
