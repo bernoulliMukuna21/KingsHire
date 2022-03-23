@@ -149,7 +149,6 @@ router.post('/join/:userType', function (req, res, next) {
                                 '<p> I am happy to announce to you that there has been a new joiner.</p>'+
                                 `<ul><li>Name:${name}</li><li>Surname: ${surname}</li></ul>`+
                                 `<p>Thank you,<br>KingsHire Development Team</p>`
-
                             mailer.smtpTransport.sendMail(mailer.mailerFunction(email,
                                 "Welcome to KingsHire", welcomeEmailToUser), function (err) {
                                 if(err){ throw err }

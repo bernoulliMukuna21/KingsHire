@@ -89,6 +89,7 @@ block content
                                 li.user-completed-booking-page(id=messageIdHTML)
                                     p Messages
                                     p.newMessageReceived(style='display:none;') new
+                            li.user-portfolio-page Portfolio
                             //
                                 li.freelancer-payment-page Payment
             .freelancer_account_main_side
@@ -142,7 +143,7 @@ block content
                             h1 Update Personal Information
                             p Setup your general profile details.
 
-                            form.update-general-information(method='post', autocomplete="off")
+                            form.update-general-information(method='post' autocomplete="off")
                                 h3 Name and other General Information
                                 .user-general-information-one
                                     section
@@ -168,7 +169,7 @@ block content
                                                 input(id='phone-number', type='tel', placeholder='Enter Phone Number', name='phone_number',
                                                     value=typeof (freelancerUser.phone_number) != 'undefined' ? freelancerUser.phone_number: '',
                                                     required)
-                                                input(type='text', style='display: none;')
+                                                input(type='text' style='display: none;')
                                     section
                                         .general-information-section-three
                                             label Profile Picture
@@ -233,7 +234,7 @@ block content
                                                             readonly=true)
                                                         input(type='text', name='schoolName', value=education.institute,
                                                             readonly=true)
-                                                        input(type='text', name='educationYear', value=education.educationYear)
+                                                        input(type='text' name='educationYear', value=education.educationYear)
 
                                         .user-service_and_price
                                             h3 Service and Price
@@ -270,8 +271,8 @@ block content
                                                                 placeholder=`Enter full package for this service...`)
                                                             button#addServicePackage: i.fas.fa-plus-square
                                                         .hide-serviceAndPrice(style='display: none')
-                                                            input(type='text', name='service', value=serviceAndPrice.service, readonly=true)
-                                                            input(type='text', name='price', value=serviceAndPrice.price, readonly=true)
+                                                            input(type='text' name='service', value=serviceAndPrice.service, readonly=true)
+                                                            input(type='text' name='price', value=serviceAndPrice.price, readonly=true)
                                                             input(type='text', name='serviceFullPackage',
                                                                 value= serviceAndPrice.servicePackage ? JSON.stringify({
                                                                     freelancerPackage: serviceAndPrice.servicePackage
@@ -285,7 +286,7 @@ block content
                                                 .user-bio-one
                                                     section
                                                         label(for='freelancer_description') Description (Maximum 600 characters) #[br]
-                                                        textarea(id='freelancer_description', placeholder='Write your Description (max 600 characters)...',
+                                                        textarea(id='freelancer_description' placeholder='Write your Description (max 600 characters)...' 
                                                             name='freelancer_description', maxlength="600", required)
                                                             | #{typeof (freelancerUser.description) != 'undefined' ? freelancerUser.description : ''}
 
@@ -302,7 +303,7 @@ block content
                                                                             h4 #{uniqueSkill}
                                                                             button.delete-aSkill-btn x
                                                                         .hidden-skill(style='display:none;')
-                                                                            input(type='text', name='skills', value=uniqueSkill, readonly=true)
+                                                                            input(type='text' name='skills', value=uniqueSkill, readonly=true)
 
 
                                 .update-page-submit
@@ -313,6 +314,9 @@ block content
 
                         .freelancer-message-page(style='display: none;')
                             include ./partials/message
+
+                    .freelancer-portfolio-page(style='display: none;')
+                        include ./partials/freelancer-specific-details/portfolio
 
     include ./partials/booking_form
     include ./partials/freelancer-specific-details/payment-sub-infos
