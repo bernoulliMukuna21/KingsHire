@@ -197,6 +197,9 @@ $(document).on('click', '.message-container-typeBox i', function(event) {
     event.preventDefault();
 
     let message = event.target.parentNode.childNodes[0].value;
+
+    console.log('Message to send: ', message);
+
     messageController(receiver, message.trim());
 
     // Clear send form box

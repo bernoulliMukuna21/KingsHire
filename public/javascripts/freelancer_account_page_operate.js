@@ -21,7 +21,7 @@ $(document).ready(function(){
     let freelancersectionNames_lastChild = $('.account-profile-information ul li:last-child');
 
     if(freelancersectionNames_firstChild[0].innerText === 'Main Page'
-    && freelancersectionNames_lastChild[0].innerText === 'Main Page'){
+        && freelancersectionNames_lastChild[0].innerText === 'Main Page'){
         freelancersectionNames_firstChild.hide();
     }else{
         $(freelancersectionNames).click(function(){
@@ -91,8 +91,8 @@ $(document).click(function (event) {
         $(bookingDescription).toggle();
     }
     else if(elementClicked.className === 'far fa-trash-alt' &&
-    (elementClicked.parentNode.parentNode.className === 'freelancer-one-project-top' ||
-     elementClicked.parentNode.parentNode.className === 'freelancer-projects-top')){
+        (elementClicked.parentNode.parentNode.className === 'freelancer-one-project-top' ||
+            elementClicked.parentNode.parentNode.className === 'freelancer-projects-top')){
         $(elementClicked.parentNode.parentNode.parentNode.childNodes[1]).toggle();
     }
 
@@ -603,14 +603,14 @@ $('.update-general-information').submit(function (event) {
             }
 
             /** On the other hand, it is possible to have empty skills.
-            * In this situation, before updating the visuals, checkings
-            * must be carried to see whether the freelancer has any skills
-            * listed.
-            **/
+             * In this situation, before updating the visuals, checkings
+             * must be carried to see whether the freelancer has any skills
+             * listed.
+             **/
             let freelancerSkills = data.skill;
             if(freelancerSkills.length>0){
-               /** Only update the skills frontend when the freelancer
-               * has at least 1 registered*/
+                /** Only update the skills frontend when the freelancer
+                 * has at least 1 registered*/
                 $('.user-account-skills section').children().hide();
                 $('.user-account-skills h1').show();
                 accountsOperation.showSkills(data.skill,
@@ -622,7 +622,7 @@ $('.update-general-information').submit(function (event) {
                     '.user-account-skills');
             }
 
-           /*************** display the description of the freelancer ***********/
+            /*************** display the description of the freelancer ***********/
             let freelancerDescription = data.description;
             if(freelancerDescription){
                 $('.account-first-side').children().hide();
@@ -783,10 +783,10 @@ $(document).on('click', '#freelancer-booking-delete-button', function(event) {
         console.log(projectStatus)
 
         if(projectStatus === 'paid' || projectStatus === 'cancelled'){
-           let deleteBttn = trashIconContainer.parentNode.nextSibling
-               .childNodes[1].lastChild;
+            let deleteBttn = trashIconContainer.parentNode.nextSibling
+                .childNodes[1].lastChild;
 
-           $(deleteBttn).trigger("click");
+            $(deleteBttn).trigger("click");
         }
     }else{
         let projectDetails = event.target.parentNode.parentNode;

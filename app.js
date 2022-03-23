@@ -23,6 +23,7 @@ var policyRouter = require('./routes/policy');
 var bookingRouter = require('./routes/booking').router;
 var messageRouter = require('./routes/sever-side-messages').router;
 var paymentRouter = require('./routes/payment').router;
+//var cloudapi = require('./routes/cloudapi');
 
 var app = express();
 
@@ -93,6 +94,7 @@ app.use('/policy', policyRouter);
 app.use('/booking', bookingRouter);
 app.use('/messages', messageRouter);
 app.use('/payment', paymentRouter);
+//app.use('/cloudapi-upload', cloudapi);
 
 
 // catch 404 and forward to error handler
@@ -103,7 +105,7 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in devendorvelopment
-    console.log(err);
+  console.log(err)
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

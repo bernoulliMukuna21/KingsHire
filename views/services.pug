@@ -9,7 +9,6 @@ block content
             .all-freelancers-available
 
                 each freelancer in allFreelancers
-                    - console.log(freelancer)
                     - let servicesPrices = freelancer.serviceAndPrice
                     - let freelancerUniqueKey = emailEncode(freelancer.email);
                     .single-selected-freelancer-index

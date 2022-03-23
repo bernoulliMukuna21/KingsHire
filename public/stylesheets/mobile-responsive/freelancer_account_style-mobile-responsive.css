@@ -1,8 +1,9 @@
 /* This is for smaller screens like mobile and tablet*/
 
-@media (max-width:500px) {
+@media (max-width:1000px) {
     .freelancer-page-main-container{
         margin: 1rem;
+        padding: 1rem 1rem;
     }
     .freelancer-services h4, .account-profile-information li,
     .user-general-information-one label, .user-general-information-one input,
@@ -27,8 +28,7 @@
         flex-direction: column;
     }
     .freelancer_account_left_side{
-        margin: 0;
-        padding: 0;
+        margin-right: 0;
     }
     .freelancer-services{
         width: 100%;

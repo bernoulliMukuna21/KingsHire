@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 ul{
     list-style: none;
 }
@@ -57,24 +60,29 @@ header{
     color: #FFFFFF;
 }
 
-.services-navigation-bar{
+.services-navigation-bar,
+.services-navigation-bar-mobile{
     background-color: #1E88E5;
     font-size: 1.3rem;
 }
-.services-navigation-bar ul{
+.services-navigation-bar ul,
+.services-navigation-bar-mobile ul{
     display: flex;
     justify-content: space-evenly;
 }
-.services-navigation-bar ul li{
+.services-navigation-bar ul li,
+.services-navigation-bar-mobile ul li{
     padding: .75rem;
     width: fit-content;
 }
-.services-navigation-bar ul li a{
+.services-navigation-bar ul li a,
+.services-navigation-bar-mobile ul li a{
     color: #FFFFFF;
     padding: .75rem;
     text-shadow: .05rem .05rem lightgrey;
 }
-.services-navigation-bar ul li a:hover{
+.services-navigation-bar ul li a:hover,
+.services-navigation-bar-mobile ul li a:hover{
     text-decoration: underline;
     cursor: pointer;
     font-weight: bold;
@@ -136,7 +144,8 @@ header{
     text-align: center;
 }
 #kingsHire-section-image{
-    height: 60vh;
+    height: 40vh;
+    width: 40vh
 }
 .booking-steps-information {
     background: #FEB2BC;
@@ -209,8 +218,11 @@ header{
     text-decoration: underline;
 }
 .selected-freelancers-index-page{
-    display: flex;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
     padding: 0 4rem;
+    /*display: flex;*/
+    /*padding: 0 4rem;*/
     justify-content: center;
 }
 .single-selected-freelancer-index{

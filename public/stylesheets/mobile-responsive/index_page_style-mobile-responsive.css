@@ -30,6 +30,10 @@
     .kingsHire-search-information p{
         font-size: 1.2rem;
     }
+    .booking-steps-information {
+        padding-top: 5rem;
+        /*border-style: none;*/
+    }
     .booking-steps-section li{
         width: 8rem;
         margin: 0 2rem;
@@ -52,12 +56,35 @@
     .contact-us-and-accessibility{
         display: block;
     }
-    /*.contact-us-and-accessibility{*/
-    /*    display: flex;*/
-    /*    justify-content: space-around;*/
-    /*    margin: 0 5rem;*/
-    /*    padding: 2rem 0;*/
-    /*}*/
+    .webFreelancerSlideshow{
+        display: none;
+    }
+    .mobileFreelancerSlideshow{
+        display: block;
+    }
+    /* forward & Backward buttons */
+    #freelancerBackarrow, #freelancerFrontarrow {
+        cursor: pointer;
+        position: absolute;
+        /*top: 180%;*/
+        width: auto;
+        /*margin-top: -23px;*/
+        padding: 1rem;
+        color: #1E88E5;
+        font-weight: bold;
+        font-size: 3rem;
+        margin-left: 0;
+    }
+    /* Place the "backward button" to the right */
+    #freelancerBackarrow {
+        left: 0;
+        margin-top: 20rem;
+    }
+    /* Place the "forward button" to the right */
+    #freelancerFrontarrow {
+        right: 0;
+        margin-top: 20rem;
+    }
     .footer-section-1, .footer-section-2, .footer-section-3, .footer-section-4{
         margin-bottom: 3rem;
     }

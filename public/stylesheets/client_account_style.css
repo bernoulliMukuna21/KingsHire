@@ -40,7 +40,8 @@ input:focus{
     margin: 1rem 0 2rem 0;
     padding: 1rem;
     width: 100%;
-    color: black;
+    /*color: black;*/
+    color: white;
     background-color: #F9546A;
     box-shadow: .2rem .2rem lightgrey;
     border: none;
@@ -63,8 +64,10 @@ input:focus{
 
 .client-account-left li:hover{
     cursor: pointer;
-    background-color: #FEB2BC;
+    /*background-color: #FEB2BC;*/
+    background-color: #1E88E5;
     box-shadow: .1rem .1rem lightgrey;
+    color: white;
 }
 
 /*### Middle Side####*/
@@ -480,7 +483,8 @@ input:focus{
 }
 .client-profile-update-options button{
     background-color: #F9546A;
-    color: black;
+    /*color: black;*/
+    color: white;
     font-weight: bold;
     border-color: #F9546A;
     cursor: pointer;

@@ -30,8 +30,12 @@ header
                     input(style='display: none;' id='sender-unique-key' value=JSON.stringify(loggedinUser_Mssg))
 
     .top-mobilenavcontainer
-        a.mobile-title(href='/')
-            h3(style='font-family:tempus sans itc;') KingsHire
+        .mobiletop-texts
+            p
+                a(href='/') KingsHire
+            p
+                a(href='/users/login') Join
+
 
         div.mobiletop-navbar
             div
