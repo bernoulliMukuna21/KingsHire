@@ -148,7 +148,10 @@ block content
                                     ul
                                         if(freelancerUser.authentication.authName)
                                             li Google account signup cannot update email or password.
-                                        li Google account signup cannot update email or password.
+                                        li Please click #{' '}
+                                            i.fas.fa-plus-square
+                                            |#{' '} to add information.
+                                        li Click Save at the bottom after completing the form
 
                             form.update-general-information(method='post' autocomplete="off")
                                 h3 Name and other General Information

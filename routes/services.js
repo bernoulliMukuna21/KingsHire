@@ -2,6 +2,7 @@ var express = require('express');
 const UserModel = require("../models/UserModel");
 var router = express.Router();
 var {emailEncode, emailDecode} = require('../bin/encodeDecode');
+const {imageToDisplay} = require("../bin/imageBuffer");
 
 /* GET home page. */
 function searchQuerySimilarWords(searchWord) {
@@ -95,6 +96,14 @@ router.get('/', async function (req, res, next) {
             findFreelancersQuery.push({
                 "serviceAndPrice.service": { $in : searchWords}
             })
+        }
+
+        if (isLogged) {
+            findFreelancersQuery.push(
+                {
+                    email: { $ne: loggedInUser.email }
+                }
+            )
         }
 
         let allFreelancers = await UserModel.find({

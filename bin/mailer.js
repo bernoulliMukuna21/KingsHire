@@ -16,11 +16,7 @@ let smtpTransport = nodemailer.createTransport({
     tls: { rejectUnauthorized: false }
 });
 
-console.log('mail file directory name: ', 'public/images/kingsHireImage-removebg-preview.png')
-
-function mailStyling(mailTitle, mailBody, mailFooter) {
-    return;
-}
+console.log(__dirname.slice(0, -3)+'public/images/kingsChat.png')
 
 function mailerFunction(recipientEmail, subject, mailTitle, mailBody) {
     return {
@@ -29,7 +25,6 @@ function mailerFunction(recipientEmail, subject, mailTitle, mailBody) {
         subject: subject,
         html: ` <style>
             body{
-                background-color: gray;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -106,12 +101,12 @@ function mailerFunction(recipientEmail, subject, mailTitle, mailBody) {
         attachments: [
             {
                 filename: 'kingsHireImage-removebg-preview.png',
-                path: 'C:/Users/bernoulli.mukuna/WebstormProjects/KingsHire/public/images/kingsHireImage-removebg-preview.png',
+                path: __dirname.slice(0, -3)+'public/images/kingsHireImage-removebg-preview.png',
                 cid: 'kingsHireLogo'
             },
             {
                 filename: 'kingsChat.png',
-                path: 'C:/Users/bernoulli.mukuna/WebstormProjects/KingsHire/public/images/kingsChat.png',
+                path: __dirname.slice(0, -3)+'public/images/kingsChat.png',
                 cid: 'kingsChatLogo'
             }]
     };
