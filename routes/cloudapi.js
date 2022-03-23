@@ -1,3 +1,4 @@
+/*
 var express = require('express');
 var router = express.Router();
 const { Storage } = require("@google-cloud/storage");
@@ -23,16 +24,16 @@ const gc = new Storage({
     keyFilename: path.join(__dirname, "../kingshire-344704-280e7a365b8c.json"),
     projectId: "kingshire-344704",
   });
-  
+
   const bucketName = "kingshire";
   gcUserFiles = gc.bucket(bucketName);
-  
+
 // Upload Function
 async function uploadFile(email, filePath) {
     await gc.bucket(bucketName).upload(filePath, {
       destination: emailEncode(email + path.parse(filePath).base),
     });
-  
+
     console.log(`${filePath} uploaded to ${bucketName}`);
 }
 
@@ -45,4 +46,4 @@ router.post('/cloudapi-upload', multerUserPortfolio, (req, res, next) => {
   console.log(email, filePath)
 })
 
-module.exports = router;
+module.exports = router;*/
