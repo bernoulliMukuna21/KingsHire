@@ -150,14 +150,16 @@ router.post('/join/:userType', function (req, res, next) {
                                 `<ul><li>Name:${name}</li><li>Surname: ${surname}</li></ul>`+
                                 `<p>Thank you,<br>KingsHire Development Team</p>`
 
-                            mailer.smtpTransport.sendMail(mailer.mailerFunction(email,
-                                "Welcome to KingsHire", welcomeEmailToUser), function (err) {
+                            mailer.smtpTransport.sendMail(mailer.mailerFunction('mukunabernoulli@yahoo.com',
+                                "Welcome to KingsHire", 'Welcome to User', 'Welcome to User Body',
+                                'Welcome to User Footer'), function (err) {
                                 if(err){ console.log(err); throw err }
                                 else{
                                     console.log('user successfully signed up!');
 
-                                    mailer.smtpTransport.sendMail(mailer.mailerFunction(administrationEmail,
-                                        "New Joiner Alert", signUpNotificationToAdmin), function (err) {
+                                    mailer.smtpTransport.sendMail(mailer.mailerFunction('mukunabernoulli@yahoo.com',
+                                        "New Joiner Alert", 'Sign Up Notification',
+                                        'Sign Up Notification Body', 'Sign Up Notification Footer'), function (err) {
                                         if(err){ throw err }
                                         else{console.log('sign up notification sent to Administration!')}
                                     });
