@@ -20,7 +20,6 @@ var {
 //let domainName = 'http://localhost:3000';
 let domainName = process.env.DOMAIN_URL;
 
-// Set Storage Engine come here ayo
 //destination: './public/images/uploads',
 let storage = multer.diskStorage({
   filename: function (req, file, callback) {
@@ -184,7 +183,7 @@ router.get("/freelancer/:this_user", async function (req, res, next) {
         freelancerSubscriptionStatus = "trial";
       }
     }
-    //ayo
+
     res.render("account", {
       isLogged, // The user accessing this page is logged in?
       freelancerUser, // The freelancer - profile owner

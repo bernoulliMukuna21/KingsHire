@@ -19,6 +19,10 @@ $(".image-portfolio-item").click(function () {
   currentSlide(n + 1);
 });
 
+function setCurrentValue(value) {
+  $(".delete-current-image").val(value);
+}
+
 // forward/Back controls
 function plusSlides(n) {
   SlideShow((slidePosition += n));
@@ -47,6 +51,10 @@ function SlideShow(n) {
   }
   slides[slidePosition - 1].style.display = "block";
   circles[slidePosition - 1].className += " enable";
+
+  const index = slidePosition - 1;
+  const src = $("img", ".image-portfolio-item").get(index).src;
+  setCurrentValue(src);
 }
 
 // var slidePosition = 1;
@@ -64,4 +72,4 @@ function SlideShow(n) {
 //   }
 //   slides[slidePosition - 1].style.display = "block";
 //   setTimeout(SlideShow, 2000); // Change image every 2 seconds
-}
+// }

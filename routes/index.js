@@ -3,36 +3,14 @@
  * created: 10/05/2020
  */
 var express = require("express");
-const { Storage } = require("@google-cloud/storage");
 var router = express.Router();
 var UserModel = require("../models/UserModel");
 var mailer = require("../bin/mailer");
 var { emailEncode, emailDecode } = require("../bin/encodeDecode");
 var { imageToDisplay } = require("../bin/imageBuffer");
 const { pathToFileURL } = require("url");
-const path = require("path");
 
 let administrationemail = process.env.ADMINISTRATION_EMAIL;
-
-// Google cloud code
-const gc = new Storage({
-  keyFilename: path.join(__dirname, "../kingshire-344704-280e7a365b8c.json"),
-  projectId: "kingshire-344704",
-});
-
-const bucketName = "kingshire";
-gcUserFiles = gc.bucket(bucketName);
-
-// Upload Function
-async function uploadFile(user_id, filePath) {
-  await gc.bucket(bucketName).upload(filePath, {
-    destination: user_id,
-  });
-
-  console.log(`${filePath} uploaded to ${bucketName}`);
-}
-
-//uploadFile().catch(console.error);
 
 /* GET home page. */
 router.get("/", async function (req, res, next) {
