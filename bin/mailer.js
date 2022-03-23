@@ -16,8 +16,6 @@ let smtpTransport = nodemailer.createTransport({
     tls: { rejectUnauthorized: false }
 });
 
-console.log(__dirname.slice(0, -3)+'public/images/kingsChat.png')
-
 function mailerFunction(recipientEmail, subject, mailTitle, mailBody) {
     return {
         to: recipientEmail,

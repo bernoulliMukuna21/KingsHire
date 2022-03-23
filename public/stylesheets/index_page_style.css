@@ -219,27 +219,19 @@ header{
 }
 .selected-freelancers-index-page{
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    padding: 0 4rem;
-    /*display: flex;*/
-    /*padding: 0 4rem;*/
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 1%;
+    row-gap: 1%;
+    padding: 0 12rem;
     justify-content: center;
 }
 .single-selected-freelancer-index{
     border: .1rem solid lightgrey;
-    width: 45vh;
-    margin-right: 2rem;
     border-radius: .5rem;
 }
-.single-selected-freelancer-index:last-child{
-    margin-right: 0;
-}
-.single-selected-freelancer-index .top-side{
-    border-bottom: .1rem solid lightgrey;
-}
 .single-selected-freelancer-index img{
-    height: 35vh;
-    width: 44.8vh;
+    height: 40vh;
+    width: 100%;
     object-fit: cover;
     object-position: top;
     border-top-left-radius: .5rem;
@@ -250,8 +242,19 @@ header{
     text-align: center;
     padding: .5rem;
 }
+
 .single-selected-freelancer-index .top-side a:hover{
     text-decoration: underline;
+}
+
+.single-selected-freelancer-index .middle-side{
+    padding: .5rem;
+    border-bottom: .1rem solid lightgrey;
+    border-top: .1rem solid lightgrey;
+    height: 10rem;
+    overflow-y: scroll;
+    scrollbar-width: none; /*!* Firefox *!*/
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
 .middle-side .index-serviceAndPrice{
     display: flex;
@@ -260,59 +263,45 @@ header{
     cursor: pointer;
     width: fit-content;
     margin-bottom: 1rem;
-}
-.middle-side .index-serviceAndPrice:last-child{
-    margin-bottom: 0;
-}
-.single-selected-freelancer-index .middle-side{
-    padding: 1rem;
-    border-bottom: .1rem solid lightgrey;
-    height: 10rem;
-    overflow-y: scroll;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    padding: .75rem 1rem;
 }
 
-.index-serviceAndPrice p{
-    margin: .5rem 0;
-    padding: 0 .5rem;
+.middle-side .index-serviceAndPrice p{
     font-size: 1.2rem;
 }
 .index-serviceAndPrice p:first-child{
-    border-right: .2rem solid black;
+    border-right: .1rem solid black;
+    padding-right: .5rem;
+}
+.index-serviceAndPrice p:nth-child(2){
+    border-left: .1rem solid black;
+    padding-left: .5rem;
 }
 .single-selected-freelancer-index .bottom-side{
     display: flex;
-    /*justify-content: space-between;*/
-    justify-content: center;
-    padding: 1rem .5rem;
+    padding: 1rem 0;
+
 }
 .single-selected-freelancer-index .bottom-side button,
 .single-selected-freelancer-index .bottom-side a{
     padding: .5rem 0;
+    font-size: 1.1rem;
     width: 8rem;
-    border: .1rem solid #DB2C44;
+    margin: .25rem;
+    border: none;
+    border-radius: .5rem;
     background-color: #DB2C44;
     color: #FFFFFF;
-    border-radius: .5rem;
     cursor: pointer;
-    margin: 0 .5rem;
 }
-.single-selected-freelancer-index .bottom-side button,
-.single-selected-freelancer-index .bottom-side a p{
-    font-size: 1.2rem;
+.single-selected-freelancer-index .bottom-side>.freelance-mssg-btn{
+    background-color: #1E88E5;
+    border: .1rem solid #1E88E5;
 }
+
 .single-selected-freelancer-index .bottom-side button:first-child{
     background-color: #4CAF50;
     border: .1rem solid #4CAF50;
-}
-
-.single-selected-freelancer-index .bottom-side>.freelance-mssg-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1E88E5;
-    border: .1rem solid #1E88E5;
 }
 
 footer{

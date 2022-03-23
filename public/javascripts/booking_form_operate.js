@@ -4,8 +4,8 @@ import {createBookingHTML, moveProjectBooking} from "./account_operate.js";
 import BookingInsertionIndex from './BookingInsertionIndex.js'
 
 let allServicesPrices;
-let domainName = 'https://kingshire.herokuapp.com';
-//let domainName = 'http://localhost:3000';
+//let domainName = 'https://kingshire.herokuapp.com';
+let domainName = 'http://localhost:3000';
 let minimumPriceOfService = 10.00;
 
 var locale = 'en-GB'; //window.navigator.userLanguage || window.navigator.language;
