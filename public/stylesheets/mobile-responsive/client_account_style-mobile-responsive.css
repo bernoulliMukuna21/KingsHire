@@ -1,6 +1,6 @@
 /* This is for smaller screens like mobile and tablet*/
 
-@media (max-width:500px) {
+@media (max-width:1000px) {
     .client-account{
         margin: 1rem;
         padding: 1rem 1rem;

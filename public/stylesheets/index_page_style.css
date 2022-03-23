@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 ul{
     list-style: none;
 }
@@ -137,7 +140,7 @@ header{
     text-align: center;
 }
 #kingsHire-section-image{
-    height: 60vh;
+    height: 35vh;
 }
 .booking-steps-information {
     background: #FEB2BC;
@@ -210,8 +213,11 @@ header{
     text-decoration: underline;
 }
 .selected-freelancers-index-page{
-    display: flex;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
     padding: 0 4rem;
+    /*display: flex;*/
+    /*padding: 0 4rem;*/
     justify-content: center;
 }
 .single-selected-freelancer-index{

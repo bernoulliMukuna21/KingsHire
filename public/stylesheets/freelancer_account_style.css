@@ -700,6 +700,7 @@
   align-items: center;
 }
 #addSkills {
+  color: white;
   border: 0.1rem dashed white;
   border-radius: 0;
 }
@@ -726,8 +727,10 @@
     padding: 1rem;
 }
 .user-account-skills h1{
-    color: black;
-    border-bottom: .25rem solid black;
+    /*color: black;*/
+    color: white;
+    border-bottom: none;
+    /*border-bottom: .25rem solid black;*/
 }
 .user-account-skills section{
     margin: 0;
@@ -743,7 +746,7 @@
     display: flex; justify-content: center; align-items: center;
 }
 #addSkills{
-    border: .1rem dashed black; border-radius: 0;
+    border: .1rem dashed white; border-radius: 0;
 }
 #addSkills:hover, #addPrice:hover, #addEducation:hover, #addPortfolio:hover,
 .default-service-p:hover, #addServiceAndPrice:hover{
