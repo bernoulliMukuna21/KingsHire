@@ -30,7 +30,7 @@ const bucketName = "kingshire";
 gcUserFiles = gc.bucket(bucketName);
 
 // Upload to cloud
-async function uploadFile(filePath) {
+async function uploadRemoteFile(filePath) {
   let encodedName = emailEncode(filePath) + path.extname(filePath);
   await gc.bucket(bucketName).upload(filePath, {
     destination: encodedName,
@@ -39,15 +39,15 @@ async function uploadFile(filePath) {
 }
 
 // Delete Function on cloud
-async function deleteFile(req) {
+async function deleteRemoteFile(req) {
   let url = req.body["current_src"];
-  let data = UserModel.findOne({ pictureURL: url });
-  let portfolio = data["portfolio"];
-  console.log(url);
-  // let fileName = portfolio.name + portfolio.fileType;
-  // await storage.bucket(bucketName).file(fileName).delete();
-
-  // console.log(`gs://${bucketName}/${fileName} deleted`);
+  var portfolio_image = req.user.portfolio.filter(function (value) {
+    return value.pictureURL == url;
+  })[0];
+  fileName = portfolio_image.name + portfolio_image.fileType;
+  console.log(fileName);
+  await gc.bucket(bucketName).file(fileName).delete();
+  console.log(`gs://${bucketName}/${fileName} deleted`);
 }
 
 // Update db
@@ -74,8 +74,16 @@ function addToDB(req) {
 
 function deleteFromDB(req) {
   let url = req.body["current_src"];
-  req.user.portfolio.deleteOne({ pictureURL: url });
+  var portfolio_image = req.user.portfolio.filter(function (value) {
+    return value.pictureURL == url;
+  })[0];
 
+  req.user.update(
+    { _id: portfolio_image._id },
+    { $pull: { portfolio: { pictureURL: url } } }
+  );
+
+  console.log(req.user.portfolio);
   req.user.save((err) => {
     if (err) {
       throw err;
@@ -86,13 +94,13 @@ function deleteFromDB(req) {
 
 // Routes
 router.post("/upload", multerPortfolioImage, function (req, res, next) {
-  uploadFile(req.file.path).catch(console.error);
+  uploadRemoteFile(req.file.path).catch(console.error);
   addToDB(req);
 });
 
-router.post("/delete", function (req, res, next) {
-  deleteFile(req);
-  // deleteFromDB(req);
+router.post("/delete", multerPortfolioImage, function (req, res, next) {
+  deleteRemoteFile(req);
+  deleteFromDB(req);
 });
 
 module.exports = router;
