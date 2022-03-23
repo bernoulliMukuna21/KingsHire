@@ -50,6 +50,7 @@ $( document ).ready(function() {
     let previousURL = document.referrer;
     let loggedInUserURL = '/account/'+loggedInUser.type+'/'+
         loggedInUser.uniqueKey;
+    console.log('loggeinUserURL: ', loggedInUserURL);
 
     if(currentURL.includes(loggedInUserURL)){
 

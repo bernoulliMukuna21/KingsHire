@@ -735,6 +735,7 @@ const formatAMPM = (time) => {
 
 
 $(document).on('click', '.freelancer-booking-modify-button', function(event) {
+    console.log('This is triggered')
     $('.freelancer-booking-modification>p').hide();
     let modifyButton = event.target;
     let buttonsContainer = modifyButton.parentNode;
@@ -759,7 +760,7 @@ $(document).on('click', '.freelancer-booking-modify-button', function(event) {
         currentProjectDescription = proposalInfos.childNodes[2].childNodes[1].innerText;
         currentProjectPrice = proposalInfos.childNodes[3].childNodes[1].innerText.slice(1);
     }
-
+    console.log(currentProjectDueDateTime);
     projectCompletionShow(event,
         {
             modifyDueDate: currentProjectDueDateTime.split(',')[0],
@@ -850,7 +851,11 @@ function projectCompletionShow(event, data) {
 
         // Time
         //$("div.id_100 > select > option[value=" + value + "]").prop("selected",true);
-        $(modificationTime[0]).val(data.modifyDueTime[0]).change();
+
+        let hourToModify = data.modifyDueTime[0]%12;
+        hourToModify = hourToModify < 10 ? '0'+hourToModify : hourToModify;
+
+        $(modificationTime[0]).val(hourToModify).change();
         $(modificationTime[2]).val(data.modifyDueTime[1]).change();
         $(modificationTime[3]).val(data.modifyDueTime[2]).change();
 
