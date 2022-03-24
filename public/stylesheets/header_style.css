@@ -10,11 +10,13 @@
     display: none;
     width: 100%;
 }
+
 .mobiletop-navbar{
     border-top-style: solid;
     /*border-bottom-style: solid;*/
     /*border-top-color: #213e53;*/
 }
+
 .top-mobilenavcontainer .mobileheaderLinks a:hover {
     background-color: #213e53;
     color: white;

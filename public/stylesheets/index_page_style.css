@@ -253,6 +253,10 @@ header{
 .single-selected-freelancer-index .top-side a:hover{
     text-decoration: underline;
 }
+#freelancerBackarrow, #freelancerFrontarrow{
+    display: none;
+}
+
 .middle-side .index-serviceAndPrice{
     display: flex;
     border: .1rem solid black;

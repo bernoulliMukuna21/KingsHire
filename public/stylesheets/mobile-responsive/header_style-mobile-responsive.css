@@ -4,12 +4,21 @@
     .top-container{
         display: none;
     }
+<<<<<<< HEAD
 
+=======
+    .myaccountName{
+        display: none;
+        /*visibility: hidden;*/
+        background-color: red;
+    }
+>>>>>>> 1b7ff653e21c7e2a5cdea6ff90f5ac72d0820078
     .top-mobilenavcontainer{
         display: block;
         background-color: white;
         overflow: hidden;
         position: relative;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
     .top-mobilenavcontainer .mobileheaderLinks {
         display: none;
@@ -25,7 +34,10 @@
         display: block;
     }
     .top-mobilenavcontainer a.headerburger-icon {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1b7ff653e21c7e2a5cdea6ff90f5ac72d0820078
         color: #1E88E5;
         display: block;
         position: absolute;
@@ -60,4 +72,8 @@
     .services-navigation-bar-mobile{
         display: block;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1b7ff653e21c7e2a5cdea6ff90f5ac72d0820078
 }

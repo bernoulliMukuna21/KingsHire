@@ -1,0 +1,29 @@
+/* This is for smaller screens like mobile and tablet*/
+
+@media (max-width:500px) {
+    /* forward & Backward buttons */
+    #servicesBackarrow, #servicesFrontarrow {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        width: auto;
+        padding: 1rem;
+        color: #1E88E5;
+        font-weight: bold;
+        font-size: 3rem;
+        margin-left: 0;
+    }
+    /* Place the "backward button" to the right */
+    #servicesBackarrow {
+        left: 0;
+        margin-top: 20rem;
+    }
+    /* Place the "forward button" to the right */
+    #servicesFrontarrow {
+        right: 0;
+        margin-top: 20rem;
+    }
+    .all-freelancers-available{
+        display: block;
+    }
+}
