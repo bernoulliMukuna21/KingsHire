@@ -17,8 +17,8 @@ let multerPortfolioImage = multer({
 
 //Google cloud client
 const gc = new Storage({
-    keyFilename: path.join(__dirname, "../kingshire-344704-c468a6ed0dcd.json"),
-    projectId: "kingshire-344704",
+    credentials: JSON.parse(process.env.GCS_KEYFILE),
+    projectId: process.env.GCS_PROJECT_ID,
 });
 
 const bucketName = "kingshireimages";
