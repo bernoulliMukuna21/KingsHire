@@ -7,8 +7,9 @@ h1 Portfolio
                 input(type='file' name='portfolio_image' accept="image/*" onchange="readURL(input)")
                 input(type='text' name='image_info' placeholder="Image Description")
                 input(type='submit' value='Upload Image')
-        if freelancerUser.portfolio !== 0
-            p(style='font-weight: bold') Portfolio Empty
+        else
+            if freelancerUser.portfolio !== 0
+                p(style='font-weight: bold') Portfolio Empty
 
     div.image-portfolio(style='border: .1rem; display: flex; justify-content: right; ' +
     'align-items: center; height: 5vh')

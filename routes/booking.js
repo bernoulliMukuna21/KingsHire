@@ -1027,7 +1027,7 @@ function server_io(io) {
                                 });
 
                                 io.sockets.to(freelancerToBook).emit('Booking Data to Freelancer', newServiceInfos);
-                                res.redirect(`${domainName}/account/${loggedInClientStature}/${customer}`);
+                                res.redirect(`/account/${loggedInClientStature}/${customer}`);
                             }
                         }
                     })

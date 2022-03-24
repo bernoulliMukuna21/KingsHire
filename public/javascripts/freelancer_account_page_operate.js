@@ -768,6 +768,7 @@ $(".update-general-information").submit(function (event) {
 
 // Accept Booking
 $(document).on("click", ".freelancer-booking-accept-button", function (event) {
+    console.log('booking accept button clicked');
   let freelancerAcceptBttnHTML = event.target;
   let singleProjectDetails = freelancerAcceptBttnHTML.parentNode.parentNode;
   let projectTopInformation = singleProjectDetails.previousSibling;
