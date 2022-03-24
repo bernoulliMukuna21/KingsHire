@@ -2,6 +2,7 @@
     * Author: Bernoulli Mukuna
     * created: 10/05/2020
 */
+
 require('dotenv').config({path: `${__dirname}\\.env`})
 var createError = require('http-errors');
 var express = require('express');
@@ -23,7 +24,7 @@ var policyRouter = require('./routes/policy');
 var bookingRouter = require('./routes/booking').router;
 var messageRouter = require('./routes/sever-side-messages').router;
 var paymentRouter = require('./routes/payment').router;
-//var cloudapi = require('./routes/cloudapi');
+var cloudapi = require('./routes/cloudapi');
 
 var app = express();
 
@@ -94,7 +95,7 @@ app.use('/policy', policyRouter);
 app.use('/booking', bookingRouter);
 app.use('/messages', messageRouter);
 app.use('/payment', paymentRouter);
-//app.use('/cloudapi-upload', cloudapi);
+app.use('/cloudapi', cloudapi);
 
 
 // catch 404 and forward to error handler

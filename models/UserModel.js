@@ -41,8 +41,9 @@ let UserSchema = new mongoose.Schema({
     }],
     portfolio:[{
         pictureURL: String,
-        pictureName: String,
-        pictureEncode: String,
+        description: String,
+        name: String,
+        fileType: String,
         date:{
             type: Date,
             default: Date.now()

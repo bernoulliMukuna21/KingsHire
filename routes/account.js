@@ -199,7 +199,6 @@ router.get("/freelancer/:this_user", async function (req, res, next) {
       allBookingToFreelancer,
     });
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 });
@@ -318,7 +317,6 @@ router.get(
           }
 
           let previousURL = req.get("referer");
-          console.log('previous: ', previousURL)
 
           req.flash("success_message", "Switch to client was successful");
 
