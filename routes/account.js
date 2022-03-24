@@ -184,7 +184,7 @@ router.get("/freelancer/:this_user", async function (req, res, next) {
         freelancerSubscriptionStatus = "trial";
       }
     }
-    //ayo
+    console.log(loggedInUser);
     res.render("account", {
       isLogged, // The user accessing this page is logged in?
       freelancerUser, // The freelancer - profile owner
@@ -199,6 +199,7 @@ router.get("/freelancer/:this_user", async function (req, res, next) {
       allBookingToFreelancer,
     });
   } catch (error) {
+    console.log(error);
     return next(error);
   }
 });

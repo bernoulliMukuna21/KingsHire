@@ -50,8 +50,12 @@ $(window).ready(function() {
             'width': '12rem',
         });
     }
-
-
+    if(!$('.bottom-side .freelance-mssg-btn').is(':visible')){
+        $('.bottom-side').css({
+            'display':'flex',
+            'justifyContent': 'center'
+        });
+    }
 })
 
 $(window).click(function(event) {

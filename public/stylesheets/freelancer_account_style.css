@@ -1869,8 +1869,7 @@ button.like{
 .freelancer-projects-top,
 .freelancer-one-project-top {
     align-items: center;
-    font-size: 1.3rem;
-    font-weight: bold;
+    font-size: 1.2rem;
     padding: 1rem;
 }
 .freelancer-one-project {
@@ -1921,7 +1920,7 @@ button.like{
 .freelancer-projects-top-details p,
 .freelancer-one-project-details h4,
 .freelancer-one-project-details p {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 .freelancer-options,
 .freelancer-messages,
@@ -2028,7 +2027,7 @@ button.freelancer-booking-accept-button:hover {
     text-align: center;
 }
 .freelancer-project-final-messages h4 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 .freelancer-project-completion-confirmed p,
 .freelancer-project-completion-rejection span {
@@ -2044,7 +2043,7 @@ button.freelancer-booking-accept-button:hover {
 }
 .emptyNextDueProject {
     padding: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: black;
 }
 .bookingDetails-showOnMobileResponsive {
@@ -2065,12 +2064,12 @@ button.freelancer-booking-accept-button:hover {
 .freelancer-booking-modification > p {
     margin-top: 2rem;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: red;
 }
 .freelancer-booking-modification form label,
 .freelancer-booking-modification-acceptance-form form label {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 .booking-dateandtime-modification {
     display: grid;

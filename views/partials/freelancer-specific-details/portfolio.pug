@@ -1,5 +1,5 @@
 h1 Portfolio
-    - console.log(loggedInUser.portfolio)
+    - console.log(loggedInUser)
     div.image-portfolio(style='border: .1rem dashed black; display: flex; justify-content: center; ' +
     'align-items: center; height: 10vh')
         if (isLogged && (emailEncode(freelancerUser.email) === emailEncode(loggedInUser.email)))
@@ -7,17 +7,17 @@ h1 Portfolio
                 input(type='file' name='portfolio_image' accept="image/*" onchange="readURL(input)")
                 input(type='text' name='image_info' placeholder="Image Description")
                 input(type='submit' value='Upload Image')
-        if loggedInUser.portfolio.length === 0
+        if freelancerUser.portfolio !== 0
             p(style='font-weight: bold') Portfolio Empty
 
     div.image-portfolio(style='border: .1rem; display: flex; justify-content: right; ' +
     'align-items: center; height: 5vh')
-        if (isLogged && (emailEncode(freelancerUser.email) === emailEncode(loggedInUser.email)) && loggedInUser.portfolio.length != 0)
+        if (isLogged && (emailEncode(freelancerUser.email) === emailEncode(loggedInUser.email)) && freelancerUser.portfolio.length !== 0)
             form(action='/cloudapi/delete' method='post' enctype="multipart/form-data")
                 input(type='submit' value='Delete Current Image')
                 input.delete-current-image(style='opacity: 1' name='current_src' type='text' hidden)
 
-    if (isLogged && (emailEncode(freelancerUser.email) === emailEncode(loggedInUser.email)) && loggedInUser.portfolio.length != 0)
+    if (isLogged && (emailEncode(freelancerUser.email) === emailEncode(loggedInUser.email)) && freelancerUser.portfolio.length !== 0)
         // Slideshow container
         .slideshow-container.fade
             // Full images with numbers and message Info

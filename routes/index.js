@@ -13,6 +13,8 @@ let administrationemail = process.env.ADMINISTRATION_EMAIL;
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
+    console.log('Inside the index page route')
+
     try{
         let loggedInUser;
         let loggedInUser_imageSrc;
