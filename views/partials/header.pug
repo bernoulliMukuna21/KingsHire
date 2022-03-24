@@ -34,7 +34,11 @@ header
             p
                 a(href='/') KingsHire
             p
-                a(href='/users/login') Join
+                if isLogged
+                    if loggedInUser.user_stature.current === 'client'
+                        a(href='/account/client/' + emailEncode(loggedInUser.email)) My Account
+                    else if loggedInUser.user_stature.current === 'freelancer'
+                        a(href='/account/freelancer/' + emailEncode(loggedInUser.email)) My Account
 
 
         div.mobiletop-navbar
@@ -53,13 +57,15 @@ header
                         if loggedInUser.user_stature.initial === 'freelancer'
                             - clientToFreelancerMessage = 'Switch to Freelancer'
                         .mobileheaderLinks
-                            a(href='/account/switch/freelancer' + emailEncode(loggedInUser.email)) #{clientToFreelancerMessage}
-                            a(href='/account/client/' + emailEncode(loggedInUser.email)) My Account, #{loggedInUser.name} #{loggedInUser.surname}
+                            a(href='/account/switch/freelancer/' + emailEncode(loggedInUser.email)) #{clientToFreelancerMessage}
+                            .myaccountName
+                                a(href='/account/client/' + emailEncode(loggedInUser.email)) My Account, #{loggedInUser.name} #{loggedInUser.surname}
 
                     else if loggedInUser.user_stature.current === 'freelancer'
                         .mobileheaderLinks
-                            a(href='/account/switch/client' + emailEncode(loggedInUser.email)) Switch to Client
-                            a(href='/account/freelancer/' + emailEncode(loggedInUser.email)) My Account, #{loggedInUser.name} #{loggedInUser.surname}
+                            a(href='/account/switch/client/' + emailEncode(loggedInUser.email)) Switch to Client
+                            .myaccountName
+                                a(href='/account/freelancer/' + emailEncode(loggedInUser.email)) My Account, #{loggedInUser.name} #{loggedInUser.surname}
                     .mobileheaderLinks
                         a(href='/users/logout') Logout
 

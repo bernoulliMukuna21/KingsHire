@@ -56,14 +56,15 @@
     .contact-us-and-accessibility{
         display: block;
     }
-    .webFreelancerSlideshow{
-        display: none;
-    }
-    .mobileFreelancerSlideshow{
-        display: block;
-    }
+    /*.webFreelancerSlideshow{*/
+    /*    display: none;*/
+    /*}*/
+    /*.mobileFreelancerSlideshow{*/
+    /*    display: block;*/
+    /*}*/
     /* forward & Backward buttons */
     #freelancerBackarrow, #freelancerFrontarrow {
+        display: block;
         cursor: pointer;
         position: absolute;
         /*top: 180%;*/
