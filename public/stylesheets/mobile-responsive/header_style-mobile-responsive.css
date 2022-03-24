@@ -1,79 +1,36 @@
-/* This is for smaller screens like mobile and tablet*/
+/* Header Stylesheet*/
+.top-mobilenavcontainer{
+    display: none;
+}
+.top-mobilenavcontainer {
+    overflow: hidden;
+    position: relative;
+}
+.top-mobilenavcontainer .mobileheaderLinks {
+    display: none;
+    width: 100%;
+}
 
-@media (max-width:500px) {
-    .top-container{
-        display: none;
-    }
-<<<<<<< HEAD
+.mobiletop-navbar{
+    border-top-style: solid;
+    /*border-bottom-style: solid;*/
+    /*border-top-color: #213e53;*/
+}
 
-=======
-    .myaccountName{
-        display: none;
-        /*visibility: hidden;*/
-        background-color: red;
-    }
->>>>>>> 1b7ff653e21c7e2a5cdea6ff90f5ac72d0820078
-    .top-mobilenavcontainer{
-        display: block;
-        background-color: white;
-        overflow: hidden;
-        position: relative;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    }
-    .top-mobilenavcontainer .mobileheaderLinks {
-        display: none;
-        width: 100%;
-    }
-    .top-mobilenavcontainer a {
-        /* color: #213e53; */
-        color: #1E88E5;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: bold;
-        display: block;
-    }
-    .top-mobilenavcontainer a.headerburger-icon {
-<<<<<<< HEAD
+.top-mobilenavcontainer .mobileheaderLinks a:hover {
+    background-color: #213e53;
+    color: white;
+}
 
-=======
->>>>>>> 1b7ff653e21c7e2a5cdea6ff90f5ac72d0820078
-        color: #1E88E5;
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-    .top-mobilenavcontainer .mobileheaderLinks a:hover {
-        background-color: #1E88E5;
-        color: white;
-    }
-    .mobiletop-texts{
-        text-align: center;
-        width: 85%;
-        /*background-color: black;*/
-        float: right;
-        margin-right: 2rem;
-    }
-    .mobiletop-texts p{
-        display: inline-block;
-        font-family:tempus sans itc;
-    }
-    .mobiletop-texts a{
-        padding-right: 0;
-        padding-left: 0;
-    }
-    .mobiletop-texts :last-child{
-        float: right;
-    }
-    .services-navigation-bar{
-        display: none;
-    }
-    .services-navigation-bar-mobile{
-        display: block;
-    }
-<<<<<<< HEAD
-=======
-
->>>>>>> 1b7ff653e21c7e2a5cdea6ff90f5ac72d0820078
+.webFreelancerSlideshow{
+    display: block;
+}
+.mobileFreelancerSlideshow{
+    display: none;
+}
+.services-navigation-bar{
+    display: block;
+}
+.services-navigation-bar-mobile{
+    display: none;
 }

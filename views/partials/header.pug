@@ -34,12 +34,12 @@ header
             p
                 a(href='/') KingsHire
             p
-                a(href='/users/login') Join
                 if isLogged
                     if loggedInUser.user_stature.current === 'client'
                         a(href='/account/client/' + emailEncode(loggedInUser.email)) My Account
                     else if loggedInUser.user_stature.current === 'freelancer'
                         a(href='/account/freelancer/' + emailEncode(loggedInUser.email)) My Account
+
 
         div.mobiletop-navbar
             div

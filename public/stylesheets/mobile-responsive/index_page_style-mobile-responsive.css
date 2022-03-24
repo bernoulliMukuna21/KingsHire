@@ -59,9 +59,9 @@
     .webFreelancerSlideshow{
         display: none;
     }
-    .mobileFreelancerSlideshow{
+   /* .mobileFreelancerSlideshow{
         display: block;
-    }
+    }*/
     /* forward & Backward buttons */
     #freelancerBackarrow, #freelancerFrontarrow {
         cursor: pointer;
