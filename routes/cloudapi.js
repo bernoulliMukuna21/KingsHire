@@ -17,7 +17,7 @@ let multerPortfolioImage = multer({
 
 //Google cloud client
 const gc = new Storage({
-    credentials: JSON.parse(process.env.GCS_KEYFILE),
+    credentials: process.env.GSC_KEYFILE,
     projectId: process.env.GCS_PROJECT_ID,
 });
 
