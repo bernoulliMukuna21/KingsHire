@@ -57,7 +57,7 @@ header
                         if loggedInUser.user_stature.initial === 'freelancer'
                             - clientToFreelancerMessage = 'Switch to Freelancer'
                         .mobileheaderLinks
-                            a(href='/account/switch/freelancer/' + emailEncode(loggedInUser.email)) #{clientToFreelancerMessage}
+                            a(href='/account/switch/freelancer/8' + emailEncode(loggedInUser.email)) #{clientToFreelancerMessage}
                             .myaccountName
                                 a(href='/account/client/' + emailEncode(loggedInUser.email)) My Account, #{loggedInUser.name} #{loggedInUser.surname}
 
