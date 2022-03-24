@@ -57,12 +57,17 @@ block content
 
       /////////// Slideshow Web container
       // Slideshow slides
-      .selected-freelancers-index-page
-        if allFreelancers
-          // Loop through the freelancers
-          each freelancer in allFreelancers
+      .mobileFreelancerSlideshow
+        // Navigation Backward and Forward buttons
+        i#freelancerBackarrow.fa-solid.fa-circle-arrow-left
+        i#freelancerFrontarrow.fa-solid.fa-circle-arrow-right
+        .selected-freelancers-index-page
+          if allFreelancers
+            // Loop through the freelancers
+            each freelancer in allFreelancers
               - let servicesPrices = freelancer.serviceAndPrice
               - let freelancerUniqueKey = emailEncode(freelancer.email);
+              - console.log(freelancerUniqueKey)
               .single-selected-freelancer-index
                 .top-side
                   if !freelancer.profile_picture.data
@@ -71,7 +76,6 @@ block content
                     - let imageSource;
                     if freelancer.profile_picture.name === 'oauth_picture'
                       - imageSource = freelancer.profile_picture.data.toString();
-                      - console.log('Image src: ', imageSource)
                     else
                       - imageSource = "data:image/"+freelancer.profile_picture.contentType+";base64,"+freelancer.profile_picture.data.toString('base64')
                     img(src=imageSource)

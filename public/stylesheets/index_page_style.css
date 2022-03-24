@@ -247,6 +247,7 @@ header{
     text-decoration: underline;
 }
 
+
 .single-selected-freelancer-index .middle-side{
     padding: .5rem;
     border-bottom: .1rem solid lightgrey;
@@ -256,6 +257,10 @@ header{
     scrollbar-width: none; /*!* Firefox *!*/
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
+#freelancerBackarrow, #freelancerFrontarrow{
+    display: none;
+}
+
 .middle-side .index-serviceAndPrice{
     display: flex;
     border: .1rem solid black;

@@ -822,7 +822,6 @@
     text-align: center;
     color: white;
 }
-
 .image-portfolio img,
 .image-portfolio video,
 .image-portfolio iframe,
@@ -854,7 +853,6 @@
     justify-content: center;
     align-items: center;
 }
-
 .freelancer-portfolio-modal-container {
     width: 60%;
     background-color: white;
@@ -862,7 +860,6 @@
     position: relative;
     border-radius: 0.5rem;
 }
-
 .portfolio-item-upload-header {
     display: flex;
     justify-content: center;
@@ -881,7 +878,6 @@
 .portfolio-item-upload-option {
     display: flex;
 }
-
 .portfolio-item-upload-option a,
 .portfolio-item-upload-option input {
     flex: 1;
@@ -1591,10 +1587,15 @@ button.like{
     border: .1rem solid #1E88E5;
 }
 .freelancer-service-package-update{
-    border-top: .2rem solid black;
     margin: 0 1rem;
     padding: .5rem 0;
+
+
 }
+.freelancer-service-package-update:first-child{
+    border-top: .2rem solid white;
+}
+
 .freelancer-service-package-update ul li{
     display: flex;
     justify-content: space-between;
@@ -2265,3 +2266,4 @@ section:last-child
 button:first-child:hover {
     background-color: #bf3524;
 }
+
