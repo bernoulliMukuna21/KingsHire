@@ -36,6 +36,8 @@ block content
                                 if (isLogged && (freelancerUser.email === loggedInUser.email))
                                     p.addProfilePicture + Add Profile Picture
                         else
+                            if freelancerUser.profile_picture.name === 'oauth_picture'
+                                - loggedInUser_imageSrc = loggedInUser_imageSrc.toString()
                             img(src=loggedInUser_imageSrc)
                     p.account-profile-name #{freelancerUser.name + ' ' + freelancerUser.surname}
                     if (isLogged && (freelancerUser.email === loggedInUser.email))

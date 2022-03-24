@@ -257,6 +257,10 @@ header{
     scrollbar-width: none; /*!* Firefox *!*/
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
+.single-selected-freelancer-index .middle-side::-webkit-scrollbar{
+    display: none;  /* Safari and Chrome */
+}
+
 #freelancerBackarrow, #freelancerFrontarrow{
     display: none;
 }

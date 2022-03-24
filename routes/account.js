@@ -184,7 +184,7 @@ router.get("/freelancer/:this_user", async function (req, res, next) {
         freelancerSubscriptionStatus = "trial";
       }
     }
-    console.log(loggedInUser);
+
     res.render("account", {
       isLogged, // The user accessing this page is logged in?
       freelancerUser, // The freelancer - profile owner
