@@ -16,7 +16,8 @@ let smtpTransport = nodemailer.createTransport({
     tls: { rejectUnauthorized: false }
 });
 
-function mailerFunction(recipientEmail, subject, mailTitle, mailBody, mailFooter) {
+
+function mailerFunction(recipientEmail, subject, mailTitle, mailBody) {
     return {
         to: recipientEmail,
         from: process.env.ADMINISTRATION_EMAIL,
@@ -29,7 +30,6 @@ function mailerFunction(recipientEmail, subject, mailTitle, mailBody, mailFooter
                 justify-content: center;
             }
             .email-container{
-                width: 75%;
                 background-color: white;
             }
             .logoHeader{
@@ -40,6 +40,7 @@ function mailerFunction(recipientEmail, subject, mailTitle, mailBody, mailFooter
             }
             .emailContent{
                 margin: 20px;
+                text-align: center;
             }
             
             .welcomeTitle{text-align: center;}
@@ -57,9 +58,6 @@ function mailerFunction(recipientEmail, subject, mailTitle, mailBody, mailFooter
             .emailBody{
                 margin-top: 40px;
                 margin-bottom: 80px;
-                text-align: left;
-                text-align: -moz-left;
-                text-align: -webkit-left;
             }
             .emailBtn{
                 padding: 16px 20px;
@@ -77,13 +75,10 @@ function mailerFunction(recipientEmail, subject, mailTitle, mailBody, mailFooter
             </div>
             <div class="emailContent">
                 <div class="welcomeTitle">
-                    Welcome to KingsHire
+                    ${mailTitle}
                 </div>
                 <div class="emailBody">
-                    <p>
-                        You have successfully signed up to KingsHire.<br><br> Welcome to onboard 🥳
-                        We are looking forward to working with you.
-                    </p>
+                    ${mailBody}
                     <P>
                         Thank you,
                         <br><br>
@@ -91,7 +86,7 @@ function mailerFunction(recipientEmail, subject, mailTitle, mailBody, mailFooter
                     </P>
                 </div>
                 <a href="https://kingshire.herokuapp.com/services" class="emailBtn" style="background-color: #ee7182; color: white; text-decoration: none">
-                    Hire a Kinglancer
+                    Find Freelancers
                 </a>
             </div>
             <div class="emailFooter">

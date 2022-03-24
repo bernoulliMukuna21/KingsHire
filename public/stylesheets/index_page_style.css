@@ -144,7 +144,8 @@ header{
     text-align: center;
 }
 #kingsHire-section-image{
-    height: 35vh;
+    height: 40vh;
+    width: 40vh
 }
 .booking-steps-information {
     background: #FEB2BC;
