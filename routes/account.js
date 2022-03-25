@@ -151,7 +151,6 @@ router.get("/freelancer/:this_user", async function (req, res, next) {
           { $sort: { dueDateTime: 1 } },
         ]);
       } catch (error) {
-        console.log(error);
         return next(error);
       }
       // Group the project by statuses
@@ -199,7 +198,6 @@ router.get("/freelancer/:this_user", async function (req, res, next) {
       allBookingToFreelancer,
     });
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 });

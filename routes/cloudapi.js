@@ -22,8 +22,6 @@ const gc = new Storage({
   projectId: process.env.GCS_PROJECT_ID,
 });
 
-console.log(process.env.GCS_KEYFILE, process.env.GCS_PROJECT_ID);
-
 const bucketName = "kingshireimages";
 gcUserFiles = gc.bucket(bucketName);
 
