@@ -18,6 +18,12 @@
     .mobiletop-texts img.kingsHireImage{
         width: 50%;
     }
+    .mobiletop-texts{
+        border: .1rem soldi red;
+    }
+    .mobiletop-navbar{
+        border: .1rem soldi black;
+    }
     .top-mobilenavcontainer .mobileheaderLinks {
         display: none;
         width: 100%;
