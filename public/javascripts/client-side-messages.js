@@ -14,6 +14,10 @@ var windowsize = $(window).width();
 $('.freelance-mssg-btn').click(function (event) {
     let messageBoxClickedElement = event.target;
 
+    $('.freelance-mssg-btn').prop("disabled", true);
+    $('.freelance-mssg-btn')[0].firstChild.innerHTML = "<p>Wait<span id='wait'>.</span></p>"
+    $(document.body).css('pointer-events', 'none');
+
     if(messageBoxClickedElement.className !== 'freelance-mssg-btn')
         messageBoxClickedElement = messageBoxClickedElement.parentNode;
 
@@ -45,7 +49,6 @@ $(window).resize(function() {
 */
 
 $( document ).ready(function() {
-
     let currentURL = window.location.href;
     let previousURL = document.referrer;
     let loggedInUserURL = '/account/'+loggedInUser.type+'/'+
@@ -55,9 +58,9 @@ $( document ).ready(function() {
 
         if(currentURL.includes('?receiverKey=')){
 
+            $(document.body).css('pointer-events', 'none');
             if(previousURL === '') window.location.href = loggedInUserURL;
 
-            if (loggedInUser.type === 'freelancer') $(document.body).css('pointer-events', 'none');
         }
 
 
