@@ -1,0 +1,1 @@
+echo ${GCS_CREDENTIALS} > /app/gcs_service_account.json
