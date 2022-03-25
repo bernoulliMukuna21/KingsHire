@@ -67,9 +67,9 @@ block content
                        else if userType === 'freelancer'
                            .mobile-client-bottom
                                a(href='/users/join/client') Join as Client
-
-               div.join-page-bottom
-                   if userType === 'client'
-                       a#switchToFreelancer(href='/users/join/freelancer') JOIN AS FREELANCER
-                   else if userType === 'freelancer'
-                       a#joinAsClient(href='/users/join/client') JOIN AS CLIENT
+               //
+                   div.join-page-bottom
+                       if userType === 'client'
+                           a#switchToFreelancer(href='/users/join/freelancer') JOIN AS FREELANCER
+                       else if userType === 'freelancer'
+                           a#joinAsClient(href='/users/join/client') JOIN AS CLIENT

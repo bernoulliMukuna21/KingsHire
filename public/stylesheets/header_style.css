@@ -5,6 +5,20 @@
     overflow: hidden;
     position: relative;
 }
+.mobiletop-texts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobiletop-texts>p:first-child{
+    margin-left: 25%;
+}
+
+.mobiletop-texts>p:last-child{
+    margin-left: auto;
+}
+
 .top-mobilenavcontainer .mobileheaderLinks {
     display: none;
     width: 100%;
