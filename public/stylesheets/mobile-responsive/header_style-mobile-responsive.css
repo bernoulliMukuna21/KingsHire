@@ -15,6 +15,9 @@
         position: relative;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
+    .mobiletop-texts img.kingsHireImage{
+        width: 40%;
+    }
     .top-mobilenavcontainer .mobileheaderLinks {
         display: none;
         width: 100%;
