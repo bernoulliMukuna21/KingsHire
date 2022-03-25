@@ -1,36 +1,23 @@
 /* Header Stylesheet*/
-.top-mobilenavcontainer{
-    display: none;
-}
-.top-mobilenavcontainer {
-    overflow: hidden;
-    position: relative;
-}
-.top-mobilenavcontainer .mobileheaderLinks {
-    display: none;
-    width: 100%;
-}
-
-.mobiletop-navbar{
-    border-top-style: solid;
-    /*border-bottom-style: solid;*/
-    /*border-top-color: #213e53;*/
-}
-
-.top-mobilenavcontainer .mobileheaderLinks a:hover {
-    background-color: #213e53;
-    color: white;
-}
-
-.webFreelancerSlideshow{
-    display: block;
-}
-/*.mobileFreelancerSlideshow{
-    display: none;
-}*/
-.services-navigation-bar{
-    display: block;
-}
-.services-navigation-bar-mobile{
-    display: none;
+@media (max-width:500px) {
+    header{
+        padding: 0;
+        margin: 0;
+    }
+    .top-container{
+        margin: 0;
+        padding: 0;
+    }
+    .top-navbar{
+        margin: 0;
+        padding: 0;
+    }
+    .top-navbar>div:first-child{
+        margin: 0;
+        padding: 0;
+    }
+    .top-navbar>div:first-child a{
+        width: fit-content;
+        margin: 0;
+    }
 }

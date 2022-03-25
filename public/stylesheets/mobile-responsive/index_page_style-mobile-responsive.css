@@ -1,6 +1,10 @@
 /* This is for smaller screens like mobile and tablet*/
 
 @media (max-width:500px) {
+    .mobile-application-error{
+        display: block;
+    }
+
     .webMainImage{
         display: none;
     }
@@ -43,6 +47,7 @@
     }
     .selected-freelancers-index-page{
         display: block;
+        padding: 4rem;
     }
     .single-selected-freelancer-index {
         width: 100%;

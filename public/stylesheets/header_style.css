@@ -27,3 +27,14 @@
 .services-navigation-bar-mobile{
     display: none;
 }
+.mobile-application-error{
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: #F9546A;
+    padding: .25rem .5rem;
+    color: #FFFFFF;
+    display: none;
+}
+.mobile-application-error span{
+    font-weight: bold;
+}
