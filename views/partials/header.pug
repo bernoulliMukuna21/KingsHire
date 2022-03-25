@@ -36,13 +36,15 @@ header
     .top-mobilenavcontainer
         .mobiletop-texts
             p
-                a(href='/') KingsHire
+                img.kingsHireImage(src='/images/kingsHireImage-removebg-preview.png')
             p
                 if isLogged
                     if loggedInUser.user_stature.current === 'client'
                         a(href='/account/client/' + emailEncode(loggedInUser.email)) My Account
                     else if loggedInUser.user_stature.current === 'freelancer'
                         a(href='/account/freelancer/' + emailEncode(loggedInUser.email)) My Account
+                else
+                    a(href='/users/join') Join
 
 
         div.mobiletop-navbar

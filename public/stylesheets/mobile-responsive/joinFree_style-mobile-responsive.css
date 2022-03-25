@@ -51,6 +51,7 @@
         margin-top: 2rem;
         text-align: center;
         justify-content: center;
+        border-top: none;
     }
     .mobile-submission{
         display: block;
