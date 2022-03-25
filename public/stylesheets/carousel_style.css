@@ -1,12 +1,6 @@
-/* {
-  box-sizing: border-box;
-}
-*/
-
 /* Slideshow container */
 .slideshow-container {
-  max-width: 750px;
-  position: relative;
+  /*position: relative;*/
   margin: auto;
 }
 
@@ -31,7 +25,6 @@
   border: 0.4rem solid black;
 }
 .slideshow-container.fade img {
-  border: 0.1rem solid yellow;
   border-radius: 2rem;
   max-height: 50vh;
   max-width: 100%;
