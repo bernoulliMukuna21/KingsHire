@@ -4,7 +4,7 @@ import {createBookingHTML, moveProjectBooking} from "./account_operate.js";
 import BookingInsertionIndex from './BookingInsertionIndex.js'
 
 let allServicesPrices;
-let domainName = 'https://kingshireproject.herokuapp.com';
+let domainName = 'https://trialapp-demo.herokuapp.com';
 //let domainName = 'http://localhost:3000';
 let minimumPriceOfService = 10.00;
 
@@ -232,6 +232,17 @@ $(document).on('click', '#service-booking-submit-bttn', function(event) {
 $(document).on('submit', '#service-booking-form', function(event) {
     event.preventDefault();
 
+    let clickedButton = document.activeElement.id;
+    let clickedButtonInnerHTML;
+
+    if(clickedButton === 'service-booking-submit-bttn') clickedButtonInnerHTML = 'Instant Book';
+    else clickedButtonInnerHTML = 'Request'
+
+    accountsOperation.disbaleButton(
+        `#${clickedButton}`,
+        'Processing <span id="wait">.</span>'
+    );
+
     // Empty the error field of the booking form
     $('#booking-form-error-mssg').empty();
 
@@ -267,7 +278,7 @@ $(document).on('submit', '#service-booking-form', function(event) {
             $('.project-enquiry-price').css('border', '.1rem solid red');
         }
     }else{
-        if ($(bookingButtonHTML).is(':visible') && (bookingButtonHTML.innerText).includes('Instant Book')){
+        if (clickedButtonInnerHTML === 'Instant Book'){
             // If the user wants to make an instant booking
 
             $.ajax({
@@ -275,7 +286,10 @@ $(document).on('submit', '#service-booking-form', function(event) {
                 url: `/booking/service-booking/instant_booking/${JSON.parse(bookingDataJSON.projectsupplier).freelancerEmail}`,
                 data: bookingDataJSON,
                 success: function (data) {
+
+                    accountsOperation.enableButton(`#${clickedButton}`, clickedButtonInnerHTML);
                     window.location.replace(data.paymentRoute);
+
                 },
                 error: function (error) {
                     let errorMssg = error.responseJSON.error;
@@ -285,7 +299,7 @@ $(document).on('submit', '#service-booking-form', function(event) {
                 }
             })
 
-        }else if ($(requestButtonHTML).is(':visible') && (requestButtonHTML.innerText) === 'Request'){
+        }else if (clickedButtonInnerHTML === 'Request'){
             // If the user wants to make a request booking
 
             bookingDataJSON.projectenquiryprice = (parseFloat(bookingDataJSON.projectenquiryprice).toFixed(2)).toString();
@@ -298,6 +312,8 @@ $(document).on('submit', '#service-booking-form', function(event) {
             }else{
                 $('.project-enquiry-price').css('border', '.1rem solid red');
             }
+
+            accountsOperation.enableButton(`#${clickedButton}`, clickedButtonInnerHTML);
         }
     }
 })
@@ -455,10 +471,17 @@ socketConnection.socket.on('Successful Payment - send to Freelancer', successDat
 $(document).on('submit', '#booking-modification-form', function(event) {
     event.preventDefault();
 
+    let clickedButtonID = document.activeElement.id;
+    accountsOperation.disbaleButton(
+        `#${clickedButtonID}`,
+        'Sending Modification <span id="wait">.</span>'
+    );
+
     $('.freelancer-booking-modification>p').hide();
 
     let formData = accountsOperation.dataCollection(this);
     let bookingModifyDataJSON = {}
+
 
     for (var value of formData.entries()) {
         bookingModifyDataJSON[value[0]] = value[1];
@@ -555,6 +578,8 @@ $(document).on('submit', '#booking-modification-form', function(event) {
             }
         })
     }
+
+    accountsOperation.enableButton(`#${clickedButtonID}`, 'Send Modification');
 })
 
 

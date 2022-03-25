@@ -1,5 +1,5 @@
 import * as accountsOperation from "./account_operate.js";
-let domainURL = 'https://kingshireproject.herokuapp.com/'
+let domainURL = 'https://trialapp-demo.herokuapp.com'
 $(window).ready(function() {
     let currentPath = window.location.href.substring(domainURL.length);
     console.log('Domain URL: ', domainURL);

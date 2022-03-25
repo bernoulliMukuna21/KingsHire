@@ -73,8 +73,7 @@ router.get('/', async function (req, res, next) {
             emailEncode
         });
     }catch ( error ) {
-        console.log(error)
-        //return next(error)
+        return next(error)
     }
 });
 

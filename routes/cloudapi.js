@@ -1,3 +1,4 @@
+/*
 var express = require("express");
 var router = express.Router();
 const { Storage } = require("@google-cloud/storage");
@@ -17,7 +18,7 @@ let multerPortfolioImage = multer({
 
 //Google cloud client
 const gc = new Storage({
-    credentials: JSON.parse(process.env.GSC_KEYFILE),
+    credentials: JSON.parse(process.env.GCS_KEYFILE),
     projectId: process.env.GCS_PROJECT_ID,
 });
 
@@ -118,3 +119,4 @@ router.post("/delete", multerPortfolioImage, function (req, res, next) {
 });
 
 module.exports = router;
+*/

@@ -29,7 +29,7 @@ if (isLogged && (emailEncode(freelancerUser.email) === emailEncode(loggedInUser.
 
                 .trail-ending-options
 
-                    - let domainName = 'https://kingshire.herokuapp.com'; //'http://localhost:3000'
+                    - let domainName = 'https://trialapp-demo.herokuapp.com'; //'http://localhost:3000'
                     form(action=`${domainName}/create-checkout-session/subscription` method='POST')
                         input#trial_days(type='hidden' name='trial_days' value=trailDays)
                         button.suscription-bttn(class='checkout-and-portal-button') Subscribe £1/Month

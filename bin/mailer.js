@@ -68,7 +68,7 @@ function mailerFunction(recipientEmail, subject, mailTitle, mailBody) {
         <div class="email-container">
             <div class="logoHeader">
                 <a href="https://kingshire.herokuapp.com"  target="_blank">
-                    <img class="kingshireLogo" src="cid:kingsHireLogo" width="20%" height="50%"/>
+                    KingsHire
                 </a>
             </div>
             <div class="emailContent">
@@ -83,7 +83,7 @@ function mailerFunction(recipientEmail, subject, mailTitle, mailBody) {
                         The KingsHire Team
                     </P>
                 </div>
-                <a href="https://kingshire.herokuapp.com/services" class="emailBtn" style="background-color: #ee7182; color: white; text-decoration: none">
+                <a href="https://localhost:3000/services" class="emailBtn" style="background-color: #ee7182; color: white; text-decoration: none">
                     Find Freelancers
                 </a>
             </div>
@@ -91,22 +91,11 @@ function mailerFunction(recipientEmail, subject, mailTitle, mailBody) {
                 Follow us on
                 <br>
                 <a href="https://kingsch.at/h/"  target="_blank">
-                    <img class="kingshireSocial" src="cid:kingsChatLogo" width="8%" height="8%"/>
+                    KingsChat
                 </a>
             </div>
         </div>
-            </body>`,
-        attachments: [
-            {
-                filename: 'kingsHireImage-removebg-preview.png',
-                path: __dirname.slice(0, -3)+'public/images/kingsHireImage-removebg-preview.png',
-                cid: 'kingsHireLogo'
-            },
-            {
-                filename: 'kingsChat.png',
-                path: __dirname.slice(0, -3)+'public/images/kingsChat.png',
-                cid: 'kingsChatLogo'
-            }]
+            </body>`
     };
 }
 module.exports = {smtpTransport, mailerFunction}
