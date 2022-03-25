@@ -151,7 +151,6 @@ router.get("/freelancer/:this_user", async function (req, res, next) {
           { $sort: { dueDateTime: 1 } },
         ]);
       } catch (error) {
-        console.log(error);
         return next(error);
       }
       // Group the project by statuses
@@ -184,7 +183,7 @@ router.get("/freelancer/:this_user", async function (req, res, next) {
         freelancerSubscriptionStatus = "trial";
       }
     }
-    //ayo
+
     res.render("account", {
       isLogged, // The user accessing this page is logged in?
       freelancerUser, // The freelancer - profile owner
@@ -199,7 +198,6 @@ router.get("/freelancer/:this_user", async function (req, res, next) {
       allBookingToFreelancer,
     });
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 });
@@ -321,10 +319,8 @@ router.get(
 
           req.flash("success_message", "Switch to client was successful");
 
-          if (!previousURL.includes("receiverKey")) {
-            if (previousURL === `${domainName}/`) res.redirect(`back`);
-            else res.redirect(`/account/client/${userUUID}`);
-          } else res.redirect(`/account/client/${userUUID}`);
+          if (previousURL.includes("account")) res.redirect(`/account/client/${userUUID}`);
+          else res.redirect(`/`);
         });
       })
       .catch((error) => {

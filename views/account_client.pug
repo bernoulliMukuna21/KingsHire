@@ -116,7 +116,7 @@ block content
                                                                     p #{lastBookingModification.newProposedDescription}
                                                                 h4 Proposed Cost: £#{lastBookingModification.newProposedPrice}
                                             div
-                                                - let domainName = 'https://kingshire.herokuapp.com'; // 'http://localhost:3000'
+                                                - let domainName = 'https://trialapp-demo.herokuapp.com'; // 'http://localhost:3000'
 
                                                 if clientListOfStatus[bookingDetail.status.client] !== 'booking ongoing' && bookingDetail.status.client <= 2
                                                     a(href=`${domainName}/payment/create-checkout-session/booking-checkout?bookingID=${bookingDetail.bookingID}`): button Pay

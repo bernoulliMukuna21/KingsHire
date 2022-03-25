@@ -1,5 +1,4 @@
-/* This is for smaller screens like mobile and tablet*/
-
+/* Header Stylesheet*/
 @media (max-width:500px) {
     .top-container{
         display: none;

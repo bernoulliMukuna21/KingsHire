@@ -148,7 +148,6 @@ router.post('/join/:userType', function (req, res, next) {
                             let signUpNotificationToAdmin = '<p>New Joiner</p>'+
                             '<p>I am happy to announce to you that there has been a new joiner.</p>'
 
-
                             mailer.smtpTransport.sendMail(mailer.mailerFunction(email,
                                 "Welcome to KingsHire", `Welcome to KingsHire, ${name} ${surname}`, welcomeEmailToUser), function (err) {
                                 if(err){ console.log(err); throw err }

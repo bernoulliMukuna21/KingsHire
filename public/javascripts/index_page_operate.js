@@ -1,5 +1,5 @@
 import * as accountsOperation from "./account_operate.js";
-let domainURL = 'https://kingshire.herokuapp.com/'
+let domainURL = 'https://kingshireproject.herokuapp.com'
 $(window).ready(function() {
     let currentPath = window.location.href.substring(domainURL.length);
     console.log('Domain URL: ', domainURL);
@@ -41,13 +41,21 @@ $(window).ready(function() {
     }
 
     if(!$('.bottom-side button').is(':visible')){
+        $('.single-selected-freelancer-index .bottom-side').css({
+            'display':'flex',
+            'justifyContent': 'center',
+        });
         $('.bottom-side .freelance-mssg-btn').css({
             'padding':'.75rem',
             'width': '12rem',
         });
     }
-
-
+    if(!$('.bottom-side .freelance-mssg-btn').is(':visible')){
+        $('.bottom-side').css({
+            'display':'flex',
+            'justifyContent': 'center'
+        });
+    }
 })
 
 $(window).click(function(event) {
@@ -102,7 +110,7 @@ $(document).on('click', '.index-serviceAndPrice', function (event) {
         servicePackageModal = servicePackageModal.parentNode;
     }
 
-    servicePackageModal = servicePackageModal.nextSibling.nextSibling;
+    servicePackageModal = servicePackageModal.parentNode.nextSibling.nextSibling;
 
     servicePackageModal.firstChild.firstChild.firstChild.firstChild.innerHTML =
         `<span>${indexPageServicesHTML.firstChild.innerText} </span>`+
@@ -135,6 +143,38 @@ $(document).on('click', '.index-serviceAndPrice', function (event) {
     $('.freelance-service-package-modal').show();
 });
 
+// Slideshow
+var slidePosition = 1;
+SlideShow(slidePosition);
+
+$(document).on("click", "#freelancerBackarrow", function (event) {
+    plusSlides(-1);
+});
+
+$(document).on("click", "#freelancerFrontarrow", function (event) {
+    plusSlides(1);
+});
+
+// forward/Back controls
+function plusSlides(n) {
+    SlideShow((slidePosition += n));
+}
+
+function SlideShow(n) {
+    var i;
+    var slides = document.getElementsByClassName("landingpageFreelancers");
+    if (n > slides.length) {
+        slidePosition = 1;
+    }
+    if (n < 1) {
+        slidePosition = slides.length;
+    }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    slides[slidePosition - 1].style.display = "block";
+}
 
 // Mobile Slideshow
 $( document ).ready(function() {
@@ -177,8 +217,6 @@ $( document ).ready(function() {
         }
     }
 });
-
-
 
 
 

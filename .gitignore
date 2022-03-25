@@ -2,4 +2,6 @@
 # Below are all the files that are not visible for the public on GitHub
 .env
 node_modules/
+kingshire-344704-c468a6ed0dcd.json
+public/data
 kingshire-344704-280e7a365b8c.json

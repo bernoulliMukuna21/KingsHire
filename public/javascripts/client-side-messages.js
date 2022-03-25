@@ -53,9 +53,13 @@ $( document ).ready(function() {
 
     if(currentURL.includes(loggedInUserURL)){
 
-        if(previousURL === '' && currentURL.includes('?receiverKey=')){
-            window.location.href = loggedInUserURL;
+        if(currentURL.includes('?receiverKey=')){
+
+            if(previousURL === '') window.location.href = loggedInUserURL;
+
+            if (loggedInUser.type === 'freelancer') $(document.body).css('pointer-events', 'none');
         }
+
 
         $('.user-messages-side').show();
         $('.all-different-conversations-container').empty();
@@ -89,12 +93,17 @@ $(document).on('click', '.user-completed-booking-page', function(event) {
 
 /*** Booking Initialiser button is clicked ***/
 $(document).on('click', '#booking-side-message-bttn', function(event) {
+    $('#booking-side-message-bttn').prop("disabled", true);
+    $('#booking-side-message-bttn')[0].firstChild.innerHTML = "<p>Wait<span id='wait'>.</span></p>"
+    $(document.body).css('pointer-events', 'none')
+
     let freelancerToMessage_uniqueKey = $("#freelancerToMessageUUID").val();
     $.ajax({
         method: 'GET',
         url: `/messages/get-profile/${freelancerToMessage_uniqueKey}`,
         data: {},
         success: function (data) {
+
             windowsize = $(window).width();
             $('.user-messages-side').empty();
             $('.all-different-conversations-container').empty();
@@ -108,6 +117,8 @@ $(document).on('click', '#booking-side-message-bttn', function(event) {
 
                 initializeMessageRoom(receiver);
 
+                $('#booking-side-message-bttn').prop("disabled", false);
+                $('#booking-side-message-bttn')[0].firstChild.innerHTML = "<p>Message</p>"
             }).catch( error => {
                 console.log('Get rooms failed');
             });
@@ -197,8 +208,6 @@ $(document).on('click', '.message-container-typeBox i', function(event) {
     event.preventDefault();
 
     let message = event.target.parentNode.childNodes[0].value;
-
-    console.log('Message to send: ', message);
 
     messageController(receiver, message.trim());
 
@@ -388,6 +397,8 @@ function initializeMessageRoom(receiverUniqueKey) {
                 loggedInUserRooms[roomIndex],
                 '.all-different-conversations-container',
                 loggedInUser.uniqueKey, receiverData.uniqueKey);
+
+            $(document.body).css('pointer-events','');
         },
         error: function (error) {
             console.log('Error occurred in Initialising Message');

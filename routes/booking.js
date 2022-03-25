@@ -21,36 +21,62 @@ function server_io(io) {
                         acceptData['status'] = 1; // 1 -> awaiting payment
                     bookingDetailUpdate.price = bookingDetailUpdate.requestedPrice;
 
-                    let bookingAcceptanceMessageToClientHTML = '<h1 style="color: #213e53; font-size: 1.1rem">Booking Accepted</h1>'+
-                        '<p>Hello '+bookingDetailUpdate.customer.name.split(' ')[0]+',</p><p> There has been an update ' +
-                        'your booking ('+bookingDetailUpdate.service+' - ' +bookingDetailUpdate.projectName+'). I am please to inform you that '+
-                        bookingDetailUpdate.supplier.name+' has accepted your booking and is now waiting for the payment to begin' +
+                    let bookingAcceptanceMessageToClientHTML = "<p>Hello " +
+                        bookingDetailUpdate.customer.name.split(" ")[0] +
+                        ",</p><p> There has been an update on " +
+                        "your booking (" +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        "). I am pleased to inform you that " +
+                        bookingDetailUpdate.supplier.name +
+                        " has accepted your booking and is now waiting for your payment to begin" +
                         'the work. Please <a target="_blank" style="text-decoration: underline; color: #0645AD; cursor: pointer" ' +
-                        'href='+ loginURL +'> login </a> to your account to make the payment</p>'+
-                        '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
+                        "href=" +
+                        loginURL +
+                        "> login </a> to your account to make the payment</p>"
 
-                    let bookingAcceptanceMessageToFreelancerHTML = '<h1 style="color: #213e53; font-size: 1.1rem">Booking Accepted</h1>'+
-                        '<p>Hello '+bookingDetailUpdate.supplier.name.split(' ')[0]+',</p><p> This is just a confirmation of your acceptance for ' +
-                        ' the following booking ('+ bookingDetailUpdate.service+' - ' +bookingDetailUpdate.projectName +') has.' +
-                        ' It is advised to wait for the payment to be made before starting the work as the client can still cancel.' +
-                        ' Once the client has paid, you will be informed to begin the work. So, please check your inbox and' +
+                    let bookingAcceptanceMessageToFreelancerHTML = "<p>Hello " +
+                        bookingDetailUpdate.supplier.name.split(" ")[0] +
+                        ",</p><p> This is just a confirmation of your acceptance of " +
+                        " the following booking (" +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        ") has." +
+                        " It is advised to wait for the payment to be made before starting the work as the client can still cancel." +
+                        " Once the client has paid, you will be informed to begin the work. So, please check your inbox and" +
                         ' <a target="_blank" style="text-decoration: underline;' +
-                        ' color: #0645AD; cursor: pointer" href='+ loginURL +'> login </a>' +
-                        ' regularly to your account for updates.</p>'+
-                        '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
+                        ' color: #0645AD; cursor: pointer" href=' +
+                        loginURL +
+                        "> login </a>" +
+                        " regularly to your account for updates.</p>";
 
-                    let bookingAcceptanceMessageToAdminHTML = '<h1 style="color: #213e53; font-size: 1.1rem">Booking Accepted</h1>'+
-                        '<p>Hello,</p>'+'<p> The following booking has been accpeted by the freelancer: </p>'+
+                    let bookingAcceptanceMessageToAdminHTML = "<p>Hello,</p>" +
+                        "<p> The following booking has been accpeted by the freelancer: </p>" +
                         '<ul style="list-style-type:none;">' +
-                        `<li>Project ID: ${bookingDetailUpdate._id}</li>`+
-                        '<li>Project Name: '+bookingDetailUpdate.service+' - '+bookingDetailUpdate.projectName+' </li>' +
-                        '<li>Client Name: '+bookingDetailUpdate.customer.name+' </li>' +
-                        '<li>Freelancer Name: '+bookingDetailUpdate.supplier.name+' </li>' +
-                        '<li>Creation Date: '+bookingDetailUpdate.creationDate.toLocaleString()+' </li>' +
-                        '<li>Due Date: '+bookingDetailUpdate.dueDateTime.toLocaleString()+' </li>' +
-                        '<li>Description: '+bookingDetailUpdate.projectDescription+' </li>' +
-                        '</ul>'+
-                        '<p>Thank you<br>The KingsHire Team<br>07448804768</p>';
+                        `<li>Project ID: ${bookingDetailUpdate._id}</li>` +
+                        "<li>Project Name: " +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        " </li>" +
+                        "<li>Client Name: " +
+                        bookingDetailUpdate.customer.name +
+                        " </li>" +
+                        "<li>Freelancer Name: " +
+                        bookingDetailUpdate.supplier.name +
+                        " </li>" +
+                        "<li>Creation Date: " +
+                        bookingDetailUpdate.creationDate.toLocaleString() +
+                        " </li>" +
+                        "<li>Due Date: " +
+                        bookingDetailUpdate.dueDateTime.toLocaleString() +
+                        " </li>" +
+                        "<li>Description: " +
+                        bookingDetailUpdate.projectDescription +
+                        " </li>" +
+                        "</ul>"
 
                     bookingDetailUpdate.save(err => {
                         if(err){
@@ -58,17 +84,17 @@ function server_io(io) {
                         }
 
                         mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
-                            'Freelancer Booking Acceptance', bookingAcceptanceMessageToAdminHTML), function (err) {
+                            'Booking Accepted', 'Booking Accepted', bookingAcceptanceMessageToAdminHTML), function (err) {
                             if(err){console.log(err)}
                             else{
                                 console.log('Freelancer booking acceptance Message has been sent to Admin')
                                 mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.customer.uuid),
-                                    'Booking Accepted', bookingAcceptanceMessageToClientHTML), function (err) {
+                                    'Booking Accepted', 'Booking Accepted', bookingAcceptanceMessageToClientHTML), function (err) {
                                     if(err){console.log(err)}
                                     else{
                                         console.log('Freelancer booking acceptance Message has been sent to Freelancer');
                                         mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.supplier.uuid),
-                                            "You've accepted a booking", bookingAcceptanceMessageToFreelancerHTML), function (err) {
+                                            "You've accepted a booking", 'Booking Accepted',bookingAcceptanceMessageToFreelancerHTML), function (err) {
                                             if(err){console.log(err)}
                                             else{console.log('Freelancer booking acceptance Message has been sent to Client')}
                                         });
@@ -119,37 +145,63 @@ function server_io(io) {
                     bookingDetailUpdate.dueDateTime = bookingModified_AcceptedData.acceptDueDate;
                     bookingDetailUpdate.price = bookingModified_AcceptedData.acceptPrice.slice(1);
 
-                    let bookingAcceptanceMessageToClientHTML = '<h1 style="color: #213e53; font-size: 1.1rem">Booking Accepted</h1>'+
-                        '<p>Hello '+bookingDetailUpdate.customer.name.split(' ')[0]+',</p><p> There has been an update ' +
-                        'your booking ('+bookingDetailUpdate.service+' - ' +bookingDetailUpdate.projectName+'). I am pleased to announce that '+
-                        ' you have accepted the modification terms made by ' + bookingDetailUpdate.supplier.name +
-                        ' . Please <a target="_blank" style="text-decoration: underline; color: #0645AD; cursor: pointer" ' +
-                        'href='+loginURL+'> login </a> to your account to make the payment</p>'+
-                        '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
+                    let bookingAcceptanceMessageToClientHTML = "<p>Hello " +
+                        bookingDetailUpdate.customer.name.split(" ")[0] +
+                        ",</p><p> There has been an update " +
+                        "your booking (" +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        "). We are pleased to confirm that " +
+                        " you have successfully accepted the modification terms made by " +
+                        bookingDetailUpdate.supplier.name +
+                        ' . Kindly <a target="_blank" style="text-decoration: underline; color: #0645AD; cursor: pointer" ' +
+                        "href=" +
+                        loginURL +
+                        "> login </a> to your account to make the payment</p>";
 
-                    let bookingAcceptanceMessageToFreelancerHTML = '<h1 style="color: #213e53; font-size: 1.1rem">Booking Accepted</h1>'+
-                        '<p>Hello '+bookingDetailUpdate.supplier.name.split(' ')[0]+',</p><p> I am pleased to let you know that ' +
-                         bookingDetailUpdate.customer.name + ' has accepted the modification proposed for the following booking ('+
-                        bookingDetailUpdate.service+' - ' +bookingDetailUpdate.projectName +').' +
-                        ' It is advised to wait for the payment to be made before starting the work as the client can still cancel.' +
-                        ' Once the client has paid, you will be informed to begin the work. So, please check your inbox and' +
+                    let bookingAcceptanceMessageToFreelancerHTML =  "<p>Hello " +
+                        bookingDetailUpdate.supplier.name.split(" ")[0] +
+                        ",</p><p> We are pleased to inform you that " +
+                        bookingDetailUpdate.customer.name +
+                        " has accepted the modification proposed for the following booking (" +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        ")." +
+                        " It is advised you wait for the payment to be made before starting the work as the client can still cancel." +
+                        " Once the client has paid, you will be informed to begin the work. So, kindly check your inbox, and regularly" +
                         ' <a target="_blank" style="text-decoration: underline;' +
-                        ' color: #0645AD; cursor: pointer" href='+loginURL+'> login </a>' +
-                        ' regularly to your account for updates.</p>'+
-                        '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
+                        ' color: #0645AD; cursor: pointer" href=' +
+                        loginURL +
+                        "> login </a>" +
+                        " sto your account for updates.</p>";
 
-                    let bookingAcceptanceMessageToAdminHTML = '<h1 style="color: #213e53; font-size: 1.1rem">Booking Accepted</h1>'+
-                        '<p>Hello,</p>'+'<p> The following booking has been accpeted by the freelancer: </p>'+
+                    let bookingAcceptanceMessageToAdminHTML =  "<p>Hello,</p>" +
+                        "<p> The following booking has been accpeted by the freelancer: </p>" +
                         '<ul style="list-style-type:none;">' +
-                        `<li>Project ID: ${bookingDetailUpdate._id}</li>`+
-                        '<li>Project Name: '+bookingDetailUpdate.service+' - '+bookingDetailUpdate.projectName+' </li>' +
-                        '<li>Client Name: '+bookingDetailUpdate.customer.name+' </li>' +
-                        '<li>Freelancer Name: '+bookingDetailUpdate.supplier.name+' </li>' +
-                        '<li>Creation Date: '+bookingDetailUpdate.creationDate.toLocaleString()+' </li>' +
-                        '<li>Due Date: '+bookingDetailUpdate.dueDateTime.toLocaleString()+' </li>' +
-                        '<li>Description: '+bookingDetailUpdate.projectDescription+' </li>' +
-                        '</ul>'+
-                        '<p>Thank you<br>The KingsHire Team<br>07448804768</p>';
+                        `<li>Project ID: ${bookingDetailUpdate._id}</li>` +
+                        "<li>Project Name: " +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        " </li>" +
+                        "<li>Client Name: " +
+                        bookingDetailUpdate.customer.name +
+                        " </li>" +
+                        "<li>Freelancer Name: " +
+                        bookingDetailUpdate.supplier.name +
+                        " </li>" +
+                        "<li>Creation Date: " +
+                        bookingDetailUpdate.creationDate.toLocaleString() +
+                        " </li>" +
+                        "<li>Due Date: " +
+                        bookingDetailUpdate.dueDateTime.toLocaleString() +
+                        " </li>" +
+                        "<li>Description: " +
+                        bookingDetailUpdate.projectDescription +
+                        " </li>" +
+                        "</ul>";
 
                     bookingDetailUpdate.save(err => {
                         if(err){
@@ -157,18 +209,18 @@ function server_io(io) {
                         }
 
                         mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
-                            'Client Booking Acceptance', bookingAcceptanceMessageToAdminHTML), function (err) {
+                            'Client Booking Acceptance', 'Booking Accepted', bookingAcceptanceMessageToAdminHTML), function (err) {
                             if(err){console.log(err)}
                             else{
                                 console.log('Client booking acceptance Message has been sent to Admin')
                                 // emailDecode(bookingDetailUpdate.customer.uuid)
                                 mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
-                                    'Booking Accepted', bookingAcceptanceMessageToFreelancerHTML), function (err) {
+                                    'Booking Accepted', 'Booking Accepted', bookingAcceptanceMessageToFreelancerHTML), function (err) {
                                     if(err){console.log(err)}
                                     else{
                                         console.log('Client booking acceptance Message has been sent to Freelancer');
                                         mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
-                                            "You've accepted a booking", bookingAcceptanceMessageToClientHTML), function (err) {
+                                            "You've accepted a booking", 'Booking Accepted', bookingAcceptanceMessageToClientHTML), function (err) {
                                             if(err){console.log(err)}
                                             else{console.log('Client booking acceptance Message has been sent to Client')}
                                         });
@@ -194,27 +246,46 @@ function server_io(io) {
                     bookingDetailUpdate.status.freelancer = bookingDetailUpdate.status.client = 5;
                     bookingDetailUpdate.completionDate = Date.now();
 
-                    let completionRequestMessageToFreelancerHTML = '<h1 style="color: #213e53; font-size: 1.1rem">Booking Completed</h1>'+
-                        '<p>Hello '+ bookingDetailUpdate.supplier.name.split(' ')[0] +',</p>'+'<p> Congratulations on your successful' +
-                        ' completion of the booking. '+bookingDetailUpdate.customer.name+
-                        ' has been informed that the project ('+
-                        bookingDetailUpdate.service+' - '+ bookingDetailUpdate.projectName+') is completed. We are now waiting for' +
-                        ' a confirmation from '+ bookingDetailUpdate.customer.name +' before we proceed with the payment.' +
-                        ' So, please check your inbox and <a target="_blank" style="text-decoration: underline; color: #0645AD; ' +
-                        'cursor: pointer" href='+ loginURL +'> login </a> regularly to your account for updates.</p>'+
-                        '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
+                    let completionRequestMessageToFreelancerHTML = "<p>Hello " +
+                        bookingDetailUpdate.supplier.name.split(" ")[0] +
+                        ",</p>" +
+                        "<p> Congratulations on your successful" +
+                        " completion of the booking. " +
+                        bookingDetailUpdate.customer.name +
+                        " has been informed that the project (" +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        ") is completed. We are now awaiting" +
+                        " a confirmation from " +
+                        bookingDetailUpdate.customer.name +
+                        " before proceeding with the payment." +
+                        ' So, kindly check your inbox, and regularly <a target="_blank" style="text-decoration: underline; color: #0645AD; ' +
+                        'cursor: pointer" href=' +
+                        loginURL +
+                        "> login </a> to your account for updates.</p>";
 
-                    let completionRequestMessageToClientHTML = '<h1 style="color: #213e53; font-size: 1.1rem">Booking Completed</h1>'+
-                        '<p>Hello '+ bookingDetailUpdate.customer.name.split(' ')[0] +',</p>' +
-                        '<p>'+bookingDetailUpdate.supplier.name+' has completed your booking ('+ bookingDetailUpdate.service+' - '+
-                        bookingDetailUpdate.projectName+
-                        '). We will need your confirmation on this information. If we do not hear from you'+
-                        ' in the next three days, we will assume that the project has been successfully delivered.'+
-                        ' This will also mean that we get to pay '+ bookingDetailUpdate.supplier.name +' for the work.'+
-                        ' Please <a target="_blank" style="text-decoration: underline;'+
-                        'color: #0645AD; cursor: pointer" '+ 'href='+ loginURL +'>'+
-                        'login'+ '</a> to your account to update us on this information.</p>'+
-                        '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
+                    let completionRequestMessageToClientHTML =   "<p>Hello " +
+                        bookingDetailUpdate.customer.name.split(" ")[0] +
+                        ",</p>" +
+                        "<p>" +
+                        bookingDetailUpdate.supplier.name +
+                        " has completed your booking (" +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        "). Please confirm this information. Kindly note that payment will be processed" +
+                        " 24 hours from now" +
+                        " to " +
+                        bookingDetailUpdate.supplier.name +
+                        " for the work." +
+                        ' Please <a target="_blank" style="text-decoration: underline;' +
+                        'color: #0645AD; cursor: pointer" ' +
+                        "href=" +
+                        loginURL +
+                        ">" +
+                        "login" +
+                        "</a> to your account to update us on this information.</p>"
 
                     bookingDetailUpdate.save(err => {
                         if(err){
@@ -224,12 +295,12 @@ function server_io(io) {
                         // emailDecode(bookingDetailUpdate.customer.uuid)
                         //emailDecode(bookingDetailUpdate.supplier.uuid)
                         mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.customer.uuid),
-                            'Booking Completed', completionRequestMessageToClientHTML), function (err) {
+                            'Booking Completed', 'Booking Completed', completionRequestMessageToClientHTML), function (err) {
                             if(err){console.log(err)}
                             else{
                                 console.log('Freelancer booking completed Message has been sent to client');
                                 mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.supplier.uuid),
-                                    "You've completed a booking", completionRequestMessageToFreelancerHTML), function (err) {
+                                    "You've completed a booking", 'Booking Completed', completionRequestMessageToFreelancerHTML), function (err) {
                                     if(err){console.log(err)}
                                     else{console.log('Freelancer booking completed Message has been sent to Freelancer')}
                                 });
@@ -251,30 +322,52 @@ function server_io(io) {
                     bookingDetailUpdate.status = { freelancer: 6 , client: 6 };
 
                     let payoutSum = (bookingDetailUpdate.price - ((5/ 100) * bookingDetailUpdate.price)).toFixed(2);
-                    let confirmationMessagetoAdminHTML = '<p>Hello,</p>'+'<p>We have a confirmation'+
-                        ' of the completion of the project below (<b>please proceed with the pay out</b>):</p>'+
+                    let confirmationMessagetoAdminHTML = "<p>Hello,</p>" +
+                        "<p>We have a confirmation" +
+                        " of the completion of the project below (<b>please proceed with the pay out</b>):</p>" +
                         '<ul style="list-style-type:none;">' +
-                        `<li>Project ID: ${bookingDetailUpdate._id}</li>`+
-                        '<li>Project Name: '+bookingDetailUpdate.service+' - '+bookingDetailUpdate.projectName+' </li>' +
-                        '<li>Client Name: '+bookingDetailUpdate.customer.name+' </li>' +
-                        '<li>Freelancer Name: '+bookingDetailUpdate.supplier.name+' </li>' +
-                        '<li>Creation Date: '+bookingDetailUpdate.creationDate.toLocaleString()+' </li>' +
-                        '<li>Due Date: '+bookingDetailUpdate.dueDateTime.toLocaleString()+' </li>' +
-                        '<li>Description: '+bookingDetailUpdate.projectDescription+' </li>' +
-                        '<li>Payout Sum: £'+payoutSum+' </li>' +
-                        '</ul>'+
-                        '<p>Thank you<br>The KingsHire Team<br>07448804768</p>';
+                        `<li>Project ID: ${bookingDetailUpdate._id}</li>` +
+                        "<li>Project Name: " +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        " </li>" +
+                        "<li>Client Name: " +
+                        bookingDetailUpdate.customer.name +
+                        " </li>" +
+                        "<li>Freelancer Name: " +
+                        bookingDetailUpdate.supplier.name +
+                        " </li>" +
+                        "<li>Creation Date: " +
+                        bookingDetailUpdate.creationDate.toLocaleString() +
+                        " </li>" +
+                        "<li>Due Date: " +
+                        bookingDetailUpdate.dueDateTime.toLocaleString() +
+                        " </li>" +
+                        "<li>Description: " +
+                        bookingDetailUpdate.projectDescription +
+                        " </li>" +
+                        "<li>Payout Sum: £" +
+                        payoutSum +
+                        " </li>" +
+                        "</ul>";
 
-                    let confirmationMessagetoFreelancerHTML = '<h1 style="color: #213e53; font-size: 1.1rem">' +
-                        'Congratulations</h1>' + '<p>Hello '+bookingDetailUpdate.supplier.name.split(' ')[0]+',</p><p>Congratulations on the completion of ' +
-                        'the booking! We have received the confirmation from '+bookingDetailUpdate.customer.name+'.  Please expect to receive ' +
-                        'your earning of £'+payoutSum+' in the next three days.</p><p> Booking ID:'+
-                        bookingDetailUpdate._id +'</p><p>Thank you,<br>The KingsHire Team<br>07448804768</p>';
+                    let confirmationMessagetoFreelancerHTML =  "<p>Hello " +
+                        bookingDetailUpdate.supplier.name.split(" ")[0] +
+                        ",</p><p>Congratulations on the completion of " +
+                        "the booking! We have received the confirmation from " +
+                        bookingDetailUpdate.customer.name +
+                        ".  Please expect to receive " +
+                        "your earning of £" +
+                        payoutSum +
+                        " in the next three days.</p><p> Booking ID:" +
+                        bookingDetailUpdate._id+"</p>";
 
-                    let confirmationMessagetoClientHTML = '<h1 style="color: #213e53; font-size: 1.1rem">' +
-                        'Thank you!</h1>' + '<p>Hello '+bookingDetailUpdate.customer.name.split(' ')[0]+',</p><p>Congratulations on the completion of ' +
-                        'your booking! Your confirmation has now been received. We hope you enjoyed our services and we are looking forward to your next booking. ' +
-                        'Have a wonderful day!.</p><p>Thank you,<br>The KingsHire Team<br>07448804768</p>';
+                    let confirmationMessagetoClientHTML =   "<p>Hello " +
+                        bookingDetailUpdate.customer.name.split(" ")[0] +
+                        ",</p><p>Congratulations on the completion of " +
+                        "your booking! Your confirmation has now been received. We hope you enjoyed our services and we are looking forward to your next booking. " +
+                        "Have a wonderful day!.</p>";
 
                     bookingDetailUpdate.save(err => {
                         if(err){
@@ -284,18 +377,18 @@ function server_io(io) {
                         // emailDecode(bookingDetailUpdate.customer.uuid)
                         //emailDecode(bookingDetailUpdate.supplier.uuid)
                         mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
-                            'Booking Completion Confirmation', confirmationMessagetoAdminHTML), function (err) {
+                            'Booking Completion Confirmation', 'Booking Completion Confirmed', confirmationMessagetoAdminHTML), function (err) {
                             if(err){console.log(err)}
                             else{
                                 console.log('Confirmation Message has been sent to Admin');
                                 // emailDecode(bookingDetailUpdate.customer.uuid)
                                 mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.supplier.uuid),
-                                    'Client confirmation', confirmationMessagetoFreelancerHTML), function (err) {
+                                    'Client confirmation', 'Booking Completion Confirmed', confirmationMessagetoFreelancerHTML), function (err) {
                                     if(err){console.log(err)}
                                     else{
                                         console.log('Confirmation Message has been sent to Freelancer')
                                         mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.customer.uuid),
-                                            'Delivery Confirmed', confirmationMessagetoClientHTML), function (err) {
+                                            'Delivery Confirmed', 'Booking Completion Confirmed', confirmationMessagetoClientHTML), function (err) {
                                             if(err){console.log(err)}
                                             else{console.log('Confirmation Message has been sent to Client')}
                                         });
@@ -317,33 +410,58 @@ function server_io(io) {
                     bookingDetailUpdate.status = { freelancer: 7, client:7 };
 
                     let payoutSum = (bookingDetailUpdate.price - ((5/ 100) * bookingDetailUpdate.price)).toFixed(2);
-                    let conflictMessagetoAdminHTML = '<p>Hello,</p>'+'<p>The following booking is <b> awaiting resolution</b> (Please'+
-                        ' endavour to resolve it as soon as possible): </p>'+
+                    let conflictMessagetoAdminHTML =  "<p>Hello,</p>" +
+                        "<p>The following booking is <b> awaiting resolution</b> (Please" +
+                        " endavour to resolve it as soon as possible): </p>" +
                         '<ul style="list-style-type:none;">' +
-                        `<li>Project ID: ${bookingDetailUpdate._id}</li>`+
-                        '<li>Project Name: '+bookingDetailUpdate.service+' - '+bookingDetailUpdate.projectName+' </li>' +
-                        '<li>Client Name: '+bookingDetailUpdate.customer.name+' </li>' +
-                        '<li>Freelancer Name: '+bookingDetailUpdate.supplier.name+' </li>' +
-                        '<li>Creation Date: '+bookingDetailUpdate.creationDate.toLocaleString()+' </li>' +
-                        '<li>Due Date: '+bookingDetailUpdate.dueDateTime.toLocaleString()+' </li>' +
-                        '<li>Description: '+bookingDetailUpdate.projectDescription+' </li>' +
-                        '<li>Payout Sum: '+payoutSum+' </li>' +
-                        '</ul>'+
-                        '<p>Thank you</p><p>The KingsHire Team</p><p>07448804768</p>';
+                        `<li>Project ID: ${bookingDetailUpdate._id}</li>` +
+                        "<li>Project Name: " +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        " </li>" +
+                        "<li>Client Name: " +
+                        bookingDetailUpdate.customer.name +
+                        " </li>" +
+                        "<li>Freelancer Name: " +
+                        bookingDetailUpdate.supplier.name +
+                        " </li>" +
+                        "<li>Creation Date: " +
+                        bookingDetailUpdate.creationDate.toLocaleString() +
+                        " </li>" +
+                        "<li>Due Date: " +
+                        bookingDetailUpdate.dueDateTime.toLocaleString() +
+                        " </li>" +
+                        "<li>Description: " +
+                        bookingDetailUpdate.projectDescription +
+                        " </li>" +
+                        "<li>Payout Sum: " +
+                        payoutSum +
+                        " </li>" +
+                        "</ul>";
 
-                    let conflictMessagetoFreelancerHTML = '<p>Hello '+bookingDetailUpdate.supplier.name.split(' ')[0]+',' +
-                        '</p><p> Unfortunately, '+bookingDetailUpdate.customer.name+' has' +
-                        ' informed us that the work has not been completed (or she has not received it). This could simply be a miscommunication,' +
-                        ' so do not panic. Please do keep a close eye  on your inbox as the administration team will be' +
-                        ' contacting you very soon. You can also call on <b>07448804768</b> to speak to our staff.' +
-                        ' We are sorry for any inconveniences this might have caused.</p><p> Project ID: '+
-                        bookingDetailUpdate._id +'</p><p>Thank you,<br>The KingsHire Team<br>07448804768</p>';
+                    let conflictMessagetoFreelancerHTML = "<p>Hello " +
+                        bookingDetailUpdate.supplier.name.split(" ")[0] +
+                        "," +
+                        "</p><p> Unfortunately, " +
+                        bookingDetailUpdate.customer.name +
+                        " has" +
+                        " informed us that the work has not been completed (or she has not received it). This could simply be a miscommunication," +
+                        " so do not panic. Please do keep a close eye  on your inbox as the administration team will be" +
+                        " contacting you very soon. You can also call on <b>07448804768</b> to speak to our staff." +
+                        " We are sorry for any inconveniences this might have caused.</p><p> Project ID: " +
+                        bookingDetailUpdate._id + "</p>";
 
-                    let conflictMessagetoClientHTML = '<p>Hello '+bookingDetailUpdate.customer.name.split(' ')[0]+',' +
-                        '</p><p> Thank you for your update and we are very sorry to hear this. We will be contacting '+
-                        bookingDetailUpdate.supplier.name+ ' very soon to find out what has happened with your booking.' +
-                        ' Once we have more information on this, we will email you an update. Thank you!</p>' +
-                        '<p>Project ID: '+ bookingDetailUpdate._id +'</p><p>Thank you,<br>The KingsHire Team<br>07448804768</p>';
+                    let conflictMessagetoClientHTML = "<p>Hello " +
+                        bookingDetailUpdate.customer.name.split(" ")[0] +
+                        "," +
+                        "</p><p> Thank you for your update and we are very sorry to hear this. We will be contacting " +
+                        bookingDetailUpdate.supplier.name +
+                        " very soon to find out what has happened with your booking." +
+                        " Once we have more information on this, we will email you an update. Thank you!</p>" +
+                        "<p>Project ID: " +
+                        bookingDetailUpdate._id +
+                        "</p>";
 
                     bookingDetailUpdate.save(err => {
                         if(err){
@@ -353,18 +471,18 @@ function server_io(io) {
                         // emailDecode(bookingDetailUpdate.customer.uuid)
                         //emailDecode(bookingDetailUpdate.supplier.uuid)
                         mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
-                            'Booking Completion Awaiting Resolution', conflictMessagetoAdminHTML), function (err) {
+                            'Booking Completion Awaiting Resolution', 'Booking To Resolve', conflictMessagetoAdminHTML), function (err) {
                             if(err){console.log(err)}
                             else{
                                 console.log('Conflict Message has been sent to Admin')
                                 // emailDecode(bookingDetailUpdate.customer.uuid)
                                 mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.supplier.uuid),
-                                    'Confirmation Awaiting Resolution', conflictMessagetoFreelancerHTML), function (err) {
+                                    'Confirmation Awaiting Resolution', 'Booking Awaiting Resolution', conflictMessagetoFreelancerHTML), function (err) {
                                     if(err){console.log(err)}
                                     else{
                                         console.log('Conflict Message has been sent to Freelancer')
                                         mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.customer.uuid),
-                                            'Booking Confirmation Denied', conflictMessagetoClientHTML), function (err) {
+                                            'Booking Confirmation Denied', 'Booking Awaiting Resolution', conflictMessagetoClientHTML), function (err) {
                                             if(err){console.log(err)}
                                             else{console.log('Conflict Message has been sent to Client')}
                                         });
@@ -386,45 +504,73 @@ function server_io(io) {
             BookingModel.findOneAndDelete({bookingID: deleteData.projectToCancelID})
                 .then(bookingDetailUpdate =>{
 
-                    let deleteMessagetoClientHTML = '<p>Hello '+bookingDetailUpdate.customer.name.split(' ')[0]+',' +
-                        '</p><p> Unfortunately, '+bookingDetailUpdate.supplier.name+' has' +
-                        ' decided to cancel the booking ('+bookingDetailUpdate.service+' - '+bookingDetailUpdate.projectName+')' +
-                        '. If the work was alreayd completed, please ignore this message.Otherwise, we are sorry for any inconveniences this might have caused.</p><p>' +
-                        ' Booking ID: '+ bookingDetailUpdate._id +'</p><p>Thank you,<br>The KingsHire Team<br>07448804768</p>';
+                    let deleteMessagetoClientHTML =   "<p>Hello " +
+                        bookingDetailUpdate.customer.name.split(" ")[0] +
+                        "," +
+                        "</p><p> Unfortunately, " +
+                        bookingDetailUpdate.supplier.name +
+                        " has" +
+                        " decided to cancel the booking (" +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        ")" +
+                        ". If the work was alreayd completed, please ignore this message.Otherwise, we are sorry for any inconveniences this might have caused. Kindly login to find other Kinglnancers for your job.</p><p>" +
+                        " Booking ID: " +
+                        bookingDetailUpdate._id +
+                        "</p>";
 
-                    let deleteMessagetoFreelancerHTML = '<p>Hello '+bookingDetailUpdate.supplier.name.split(' ')[0]+',' +
-                        '</p><p> The project has successfully been deleted.' +
-                        ' We are sorry that you decided to cancel the booking; please do contact us for any information that' +
-                        ' might have led to you deleting the booking. If this work was already completed, please ignore the message</p><p>' +
-                        ' Booking ID: '+ bookingDetailUpdate._id +'</p><p>Thank you,<br>The KingsHire Team<br>07448804768</p>';
+                    let deleteMessagetoFreelancerHTML =  "<p>Hello " +
+                        bookingDetailUpdate.supplier.name.split(" ")[0] +
+                        "," +
+                        "</p><p> The project has successfully been deleted." +
+                        " We are sorry that you decided to cancel the booking; please do contact us for any information that" +
+                        " might have led to you deleting the booking. If this work was already completed, please ignore this message</p><p>" +
+                        " Booking ID: " +
+                        bookingDetailUpdate._id +
+                        "</p>";
 
-                    let deleteMessagetoAdminHTML = '<p>Hello,</p>'+'<p>The following booking has been deleted (it was not ongoing): </p>'+
+                    let deleteMessagetoAdminHTML =  "<p>Hello,</p>" +
+                        "<p>The following booking has been deleted (it was not ongoing): </p>" +
                         '<ul style="list-style-type:none;">' +
-                        `<li>Project ID: ${bookingDetailUpdate._id}</li>`+
-                        '<li>Project Name: '+bookingDetailUpdate.service+' - '+bookingDetailUpdate.projectName+' </li>' +
-                        '<li>Client Name: '+bookingDetailUpdate.customer.name+' </li>' +
-                        '<li>Freelancer Name: '+bookingDetailUpdate.supplier.name+' </li>' +
-                        '<li>Creation Date: '+bookingDetailUpdate.creationDate.toLocaleString()+' </li>' +
-                        '<li>Due Date: '+bookingDetailUpdate.dueDateTime.toLocaleString()+' </li>' +
-                        '<li>Description: '+bookingDetailUpdate.projectDescription+' </li>' +
-                        '</ul>'+
-                        '<p>Thank you</p><p>The KingsHire Team</p><p>07448804768</p>';
+                        `<li>Project ID: ${bookingDetailUpdate._id}</li>` +
+                        "<li>Project Name: " +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        " </li>" +
+                        "<li>Client Name: " +
+                        bookingDetailUpdate.customer.name +
+                        " </li>" +
+                        "<li>Freelancer Name: " +
+                        bookingDetailUpdate.supplier.name +
+                        " </li>" +
+                        "<li>Creation Date: " +
+                        bookingDetailUpdate.creationDate.toLocaleString() +
+                        " </li>" +
+                        "<li>Due Date: " +
+                        bookingDetailUpdate.dueDateTime.toLocaleString() +
+                        " </li>" +
+                        "<li>Description: " +
+                        bookingDetailUpdate.projectDescription +
+                        " </li>" +
+                        "</ul>" ;
 
                     // emailDecode(bookingDetailUpdate.customer.uuid)
                     //emailDecode(bookingDetailUpdate.supplier.uuid)
                     mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
-                        'Freelancer Cancelled Project', deleteMessagetoAdminHTML), function (err) {
+                        'Freelancer Cancelled Project', 'Booking Cancelled', deleteMessagetoAdminHTML), function (err) {
                         if(err){console.log(err)}
                         else{
                             console.log('Freelancer cancelled Message has been sent to Admin')
                             // emailDecode(bookingDetailUpdate.customer.uuid)
                             mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.supplier.uuid),
-                                'Cancellation Confirmed', deleteMessagetoFreelancerHTML), function (err) {
+                                'Cancellation Confirmed', 'Booking Cancelled', deleteMessagetoFreelancerHTML), function (err) {
                                 if(err){console.log(err)}
                                 else{
                                     console.log('Freelancer cancelled Message has been sent to Freelancer');
                                     mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.customer.uuid),
-                                        'Booking Cancelled', deleteMessagetoClientHTML), function (err) {
+                                        'Booking Cancelled', 'Booking Cancelled', deleteMessagetoClientHTML), function (err) {
                                         if(err){console.log(err)}
                                         else{console.log('Freelancer cancelled Message has been sent to Client')}
                                     });
@@ -446,37 +592,68 @@ function server_io(io) {
                     bookingDetailUpdate.status = { freelancer: 9, client: 8 }
                     bookingDetailUpdate.deletionReason = cancelData.deletionReason;
 
-                    let cancelMessagetoClientHTML = '<p>Hello '+bookingDetailUpdate.customer.name.split(' ')[0]+',' +
-                        '</p><p>Unfortunately, '+bookingDetailUpdate.supplier.name+' has' +
-                        ' decided to cancel the booking ('+bookingDetailUpdate.service+' - '+bookingDetailUpdate.projectName+')' +
-                        ' . We are sorry for any inconveniences this might have caused. We understand that a payment was already made towards' +
-                        ' this booking. This case has been passed to the management team and they will be in contact soon.' +
-                        ' You can call us on 07448804768 for any emergency' +
-                        ' bookings.</p><p>Reason for cancelling (given by '+ bookingDetailUpdate.supplier.name +'): ' +
-                        cancelData.deletionReason+'<br>Booking ID: '+ bookingDetailUpdate._id +
-                        '</p><p>Thank you,<br>The KingsHire Team<br>07448804768</p>';
+                    let cancelMessagetoClientHTML = "<p>Hello " +
+                        bookingDetailUpdate.customer.name.split(" ")[0] +
+                        "," +
+                        "</p><p>Unfortunately, " +
+                        bookingDetailUpdate.supplier.name +
+                        " has" +
+                        " decided to cancel the booking (" +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        ")" +
+                        " . We are sorry for any inconveniences this might have caused. We understand that a payment was already made towards" +
+                        " this booking. This case has been passed to the management team and they will be in contact soon." +
+                        " You can call us on 07448804768 for any emergency" +
+                        " bookings.</p><p>Reason for cancelling (given by " +
+                        bookingDetailUpdate.supplier.name +
+                        "): " +
+                        cancelData.deletionReason +
+                        "<br>Booking ID: " +
+                        bookingDetailUpdate._id + "</p>"
 
-                    let cancelMessagetoFreelancerHTML = '<p>Hello '+bookingDetailUpdate.supplier.name.split(' ')[0]+',' +
-                        '</p><p>The project has successfully been cancelled.' +
-                        ' We are sorry that you decided to cancel the booking. Since the booking ongoing, the management team' +
-                        ' will be in touch to understand what has happened and take appropriate actions.</p><p>Reason' +
-                        ' for cancelling: ' + cancelData.deletionReason + '<br>Booking ID: '+ bookingDetailUpdate._id +
-                        '</p><p>Thank you,<br>The KingsHire Team<br>07448804768</p>';
+                    let cancelMessagetoFreelancerHTML =  "<p>Hello " +
+                        bookingDetailUpdate.supplier.name.split(" ")[0] +
+                        "," +
+                        "</p><p>The project has successfully been cancelled." +
+                        " We are sorry that you decided to cancel the booking. Since the booking was ongoing, the management team" +
+                        " will be in touch to understand what has happened and take appropriate actions.</p><p> Deletion" +
+                        " Reason: " +
+                        cancelData.deletionReason +
+                        "<br>Booking ID: " +
+                        bookingDetailUpdate._id +
+                        "</p>";
 
-                    let cancelMessagetoAdminHTML = '<p>Hello,</p>'+'<p>The following booking has been cancelled by the'+
-                        'freelancer and it was already paid for. So, please do reachout the client and freelancer to'+
-                        ' resolve this: </p>'+
+                    let cancelMessagetoAdminHTML =   "<p>Hello,</p>" +
+                        "<p>The following booking has been cancelled by the" +
+                        "freelancer and it was already paid for. So, please do contact the client and freelancer to" +
+                        " resolve this: </p>" +
                         '<ul style="list-style-type:none;">' +
-                        `<li>Project ID: ${bookingDetailUpdate._id}</li>`+
-                        '<li>Project Name: '+bookingDetailUpdate.service+' - '+bookingDetailUpdate.projectName+' </li>' +
-                        '<li>Client Name: '+bookingDetailUpdate.customer.name+' </li>' +
-                        '<li>Freelancer Name: '+bookingDetailUpdate.supplier.name+' </li>' +
-                        '<li>Creation Date: '+bookingDetailUpdate.creationDate.toLocaleString()+' </li>' +
-                        '<li>Due Date: '+bookingDetailUpdate.dueDateTime.toLocaleString()+' </li>' +
-                        '<li>Description: '+bookingDetailUpdate.projectDescription+' </li>' +
-                        '<li><b>Reason for Cancelling</b>: '+cancelData.deletionReason+' </li>' +
-                        '</ul>'+
-                        '<p>Thank you</p><p>The KingsHire Team</p><p>07448804768</p>';
+                        `<li>Project ID: ${bookingDetailUpdate._id}</li>` +
+                        "<li>Project Name: " +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        " </li>" +
+                        "<li>Client Name: " +
+                        bookingDetailUpdate.customer.name +
+                        " </li>" +
+                        "<li>Freelancer Name: " +
+                        bookingDetailUpdate.supplier.name +
+                        " </li>" +
+                        "<li>Creation Date: " +
+                        bookingDetailUpdate.creationDate.toLocaleString() +
+                        " </li>" +
+                        "<li>Due Date: " +
+                        bookingDetailUpdate.dueDateTime.toLocaleString() +
+                        " </li>" +
+                        "<li>Description: " +
+                        bookingDetailUpdate.projectDescription +
+                        " </li>" +
+                        "<li><b>Reason for Cancelling</b>: " +
+                        cancelData.deletionReason +
+                        " </li>" + "</ul>";
 
                     bookingDetailUpdate.save(err => {
                         if(err){
@@ -486,18 +663,18 @@ function server_io(io) {
                         // emailDecode(bookingDetailUpdate.customer.uuid)
                         //emailDecode(bookingDetailUpdate.supplier.uuid)
                         mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
-                            'Freelancer Cancelled Project', cancelMessagetoAdminHTML), function (err) {
+                            'Freelancer Cancelled Project', 'Booking Cancelled', cancelMessagetoAdminHTML), function (err) {
                             if(err){console.log(err)}
                             else{
                                 console.log('Freelancer cancelled Message has been sent to Admin')
                                 // emailDecode(bookingDetailUpdate.customer.uuid)
                                 mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.supplier.uuid),
-                                    'Cancellation Confirmed', cancelMessagetoFreelancerHTML), function (err) {
+                                    'Cancellation Confirmed', 'Cancellation Confirmation', cancelMessagetoFreelancerHTML), function (err) {
                                     if(err){console.log(err)}
                                     else{
                                         console.log('Freelancer cancelled Message has been sent to Freelancer');
                                         mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.customer.uuid),
-                                            'Booking Cancelled', cancelMessagetoClientHTML), function (err) {
+                                            'Booking Cancelled', 'Booking Cancelled', cancelMessagetoClientHTML), function (err) {
                                             if(err){console.log(err)}
                                             else{console.log('Freelancer cancelled Message has been sent to Client')}
                                         });
@@ -518,33 +695,58 @@ function server_io(io) {
                 .then(bookingDetailUpdate=>{
                     bookingDetailUpdate.status = { freelancer: 9, client: 8 };
 
-                    let cancelMessagetoClientHTML = '<p>Hello '+bookingDetailUpdate.customer.name.split(' ')[0]+',' +
+                    let cancelMessagetoClientHTML = "<p>Hello " +
+                        bookingDetailUpdate.customer.name.split(" ")[0] +
+                        "," +
                         '</p><p> The project has successfully been cancelled. Since it was "booking ongoing", the KingsHire Admnistartion' +
-                        ' Team has been informed to take appropriate actions (e.g. Compensantion for the work done thus far).' +
-                        ' We are sorry that you decided to cancel the project; please do contact us for any information that' +
-                        ' might have led to you cancelling the booking.</p><p>' +
-                        ' Project ID: '+ bookingDetailUpdate._id +'</p><p>Thank you,<br>The KingsHire Team<br>07448804768</p>';
+                        " Team has been informed to take appropriate actions (e.g. Compensantion for the work done thus far)." +
+                        " We are sorry that you decided to cancel the project; please do contact us for any information that" +
+                        " might have led to you cancelling the booking.</p><p>" +
+                        " Project ID: " +
+                        bookingDetailUpdate._id + "</p>";
 
-                    let cancelMessagetoFreelancerHTML = '<p>Hello '+bookingDetailUpdate.supplier.name.split(' ')[0]+',' +
-                        '</p><p> Unfortunately, '+bookingDetailUpdate.customer.name+' has' +
-                        ' decided to cancel the booking ('+bookingDetailUpdate.service+' - '+bookingDetailUpdate.projectName+').' +
-                        ' We understand that you might have already done some works, so we will be in contact soon to resolve this' +
-                        '. We are sorry for any inconveniences this might have caused.</p><p>' +
-                        ' Project ID: '+ bookingDetailUpdate._id +'</p><p>Thank you,<br>The KingsHire Team<br>07448804768</p>';
+                    let cancelMessagetoFreelancerHTML = "<p>Hello " +
+                        bookingDetailUpdate.supplier.name.split(" ")[0] +
+                        "," +
+                        "</p><p> Unfortunately, " +
+                        bookingDetailUpdate.customer.name +
+                        " has" +
+                        " decided to cancel the booking (" +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        ")." +
+                        " We understand that you might have already done some works, so we will be in contact soon to resolve this" +
+                        ". We are sorry for any inconveniences this might have caused.</p><p>" +
+                        " Project ID: " +
+                        bookingDetailUpdate._id + "</p>"
 
-                    let cancelMessagetoAdminHTML = '<p>Hello,</p>'+'<p>The client has decided to cancel the project below.'+
-                        ' This project was already paid for, so please resolve this (e.g. compensate the freelancer work'+
-                        ' done thus far).</p>'+
+                    let cancelMessagetoAdminHTML =   "<p>Hello,</p>" +
+                        "<p>The client has decided to cancel the project below." +
+                        " This project was already paid for, so please resolve this (e.g. compensate the freelancer for work" +
+                        " done thus far).</p>" +
                         '<ul style="list-style-type:none;">' +
-                        `<li>Project ID: ${bookingDetailUpdate._id}</li>`+
-                        '<li>Project Name: '+bookingDetailUpdate.service+' - '+bookingDetailUpdate.projectName+' </li>' +
-                        '<li>Client Name: '+bookingDetailUpdate.customer.name+' </li>' +
-                        '<li>Freelancer Name: '+bookingDetailUpdate.supplier.name+' </li>' +
-                        '<li>Creation Date: '+bookingDetailUpdate.creationDate.toLocaleString()+' </li>' +
-                        '<li>Due Date: '+bookingDetailUpdate.dueDateTime.toLocaleString()+' </li>' +
-                        '<li>Description: '+bookingDetailUpdate.projectDescription+' </li>' +
-                        '</ul>'+
-                        '</p><p>Thank you,<br>The KingsHire Team<br>07448804768</p>';
+                        `<li>Project ID: ${bookingDetailUpdate._id}</li>` +
+                        "<li>Project Name: " +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        " </li>" +
+                        "<li>Client Name: " +
+                        bookingDetailUpdate.customer.name +
+                        " </li>" +
+                        "<li>Freelancer Name: " +
+                        bookingDetailUpdate.supplier.name +
+                        " </li>" +
+                        "<li>Creation Date: " +
+                        bookingDetailUpdate.creationDate.toLocaleString() +
+                        " </li>" +
+                        "<li>Due Date: " +
+                        bookingDetailUpdate.dueDateTime.toLocaleString() +
+                        " </li>" +
+                        "<li>Description: " +
+                        bookingDetailUpdate.projectDescription +
+                        " </li>" + "</ul>"
 
                     bookingDetailUpdate.save(err => {
                         if(err){
@@ -554,18 +756,18 @@ function server_io(io) {
                         // emailDecode(bookingDetailUpdate.customer.uuid)
                         //emailDecode(bookingDetailUpdate.supplier.uuid)
                         mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
-                            'Client Cancelled Project', cancelMessagetoAdminHTML), function (err) {
+                            'Client Cancelled Project', 'Booking Cancelled', cancelMessagetoAdminHTML), function (err) {
                             if(err){console.log(err)}
                             else{
                                 console.log('Client cancelled Message has been sent to Admin')
                                 // emailDecode(bookingDetailUpdate.customer.uuid)
                                 mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.supplier.uuid),
-                                    'Booking Cancelled by Client', cancelMessagetoFreelancerHTML), function (err) {
+                                    'Booking Cancelled by Client', 'Booking Cancelled', cancelMessagetoFreelancerHTML), function (err) {
                                     if(err){console.log(err)}
                                     else{
                                         console.log('Client cancelled Message has been sent to Freelancer');
                                         mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.customer.uuid),
-                                            'Cancellation Confirmed', cancelMessagetoClientHTML), function (err) {
+                                            'Cancellation Confirmed', 'Cancellation Confirmed', cancelMessagetoClientHTML), function (err) {
                                             if(err){console.log(err)}
                                             else{console.log('Client cancelled Message has been sent to Client')}
                                         });
@@ -585,29 +787,56 @@ function server_io(io) {
             BookingModel.findOneAndDelete({bookingID: deleteData.bookingToDeleteID})
                 .then(bookingDetailUpdate=>{
 
-                    let deleteMessagetoClientHTML = '<p>Hello '+bookingDetailUpdate.customer.name.split(' ')[0]+',' +
-                        '</p><p>The project has successfully been cancelled.' +
-                        ' We are sorry that you decided to cancel the project; please do contact us for any information that' +
-                        ' might have led to you cancelling the booking.</p><p>' +
-                        ' Booking ID: '+ bookingDetailUpdate._id +'</p><p>Thank you,<br>The KingsHire Team<br>07448804768</p>';
+                    let deleteMessagetoClientHTML =   "<p>Hello " +
+                        bookingDetailUpdate.customer.name.split(" ")[0] +
+                        "," +
+                        "</p><p>The project has successfully been cancelled." +
+                        " We are sorry that you decided to cancel the project; please do contact us for any information that" +
+                        " might have led to you cancelling the booking.</p><p>" +
+                        " Booking ID: " +
+                        bookingDetailUpdate._id +
+                        "</p>";
 
-                    let deleteMessagetoFreelancerHTML = '<p>Hello '+bookingDetailUpdate.supplier.name.split(' ')[0]+',' +
-                        '</p><p> Unfortunately, '+bookingDetailUpdate.customer.name+' has' +
-                        ' decided to cancel the booking ('+bookingDetailUpdate.service+' - '+bookingDetailUpdate.projectName+').' +
-                        '. We are sorry for any inconveniences this might have caused.</p><p>' +
-                        ' Booking ID: '+ bookingDetailUpdate._id +'</p><p>Thank you,<br>The KingsHire Team<br>07448804768</p>';
+                    let deleteMessagetoFreelancerHTML =   "<p>Hello " +
+                        bookingDetailUpdate.supplier.name.split(" ")[0] +
+                        "," +
+                        "</p><p> Unfortunately, " +
+                        bookingDetailUpdate.customer.name +
+                        " has" +
+                        " decided to cancel the booking (" +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        ")." +
+                        ". We are sorry for any inconveniences this might have caused.</p><p>" +
+                        " Booking ID: " +
+                        bookingDetailUpdate._id +
+                        "</p>";
 
-                    let deleteMessagetoAdminHTML = '<p>Hello,</p>'+'<p>The following booking has been deleted (it was not ongoing): </p>'+
+                    let deleteMessagetoAdminHTML =  "<p>Hello,</p>" +
+                        "<p>The following booking has been deleted (it was not ongoing): </p>" +
                         '<ul style="list-style-type:none;">' +
-                        `<li>Project ID: ${bookingDetailUpdate._id}</li>`+
-                        '<li>Project Name: '+bookingDetailUpdate.service+' - '+bookingDetailUpdate.projectName+' </li>' +
-                        '<li>Client Name: '+bookingDetailUpdate.customer.name+' </li>' +
-                        '<li>Freelancer Name: '+bookingDetailUpdate.supplier.name+' </li>' +
-                        '<li>Creation Date: '+bookingDetailUpdate.creationDate.toLocaleString()+' </li>' +
-                        '<li>Due Date: '+bookingDetailUpdate.dueDateTime.toLocaleString()+' </li>' +
-                        '<li>Description: '+bookingDetailUpdate.projectDescription+' </li>' +
-                        '</ul>'+
-                        '<p>Thank you</p><p>The KingsHire Team</p><p>07448804768</p>';
+                        `<li>Project ID: ${bookingDetailUpdate._id}</li>` +
+                        "<li>Project Name: " +
+                        bookingDetailUpdate.service +
+                        " - " +
+                        bookingDetailUpdate.projectName +
+                        " </li>" +
+                        "<li>Client Name: " +
+                        bookingDetailUpdate.customer.name +
+                        " </li>" +
+                        "<li>Freelancer Name: " +
+                        bookingDetailUpdate.supplier.name +
+                        " </li>" +
+                        "<li>Creation Date: " +
+                        bookingDetailUpdate.creationDate.toLocaleString() +
+                        " </li>" +
+                        "<li>Due Date: " +
+                        bookingDetailUpdate.dueDateTime.toLocaleString() +
+                        " </li>" +
+                        "<li>Description: " +
+                        bookingDetailUpdate.projectDescription +
+                        " </li>" + "</ul>";
 
                     // emailDecode(bookingDetailUpdate.customer.uuid)
                     //emailDecode(bookingDetailUpdate.supplier.uuid)
@@ -618,12 +847,12 @@ function server_io(io) {
                             console.log('Client cancelled Message has been sent to Admin')
                             // emailDecode(bookingDetailUpdate.customer.uuid)
                             mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.supplier.uuid),
-                                'Booking Cancelled by Client', deleteMessagetoFreelancerHTML), function (err) {
+                                'Booking Cancelled by Client', 'Client Cancelled', deleteMessagetoFreelancerHTML), function (err) {
                                 if(err){console.log(err)}
                                 else{
                                     console.log('Client cancelled Message has been sent to Freelancer');
                                     mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(bookingDetailUpdate.customer.uuid),
-                                        'Cancellation Confirmed', deleteMessagetoClientHTML), function (err) {
+                                        'Cancellation Confirmed', 'Cancellation Confirmed', deleteMessagetoClientHTML), function (err) {
                                         if(err){console.log(err)}
                                         else{console.log('Client cancelled Message has been sent to Client')}
                                     });
@@ -709,35 +938,60 @@ function server_io(io) {
                     // Save into booking DB
                     let newServiceBooking = new BookingModel(newServiceInfos);
 
-                    let newBookingMessageToClientHTML = '<h1 style="color: #213e53; font-size: 1.1rem">New Booking</h1>' +
-                        '<p>Hello ' + newServiceBooking.customer.name.split(' ')[0] + ',</p><p>This is a confirmation' +
-                        ' email that your booking enquiry (' + newServiceBooking.service + ' - ' + newServiceBooking.projectName
-                        + ') has successfully been sent to ' + newServiceBooking.supplier.name + '. Please do keep a close' +
-                        ' eye on your emails and <a target="_blank" style="text-decoration: underline; color: #0645AD;' +
-                        ' cursor: pointer" href='+loginURL+'> login </a> regulary to check for updates' +
-                        ' on your booking (booking ID: ' + newServiceBooking._id + ') </p>' + '<p>Thank you,<br>The KingsHire Team' +
-                        '<br>07448804768</p>';
+                    let newBookingMessageToClientHTML = "<p>Hello " +
+                        newServiceBooking.customer.name.split(" ")[0] +
+                        ",</p><p>This is a confirmation" +
+                        " email that your booking enquiry (" +
+                        newServiceBooking.service +
+                        " - " +
+                        newServiceBooking.projectName +
+                        ") has successfully been sent to " +
+                        newServiceBooking.supplier.name +
+                        ". Please do keep a close" +
+                        ' eye on your emails and regularly <a target="_blank" style="text-decoration: underline; color: #0645AD;' +
+                        ' cursor: pointer" href=' +
+                        loginURL +
+                        "> login </a> to check for updates" +
+                        " on your booking (booking ID: " +
+                        newServiceBooking._id +
+                        ") </p>" ;
 
-                    let newBookingMessageToFreelancerHTML = '<h1 style="color: #213e53; font-size: 1.1rem">New Booking Received</h1>' +
-                        '<p>Hello ' + newServiceBooking.supplier.name.split(' ')[0] + ',</p><p> I am pleased to inform you that' +
-                        ' you have a new booking on your KingsHire account. The booking ID is: ' + newServiceBooking._id + ' .' +
+                    let newBookingMessageToFreelancerHTML =  "<p>Hello " +
+                        newServiceBooking.supplier.name.split(" ")[0] +
+                        ",</p><p> We are pleased to inform you that" +
+                        " you have a new booking on your KingsHire account. The booking ID is: " +
+                        newServiceBooking._id +
+                        " ." +
                         ' Please <a target="_blank" style="text-decoration: underline;' +
-                        ' color: #0645AD; cursor: pointer" href='+loginURL+'> login </a>' +
-                        ' to your account to access the details of this booking and accept or reject it.</p>' +
-                        '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
+                        ' color: #0645AD; cursor: pointer" href=' +
+                        loginURL +
+                        "> login </a>" +
+                        " to your account to access the details of this booking and accept or reject it.</p>" ;
 
-                    let newBookingMessageToAdminHTML = '<h1 style="color: #213e53; font-size: 1.1rem">New Booking Made</h1>' +
-                        '<p>Hello,</p>' + '<p> There has been a new booking made, please do find details below: </p>' +
+                    let newBookingMessageToAdminHTML = "<p>Hello,</p>" +
+                        "<p> There has been a new booking made, please do find details below: </p>" +
                         '<ul style="list-style-type:none;">' +
                         `<li>Project ID: ${newServiceBooking._id}</li>` +
-                        '<li>Project Name: ' + newServiceBooking.service + ' - ' + newServiceBooking.projectName + ' </li>' +
-                        '<li>Client Name: ' + newServiceBooking.customer.name + ' </li>' +
-                        '<li>Freelancer Name: ' + newServiceBooking.supplier.name + ' </li>' +
-                        '<li>Creation Date: ' + newServiceBooking.creationDate.toLocaleString() + ' </li>' +
-                        '<li>Due Date: ' + newServiceBooking.dueDateTime.toLocaleString() + ' </li>' +
-                        '<li>Description: ' + newServiceBooking.projectDescription + ' </li>' +
-                        '</ul>' +
-                        '<p>Thank you<br>The KingsHire Team<br>07448804768</p>';
+                        "<li>Project Name: " +
+                        newServiceBooking.service +
+                        " - " +
+                        newServiceBooking.projectName +
+                        " </li>" +
+                        "<li>Client Name: " +
+                        newServiceBooking.customer.name +
+                        " </li>" +
+                        "<li>Freelancer Name: " +
+                        newServiceBooking.supplier.name +
+                        " </li>" +
+                        "<li>Creation Date: " +
+                        newServiceBooking.creationDate.toLocaleString() +
+                        " </li>" +
+                        "<li>Due Date: " +
+                        newServiceBooking.dueDateTime.toLocaleString() +
+                        " </li>" +
+                        "<li>Description: " +
+                        newServiceBooking.projectDescription +
+                        " </li>" + "</ul>";
 
 
                     newServiceBooking.save(err =>{
@@ -752,18 +1006,18 @@ function server_io(io) {
                                 // send booking details to freelancer and redirect to profile page
 
                                 mailer.smtpTransport.sendMail(mailer.mailerFunction(admnistrationEmail,
-                                    'New Booking Made', newBookingMessageToAdminHTML), function (err) {
+                                    'New Booking Made', 'New Booking', newBookingMessageToAdminHTML), function (err) {
                                     if (err) {throw err}
                                     else{
                                         console.log('Client new booking Message has been sent to Admin')
                                         // emailDecode(bookingDetailUpdate.customer.uuid)
                                         mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(freelancerToBook),
-                                            'Client Booking Made', newBookingMessageToFreelancerHTML), function (err) {
+                                            'Client Booking Made', 'New Booking', newBookingMessageToFreelancerHTML), function (err) {
                                             if (err) {throw err}
                                             else{
                                                 console.log('Client new booking Message has been sent to Freelancer');
                                                 mailer.smtpTransport.sendMail(mailer.mailerFunction(req.user.email,
-                                                    'Booking Successfully Made', newBookingMessageToClientHTML), function (err) {
+                                                    'Booking Successfully Made', 'Booking Successfully Made', newBookingMessageToClientHTML), function (err) {
                                                     if (err) {throw err}
                                                     else{console.log('Client new booking Message has been sent to Client')}
                                                 });
@@ -773,7 +1027,7 @@ function server_io(io) {
                                 });
 
                                 io.sockets.to(freelancerToBook).emit('Booking Data to Freelancer', newServiceInfos);
-                                res.redirect(`${domainName}/account/${loggedInClientStature}/${customer}`);
+                                res.redirect(`/account/${loggedInClientStature}/${customer}`);
                             }
                         }
                     })
@@ -788,7 +1042,9 @@ function server_io(io) {
             }
 
             catch (e) {
-                res.status(404).json({error: `An error during booking. Please try again!!`})
+                console.log(e);
+                throw e;
+                //next(e)
             }
         }
 
@@ -816,22 +1072,35 @@ function server_io(io) {
 
                 bookingDetailUpdate.bookingModificationConversation.push(newBookingModifyConversation);
 
-                let bookingModificationToClientHTML = '<h1 style="color: #213e53; font-size: 1.1rem">Booking Modification</h1>'+
-                    '<p>Hello '+bookingDetailUpdate.customer.name.split(' ')[0]+',</p><p>There has been an update' +
-                    ' on the following booking ('+ bookingDetailUpdate.service+' - ' +bookingDetailUpdate.projectName
-                    +'). Please' + '<a target="_blank" style="text-decoration: underline; color: #0645AD;' +
-                    ' cursor: pointer" href='+loginURL+'> login </a> to your account to accept or ' +
-                    'reject this new proposal by '+bookingDetailUpdate.supplier.name+
-                    '. Please note your booking ID (booking ID: '+ bookingDetailUpdate._id +'). </p>'+'<p>Thank you,<br>The KingsHire Team' +
-                    '<br>07448804768</p>';
+                let bookingModificationToClientHTML = "<p>Hello " +
+                    bookingDetailUpdate.customer.name.split(" ")[0] +
+                    ",</p><p>There has been an update" +
+                    " on the following booking (" +
+                    bookingDetailUpdate.service +
+                    " - " +
+                    bookingDetailUpdate.projectName +
+                    "). Please" +
+                    '<a target="_blank" style="text-decoration: underline; color: #0645AD;' +
+                    ' cursor: pointer" href=' +
+                    loginURL +
+                    "> login </a> to your account to accept or " +
+                    "reject changes made by " +
+                    bookingDetailUpdate.supplier.name +
+                    ". Please note your booking ID (booking ID: " +
+                    bookingDetailUpdate._id +
+                    "). </p>" ;
 
-                let bookingModificationToFreelancerHTML = '<h1 style="color: #213e53; font-size: 1.1rem">Booking Modification</h1>'+
-                    '<p>Hello '+bookingDetailUpdate.supplier.name.split(' ')[0]+',</p><p> This is an update that your booking modification' +
-                    ' has successfully been sent to the client. The booking ID is: '+ bookingDetailUpdate._id +' .' +
+                let bookingModificationToFreelancerHTML =  "<p>Hello " +
+                    bookingDetailUpdate.supplier.name.split(" ")[0] +
+                    ",</p><p> This is an update that your booking modification" +
+                    " has successfully been sent to the client. The booking ID is: " +
+                    bookingDetailUpdate._id +
+                    " ." +
                     ' Once there has been a response, we will inform you or you can <a target="_blank" style="text-decoration: underline;' +
-                    ' color: #0645AD; cursor: pointer" href='+loginURL+'> login </a>' +
-                    ' into your account regularly to check for updates.</p>'+
-                    '<p>Thank you,<br>The KingsHire Team <br>07448804768</p>';
+                    ' color: #0645AD; cursor: pointer" href=' +
+                    loginURL +
+                    "> login </a>" +
+                    " into your account regularly to check for updates.</p>" ;
 
                 bookingDetailUpdate.save(err => {
                     if(err){

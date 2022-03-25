@@ -13,6 +13,8 @@ let administrationemail = process.env.ADMINISTRATION_EMAIL;
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
+    console.log('Inside the index page route')
+
     try{
         let loggedInUser;
         let loggedInUser_imageSrc;
@@ -60,7 +62,7 @@ router.get('/', async function (req, res, next) {
         }
 
         allFreelancers = await UserModel.find({
-          $and: findFreelancersQuery
+            $and: findFreelancersQuery
         }).limit(4);
 
         res.render('index', {
@@ -77,11 +79,11 @@ router.get('/', async function (req, res, next) {
 
 //localhost:3000/login
 router.get('/login', function(req, res, next) {
-  res.redirect('/users/login');
+    res.redirect('/users/login');
 });
 //localhost:3000/join
 router.get('/join', function(req, res, next) {
-  res.redirect('/users/join');
+    res.redirect('/users/join');
 });
 
 router.post('/feedback', function(req, res, next){

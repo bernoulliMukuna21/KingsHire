@@ -14,8 +14,8 @@ let database_name = '/kingsHire';
 let connection_URI = process.env.LOCAL_CONNECTION_URI+database_name;
 
 
-/* Local mongoDB connection*/
 /*
+/!* Local mongoDB connection*!/
 let database_name = "/kingsHire";
 let connection_URI = process.env.LOCAL_CONNECTION_URI + database_name;
 */

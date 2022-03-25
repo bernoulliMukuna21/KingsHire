@@ -1,34 +1,56 @@
-.privacy-policy, .refund-policy{
-    margin: 3rem 5rem;
-}
-.privacy-policy section, .refund-policy section{
-    margin-top: 1rem;
+.policy-container {
+  margin: 0 auto; /* this will center the page */
+  width: 1000px; /*  use your width here */
 }
 
-.privacy-policy>h1, .refund-policy>h1{
-    text-align: center;
-    margin-bottom: 2rem;
+.privacy-policy,
+.refund-policy {
+  margin: 3rem 5rem;
 }
-.privacy-policy h2, .refund-policy h2{
-    margin-bottom: .5rem;
-    padding: 0;
-}
-.privacy-policy h3, .refund-policy h3{
-    margin: .5rem 0;
+.privacy-policy section,
+.refund-policy section {
+  margin-top: 1rem;
 }
 
-.privacy-policy p, .privacy-policy ul li, .refund-policy p{
-    font-size: 1.3rem;
-    margin: .25rem;
+.privacy-policy > h1,
+.refund-policy > h1 {
+  margin-bottom: 2rem;
+  font-family: Arial !important;
+  font-size: 19px !important;
+  color: #000000 !important;
 }
-.privacy-policy ul li, .refund-policy ul li{
-    margin-left: 5%;
+.privacy-policy h2,
+.refund-policy h2 {
+  margin-bottom: 0.5rem;
+  padding: 0;
+  font-family: Arial !important;
+  font-size: 17px !important;
+  color: #000000 !important;
 }
-.privacy-policy a, .refund-policy a{
-    color: #1E88E5;
-    text-decoration: underline;
+.privacy-policy h3,
+.refund-policy h3 {
+  margin: 0.5rem 0;
 }
 
-.refund-policy{
-    height: 16rem;
+.privacy-policy p,
+.privacy-policy ul li,
+.refund-policy p {
+  font-size: 1.3rem;
+  margin: 0.25rem;
+  font-family: Arial !important;
+  color: #595959 !important;
+  font-size: 14px !important;
+}
+.privacy-policy ul li,
+.refund-policy ul li {
+  margin-left: 5%;
+}
+.privacy-policy a,
+.refund-policy a {
+  color: #1e88e5;
+  text-decoration: underline;
+}
+
+.refund-policy {
+  height: 16rem;
 }
