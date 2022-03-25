@@ -5,12 +5,6 @@
     overflow: hidden;
     position: relative;
 }
-.mobiletop-texts{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
 .top-mobilenavcontainer .mobileheaderLinks {
     display: none;
     width: 100%;
