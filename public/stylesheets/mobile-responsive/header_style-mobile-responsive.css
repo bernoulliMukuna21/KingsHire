@@ -9,7 +9,8 @@
         background-color: red;
     }
     .top-mobilenavcontainer{
-        display: block;
+        display: grid;
+        align-items: center;
         background-color: white;
         overflow: hidden;
         position: relative;
@@ -19,10 +20,11 @@
         width: 50%;
     }
     .mobiletop-texts{
-        border: .1rem soldi red;
+        justify-content: space-around;
+        border: .1rem solid red;
     }
     .mobiletop-navbar{
-        border: .1rem soldi black;
+        border: .1rem solid black;
     }
     .top-mobilenavcontainer .mobileheaderLinks {
         display: none;
