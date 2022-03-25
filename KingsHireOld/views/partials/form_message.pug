@@ -1,0 +1,56 @@
+if(typeof fields_errors != 'undefined')
+    each error in fields_errors
+        .single-join-form-error-message
+            p.join-error-message #{error.message} #[br]
+            p.join-error-message-delte-btn x
+
+if(Object.keys(success_message).length !== 0)
+    p.success-message #{success_message}
+
+if(Object.keys(error_message).length !== 0)
+    .single-login-form-error-message
+        p.error-message #{error_message}
+        p.join-error-message-delte-btn x
+
+script.
+    $('.join-error-message-delte-btn').click(function (event) {
+        this.parentElement.remove();
+    })
+    $('.single-login-form-error-message').delay(1000).hide(1000);
+    $('.success-message').delay(1000).hide(1000);
+
+style.
+    .single-join-form-error-message, .single-login-form-error-message{
+        display: grid;
+        grid-template-columns: 90% 9.5%;
+        gap: .5%;
+        text-align: center;
+        align-items: center;
+        margin-bottom: 1rem;
+        background-color: #c12020;
+    }
+    .single-join-form-error-message p, .success-message,
+    .single-login-form-error-message p{
+        padding: .5rem;
+        font-size: 1.3rem;
+        color: white;
+        font-weight: bolder;
+    }
+
+    .single-login-form-error-message p{
+        padding: 1rem;
+    }
+    .single-join-form-error-message p:first-child,
+    .single-login-form-error-message p:first-child{
+        border-right: .1rem solid white;
+    }
+    .single-join-form-error-message p:last-child,
+    .single-login-form-error-message p:last-child{
+        cursor: pointer;
+    }
+
+    .success-message{
+        background-color: #4CAF50;
+        text-align: center;
+        padding: 1rem;
+    }

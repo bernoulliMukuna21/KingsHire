@@ -1,0 +1,79 @@
+extends layout
+
+block content
+    - let minimumPriceOfService = 10.00
+    .kingslance-services
+        .service-hiring-title
+            h2 Hire a Kinglancer
+        // Navigation Backward and Forward buttons
+        i#servicesBackarrow.fa-solid.fa-circle-arrow-left
+        i#servicesFrontarrow.fa-solid.fa-circle-arrow-right
+        if allFreelancers.length > 0
+            .all-freelancers-available
+                each freelancer in allFreelancers
+                    .serviceFreelancers
+                        - console.log(freelancer)
+                        - let servicesPrices = freelancer.serviceAndPrice
+                        - let freelancerUniqueKey = emailEncode(freelancer.email);
+                        .single-selected-freelancer-index
+                            .top-side
+                                if !freelancer.profile_picture.data
+                                    img(src="/images/userDefaultImage.png")
+                                else
+                                    - let imageSource;
+                                    if freelancer.profile_picture.name === 'oauth_picture'
+                                        - imageSource = freelancer.profile_picture.data.toString();
+                                    else
+                                        - imageSource = "data:image/"+freelancer.profile_picture.contentType+";base64,"+freelancer.profile_picture.data.toString('base64')
+                                    img(src=imageSource)
+
+                                p: a(href='/account/freelancer' + emailEncode(freelancer.email)) #{freelancer.name + " " + freelancer.surname}
+                            .middle-side
+                                each service_price in servicesPrices
+                                    - let price = parseFloat(service_price.price)
+                                    if price >= minimumPriceOfService
+                                        .index-serviceAndPrice
+                                            p #{service_price.service}
+                                            p #{`£${price.toFixed(2)}`}
+                                            input(type='hidden', value =JSON.stringify({
+                                                freelancerPackage: service_price.servicePackage
+                                            }), name='indexPageServicePackage', readOnly=true)
+                            .bottom-side
+                                if !isLogged
+                                    button Instant Book
+                                    button Request
+                                else
+                                    if(loggedInUser.user_stature.current === 'client')
+                                        button Instant Book
+                                        button Request
+                                    a.freelance-mssg-btn
+                                        p Message
+                                        i.far.fa-envelope
+                                        input(type='hidden' class='freelancerToMessage-unique-key' value=freelancerUniqueKey)
+                            input(type='hidden' value=emailEncode(freelancer.email))
+        else
+            div.no-freelance-match-found
+                div
+                    p Sorry, we currently don't have anyone offering this service
+
+    include ./partials/booking_form
+
+    div.freelance-service-package-modal
+        div.freelance-service-package-modal-container
+            div
+                section
+                    h4
+                        span Interior Design
+                        | #{' '}by Limo Charly
+                .closebook-form &times;
+            div
+                h4 Package Include:
+                section
+                    div
+                        p Empty Package
+                    ul(style='display: none')
+                        li  - 5 Responsive Pages
+                section
+                    p Total Price: £1400
+
+    include ./partials/footer

@@ -1,0 +1,12 @@
+.message-contents
+    .default-messages-container(style='display: none;')
+        h4 No Conversation
+    .all-messages-container
+        if userToMessageUniqueKey
+            input(style='display: none;' id='clicked-receiver-key' value=userToMessageUniqueKey)
+        .user-messages-side
+        .user-messages-main-container-box
+            .default-message-content
+                h3 Start Messaging
+                i.far.fa-comments
+            div.all-different-conversations-container

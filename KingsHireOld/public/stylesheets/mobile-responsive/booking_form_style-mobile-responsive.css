@@ -1,0 +1,14 @@
+/* This is for smaller screens like mobile and tablet*/
+
+@media (max-width:500px) {
+    .booking-content,.booking-conclusion-container {
+        width: 90%;
+    }
+    .booking-dateandtime-picker-container{
+        grid-template-columns: 100%;
+    }
+    #service-booking-dueDate[type='date']:after {
+        color: #213e53;
+        content: attr(placeholder);
+    }
+}

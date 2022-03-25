@@ -1,0 +1,36 @@
+.unilance-error-page{
+    min-height: 80vh;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: #213e53;
+    font-size: 2rem;
+}
+
+.unilance-error-header{
+    display: inline-flex;
+    align-items: center;
+}
+.unilance-error-header h1{
+    border-bottom: .2rem dashed #213e53;
+    padding-bottom: .5rem;
+    margin: 0 2rem;
+}
+.unilance-error-header i.fa-solid.fa-circle-exclamation{
+    color: #FF0000;
+    font-size: 4rem;
+}
+
+.unilance-error-message{
+    text-align: center;
+    margin: 2rem 0;
+}
+.unilance-error-message h3.error-status-code-message{
+    margin-top: 2rem;
+    color: #FF0000;
+}
+i.fa-solid.fa-bug{
+    font-size: 20rem;
+}
