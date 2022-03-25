@@ -116,9 +116,11 @@ header{
     padding: 2rem 5rem;
     text-align: center;
 }
+
 .index-search-information-top>div:first-child h1,
 .index-search-information-top>div:first-child p{
     padding: 1rem;
+    width: 100%;
 }
 .search-freelancers-section{
     margin-top: 3rem;
@@ -142,6 +144,7 @@ header{
     flex: 1;
     justify-self: center;
     text-align: center;
+
 }
 #kingsHire-section-image{
     height: 40vh;
