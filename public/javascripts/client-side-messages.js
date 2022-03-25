@@ -53,13 +53,13 @@ $( document ).ready(function() {
 
     if(currentURL.includes(loggedInUserURL)){
 
-        if (loggedInUser.type === 'freelancer'){
-            $(document.body).css('pointer-events', 'none');
+        if(currentURL.includes('?receiverKey=')){
+
+            if(previousURL === '') window.location.href = loggedInUserURL;
+
+            if (loggedInUser.type === 'freelancer') $(document.body).css('pointer-events', 'none');
         }
 
-        if(previousURL === '' && currentURL.includes('?receiverKey=')){
-            window.location.href = loggedInUserURL;
-        }
 
         $('.user-messages-side').show();
         $('.all-different-conversations-container').empty();
