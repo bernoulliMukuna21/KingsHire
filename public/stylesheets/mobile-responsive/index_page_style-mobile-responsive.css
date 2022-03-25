@@ -45,6 +45,13 @@
     .pro-services-kinglancer-section>div:first-child{
         padding: 4rem 5rem;
     }
+
+    .index-search-information-top>div:first-child{
+        padding-right: 2rem;
+        padding-left: 2rem;
+    }
+
+
     .selected-freelancers-index-page{
         display: block;
         padding: 4rem;
