@@ -3,7 +3,20 @@
   /*position: relative;*/
   margin: auto;
 }
-
+.portfolio-information{
+  border: .1rem solid red;
+  font-weight: normal;
+  font-size: 1.2rem;
+  margin: .5rem 0;
+  padding: .75rem;
+  background-color: #F9546A;
+  border-radius: 1rem;
+  color: #FFFFFF;
+  text-align: center;
+}
+.portfolio-information p span{
+  font-weight: bold;
+}
 /* Make the images invisible by default */
 .Containers {
   display: none;

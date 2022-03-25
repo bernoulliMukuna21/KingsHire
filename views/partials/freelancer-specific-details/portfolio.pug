@@ -1,4 +1,8 @@
 h1 Portfolio
+  section.portfolio-information
+    p The portfolio is better accessed on a#{' '}
+      span WINDOWS
+      |#{' '}machine. Sorry for the inconvenience, we are working to provide you the best experience!
   div.image-portfolio(style='border: .1rem dashed black; display: flex; justify-content: center; ' +
   'align-items: center; height: 10vh')
     if (isLogged && (emailEncode(freelancerUser.email) === emailEncode(loggedInUser.email)))
