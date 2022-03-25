@@ -29,7 +29,7 @@ h1 Portfolio
       each val, index in loggedInUser.portfolio
         .Containers
           .MessageInfo #{index + 1} / #{num}
-          img.sliding-picture(src=val["pictureURL"])
+          img.sliding-picture(src=val["pictureURL"].toString())
           .Info #{val['description']}
       // Back and forward buttons
       a.Back &#x276E;
@@ -46,4 +46,4 @@ h1 Portfolio
         div.image-portfolio-item
           .portfolio-tag-overlay
             p #{val['description']}
-          img(src=val["pictureURL"])
+          img(src=val["pictureURL"].toString())
