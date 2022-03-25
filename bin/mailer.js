@@ -83,7 +83,7 @@ function mailerFunction(recipientEmail, subject, mailTitle, mailBody) {
                         The KingsHire Team
                     </P>
                 </div>
-                <a href="https://localhost:3000/services" class="emailBtn" style="background-color: #ee7182; color: white; text-decoration: none">
+                <a href="https://kingshireproject.herokuapp.com/services" class="emailBtn" style="background-color: #ee7182; color: white; text-decoration: none">
                     Find Freelancers
                 </a>
             </div>

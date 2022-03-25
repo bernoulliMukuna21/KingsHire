@@ -8,7 +8,7 @@ import * as socketConnection from "./socketio-connection-client-side.js";
  * */
 
 //let domainName = 'http://localhost:3000';
-let domainName = "https://trialapp-demo.herokuapp.com";
+let domainName = "https://kingshireproject.herokuapp.com";
 
 let freelancerProfileSections = $(".freelancer_account_main_side")[0].childNodes;
 let freelancerAllowedPages = $(".freelancer-page-allowed")[0].childNodes;
