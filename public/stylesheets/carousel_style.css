@@ -15,12 +15,12 @@
   display: none;
 }
 
-.Containers img,
-video {
+.sliding-picture {
   max-width: 750px;
   width: auto;
   height: auto;
   display: block;
+  margin: auto;
 }
 
 .slideshow-container.fade {
