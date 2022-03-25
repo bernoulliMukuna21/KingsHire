@@ -7,11 +7,11 @@ var EF_DB_conn = {};
  * */
 var mongoose = require("mongoose");
 
-//let connection_URI = process.env.REMOTE_MONGO_URI; // Remote mongoDB connection
+let connection_URI = process.env.REMOTE_MONGO_URI; // Remote mongoDB connection
 
-/* Local mongoDB connection*/
+/*/!* Local mongoDB connection*!/
 let database_name = "/kingsHire";
-let connection_URI = process.env.LOCAL_CONNECTION_URI + database_name;
+let connection_URI = process.env.LOCAL_CONNECTION_URI + database_name;*/
 
 try {
   EF_DB_conn.kingsHireDB = mongoose.createConnection(connection_URI);
