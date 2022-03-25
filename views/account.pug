@@ -91,7 +91,9 @@ block content
                                 li.user-completed-booking-page(id=messageIdHTML)
                                     p Messages
                                     p.newMessageReceived(style='display:none;') new
-                            li.user-portfolio-page Portfolio
+
+                                //
+                                    li.user-portfolio-page Portfolio
 
             .freelancer_account_main_side
                 .freelancer-page-allowed
@@ -324,9 +326,6 @@ block content
 
                         .freelancer-message-page(style='display: none;')
                             include ./partials/message
-
-                    .freelancer-portfolio-page(style='display: none;')
-                        include ./partials/freelancer-specific-details/portfolio
 
     include ./partials/booking_form
     include ./partials/freelancer-specific-details/payment-sub-infos

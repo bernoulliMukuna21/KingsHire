@@ -1,4 +1,5 @@
 h1 Portfolio
+    - console.log(loggedInUser.portfolio)
     div.image-portfolio(style='border: .1rem dashed black; display: flex; justify-content: center; ' +
     'align-items: center; height: 10vh')
         if (isLogged && (emailEncode(freelancerUser.email) === emailEncode(loggedInUser.email)))
