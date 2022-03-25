@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Messages_MDB = require('../models/ConversationModel');
 var UserModel = require('../models/UserModel');
+var mailer = require('../bin/mailer');
 var { ensureAuthentication } = require('../bin/authentication');
 var { emailDecode } = require('../bin/encodeDecode');
 var { imageToDisplay } = require('../bin/imageBuffer');
@@ -93,6 +94,18 @@ function server_io(io) {
                             throw err;
                         }
                         console.log('Message Sent to DB - success');
+
+                        let newMessageNotification = "<p>Hello, " +
+                            '</p><p> This a notification of a new message on your' +
+                            ' <a target="_blank" style="text-decoration: underline; color: #0645AD; cursor: pointer" ' +
+                            "href='https://kingshireproject.herokuapp.com'" +
+                            ">KingsHire</a> account. Please login to view and reply.</p>";
+
+                        mailer.smtpTransport.sendMail(mailer.mailerFunction(emailDecode(receiver),
+                            "New Message Notification", 'New Message Notification',newMessageNotification), function (err) {
+                            if(err){console.log(err)}
+                            else{console.log('Message notification')}
+                        });
                     })
 
                     /***** Third: Send data to both sender and receiver - client side *****/
