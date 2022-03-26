@@ -374,7 +374,7 @@ footer li, footer p, footer a{
     background-color: #FCFCDB;
 }
 .about-us-section-1{
-    height: 75vh;
+    height: 45rem;
     margin: 2rem 3rem;
     color: #FFFFFF;
 }
@@ -393,7 +393,7 @@ footer li, footer p, footer a{
 .about-us-section-1>a:last-child{
     width: 13rem;
     position: absolute;
-    top: 85%;
+    top: 50rem;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 1rem;
