@@ -133,6 +133,11 @@ button.web-submission, button.mobile-submission{
   text-decoration: underline;
 }
 
+.joinform-or-separator{
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
 .join-page-bottom{
   display: flex;
   justify-content: center;

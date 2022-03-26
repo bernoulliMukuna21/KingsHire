@@ -33,6 +33,12 @@ header{
 .footer-section-1 img.kingsHireImage{
     width: 40%;
 }
+
+
+.about-us-section-1-right section img.kingsHireImage{
+    width: 55%;
+    height: 8vh;
+}
 .top-navbar{
     background-color: white;
     font-size: 1.3rem;
@@ -232,7 +238,7 @@ header{
     border: .1rem solid lightgrey;
     border-radius: .5rem;
 }
-.single-selected-freelancer-index img{
+.single-selected-freelancer-index img, .about-us-section-2-bottom img{
     height: 40vh;
     width: 100%;
     object-fit: cover;
@@ -347,6 +353,8 @@ footer li, footer p, footer a{
 .contact-us-and-accessibility li{
     margin: 1rem 0;
 }
+
+.footer-section-1 ul li a:hover,
 .footer-section-4 ul li a:hover,
 .footer-section-2 ul li a:hover,
 .footer-section-3 ul li a:hover{
@@ -364,6 +372,162 @@ footer li, footer p, footer a{
     text-align: center;
     padding: 1rem 0;
     background-color: #FCFCDB;
+}
+.about-us-section-1{
+    height: 75vh;
+    margin: 2rem 3rem;
+    color: #FFFFFF;
+}
+.about-us-section-1>section{
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    position: relative;
+}
+.about-us-section-1-right.about-us-logo img.kingsHireImage{
+    heigh: 8rem;
+}
+.about-us-logo{
+    width: 70%;
+}
+.about-us-section-1>a:last-child{
+    width: 13rem;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: #1E88E5;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #FFFFFF;
+}
+.about-us-section-1>a:hover {
+    background-color: #FFFFFF;
+    color: #1E88E5;
+}
+.about-us-section-1>section .about-us-section-1-right,
+.about-us-section-1>section .about-us-section-1-left{
+    padding: 2rem 0;
+}
+
+.about-us-section-1>section .about-us-section-1-right{
+    padding-right: 10rem;
+    padding-left: 4rem;
+}
+.about-us-section-1>section .about-us-section-1-left{
+    padding-left: 10rem;
+    padding-right: 4rem;
+}
+.about-us-section-1>section .about-us-section-1-right{
+    background-color: #FEB2BC;
+}
+.about-us-section-1>section .about-us-section-1-left{
+    background-color: #DB2C44;
+}
+.about-us-section-1>section .about-us-section-1-right h1,
+.about-us-section-1>section .about-us-section-1-left h1{
+    margin-bottom: 1rem;
+}
+.about-us-section-1>section .about-us-section-1-right p,
+.about-us-section-1>section .about-us-section-1-left p{
+    font-size: 1.1rem;
+}
+.about-us-section-1-right section:last-child{
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+.about-us-section-1-right>a{
+    border: .1rem soldi black;
+}
+
+
+.about-us-section-2{
+    margin: 4rem 0;
+}
+
+.about-us-section-2 .about-us-section-2-top{
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 0 30%;
+    margin-bottom: 1rem;
+}
+.about-us-section-2 .about-us-section-2-top h1, .about-us-section-3 h1{
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+.about-us-section-2-bottom{
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-column-gap: 1%;
+    grid-row-gap: 1%;
+    grid-auto-flow: row;
+    padding: 2rem 3rem;
+}
+.about-us-section-2-bottom div{
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    background-color: #1E88E5;
+}
+
+.about-us-section-2-bottom section{
+    text-align: center;
+    padding: .75rem 1rem;
+}
+.about-us-section-2-bottom section ul li{
+    color: #FFFFFF;
+    font-size: 1.1rem;
+}
+.about-us-section-2-bottom section ul li:first-child{
+    font-size: 1.3rem;
+}
+.single-testimonial section img{
+    height: 8vh;
+    width: 8vh;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+.about-us-section-3>section{
+    text-align: center;
+}
+.about-us-section-3 .all-testimonials{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-column-gap: 1%;
+    grid-row-gap: 5%;
+    grid-auto-flow: row;
+    margin: 2rem 3rem;
+    margin-top: 4rem;
+}
+.all-testimonials .single-testimonial{
+    border: .1rem solid lightgrey;
+    border-radius: .5rem;
+    padding: .5rem;
+    display: flex;
+}
+.all-testimonials .single-testimonial section:first-child{
+    padding-right: .5rem;
+}
+.all-testimonials .single-testimonial section:last-child{
+    padding-left: .5rem;
+}
+.single-testimonial section:last-child ul li{
+    font-size: 1.1rem;
+}
+.single-testimonial section:last-child ul li:nth-child(1),
+.single-testimonial section:last-child ul li:nth-child(3){
+    color: #1E88E5;
+    font-weight: bold;
+}
+.single-testimonial section:last-child ul li:nth-child(2){
+    margin: 1rem 0;
+}
+.single-testimonial section:last-child ul li:nth-child(3){
+    font-size: 3rem;
 }
 /*
 input:focus{

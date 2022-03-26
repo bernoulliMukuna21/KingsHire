@@ -59,17 +59,10 @@ block content
                        p.signup-page-login-option Already have an account?#{' '}
                            a#joinFL-login(href='/users/login') Login
 
-                   p.mobile-signup-oroperator or
-                   .mobilefreelancerAndclientBottom
-                       if userType === 'client'
-                           .mobile-client-bottom
-                               a(href='/users/join/freelancer') Join as Freelancer
-                       else if userType === 'freelancer'
-                           .mobile-client-bottom
-                               a(href='/users/join/client') Join as Client
-               //
-                   div.join-page-bottom
-                       if userType === 'client'
-                           a#switchToFreelancer(href='/users/join/freelancer') JOIN AS FREELANCER
-                       else if userType === 'freelancer'
-                           a#joinAsClient(href='/users/join/client') JOIN AS CLIENT
+               p.joinform-or-separator Or
+
+               div.join-page-bottom
+                   if userType === 'client'
+                       a#switchToFreelancer(href='/users/join/freelancer') JOIN AS FREELANCER
+                   else if userType === 'freelancer'
+                       a#joinAsClient(href='/users/join/client') JOIN AS CLIENT
