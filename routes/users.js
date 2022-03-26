@@ -140,7 +140,7 @@ router.post('/join/:userType', function (req, res, next) {
                         }
                         else{
                             let welcomeEmailToUser =
-                               '<p>Welcome to Unilance. You have successfully signed up to <a target="_blank" ' +
+                               '<p>Welcome to KingsHire. You have successfully signed up to <a target="_blank" ' +
                                 'style="text-decoration: underline; color: #0645AD; cursor: pointer" href='+domainURL+
                                 '>KingsHire.</a></p>'+
                                 '<p>Well done! We are looking to working with you.</p>';
