@@ -67,7 +67,7 @@ function mailerFunction(recipientEmail, subject, mailTitle, mailBody) {
         </style><body style="background-color: gray">
         <div class="email-container">
             <div class="logoHeader">
-                <a href="https://kingshire.herokuapp.com"  target="_blank">
+                <a href="https://kingshireproject.herokuapp.com"  target="_blank">
                     KingsHire
                 </a>
             </div>
