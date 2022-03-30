@@ -1,4 +1,4 @@
-- let freelancerListOfStatus = ['booking ongoing', 'awaiting payment', 'accept / modify', 'awaiting response', 'please respond', 'awaiting confirmation', 'confirmed, well done!', 'awaiting resolution', 'paid', 'cancelled'];
+- let freelancerListOfStatus = ['booking ongoing', 'awaiting payment', 'accept', 'awaiting response', 'please respond', 'awaiting confirmation', 'confirmed, well done!', 'awaiting resolution', 'paid', 'cancelled'];
 - let emptyBookings = Object.keys(allBookingToFreelancer).length === 0;
 
 .booking-section-container
@@ -106,7 +106,7 @@
                                     - bookingMssgDisplay = 'display: none';
                                     p.project-status(style='border: .1rem solid #8d2874; background-color: #8d2874')
                                         | awaiting payment
-                                if(freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'accept / modify' || freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting response')
+                                if(freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'accept' || freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting response')
                                     - bookingInfosDisplay = '';
                                     - bookingInfosBttnDisplay = '';
                                     - bookingMssgDisplay = 'display: none';
@@ -204,9 +204,8 @@
                                     if freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'booking ongoing'
                                         - deleteBttn = 'Cancel'
                                         button.freelancer-booking-finish-button Finish
-                                    if (freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'accept / modify' || freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting response' || freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting response')
+                                    if (freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'accept' || freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting response' || freelancerListOfStatus[bookingToFreelancer.status.freelancer] === 'awaiting response')
                                         button.freelancer-booking-accept-button Accept
-                                        button.freelancer-booking-modify-button Modify
                                     button#freelancer-booking-delete-button #{deleteBttn}
 
                                 .freelancer-project-final-messages(style=bookingMssgDisplay)
@@ -309,7 +308,6 @@
                                 name='modificationprice', value='532.67' required='true')
                     section
                         input(type='hidden' name='modifyToData' id='modifyToDataGetterID')
-                        button#booking-modification-submit-bttn(type='submit') Send Modification
 
             .freelancer-booking-modification-acceptance-form
                 h4 Booking Acceptance Details

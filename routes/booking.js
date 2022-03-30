@@ -869,9 +869,10 @@ function server_io(io) {
         })
     });
 
-    router.post('/service-booking/:bookingType/:freelancerToBook', ensureAuthentication, async (req, res)=>{
+    router.post('/service-booking/:bookingType/:freelancerToBook', async (req, res)=>{
         let loggedInClient = req.user;
         let loggedInClientStature = loggedInClient.user_stature.current;
+        console.log('Is user loggedin?', req.isAuthenticated());
 
         if(loggedInClientStature === 'client'){
             try {
@@ -1055,7 +1056,7 @@ function server_io(io) {
     })
 
 
-    router.post('/project-modification/:bookingToModifyID', ensureAuthentication, async (req, res)=>{
+    /*router.post('/project-modification/:bookingToModifyID', ensureAuthentication, async (req, res)=>{
         let dataToModify = req.body;
         let bookingID = req.params.bookingToModifyID;
         let clientToSendModification = bookingID.split(':')[0];
@@ -1127,7 +1128,7 @@ function server_io(io) {
             .catch(err=>{
                 res.status(404).send('error occured')
             });
-    })
+    })*/
 
     return router;
 }

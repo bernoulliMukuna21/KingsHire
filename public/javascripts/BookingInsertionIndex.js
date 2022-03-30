@@ -71,7 +71,7 @@ export default class BookingInsertionIndex {
         if (status === 'awaiting payment') {
             return 1;
         }
-        if (status === 'accept / modify') {
+        if (status === 'accept') {
             return 2;
         }
         if (status === 'awaiting response') {

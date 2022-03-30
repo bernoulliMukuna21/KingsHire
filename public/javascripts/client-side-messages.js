@@ -96,8 +96,9 @@ $(document).on('click', '.user-completed-booking-page', function(event) {
 
 /*** Booking Initialiser button is clicked ***/
 $(document).on('click', '#booking-side-message-bttn', function(event) {
-    $('#booking-side-message-bttn').prop("disabled", true);
-    $('#booking-side-message-bttn')[0].firstChild.innerHTML = "<p>Wait<span id='wait'>.</span></p>"
+    let currentMessageBttn = this;
+    $(currentMessageBttn).prop("disabled", true);
+    $(currentMessageBttn)[0].firstChild.innerHTML = "<p>Wait<span id='wait'>.</span></p>"
     $(document.body).css('pointer-events', 'none')
 
     let freelancerToMessage_uniqueKey = $("#freelancerToMessageUUID").val();
@@ -120,8 +121,8 @@ $(document).on('click', '#booking-side-message-bttn', function(event) {
 
                 initializeMessageRoom(receiver);
 
-                $('#booking-side-message-bttn').prop("disabled", false);
-                $('#booking-side-message-bttn')[0].firstChild.innerHTML = "<p>Message</p>"
+                $(currentMessageBttn).prop("disabled", false);
+                $(currentMessageBttn)[0].firstChild.innerHTML = "<p>Message</p>"
             }).catch( error => {
                 console.log('Get rooms failed');
             });

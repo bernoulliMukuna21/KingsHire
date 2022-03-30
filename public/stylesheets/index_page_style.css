@@ -239,7 +239,7 @@ header{
     border-radius: .5rem;
 }
 .single-selected-freelancer-index img, .about-us-section-2-bottom img{
-    height: 20rem;
+    height: 40vh;
     width: 100%;
     object-fit: cover;
     object-position: top;

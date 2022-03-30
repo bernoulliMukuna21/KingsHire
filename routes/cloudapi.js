@@ -63,7 +63,7 @@ function addToDB(req, res) {
 
   user.portfolio.push({
     pictureURL:
-      "https://storage.cloud.google.com/kingshireimages/" + encodedName,
+      "https://storage.googleapis.com/kingshireimages/" + encodedName,
     description: description,
     name: encodedPath,
     fileType: path.extname(filePath),

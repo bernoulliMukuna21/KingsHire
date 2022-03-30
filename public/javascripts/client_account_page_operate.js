@@ -137,6 +137,12 @@ $(document).on('click', '.client-accept-booking-bttn', function(event) {
         });
 })
 
+$(document).on('click', '#client-page-pay-bttn', function(event) {
+    $(this).prop("disabled", true);
+    $(this)[0].firstChild.innerHTML = "<button>Wait<span id='wait'>.</span></button>"
+    $(document.body).css('pointer-events', 'none')
+})
+
 $(document).on('click', '#projectCompleted', function(event) {
     let bookingContainerHTML = event.target.parentNode.parentNode.
         parentNode.parentNode.parentNode;

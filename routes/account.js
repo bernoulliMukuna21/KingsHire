@@ -286,7 +286,7 @@ router.put(
         upgradeFreelancer.save(function (error) {
           if (error) throw error;
           else {
-            freelancerObject.profile_picture =
+            freelancerObject.profileImageSrc =
               imageToDisplay(upgradeFreelancer);
             res.json(freelancerObject);
           }

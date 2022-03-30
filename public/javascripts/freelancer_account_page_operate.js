@@ -646,6 +646,7 @@ $(".update-general-information").submit(function (event) {
     processData: false,
     success: function (data) {
       /***** display the updated profile picture of the freelancer *****/
+      console.log('image update: ', data.profileImageSrc)
       if (data.profileImageSrc === "") {
         $(".account-profile-image img").attr(
           "src",
@@ -774,7 +775,7 @@ $(document).on("click", ".freelancer-booking-accept-button", function (event) {
   let projectTopInformation = singleProjectDetails.previousSibling;
   let projectStatus = projectTopInformation.childNodes[3].innerText;
 
-  if (projectStatus === "accept / modify") {
+  if (projectStatus === "accept") {
     let bookingToAcceptID = singleProjectDetails.nextSibling.value;
     let clientThatBooked = bookingToAcceptID.split(":")[0];
     let projectIndex = Array.from(
@@ -788,7 +789,9 @@ $(document).on("click", ".freelancer-booking-accept-button", function (event) {
       bookingToAcceptID,
       clientThatBooked,
     });
-  } else if (projectStatus === "awaiting response") {
+  }
+
+  /*else if (projectStatus === "awaiting response") {
     console.log("Project Status is awaiting response");
     let buttonsContainer = freelancerAcceptBttnHTML.parentNode;
     let projectBasicInformation = buttonsContainer.previousSibling;
@@ -806,9 +809,9 @@ $(document).on("click", ".freelancer-booking-accept-button", function (event) {
       descriptionToAccept,
       priceToAccept,
     });
-  }
+  }*/
 });
-$(document).on(
+/*$(document).on(
   "click",
   "#booking-modificationAcceptance-submit-bttn",
   function (event) {
@@ -833,7 +836,7 @@ $(document).on(
       fromStatus: "awaiting response",
     });
   }
-);
+);*/
 
 // Modify Booking
 const formatAMPM = (time) => {
@@ -863,7 +866,7 @@ $(document).on("click", ".freelancer-booking-modify-button", function (event) {
   let currentProjectDescription;
   let currentProjectPrice;
 
-  if (currentProjectStatus === "accept / modify") {
+  if (currentProjectStatus === "accept") {
     currentProjectDueDateTime =
       projectAllInformationContainer.childNodes[2].innerText;
     currentProjectDescription =
@@ -873,7 +876,8 @@ $(document).on("click", ".freelancer-booking-modify-button", function (event) {
       projectBasicInformation.childNodes[0].childNodes[3].innerText
         .split(":")[1]
         .slice(2);
-  } else if (
+  }
+  /*else if (
     currentProjectStatus === "awaiting response" ||
     currentProjectStatus === "please respond"
   ) {
@@ -884,7 +888,7 @@ $(document).on("click", ".freelancer-booking-modify-button", function (event) {
       proposalInfos.childNodes[2].childNodes[1].innerText;
     currentProjectPrice =
       proposalInfos.childNodes[3].childNodes[1].innerText.slice(1);
-  }
+  }*/
 
   projectCompletionShow(event, {
     modifyDueDate: currentProjectDueDateTime.split(",")[0],

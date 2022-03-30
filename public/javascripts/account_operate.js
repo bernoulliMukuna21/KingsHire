@@ -662,7 +662,7 @@ function createBookingTopHTML(bookingData, projectHTML, projectDetailsHTML) {
       "background-color": "#8d2874",
     });
   } else if (
-    bookingData.status === "accept / modify" ||
+    bookingData.status === "accept" ||
     bookingData.status === "please respond" ||
     bookingData.status === "awaiting response"
   ) {
@@ -750,10 +750,10 @@ function createBookingToggleDetails(bookingData, projectDetailsHTML) {
     deleteBttn = "Cancel";
     detailsOptionsHTML = `<button class="freelancer-booking-finish-button">Finish</button>`;
   }
-  if (bookingData.status === "accept / modify") {
+  if (bookingData.status === "accept") {
     detailsOptionsHTML =
-      `<button class="freelancer-booking-accept-button">Accept</button>` +
-      `<button class="freelancer-booking-modify-button">Modify</button>`;
+      `<button class="freelancer-booking-accept-button">Accept</button>`
+      /*`<button class="freelancer-booking-modify-button">Modify</button>`*/;
   }
   detailsOptionsHTML += `<button id="freelancer-booking-delete-button">${deleteBttn}</button>`;
   detailsOptionsDIV.innerHTML = detailsOptionsHTML;

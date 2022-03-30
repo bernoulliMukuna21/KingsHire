@@ -1760,14 +1760,14 @@ button.like{
 }
 .update-page-submit #update-page-submission {
     color: white;
-    background-color: #213e53;
+    background-color: #DB2C44;
     cursor: pointer;
-    border-color: #213e53;
+    border-color: #DB2C44;
 }
 .update-page-submit #update-page-submission:hover {
     color: white;
-    background-color: #0d3349;
-    border-color: #0d3349;
+    background-color: #DB2C44;
+    border-color: #DB2C44;
 }
 .update-page-submit{
     border-top: .1rem solid #213e53;

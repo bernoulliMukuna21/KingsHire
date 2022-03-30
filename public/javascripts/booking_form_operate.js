@@ -9,7 +9,7 @@ let domainName = 'https://kingshireproject.herokuapp.com';
 let minimumPriceOfService = 10.00;
 
 var locale = 'en-GB'; //window.navigator.userLanguage || window.navigator.language;
-let freelancerListOfStatus = ['booking ongoing', 'awaiting payment', 'accept / modify', 'awaiting response',
+let freelancerListOfStatus = ['booking ongoing', 'awaiting payment', 'accept', 'awaiting response',
     'please respond', 'awaiting confirmation', 'confirmed, well done!', 'awaiting resolution', 'paid', 'cancelled'];
 
 let clientListOfStatus = ['booking ongoing', 'pay now', 'awaiting acceptance', 'awaiting response',
@@ -242,6 +242,7 @@ $(document).on('submit', '#service-booking-form', function(event) {
         `#${clickedButton}`,
         'Processing <span id="wait">.</span>'
     );
+    $(document.body).css('pointer-events', 'none');
 
     // Empty the error field of the booking form
     $('#booking-form-error-mssg').empty();
@@ -311,9 +312,9 @@ $(document).on('submit', '#service-booking-form', function(event) {
                 event.currentTarget.submit();
             }else{
                 $('.project-enquiry-price').css('border', '.1rem solid red');
+                $(document.body).css('pointer-events', '');
+                accountsOperation.enableButton(`#${clickedButton}`, clickedButtonInnerHTML);
             }
-
-            accountsOperation.enableButton(`#${clickedButton}`, clickedButtonInnerHTML);
         }
     }
 })
@@ -468,7 +469,7 @@ socketConnection.socket.on('Successful Payment - send to Freelancer', successDat
 
 /* The event below deals with the case of the freelancer modifying the terms of the booking, e.g.
 * due date, price or description. */
-$(document).on('submit', '#booking-modification-form', function(event) {
+/*$(document).on('submit', '#booking-modification-form', function(event) {
     event.preventDefault();
 
     let clickedButtonID = document.activeElement.id;
@@ -580,7 +581,7 @@ $(document).on('submit', '#booking-modification-form', function(event) {
     }
 
     accountsOperation.enableButton(`#${clickedButtonID}`, 'Send Modification');
-})
+})*/
 
 
 /* The two following socket events deal with the case of the freelancer accepting the term of the
